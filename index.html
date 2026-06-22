@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#000000"/>
+  <meta name="description" content="Superhuman Physique — the 16-day training cycle built for serious athletes."/>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="apple-touch-icon" href="/icons/icon-192.png"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Superhuman"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <title>Superhuman Physique</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body,#root{height:100%;background:#000000;color:#F9FAFB;
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      -webkit-font-smoothing:antialiased;overscroll-behavior:none;}
+    #root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FIREBASE COMPAT SDK — loads before the app
+       Replace YOUR_PROJECT_ID etc. with your actual values
+       from Firebase Console → Project Settings → Your apps
+  ═══════════════════════════════════════════════════════════ -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ── PASTE YOUR FIREBASE CONFIG HERE ──────────────────────────
+    // Get from: Firebase Console → Project Settings → Your apps → Web
+    const firebaseConfig = {
+      apiKey:            "AIzaSyCGOk2uuIixyfxQFsEsFLEuuG4n2zVkofA",
+      authDomain:        "super-human-e6074.firebaseapp.com",
+      projectId:         "super-human-e6074",
+      storageBucket:     "super-human-e6074.firebasestorage.app",
+      messagingSenderId: "258918214306",
+      appId:             "1:258918214306:web:00bbe79bd06ffe9f9445fb",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    // Make available globally so the app can use them
+    window._fbAuth = firebase.auth();
+    window._fbDb   = firebase.firestore();
+
+    // Enable offline persistence — app works without internet
+    window._fbDb.enablePersistence({ synchronizeTabs: true })
+      .catch(() => {}); // fails silently if already enabled or unsupported
+  </script>
+
+  <!-- React + Babel -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- App -->
+  <script type="text/babel" src="/superhuman_v3.jsx" data-type="module"></script>
+
+  <!-- Mount -->
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(App));
+  </script>
+
+  <!-- PWA Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
