@@ -2,12 +2,17 @@
   "hosting": {
     "public": "public_deploy",
     "ignore": ["firebase.json", "**/.*"],
-    "rewrites": [
+    "headers": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/index.html",
+        "headers": [{"key": "Cache-Control", "value": "no-store"}]
+      },
+      {
+        "source": "/app.v2.js",
+        "headers": [{"key": "Cache-Control", "value": "no-store"}]
       }
-    ]
+    ],
+    "rewrites": [{"source": "**", "destination": "/index.html"}]
   },
   "firestore": {
     "rules": "firestore.rules",
