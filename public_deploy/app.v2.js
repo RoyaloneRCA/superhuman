@@ -3109,7 +3109,7 @@ function Dashboard({
       flex: 1
     }
   }, /*#__PURE__*/React.createElement(Tag, {
-    text: gap === 0 ? "UP NEXT" : "TODAY'S SESSION",
+    text: !lastSession ? "START YOUR CYCLE" : gap === 0 ? "UP NEXT" : "TODAY'S SESSION",
     color: T.emerald
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -14069,11 +14069,25 @@ function App() {
       minHeight: 0,
       padding: "12px 20px 24px"
     }
-  }, Object.entries(reviewSession.log?.sets || {}).map(([exId, setArr]) => {
+  }, Object.keys(reviewSession.log?.sets || {}).length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      color: T.dim,
+      padding: "32px 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 24,
+      marginBottom: 8
+    }
+  }, "📋"), "No sets were logged for this session.") : Object.entries(reviewSession.log?.sets || {}).map(([exId, setArr]) => {
     const fullLib = [...LIBRARY, ...appCustomLib];
     const mv = fullLib.find(m => m.id === exId);
-    if (!mv || !setArr?.length) return null;
-    const mvC = getMovementColor(mv.muscles);
+    // Fallback for exercises not found in library (deleted custom movements etc)
+    const displayName = mv?.name || exId;
+    const displayMuscles = mv?.muscles || [];
+    const mvC = mv ? getMovementColor(mv.muscles) : T.dim;
+    if (!setArr?.length) return null;
     return /*#__PURE__*/React.createElement("div", {
       key: exId,
       style: {
@@ -14100,13 +14114,13 @@ function App() {
         fontSize: 13,
         color: T.bright
       }
-    }, mv.name), /*#__PURE__*/React.createElement("div", {
+    }, displayName), /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 10,
         color: T.dim,
         marginLeft: "auto"
       }
-    }, mv.muscles.slice(0, 2).join(", "))), setArr.map((set, si) => /*#__PURE__*/React.createElement(SessionSetEditor, {
+    }, displayMuscles.slice(0, 2).join(", "))), setArr.map((set, si) => /*#__PURE__*/React.createElement(SessionSetEditor, {
       key: si,
       set: set,
       setIdx: si,
@@ -14114,20 +14128,14 @@ function App() {
       dateKey: reviewSession.date,
       sessionLogs: sessionLogs,
       setSessionLogs: setSessionLogs,
-      uid: uid,
+      uid: currentUser?.uid,
       color: mvC,
       onUpdate: newLog => setReviewSession(prev => ({
         ...prev,
         log: newLog
       }))
     })));
-  }), Object.keys(reviewSession.log?.sets || {}).length === 0 && /*#__PURE__*/React.createElement("div", {
-    style: {
-      textAlign: "center",
-      color: T.dim,
-      padding: "32px 0"
-    }
-  }, "No sets were logged for this session.")), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", {
     style: {
       padding: "12px 20px 24px",
       borderTop: `1px solid ${T.border}`
@@ -14213,4 +14221,4 @@ function App() {
     }));
   }))));
 }
-// v1783315114917
+// v1783316087004
