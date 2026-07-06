@@ -3109,7 +3109,7 @@ function Dashboard({
       flex: 1
     }
   }, /*#__PURE__*/React.createElement(Tag, {
-    text: "TODAY'S SESSION",
+    text: gap === 0 ? "UP NEXT" : "TODAY'S SESSION",
     color: T.emerald
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9585,10 +9585,11 @@ function TrainingCalendar({
       border = phase === "strength" ? `${T.crimson}28` : `${T.steel}28`;
       dotColor = T.dim;
     } else if (!isRest && displaySession && isPast && !hasLog) {
-      // Missed training day
-      bg = `${T.amber}0C`;
-      border = `${T.amber}28`;
-      dotColor = T.amber;
+      // Past unlogged training day — neutral, no judgment
+      // (app picks up where you left off, so these aren't truly "missed")
+      bg = "transparent";
+      border = "transparent";
+      dotColor = null;
     }
     if (isToday) border = T.accent;
     if (isSel && !isToday) border = `${T.accent}88`;
@@ -9763,19 +9764,19 @@ function TrainingCalendar({
     }
   }, "Day ", selectedCell.projCycleDay, "/16 · projected schedule"))
 
-  /* CASE 4: Past missed day */ : selectedCell.isPast && selectedCell.projSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  /* CASE 4: Past unlogged training day — neutral */ : selectedCell.isPast && selectedCell.projSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
-      color: T.amber,
+      color: T.dim,
       fontWeight: 600,
       marginBottom: 4
     }
-  }, "⚠ Missed — ", selectedCell.projSession.label), /*#__PURE__*/React.createElement("div", {
+  }, selectedCell.projSession.label), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11,
       color: T.dim
     }
-  }, "Day ", selectedCell.projCycleDay, " was projected for this date but not logged.")) : /*#__PURE__*/React.createElement("div", {
+  }, "Day ", selectedCell.projCycleDay, "/16 — not logged. The program picks up where you left off.")) : /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
       color: T.dim
@@ -9792,9 +9793,6 @@ function TrainingCalendar({
   }, {
     color: T.steel,
     label: "Hypertrophy (logged)"
-  }, {
-    color: T.amber,
-    label: "Missed"
   }, {
     color: T.dim,
     label: "Projected"
@@ -13453,7 +13451,7 @@ function App() {
           id: _id
         }));
         storageSet(STORAGE_KEYS.CUSTOM_MOVEMENTS, movs);
-        setCustomMovements(movs);
+        setAppCustomLib(movs);
       }
     }
     loadFromFirestore();
@@ -13468,12 +13466,12 @@ function App() {
   const [profile, setProfile] = usePersistedState(STORAGE_KEYS.PROFILE, null);
   const [savedTemplates, setSavedTemplates] = usePersistedState(STORAGE_KEYS.SAVED_TEMPLATES, {});
   const [customWorkouts, setCustomWorkouts] = usePersistedState(STORAGE_KEYS.CUSTOM_WORKOUTS, DEFAULT_CUSTOM_WORKOUTS);
+  const [appCustomLib, setAppCustomLib] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
   const [sessionLogs, setSessionLogs] = usePersistedState(STORAGE_KEYS.SESSION_LOGS, {});
   const [supplementLog, setSupplementLog] = usePersistedState(STORAGE_KEYS.SUPPLEMENT_LOG, {});
   const [weightLog, setWeightLog] = usePersistedState(STORAGE_KEYS.WEIGHT_LOG, DEFAULT_WEIGHT_LOG);
   const [recoveryLog, setRecoveryLog] = usePersistedState(STORAGE_KEYS.RECOVERY_LOG, DEFAULT_RECOVERY_LOG);
   const [bodyCompLog, setBodyCompLog] = usePersistedState(STORAGE_KEYS.BODYCOMP_LOG, []);
-  const [customMovements, setCustomMovements] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
 
   // ── ASYNC HYDRATION FROM window.storage ──────────────────────
   // On first mount, load all persisted data from window.storage (artifact API).
@@ -13965,8 +13963,8 @@ function App() {
     setRecoveryLog: setRecoveryLog,
     bodyCompLog: bodyCompLog,
     setBodyCompLog: setBodyCompLog,
-    customMovements: customMovements,
-    setCustomMovements: setCustomMovements
+    customMovements: appCustomLib,
+    setCustomMovements: setAppCustomLib
   }), reviewSession && /*#__PURE__*/React.createElement("div", {
     style: {
       position: "fixed",
@@ -14072,7 +14070,8 @@ function App() {
       padding: "12px 20px 24px"
     }
   }, Object.entries(reviewSession.log?.sets || {}).map(([exId, setArr]) => {
-    const mv = LIBRARY.find(m => m.id === exId);
+    const fullLib = [...LIBRARY, ...appCustomLib];
+    const mv = fullLib.find(m => m.id === exId);
     if (!mv || !setArr?.length) return null;
     const mvC = getMovementColor(mv.muscles);
     return /*#__PURE__*/React.createElement("div", {
@@ -14214,4 +14213,4 @@ function App() {
     }));
   }))));
 }
-// v1783314147427
+// v1783315114917
