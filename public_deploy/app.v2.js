@@ -2678,7 +2678,8 @@ function getDerivedHistory(sessionLogs) {
   return Object.entries(sessionLogs).sort(([a], [b]) => b.localeCompare(a)).map(([date, log]) => ({
     date,
     cycleDay: log.cycleDay,
-    label: SESSIONS_DATA[log.cycleDay]?.label || "Session",
+    // Use custom renamed label if set, otherwise derive from program
+    label: log.label || SESSIONS_DATA[log.cycleDay]?.label || "Session",
     exercises: Object.keys(log.sets || {}).length
   })).filter(h => h.cycleDay);
 }
@@ -2784,7 +2785,9 @@ function Dashboard({
   setSupplementLog = () => {},
   sessionLogs = {},
   setSessionLogs = () => {},
-  uid = null
+  uid = null,
+  reviewSession = null,
+  setReviewSession = () => {}
 }) {
   const goal = GOALS.find(g => g.id === profile?.goal);
   const proteinMult = MACRO_GOALS.find(g => g.id === profile?.goal)?.proteinMult || 1.3;
@@ -2797,8 +2800,7 @@ function Dashboard({
   const [dayPrompt, setDayPrompt] = useState(null);
   const [selectedDay, setSelectedDay] = useState(cycleDay);
   const [showRecipe, setShowRecipe] = useState(false);
-  // Past session review + edit
-  const [reviewSession, setReviewSession] = useState(null); // {date, log} to review
+  // Past session review + edit — state lifted to App, passed as prop
 
   // Keep the cycle strip's selected day in sync if cycleDay advances
   // (e.g. right after onboarding, or after a session is logged)
@@ -3832,147 +3834,7 @@ function Dashboard({
       fontSize: 12,
       color: T.text
     }
-  }, s)))))), reviewSession && /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "fixed",
-      inset: 0,
-      zIndex: 80,
-      background: "rgba(0,0,0,0.85)",
-      display: "flex",
-      alignItems: "flex-end",
-      justifyContent: "center"
-    },
-    onClick: () => setReviewSession(null)
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: "100%",
-      maxWidth: 480,
-      maxHeight: "88vh",
-      background: T.surface,
-      borderRadius: "20px 20px 0 0",
-      border: `1px solid ${T.border}`,
-      borderBottom: "none",
-      display: "flex",
-      flexDirection: "column"
-    },
-    onClick: e => e.stopPropagation()
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: "16px 20px 12px",
-      borderBottom: `1px solid ${T.border}`
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center"
-    }
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: T.dim,
-      fontWeight: 700,
-      letterSpacing: "0.08em",
-      marginBottom: 2
-    }
-  }, formatDate(reviewSession.date).toUpperCase()), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 17,
-      fontWeight: 700,
-      color: T.bright
-    }
-  }, SESSIONS_DATA[reviewSession.log?.cycleDay]?.label || "Session"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: T.muted,
-      marginTop: 1
-    }
-  }, "Day ", reviewSession.log?.cycleDay, " · tap any set to edit")), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setReviewSession(null),
-    style: {
-      background: "none",
-      border: "none",
-      color: T.muted,
-      fontSize: 22,
-      cursor: "pointer",
-      padding: "0 4px"
-    }
-  }, "✕"))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      overflowY: "auto",
-      flex: 1,
-      minHeight: 0,
-      padding: "12px 20px 24px"
-    }
-  }, Object.entries(reviewSession.log?.sets || {}).map(([exId, setArr]) => {
-    const mv = LIBRARY.find(m => m.id === exId);
-    if (!mv || !setArr?.length) return null;
-    const mvC = getMovementColor(mv.muscles);
-    return /*#__PURE__*/React.createElement("div", {
-      key: exId,
-      style: {
-        marginBottom: 16
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        marginBottom: 8
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        width: 8,
-        height: 8,
-        borderRadius: "50%",
-        background: mvC,
-        flexShrink: 0
-      }
-    }), /*#__PURE__*/React.createElement("div", {
-      style: {
-        fontWeight: 700,
-        fontSize: 13,
-        color: T.bright
-      }
-    }, mv.name), /*#__PURE__*/React.createElement("div", {
-      style: {
-        fontSize: 10,
-        color: T.dim,
-        marginLeft: "auto"
-      }
-    }, mv.muscles.slice(0, 2).join(", "))), setArr.map((set, si) => /*#__PURE__*/React.createElement(SessionSetEditor, {
-      key: si,
-      set: set,
-      setIdx: si,
-      exId: exId,
-      dateKey: reviewSession.date,
-      sessionLogs: sessionLogs,
-      setSessionLogs: setSessionLogs,
-      uid: uid,
-      color: mvC,
-      onUpdate: newLog => setReviewSession(prev => ({
-        ...prev,
-        log: newLog
-      }))
-    })));
-  }), Object.keys(reviewSession.log?.sets || {}).length === 0 && /*#__PURE__*/React.createElement("div", {
-    style: {
-      textAlign: "center",
-      color: T.dim,
-      padding: "32px 0"
-    }
-  }, "No sets were logged for this session.")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: "12px 20px 24px",
-      borderTop: `1px solid ${T.border}`
-    }
-  }, /*#__PURE__*/React.createElement(Btn, {
-    variant: "ghost",
-    style: {
-      width: "100%"
-    },
-    onClick: () => setReviewSession(null)
-  }, "Done")))));
+  }, s)))))));
 }
 
 // ── SESSION SET EDITOR ─────────────────────────────────────────────
@@ -5146,6 +5008,8 @@ function Session({
           [dateKey]: {
             ...dayLog,
             cycleDay,
+            label: dayLog.label || SESSIONS_DATA[cycleDay]?.label || "",
+            // preserve custom name
             sets: {
               ...dayLog.sets,
               [ex.id]: [...exSets, {
@@ -5537,6 +5401,29 @@ function Session({
           setEditSearch("");
         }
       }, "✎ Edit"), /*#__PURE__*/React.createElement(Btn, {
+        variant: "outline",
+        size: "sm",
+        title: "Assign as default for a cycle day",
+        onClick: e => {
+          e.stopPropagation();
+          const day = window.prompt ? parseInt(window.prompt("Assign as default for which cycle day? (1-16, training days: 1,3,5,7,9,11,13,15)")) : null;
+          if (!day || day < 1 || day > 16) return;
+          const tmpl = {
+            name: cw.name,
+            exercises: cw.exercises,
+            phase: cw.phase || "strength",
+            savedAt: new Date().toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric"
+            })
+          };
+          setSavedTemplates(prev => ({
+            ...prev,
+            [day]: tmpl
+          }));
+          if (uid) fsSet(uid, "savedTemplates", String(day), tmpl);
+        }
+      }, "📅"), /*#__PURE__*/React.createElement(Btn, {
         variant: "outline",
         size: "sm",
         onClick: e => {
@@ -9516,7 +9403,8 @@ function TrainingCalendar({
   cycleDay,
   setCycleDay,
   setTab,
-  profile
+  profile,
+  setReviewSession = () => {}
 }) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -9532,14 +9420,20 @@ function TrainingCalendar({
     const last = history[0];
     const lastDate = new Date(last.date + "T00:00:00");
     const lastCycleDay = last.cycleDay;
-    // Walk back: each cycle day is 2 real days apart
+    // Each cycle day = exactly 1 calendar day (training days AND rest days count)
+    // So anchor (day 1) = lastDate minus (lastCycleDay - 1) days
     const anchor = new Date(lastDate);
-    anchor.setDate(anchor.getDate() - (lastCycleDay - 1) * 2);
+    anchor.setDate(anchor.getDate() - (lastCycleDay - 1));
     return anchor;
   }, [sessionLogs]);
 
   // Build a real calendar grid — current month + surrounding weeks
-  const [viewDate, setViewDate] = useState(today);
+  const [viewDate, setViewDate] = useState(() => {
+    // Jump to the month containing today
+    const t = new Date();
+    t.setHours(0, 0, 0, 0);
+    return t;
+  });
   const viewYear = viewDate.getFullYear();
   const viewMonth = viewDate.getMonth();
 
@@ -9563,19 +9457,17 @@ function TrainingCalendar({
     const loggedCycleDay = logged?.cycleDay;
     const loggedSession = loggedCycleDay ? SESSIONS_DATA[loggedCycleDay] : null;
 
-    // Project future sessions — calculate which cycle day falls on this date
+    // Project future and unlogged past sessions using anchor + offset
+    // Each calendar day maps to exactly one cycle day (1-16), wrapping
     let projectedCycleDay = null;
     let projectedSession = null;
     if (!logged) {
       const diffMs = d.getTime() - anchorDate.getTime();
       const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-      // Every 2 days = one cycle step
-      const rawCyclePos = diffDays; // 0 = day 1, 2 = day 3, etc.
-      if (rawCyclePos >= 0) {
-        // Map to cycle day: rawCyclePos 0→day1, 1→day2, 2→day3...
-        const cycPos = rawCyclePos % 16;
-        projectedCycleDay = CYCLE[cycPos]?.day;
-        projectedSession = projectedCycleDay ? SESSIONS_DATA[projectedCycleDay] : null;
+      if (diffDays >= 0) {
+        const cycPos = diffDays % 16; // 0-15
+        projectedCycleDay = CYCLE[cycPos]?.day ?? cycPos + 1;
+        projectedSession = SESSIONS_DATA[projectedCycleDay] ?? null;
       }
     }
     const isRestDay = loggedCycleDay ? CYCLE.find(c => c.day === loggedCycleDay)?.rest : projectedCycleDay ? CYCLE.find(c => c.day === projectedCycleDay)?.rest : false;
@@ -9722,7 +9614,16 @@ function TrainingCalendar({
     }
     return /*#__PURE__*/React.createElement("div", {
       key: iso,
-      onClick: () => setSelected(iso),
+      onClick: () => {
+        setSelected(iso);
+        // Open review modal immediately for logged sessions
+        if (logged && Object.keys(logged.sets || {}).length > 0) {
+          setReviewSession({
+            date: iso,
+            log: logged
+          });
+        }
+      },
       style: {
         aspectRatio: "1",
         borderRadius: 8,
@@ -11264,6 +11165,7 @@ function Progress({
   setTab = () => {},
   setCycleDay = () => {},
   cycleDay = 1,
+  setReviewSession = () => {},
   weightLog: weightLogProp,
   setWeightLog: setWeightLogProp,
   recoveryLog: recoveryLogProp,
@@ -11615,7 +11517,8 @@ function Progress({
     cycleDay: cycleDay,
     setCycleDay: setCycleDay,
     setTab: setTab,
-    profile: profile
+    profile: profile,
+    setReviewSession: setReviewSession
   }), activeSection === "strength" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
@@ -13631,6 +13534,8 @@ function App() {
   const [tab, setTab] = useState("home");
   const [showSettingsMenu, setShowSettingsMenu] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  // Session review modal — lifted to App so both Home and Calendar can open it
+  const [reviewSession, setReviewSession] = useState(null);
   const [cycleDay, setCycleDay] = useState(() => getCurrentCycleDay(storageGet(STORAGE_KEYS.SESSION_LOGS, {})));
 
   // ── WORKOUT STATE — lifted to App so it survives tab switches ──
@@ -14018,7 +13923,9 @@ function App() {
     setSupplementLog: setSupplementLog,
     sessionLogs: sessionLogs,
     setSessionLogs: setSessionLogs,
-    uid: currentUser?.uid
+    uid: currentUser?.uid,
+    reviewSession: reviewSession,
+    setReviewSession: setReviewSession
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: tab === "session" ? "block" : "none"
@@ -14062,6 +13969,7 @@ function App() {
     setTab: setTab,
     setCycleDay: setCycleDay,
     cycleDay: cycleDay,
+    setReviewSession: setReviewSession,
     weightLog: weightLog,
     setWeightLog: setWeightLog,
     recoveryLog: recoveryLog,
@@ -14070,7 +13978,179 @@ function App() {
     setBodyCompLog: setBodyCompLog,
     customMovements: customMovements,
     setCustomMovements: setCustomMovements
+  }), reviewSession && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "fixed",
+      inset: 0,
+      zIndex: 80,
+      background: "rgba(0,0,0,0.85)",
+      display: "flex",
+      alignItems: "flex-end",
+      justifyContent: "center"
+    },
+    onClick: () => setReviewSession(null)
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: "100%",
+      maxWidth: 480,
+      maxHeight: "88vh",
+      background: T.surface,
+      borderRadius: "20px 20px 0 0",
+      border: `1px solid ${T.border}`,
+      borderBottom: "none",
+      display: "flex",
+      flexDirection: "column"
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "16px 20px 12px",
+      borderBottom: `1px solid ${T.border}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "flex-start"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      marginRight: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim,
+      fontWeight: 700,
+      letterSpacing: "0.08em",
+      marginBottom: 6
+    }
+  }, formatDate(reviewSession.date).toUpperCase(), " · Day ", reviewSession.log?.cycleDay), /*#__PURE__*/React.createElement("input", {
+    defaultValue: reviewSession.log?.label || SESSIONS_DATA[reviewSession.log?.cycleDay]?.label || "Session",
+    onBlur: e => {
+      const newLabel = e.target.value.trim();
+      if (!newLabel) return;
+      const updated = {
+        ...reviewSession.log,
+        label: newLabel
+      };
+      setSessionLogs(prev => ({
+        ...prev,
+        [reviewSession.date]: updated
+      }));
+      if (currentUser) fsSet(currentUser.uid, "sessionLogs", reviewSession.date, updated);
+      setReviewSession(prev => ({
+        ...prev,
+        log: updated
+      }));
+    },
+    style: {
+      fontSize: 17,
+      fontWeight: 700,
+      color: T.bright,
+      background: "none",
+      border: "none",
+      outline: "none",
+      borderBottom: `1px solid ${T.border}`,
+      width: "100%",
+      padding: "2px 0",
+      fontFamily: "inherit",
+      marginBottom: 4
+    }
   }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: T.dim,
+      marginTop: 2
+    }
+  }, "tap name to rename · tap any set to edit")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setReviewSession(null),
+    style: {
+      background: "none",
+      border: "none",
+      color: T.muted,
+      fontSize: 22,
+      cursor: "pointer",
+      padding: "0 4px",
+      flexShrink: 0
+    }
+  }, "✕"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      overflowY: "auto",
+      flex: 1,
+      minHeight: 0,
+      padding: "12px 20px 24px"
+    }
+  }, Object.entries(reviewSession.log?.sets || {}).map(([exId, setArr]) => {
+    const mv = LIBRARY.find(m => m.id === exId);
+    if (!mv || !setArr?.length) return null;
+    const mvC = getMovementColor(mv.muscles);
+    return /*#__PURE__*/React.createElement("div", {
+      key: exId,
+      style: {
+        marginBottom: 16
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        marginBottom: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        background: mvC,
+        flexShrink: 0
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontWeight: 700,
+        fontSize: 13,
+        color: T.bright
+      }
+    }, mv.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: T.dim,
+        marginLeft: "auto"
+      }
+    }, mv.muscles.slice(0, 2).join(", "))), setArr.map((set, si) => /*#__PURE__*/React.createElement(SessionSetEditor, {
+      key: si,
+      set: set,
+      setIdx: si,
+      exId: exId,
+      dateKey: reviewSession.date,
+      sessionLogs: sessionLogs,
+      setSessionLogs: setSessionLogs,
+      uid: uid,
+      color: mvC,
+      onUpdate: newLog => setReviewSession(prev => ({
+        ...prev,
+        log: newLog
+      }))
+    })));
+  }), Object.keys(reviewSession.log?.sets || {}).length === 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      color: T.dim,
+      padding: "32px 0"
+    }
+  }, "No sets were logged for this session.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "12px 20px 24px",
+      borderTop: `1px solid ${T.border}`
+    }
+  }, /*#__PURE__*/React.createElement(Btn, {
+    variant: "ghost",
+    style: {
+      width: "100%"
+    },
+    onClick: () => setReviewSession(null)
+  }, "Done")))), /*#__PURE__*/React.createElement("div", {
     role: "navigation",
     "aria-label": "Main navigation",
     style: {
@@ -14145,4 +14225,4 @@ function App() {
     }));
   }))));
 }
-// v1783294638520
+// v1783313127766
