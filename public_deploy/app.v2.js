@@ -4788,6 +4788,7 @@ function Session({
   const [builderSearch, setBuilderSearch] = useState("");
   const [saveTemplateName, setSaveTemplateName] = useState("");
   const [editingWorkout, setEditingWorkout] = useState(null); // cw.id being edited
+  const [openNotes, setOpenNotes] = useState({}); // {idx: bool} note expansion per exercise
   const [editName, setEditName] = useState("");
   const [editExercises, setEditExercises] = useState([]);
   const [editSearch, setEditSearch] = useState("");
@@ -5637,7 +5638,7 @@ function Session({
         const mv = FULL_LIBRARY.find(m => m.id === exId);
         if (!mv) return null;
         const plan = getRepsForFiber(mv.fiber, phase);
-        const [showNote, setShowNote] = React.useState(false);
+        const showNote = !!openNotes[idx];
         return /*#__PURE__*/React.createElement("div", {
           key: `${exId}-${idx}`,
           style: {
@@ -5719,7 +5720,10 @@ function Session({
             color: T.dim
           }
         }, mv.muscles.slice(0, 2).join(", "))), /*#__PURE__*/React.createElement("button", {
-          onClick: () => setShowNote(s => !s),
+          onClick: () => setOpenNotes(prev => ({
+            ...prev,
+            [idx]: !prev[idx]
+          })),
           style: {
             background: "none",
             border: "none",
@@ -5926,6 +5930,7 @@ function Session({
           setEditName("");
           setEditExercises([]);
           setEditSearch("");
+          setOpenNotes({});
         }
       }, "Cancel"), /*#__PURE__*/React.createElement(Btn, {
         size: "sm",
@@ -5949,6 +5954,7 @@ function Session({
           setEditName("");
           setEditExercises([]);
           setEditSearch("");
+          setOpenNotes({});
         }
       }, "✓ Save Changes"))));
     })), !showBuilder ? /*#__PURE__*/React.createElement("button", {
@@ -14386,4 +14392,4 @@ function App() {
     }));
   }))));
 }
-// v1783332634369
+// v1783336695977
