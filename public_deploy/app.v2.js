@@ -4748,6 +4748,8 @@ function Session({
   setCustomWorkouts = () => {},
   sessionLogs = {},
   setSessionLogs = () => {},
+  customLib = [],
+  setCustomLib = () => {},
   // Lifted workout state — survives tab switches
   sessionState = "picker",
   setSessionState = () => {},
@@ -4773,7 +4775,7 @@ function Session({
 
   // Custom movements the user has created (Track → Movement Browser).
   // Read-only here — same storage key as Progress, so always in sync.
-  const [customLib] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
+  // customLib received as prop from App
   const FULL_LIBRARY = useMemo(() => [...LIBRARY, ...customLib], [customLib]);
 
   // ── WORKOUT PICKER ────────────────────────────────
@@ -5281,6 +5283,8 @@ function Session({
       }
     }, "MY SAVED WORKOUTS"), customWorkouts.map(cw => {
       const isEditing = editingWorkout === cw.id;
+      // Collapse other cards while one is being edited
+      const isCollapsed = editingWorkout && !isEditing;
       return /*#__PURE__*/React.createElement("div", {
         key: cw.id,
         style: {
@@ -5291,7 +5295,28 @@ function Session({
           marginBottom: 8,
           overflow: "hidden"
         }
-      }, !isEditing ? /*#__PURE__*/React.createElement("div", {
+      }, isCollapsed ? /*#__PURE__*/React.createElement("div", {
+        style: {
+          padding: "10px 16px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          opacity: 0.5
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 13,
+          color: T.muted
+        }
+      }, cw.name), /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 10,
+          color: T.dim
+        }
+      }, cw.exercises.length, " ex")) : !isEditing ?
+      /*#__PURE__*/
+      /* ── CARD VIEW ── */
+      React.createElement("div", {
         style: {
           padding: "14px 16px"
         }
@@ -7935,8 +7960,8 @@ function Session({
         cue: "",
         equipment: ["full", "home", "minimal"]
       };
-      // Save to persistent custom library
-      storageSet(STORAGE_KEYS.CUSTOM_MOVEMENTS, [...storageGet(STORAGE_KEYS.CUSTOM_MOVEMENTS, []), entry]);
+      // Update App-level customLib (propagates to FULL_LIBRARY immediately)
+      setCustomLib(prev => [...prev, entry]);
       if (uid) fsSet(uid, "customMovements", id, entry);
       // Immediately add to workout
       selectMovement(entry);
@@ -11321,14 +11346,14 @@ function Progress({
   setCycleDay = () => {},
   cycleDay = 1,
   setReviewSession = () => {},
+  customLib = [],
+  setCustomLib = () => {},
   weightLog: weightLogProp,
   setWeightLog: setWeightLogProp,
   recoveryLog: recoveryLogProp,
   setRecoveryLog: setRecoveryLogProp,
   bodyCompLog: bodyCompLogProp,
-  setBodyCompLog: setBodyCompLogProp,
-  customMovements: customMovementsProp,
-  setCustomMovements: setCustomMovementsProp
+  setBodyCompLog: setBodyCompLogProp
 }) {
   const [activeSection, setActiveSection] = useState("calendar");
   const [activeLift, setActiveLift] = useState("bench");
@@ -11339,9 +11364,7 @@ function Progress({
   const [movementSearch, setMovementSearch] = useState("");
   const [movementMuscleFilter, setMovementMuscleFilter] = useState("ALL");
   const [showAddForm, setShowAddForm] = useState(false);
-  const [_customLib, _setCustomLib] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
-  const customLib = customMovementsProp !== undefined ? customMovementsProp : _customLib;
-  const setCustomLib = setCustomMovementsProp || _setCustomLib;
+  // customLib and setCustomLib received as props from App
   const [_bodyCompLogForExport] = usePersistedState(STORAGE_KEYS.BODYCOMP_LOG, []);
   const bodyCompLogForExport = bodyCompLogProp !== undefined ? bodyCompLogProp : _bodyCompLogForExport;
   const [newMov, setNewMov] = useState({
@@ -13619,7 +13642,8 @@ function App() {
           id: _id
         }));
         storageSet(STORAGE_KEYS.CUSTOM_MOVEMENTS, movs);
-        setAppCustomLib(movs);
+        setCustomLib(movs);
+        setCustomLib(movs); // update React state so FULL_LIBRARY updates immediately
       }
     }
     loadFromFirestore();
@@ -13634,7 +13658,7 @@ function App() {
   const [profile, setProfile] = usePersistedState(STORAGE_KEYS.PROFILE, null);
   const [savedTemplates, setSavedTemplates] = usePersistedState(STORAGE_KEYS.SAVED_TEMPLATES, {});
   const [customWorkouts, setCustomWorkouts] = usePersistedState(STORAGE_KEYS.CUSTOM_WORKOUTS, DEFAULT_CUSTOM_WORKOUTS);
-  const [appCustomLib, setAppCustomLib] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
+  const [customLib, setCustomLib] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
   const [sessionLogs, setSessionLogs] = usePersistedState(STORAGE_KEYS.SESSION_LOGS, {});
   const [supplementLog, setSupplementLog] = usePersistedState(STORAGE_KEYS.SUPPLEMENT_LOG, {});
   const [weightLog, setWeightLog] = usePersistedState(STORAGE_KEYS.WEIGHT_LOG, DEFAULT_WEIGHT_LOG);
@@ -14098,6 +14122,8 @@ function App() {
     setCustomWorkouts: setCustomWorkouts,
     sessionLogs: sessionLogs,
     setSessionLogs: setSessionLogs,
+    customLib: customLib,
+    setCustomLib: setCustomLib,
     uid: currentUser?.uid,
     sessionState: sessionState,
     setSessionState: setSessionState,
@@ -14128,14 +14154,14 @@ function App() {
     setCycleDay: setCycleDay,
     cycleDay: cycleDay,
     setReviewSession: setReviewSession,
+    customLib: customLib,
+    setCustomLib: setCustomLib,
     weightLog: weightLog,
     setWeightLog: setWeightLog,
     recoveryLog: recoveryLog,
     setRecoveryLog: setRecoveryLog,
     bodyCompLog: bodyCompLog,
-    setBodyCompLog: setBodyCompLog,
-    customMovements: appCustomLib,
-    setCustomMovements: setAppCustomLib
+    setBodyCompLog: setBodyCompLog
   }), reviewSession && /*#__PURE__*/React.createElement("div", {
     style: {
       position: "fixed",
@@ -14252,7 +14278,7 @@ function App() {
       marginBottom: 8
     }
   }, "📋"), "No sets were logged for this session.") : Object.entries(reviewSession.log?.sets || {}).map(([exId, setArr]) => {
-    const fullLib = [...LIBRARY, ...appCustomLib];
+    const fullLib = [...LIBRARY, ...customLib];
     const mv = fullLib.find(m => m.id === exId);
     // Fallback for exercises not found in library (deleted custom movements etc)
     const displayName = mv?.name || exId;
@@ -14392,4 +14418,4 @@ function App() {
     }));
   }))));
 }
-// v1783336695977
+// v1783378966993
