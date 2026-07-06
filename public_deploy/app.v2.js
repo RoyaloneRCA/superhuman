@@ -13556,26 +13556,29 @@ function App() {
           const result = await storageLoadAsync(k);
           if (result != null) {
             _memStore[k] = result;
-            // Push to localStorage too for getStreak/getCurrentCycleDay calls
             try {
               localStorage.setItem(k, JSON.stringify(result));
             } catch {}
           }
         }));
-        // Now re-read profile and session logs from warmed cache
+        // Always restore all state from storage, regardless of profile existence
         const p = _memStore[STORAGE_KEYS.PROFILE] || null;
         const sl = _memStore[STORAGE_KEYS.SESSION_LOGS] || {};
         const st = _memStore[STORAGE_KEYS.SAVED_TEMPLATES] || {};
         const cw = _memStore[STORAGE_KEYS.CUSTOM_WORKOUTS] || DEFAULT_CUSTOM_WORKOUTS;
         const sup = _memStore[STORAGE_KEYS.SUPPLEMENT_LOG] || {};
-        if (p) {
+        // Session logs and custom workouts load regardless of profile
+        if (Object.keys(sl).length > 0) setSessionLogs(sl);
+        if (Object.keys(st).length > 0) setSavedTemplates(st);
+        if (cw.length > 0) setCustomWorkouts(cw);
+        if (Object.keys(sup).length > 0) setSupplementLog(sup);
+        // Profile and booted only if profile is complete
+        if (p && p.goal && p.weight) {
           setProfile(p);
-          setSavedTemplates(st);
-          setCustomWorkouts(cw);
-          setSessionLogs(sl);
-          setSupplementLog(sup);
         }
-      } catch {}
+      } catch (e) {
+        console.warn("Hydration error:", e);
+      }
       setHydrated(true);
     }
     hydrate();
@@ -14289,4 +14292,4 @@ function App() {
     }));
   }))));
 }
-// v1783329970700
+// v1783331457800
