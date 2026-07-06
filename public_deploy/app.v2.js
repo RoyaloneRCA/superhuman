@@ -1,5 +1,4 @@
 /** @jsxRuntime classic */
-// React is loaded as a UMD global via CDN in index.html
 const {
   useState,
   useMemo,
@@ -79,6 +78,7 @@ const STORAGE_KEYS = {
   PROFILE: "sp_profile",
   SAVED_TEMPLATES: "sp_saved_templates",
   CUSTOM_WORKOUTS: "sp_custom_workouts",
+  CUSTOM_MOVEMENTS: "sp_custom_movements",
   SESSION_LOGS: "sp_session_logs",
   WEIGHT_LOG: "sp_weight_log",
   RECOVERY_LOG: "sp_recovery_log",
@@ -2783,6 +2783,7 @@ function Dashboard({
   supplementLog = {},
   setSupplementLog = () => {},
   sessionLogs = {},
+  setSessionLogs = () => {},
   uid = null
 }) {
   const goal = GOALS.find(g => g.id === profile?.goal);
@@ -2796,6 +2797,8 @@ function Dashboard({
   const [dayPrompt, setDayPrompt] = useState(null);
   const [selectedDay, setSelectedDay] = useState(cycleDay);
   const [showRecipe, setShowRecipe] = useState(false);
+  // Past session review + edit
+  const [reviewSession, setReviewSession] = useState(null); // {date, log} to review
 
   // Keep the cycle strip's selected day in sync if cycleDay advances
   // (e.g. right after onboarding, or after a session is logged)
@@ -2892,7 +2895,11 @@ function Dashboard({
       justifyContent: "space-between",
       alignItems: "center"
     }
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11,
       color: missedDay ? T.amber : T.dim,
@@ -2912,7 +2919,14 @@ function Dashboard({
       color: T.muted,
       marginTop: 1
     }
-  }, formatDate(lastSession.date), " · ", gap === 0 ? "today" : gap === 1 ? "yesterday" : `${gap} days ago`)), missedDay && /*#__PURE__*/React.createElement("div", {
+  }, formatDate(lastSession.date), " · ", gap === 0 ? "today" : gap === 1 ? "yesterday" : `${gap} days ago`, " · ", lastSession.exercises, " exercises")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-end",
+      gap: 6
+    }
+  }, missedDay && /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11,
       color: T.amber,
@@ -2920,7 +2934,14 @@ function Dashboard({
       maxWidth: 130,
       lineHeight: 1.4
     }
-  }, "No problem — pick up where you left off. Don't double up."))) : /*#__PURE__*/React.createElement(Card, {
+  }, "No problem — pick up where you left off."), /*#__PURE__*/React.createElement(Btn, {
+    size: "sm",
+    variant: "ghost",
+    onClick: () => setReviewSession({
+      date: lastSession.date,
+      log: sessionLogs[lastSession.date]
+    })
+  }, "📋 View")))) : /*#__PURE__*/React.createElement(Card, {
     style: {
       marginBottom: 14,
       padding: "12px 16px",
@@ -3601,11 +3622,17 @@ function Dashboard({
       width: "100%"
     },
     onClick: () => {
-      setCycleDay(dayPrompt.day);
-      setTab("session");
+      // Find the logged session for this day
+      const logEntry = Object.entries(sessionLogs).find(([_, log]) => log.cycleDay === dayPrompt.day);
+      if (logEntry) {
+        setReviewSession({
+          date: logEntry[0],
+          log: logEntry[1]
+        });
+      }
       setDayPrompt(null);
     }
-  }, "📋 View Previous Session"), /*#__PURE__*/React.createElement(Btn, {
+  }, "📋 View & Edit Session Logs"), /*#__PURE__*/React.createElement(Btn, {
     style: {
       width: "100%"
     },
@@ -3805,10 +3832,398 @@ function Dashboard({
       fontSize: 12,
       color: T.text
     }
-  }, s)))))));
+  }, s)))))), reviewSession && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "fixed",
+      inset: 0,
+      zIndex: 80,
+      background: "rgba(0,0,0,0.85)",
+      display: "flex",
+      alignItems: "flex-end",
+      justifyContent: "center"
+    },
+    onClick: () => setReviewSession(null)
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: "100%",
+      maxWidth: 480,
+      maxHeight: "88vh",
+      background: T.surface,
+      borderRadius: "20px 20px 0 0",
+      border: `1px solid ${T.border}`,
+      borderBottom: "none",
+      display: "flex",
+      flexDirection: "column"
+    },
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "16px 20px 12px",
+      borderBottom: `1px solid ${T.border}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim,
+      fontWeight: 700,
+      letterSpacing: "0.08em",
+      marginBottom: 2
+    }
+  }, formatDate(reviewSession.date).toUpperCase()), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 17,
+      fontWeight: 700,
+      color: T.bright
+    }
+  }, SESSIONS_DATA[reviewSession.log?.cycleDay]?.label || "Session"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.muted,
+      marginTop: 1
+    }
+  }, "Day ", reviewSession.log?.cycleDay, " · tap any set to edit")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setReviewSession(null),
+    style: {
+      background: "none",
+      border: "none",
+      color: T.muted,
+      fontSize: 22,
+      cursor: "pointer",
+      padding: "0 4px"
+    }
+  }, "✕"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      overflowY: "auto",
+      flex: 1,
+      minHeight: 0,
+      padding: "12px 20px 24px"
+    }
+  }, Object.entries(reviewSession.log?.sets || {}).map(([exId, setArr]) => {
+    const mv = LIBRARY.find(m => m.id === exId);
+    if (!mv || !setArr?.length) return null;
+    const mvC = getMovementColor(mv.muscles);
+    return /*#__PURE__*/React.createElement("div", {
+      key: exId,
+      style: {
+        marginBottom: 16
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        marginBottom: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        background: mvC,
+        flexShrink: 0
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontWeight: 700,
+        fontSize: 13,
+        color: T.bright
+      }
+    }, mv.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: T.dim,
+        marginLeft: "auto"
+      }
+    }, mv.muscles.slice(0, 2).join(", "))), setArr.map((set, si) => /*#__PURE__*/React.createElement(SessionSetEditor, {
+      key: si,
+      set: set,
+      setIdx: si,
+      exId: exId,
+      dateKey: reviewSession.date,
+      sessionLogs: sessionLogs,
+      setSessionLogs: setSessionLogs,
+      uid: uid,
+      color: mvC,
+      onUpdate: newLog => setReviewSession(prev => ({
+        ...prev,
+        log: newLog
+      }))
+    })));
+  }), Object.keys(reviewSession.log?.sets || {}).length === 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      color: T.dim,
+      padding: "32px 0"
+    }
+  }, "No sets were logged for this session.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "12px 20px 24px",
+      borderTop: `1px solid ${T.border}`
+    }
+  }, /*#__PURE__*/React.createElement(Btn, {
+    variant: "ghost",
+    style: {
+      width: "100%"
+    },
+    onClick: () => setReviewSession(null)
+  }, "Done")))));
 }
 
-// ── SESSION SCREEN ────────────────────────────────────
+// ── SESSION SET EDITOR ─────────────────────────────────────────────
+// A single editable set row inside the session review modal
+function SessionSetEditor({
+  set,
+  setIdx,
+  exId,
+  dateKey,
+  sessionLogs,
+  setSessionLogs,
+  uid,
+  color,
+  onUpdate
+}) {
+  const [editing, setEditing] = useState(false);
+  const [w, setW] = useState(String(set.w || ""));
+  const [r, setR] = useState(String(set.r || ""));
+  const [rir, setRir] = useState(String(set.rir || ""));
+  function save() {
+    if (!w || !r) {
+      setEditing(false);
+      return;
+    }
+    const newSets = [...(sessionLogs[dateKey]?.sets?.[exId] || [])];
+    newSets[setIdx] = {
+      ...set,
+      w: Number(w),
+      r: Number(r),
+      rir,
+      edited: true
+    };
+    const newLog = {
+      ...sessionLogs[dateKey],
+      sets: {
+        ...sessionLogs[dateKey]?.sets,
+        [exId]: newSets
+      }
+    };
+    const updated = {
+      ...sessionLogs,
+      [dateKey]: newLog
+    };
+    setSessionLogs(updated);
+    if (uid) fsSet(uid, "sessionLogs", dateKey, newLog);
+    onUpdate(newLog);
+    setEditing(false);
+  }
+  if (editing) {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: T.card,
+        border: `1px solid ${color}55`,
+        borderRadius: 10,
+        padding: "10px 12px",
+        marginBottom: 6
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        color: T.dim,
+        marginBottom: 8,
+        fontWeight: 700
+      }
+    }, "EDITING SET ", setIdx + 1), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 8,
+        marginBottom: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 9,
+        color: T.dim,
+        letterSpacing: "0.08em",
+        marginBottom: 4,
+        textAlign: "center"
+      }
+    }, "WEIGHT (LBS)"), /*#__PURE__*/React.createElement("input", {
+      type: "number",
+      value: w,
+      onChange: e => setW(e.target.value),
+      autoFocus: true,
+      style: {
+        width: "100%",
+        background: T.surface,
+        border: `1px solid ${w ? color : T.border}`,
+        borderRadius: 8,
+        padding: "10px 8px",
+        color: T.bright,
+        fontSize: 18,
+        fontWeight: 700,
+        outline: "none",
+        fontFamily: "inherit",
+        textAlign: "center",
+        boxSizing: "border-box"
+      }
+    })), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 9,
+        color: T.dim,
+        letterSpacing: "0.08em",
+        marginBottom: 4,
+        textAlign: "center"
+      }
+    }, "REPS"), /*#__PURE__*/React.createElement("input", {
+      type: "number",
+      value: r,
+      onChange: e => setR(e.target.value),
+      style: {
+        width: "100%",
+        background: T.surface,
+        border: `1px solid ${r ? color : T.border}`,
+        borderRadius: 8,
+        padding: "10px 8px",
+        color: T.bright,
+        fontSize: 18,
+        fontWeight: 700,
+        outline: "none",
+        fontFamily: "inherit",
+        textAlign: "center",
+        boxSizing: "border-box"
+      }
+    }))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        marginBottom: 10
+      }
+    }, [{
+      v: "0",
+      l: "0 RIR",
+      c: T.crimson
+    }, {
+      v: "1",
+      l: "1 RIR",
+      c: T.amber
+    }, {
+      v: "2",
+      l: "2 RIR",
+      c: T.amber
+    }, {
+      v: "3",
+      l: "3 RIR",
+      c: T.emerald
+    }].map(rg => /*#__PURE__*/React.createElement("button", {
+      key: rg.v,
+      onClick: () => setRir(rg.v),
+      style: {
+        flex: 1,
+        padding: "8px 4px",
+        borderRadius: 8,
+        cursor: "pointer",
+        fontSize: 10,
+        fontWeight: 700,
+        background: rir === rg.v ? rg.c + "22" : T.surface,
+        border: `1px solid ${rir === rg.v ? rg.c : T.border}`,
+        color: rir === rg.v ? rg.c : T.dim
+      }
+    }, rg.l))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement(Btn, {
+      variant: "ghost",
+      size: "sm",
+      style: {
+        flex: 1
+      },
+      onClick: () => {
+        setEditing(false);
+        setW(String(set.w || ""));
+        setR(String(set.r || ""));
+        setRir(String(set.rir || ""));
+      }
+    }, "Cancel"), /*#__PURE__*/React.createElement(Btn, {
+      size: "sm",
+      style: {
+        flex: 2,
+        background: color,
+        color: "#000"
+      },
+      onClick: save
+    }, "✓ Save")));
+  }
+  return /*#__PURE__*/React.createElement("div", {
+    onClick: () => setEditing(true),
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 10,
+      padding: "9px 12px",
+      borderRadius: 8,
+      marginBottom: 4,
+      cursor: "pointer",
+      background: T.card,
+      border: `1px solid ${T.border}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 22,
+      height: 22,
+      borderRadius: "50%",
+      flexShrink: 0,
+      background: color + "22",
+      border: `1px solid ${color}44`,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: 9,
+      fontWeight: 700,
+      color
+    }
+  }, setIdx + 1), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 13,
+      fontWeight: 700,
+      color: T.bright
+    }
+  }, set.w, " lbs × ", set.r, " reps"), set.rir !== undefined && set.rir !== "" && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      color: T.dim
+    }
+  }, " · RIR ", set.rir), set.edited && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      color: T.violet,
+      marginLeft: 6
+    }
+  }, "edited")), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      color: T.dim
+    }
+  }, "✎ edit"));
+}
+
 // Mock previous lift history — keyed by exercise id, then set index
 // In production this comes from the database
 // PREV_LIFTS is now computed live from sessionLogs — see getPrevLifts(sessionLogs)
@@ -4470,18 +4885,39 @@ function Session({
   customWorkouts = [],
   setCustomWorkouts = () => {},
   sessionLogs = {},
-  setSessionLogs = () => {}
+  setSessionLogs = () => {},
+  // Lifted workout state — survives tab switches
+  sessionState = "picker",
+  setSessionState = () => {},
+  exercises = [],
+  setExercises = () => {},
+  chosenWorkout = null,
+  setChosenWorkout = () => {},
+  originalExIds = [],
+  setOriginalExIds = () => {},
+  logs = {},
+  setLogs = () => {},
+  lockedSets = {},
+  setLockedSets = () => {},
+  activeSet = {},
+  setActiveSet = () => {},
+  setCount = {},
+  setSetCount = () => {},
+  resetWorkout = () => {}
 }) {
   const sessionKey = cycleDay;
   const sessionMeta = SESSIONS_DATA[sessionKey];
   const phase = sessionMeta?.phase || "strength";
 
+  // Custom movements the user has created (Track → Movement Browser).
+  // Read-only here — same storage key as Progress, so always in sync.
+  const [customLib] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
+  const FULL_LIBRARY = useMemo(() => [...LIBRARY, ...customLib], [customLib]);
+
   // ── WORKOUT PICKER ────────────────────────────────
   // "picker" = choosing which workout to run
   // "building" = actively in session
   // "done" = session completed
-  const [sessionState, setSessionState] = useState("picker"); // picker | building | done
-  const [chosenWorkout, setChosenWorkout] = useState(null); // null = not chosen yet
   const [savePrompt, setSavePrompt] = useState(false); // show save-as-template prompt
   const [showBuilder, setShowBuilder] = useState(false); // custom workout builder
   const [newWorkoutName, setNewWorkoutName] = useState("");
@@ -4506,7 +4942,7 @@ function Session({
       // item can be a plain ID string OR an object {id, sets, reps, note}
       const id = typeof item === "string" ? item : item.id;
       const overrides = typeof item === "object" ? item : {};
-      const mv = LIBRARY.find(m => m.id === id);
+      const mv = FULL_LIBRARY.find(m => m.id === id);
       if (!mv) return null;
       const plan = getRepsForFiber(mv.fiber, ph);
       return {
@@ -4527,7 +4963,6 @@ function Session({
       };
     }).filter(Boolean).filter(ex => !ex.equipment || ex.equipment.includes(equip) || ex.equipment.includes("full"));
   }
-  const [exercises, setExercises] = useState([]);
   const [expanded, setExpanded] = useState(null);
   const [dragIdx, setDragIdx] = useState(null);
   const [dragOverIdx, setDragOverIdx] = useState(null);
@@ -4540,10 +4975,6 @@ function Session({
   const [levelFilter, setLevelFilter] = useState("ALL");
   const [muscleFilter, setMuscleFilter] = useState("ALL");
   const [showAllEquipment, setShowAllEquipment] = useState(false);
-  const [logs, setLogs] = useState({}); // key: `${exIdx}-${setIdx}-w/r/rir`
-  const [lockedSets, setLockedSets] = useState({}); // key: `${exIdx}-${setIdx}` → true when set is done
-  const [activeSet, setActiveSet] = useState({}); // key: exIdx → active set index
-  const [setCount, setSetCount] = useState({}); // key: exIdx → total sets (allows adding)
   // pending: after timer fires, open this set
   const [pendingAdvance, setPendingAdvance] = useState(null); // {exIdx, setIdx}
 
@@ -4614,10 +5045,27 @@ function Session({
   const timerColor = timerSeconds <= 5 ? T.crimson : timerSeconds <= 15 ? T.amber : T.emerald;
   const [timerEditMode, setTimerEditMode] = useState(false);
   const [timerEditVal, setTimerEditVal] = useState("");
+  // Inline "create new movement" form inside the Add Movement picker
+  const [showInlineCreate, setShowInlineCreate] = useState(false);
+  const [inlineNewMov, setInlineNewMov] = useState({
+    name: "",
+    muscles: [],
+    fiber: "mixed",
+    equipment: ["full"],
+    note: ""
+  });
   const done = exercises.filter(e => e.completed).length;
   const pct = exercises.length ? Math.round(done / exercises.length * 100) : 0;
+
+  // ── CHANGE DETECTION ─────────────────────────────────────────
+  // Compares the live exercise list against the snapshot taken when
+  // this workout started. Detects additions, removals, reorders, and
+  // swaps — so we can prompt the user to save before they lose changes.
+  const currentExIds = exercises.map(e => e.id);
+  const hasModifications = originalExIds.length > 0 && (currentExIds.length !== originalExIds.length || currentExIds.some((id, i) => id !== originalExIds[i]));
+  const addedExercises = exercises.filter(e => !originalExIds.includes(e.id));
   const filteredLib = useMemo(() => {
-    let list = mode === "add" && showAllEquipment ? LIBRARY : LIBRARY.filter(m => m.equipment.includes(profile?.equipment || "full"));
+    let list = mode === "add" && showAllEquipment ? FULL_LIBRARY : FULL_LIBRARY.filter(m => m.equipment.includes(profile?.equipment || "full"));
     if (mode === "swap" && targetIdx !== null) {
       const tgt = exercises[targetIdx];
       list = list.filter(m => m.muscles.some(mu => tgt?.muscles.includes(mu)));
@@ -4808,6 +5256,7 @@ function Session({
           setSessionState("building");
         } else {
           setExercises(buildExercisesFrom(sessionMeta.exercises));
+          setOriginalExIds(sessionMeta.exercises);
           setSessionState("building");
           setChosenWorkout({
             type: "default",
@@ -4886,6 +5335,7 @@ function Session({
           setSessionState("building");
         } else {
           setExercises(buildExercisesFrom(savedTemplate.exercises));
+          setOriginalExIds(savedTemplate.exercises.map(e => typeof e === "string" ? e : e.id));
           setSessionState("building");
           setChosenWorkout({
             type: "template",
@@ -4994,6 +5444,7 @@ function Session({
             setSessionState("building");
           } else {
             setExercises(buildExercisesFrom(cw));
+            setOriginalExIds(cw.exercises.map(e => typeof e === "string" ? e : e.id));
             setSessionState("building");
             setChosenWorkout({
               type: "custom",
@@ -5022,7 +5473,7 @@ function Session({
           flexWrap: "wrap"
         }
       }, cw.exercises.slice(0, 4).map((exId, i) => {
-        const mv = LIBRARY.find(m => m.id === exId);
+        const mv = FULL_LIBRARY.find(m => m.id === exId);
         return mv ? /*#__PURE__*/React.createElement(Tag, {
           key: i,
           text: mv.name.split(" ")[0],
@@ -5061,6 +5512,7 @@ function Session({
             setSessionState("building");
           } else {
             setExercises(buildExercisesFrom(cw));
+            setOriginalExIds(cw.exercises.map(e => typeof e === "string" ? e : e.id));
             setSessionState("building");
             setChosenWorkout({
               type: "custom",
@@ -5201,7 +5653,7 @@ function Session({
         }
       }, "Exercises (", editExercises.length, ")"), editExercises.map((exObj, idx) => {
         const exId = typeof exObj === "string" ? exObj : exObj.id;
-        const mv = LIBRARY.find(m => m.id === exId);
+        const mv = FULL_LIBRARY.find(m => m.id === exId);
         if (!mv) return null;
         const plan = getRepsForFiber(mv.fiber, phase);
         const [showNote, setShowNote] = React.useState(false);
@@ -5444,7 +5896,7 @@ function Session({
           maxHeight: 150,
           overflowY: "auto"
         }
-      }, LIBRARY.filter(mv => (mv.name.toLowerCase().includes(editSearch.toLowerCase()) || mv.muscles.some(m => m.toLowerCase().includes(editSearch.toLowerCase()))) && !editExercises.some(e => (typeof e === "string" ? e : e.id) === mv.id)).slice(0, 6).map(mv => /*#__PURE__*/React.createElement("div", {
+      }, FULL_LIBRARY.filter(mv => (mv.name.toLowerCase().includes(editSearch.toLowerCase()) || mv.muscles.some(m => m.toLowerCase().includes(editSearch.toLowerCase()))) && !editExercises.some(e => (typeof e === "string" ? e : e.id) === mv.id)).slice(0, 6).map(mv => /*#__PURE__*/React.createElement("div", {
         key: mv.id,
         onClick: () => {
           setEditExercises(prev => [...prev, {
@@ -5636,7 +6088,7 @@ function Session({
         maxHeight: 200,
         overflowY: "auto"
       }
-    }, LIBRARY.filter(mv => builderSearch.length > 1 && (mv.name.toLowerCase().includes(builderSearch.toLowerCase()) || mv.muscles.some(m => m.toLowerCase().includes(builderSearch.toLowerCase()))) && !builderExercises.find(e => e.id === mv.id)).slice(0, 8).map(mv => /*#__PURE__*/React.createElement("div", {
+    }, FULL_LIBRARY.filter(mv => builderSearch.length > 1 && (mv.name.toLowerCase().includes(builderSearch.toLowerCase()) || mv.muscles.some(m => m.toLowerCase().includes(builderSearch.toLowerCase()))) && !builderExercises.find(e => e.id === mv.id)).slice(0, 8).map(mv => /*#__PURE__*/React.createElement("div", {
       key: mv.id,
       onClick: () => {
         setBuilderExercises(prev => [...prev, mv]);
@@ -5710,6 +6162,7 @@ function Session({
         setCustomWorkouts(prev => [...prev, newCW]);
         if (uid) fsSet(uid, "customWorkouts", newCW.id, newCW);
         setExercises(buildExercisesFrom(newCW));
+        setOriginalExIds(newCW.exercises);
         setSessionState("building");
         setChosenWorkout({
           type: "custom",
@@ -5733,6 +6186,13 @@ function Session({
     style: {
       marginBottom: 20
     }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      paddingBottom: 4
+    }
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setSessionState("picker"),
     style: {
@@ -5741,12 +6201,28 @@ function Session({
       color: T.muted,
       fontSize: 13,
       cursor: "pointer",
-      padding: "0 0 12px",
+      padding: "0 0 8px",
       display: "flex",
       alignItems: "center",
       gap: 4
     }
-  }, "← Back"), /*#__PURE__*/React.createElement("div", {
+  }, "← Back"), done > 0 && pct < 100 && /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      if (window.confirm && !window.confirm(`Finish workout? You've completed ${done}/${exercises.length} exercises.`)) return;
+      resetWorkout();
+      setTab("home");
+    },
+    style: {
+      background: "none",
+      border: `1px solid ${T.border}`,
+      color: T.muted,
+      fontSize: 11,
+      fontWeight: 600,
+      cursor: "pointer",
+      padding: "5px 10px",
+      borderRadius: 8
+    }
+  }, "Finish Early ✓")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       justifyContent: "space-between",
@@ -6088,7 +6564,21 @@ function Session({
           }
         }, /*#__PURE__*/React.createElement("div", {
           onClick: () => {
-            if (isLocked) return;
+            if (isLocked) {
+              // Unlock to edit — remove from lockedSets, reopen
+              setLockedSets(prev => {
+                const n = {
+                  ...prev
+                };
+                delete n[setKey];
+                return n;
+              });
+              setActiveSet(prev => ({
+                ...prev,
+                [i]: s
+              }));
+              return;
+            }
             // Toggle: tap active set to collapse it, tap inactive to open
             setActiveSet(prev => ({
               ...prev,
@@ -6101,7 +6591,7 @@ function Session({
             gap: 10,
             padding: "9px 12px",
             borderRadius: isActive ? "8px 8px 0 0" : 8,
-            cursor: isLocked ? "default" : "pointer",
+            cursor: "pointer",
             background: isLocked ? T.emeraldBg : isActive ? T.emeraldBg : T.surface,
             border: `1px solid ${isLocked ? T.emerald + "44" : isActive ? T.emerald : T.border}`
           }
@@ -6129,7 +6619,13 @@ function Session({
             fontWeight: 600,
             color: isLocked ? T.emerald : isActive ? T.emerald : T.muted
           }
-        }, "Set ", s + 1, isLocked && w && ` · ${w} lbs × ${r} reps${rir ? ` · RIR ${rir}` : ""}`, !isLocked && !isActive && " · tap to open", isActive && " · active")), prev && !isLocked && /*#__PURE__*/React.createElement("span", {
+        }, "Set ", s + 1, isLocked && w && ` · ${w} lbs × ${r} reps${rir ? ` · RIR ${rir}` : ""}`, !isLocked && !isActive && " · tap to open", isActive && " · active"), isLocked && /*#__PURE__*/React.createElement("span", {
+          style: {
+            fontSize: 9,
+            color: T.dim,
+            marginLeft: "auto"
+          }
+        }, "✎ edit")), prev && !isLocked && /*#__PURE__*/React.createElement("span", {
           style: {
             fontSize: 10,
             color: T.dim
@@ -6296,6 +6792,8 @@ function Session({
           onClick: e => {
             e.stopPropagation();
             completeSet(i, s);
+            // Haptic feedback on set completion
+            if (navigator.vibrate) navigator.vibrate([40]);
           }
         }, "✓ Complete Set ", s + 1, s + 1 < totalSets ? ` — Rest then Set ${s + 2}` : " — Exercise Done")));
       }), /*#__PURE__*/React.createElement("button", {
@@ -6687,7 +7185,52 @@ function Session({
       justifyContent: "center",
       gap: 6
     }
-  }, "+ Add Movement"), pct === 100 && /*#__PURE__*/React.createElement(Card, {
+  }, "+ Add Movement"), hasModifications && pct < 100 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 12,
+      padding: "12px 14px",
+      borderRadius: 12,
+      background: T.violetBg || T.violet + "12",
+      border: `1px solid ${T.violet}44`,
+      display: "flex",
+      alignItems: "center",
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 18,
+      flexShrink: 0
+    }
+  }, "✏️"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      fontWeight: 700,
+      color: T.violet
+    }
+  }, addedExercises.length > 0 ? `${addedExercises.length} movement${addedExercises.length > 1 ? "s" : ""} added` : "This workout has been changed"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim,
+      marginTop: 1
+    }
+  }, chosenWorkout?.type === "custom" ? "Save to update your saved workout, or save as a new one." : "Save these changes as a custom workout to use again.")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setSavePrompt("naming"),
+    style: {
+      flexShrink: 0,
+      background: T.violet,
+      color: "#000",
+      border: "none",
+      borderRadius: 8,
+      padding: "8px 12px",
+      fontSize: 11,
+      fontWeight: 800,
+      cursor: "pointer"
+    }
+  }, "Save")), pct === 100 && /*#__PURE__*/React.createElement(Card, {
     glow: true,
     color: T.emerald,
     style: {
@@ -6724,7 +7267,18 @@ function Session({
       color: T.muted,
       marginTop: 3
     }
-  }, "Next: Day ", cycleDay + 1, " — ", SESSIONS_DATA[cycleDay + 1]?.label || "Rest")), sessionMeta && !savePrompt && /*#__PURE__*/React.createElement("div", {
+  }, (() => {
+    const next = getCurrentCycleDay({
+      ...sessionLogs,
+      _dummy: {
+        cycleDay,
+        sets: {}
+      }
+    });
+    const nextData = SESSIONS_DATA[next];
+    const skippedRest = next > cycleDay + 1;
+    return skippedRest ? `Rest Day ${cycleDay + 1} → Next: Day ${next} — ${nextData?.label || "Training"}` : `Next: Day ${next} — ${nextData?.label || "Rest"}`;
+  })())), sessionMeta && !savePrompt && /*#__PURE__*/React.createElement("div", {
     style: {
       padding: "12px 14px",
       background: T.violet + "12",
@@ -6780,7 +7334,48 @@ function Session({
       color: T.violet,
       marginBottom: 8
     }
-  }, "Name this workout"), /*#__PURE__*/React.createElement("input", {
+  }, chosenWorkout?.type === "custom" ? "Save changes" : "Name this workout"), chosenWorkout?.type === "custom" && chosenWorkout?.id && /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      const updated = customWorkouts.find(w => w.id === chosenWorkout.id);
+      if (!updated) return;
+      const newExercises = exercises.map(e => ({
+        id: e.id,
+        name: e.name,
+        muscles: e.muscles
+      }));
+      const saved = {
+        ...updated,
+        exercises: newExercises,
+        updatedAt: new Date().toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric"
+        })
+      };
+      setCustomWorkouts(prev => prev.map(w => w.id === chosenWorkout.id ? saved : w));
+      if (uid) fsSet(uid, "customWorkouts", chosenWorkout.id, saved);
+      setOriginalExIds(exercises.map(e => e.id)); // reset baseline
+      setSavePrompt("saved");
+    },
+    style: {
+      width: "100%",
+      background: T.violet,
+      color: T.bg,
+      border: "none",
+      borderRadius: 8,
+      padding: "11px 0",
+      fontSize: 13,
+      fontWeight: 800,
+      cursor: "pointer",
+      marginBottom: 8
+    }
+  }, "✓ Update \"", chosenWorkout.label, "\""), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: T.dim,
+      marginBottom: 6,
+      textAlign: chosenWorkout?.type === "custom" ? "center" : "left"
+    }
+  }, chosenWorkout?.type === "custom" ? "or save as a new workout" : ""), /*#__PURE__*/React.createElement("input", {
     placeholder: `My Day ${cycleDay} — ${sessionMeta.label}`,
     value: saveTemplateName,
     onChange: e => setSaveTemplateName(e.target.value),
@@ -6798,10 +7393,13 @@ function Session({
       marginBottom: 10
     }
   }), /*#__PURE__*/React.createElement(Btn, {
+    variant: chosenWorkout?.type === "custom" ? "outline" : undefined,
     style: {
       width: "100%",
-      background: T.violet,
-      color: T.bg
+      ...(chosenWorkout?.type !== "custom" && {
+        background: T.violet,
+        color: T.bg
+      })
     },
     onClick: () => {
       const name = saveTemplateName || `My Day ${cycleDay} — ${sessionMeta.label}`;
@@ -6809,13 +7407,15 @@ function Session({
         month: "short",
         day: "numeric"
       });
+      const newExercises = exercises.map(e => ({
+        id: e.id,
+        name: e.name,
+        muscles: e.muscles
+      }));
+      // Always also save as a quick day-template
       const tmpl = {
         name,
-        exercises: exercises.map(e => ({
-          id: e.id,
-          name: e.name,
-          muscles: e.muscles
-        })),
+        exercises: newExercises,
         phase,
         savedAt: today
       };
@@ -6824,9 +7424,19 @@ function Session({
         [cycleDay]: tmpl
       }));
       if (uid) fsSet(uid, "savedTemplates", String(cycleDay), tmpl);
+      // Also save as a new reusable custom workout
+      const newCustom = {
+        id: `cw${Date.now()}`,
+        name,
+        phase,
+        exercises: newExercises.map(e => e.id),
+        createdAt: today
+      };
+      setCustomWorkouts(prev => [...prev, newCustom]);
+      if (uid) fsSet(uid, "customWorkouts", newCustom.id, newCustom);
       setSavePrompt("saved");
     }
-  }, "✓ Save Template")), savePrompt === "saved" && /*#__PURE__*/React.createElement("div", {
+  }, chosenWorkout?.type === "custom" ? "Save as New Workout" : "✓ Save Template")), savePrompt === "saved" && /*#__PURE__*/React.createElement("div", {
     style: {
       padding: "10px 14px",
       background: T.emeraldBg,
@@ -6911,7 +7521,43 @@ function Session({
         }
       })));
     });
-  })())), mode && /*#__PURE__*/React.createElement("div", {
+  })()), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 8,
+      marginTop: 16,
+      paddingTop: 14,
+      borderTop: `1px solid ${T.border}`
+    }
+  }, /*#__PURE__*/React.createElement(Btn, {
+    style: {
+      width: "100%",
+      background: T.emerald,
+      color: "#000"
+    },
+    onClick: () => {
+      resetWorkout();
+      setTab("home");
+      if (navigator.vibrate) navigator.vibrate([30, 30, 60]);
+    }
+  }, "✓ Finish — Back to Home"), /*#__PURE__*/React.createElement(Btn, {
+    variant: "outline",
+    style: {
+      width: "100%"
+    },
+    onClick: () => {
+      const next = getCurrentCycleDay({
+        ...sessionLogs,
+        _dummy: {
+          cycleDay,
+          sets: {}
+        }
+      });
+      resetWorkout();
+      setCycleDay(next);
+    }
+  }, "▶ Start Next Session"))), mode && /*#__PURE__*/React.createElement("div", {
     style: {
       position: "fixed",
       inset: 0,
@@ -6960,6 +7606,14 @@ function Session({
       setShowAllEquipment(false);
       setPatternFilter("ALL");
       setLevelFilter("ALL");
+      setShowInlineCreate(false);
+      setInlineNewMov({
+        name: "",
+        muscles: [],
+        fiber: "mixed",
+        equipment: ["full"],
+        note: ""
+      });
     }
   }, "✕ Close")), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -7097,7 +7751,218 @@ function Session({
       flex: 1,
       minHeight: 0
     }
-  }, filteredLib.length === 0 && /*#__PURE__*/React.createElement("div", {
+  }, mode === "add" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, !showInlineCreate ? /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      setShowInlineCreate(true);
+      setSearch("");
+    },
+    style: {
+      width: "100%",
+      padding: "11px 0",
+      borderRadius: 10,
+      background: "transparent",
+      border: `1px dashed ${T.violet}66`,
+      color: T.violet,
+      fontSize: 12,
+      fontWeight: 700,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 6
+    }
+  }, "✚ Create New Movement") : /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: T.violetBg,
+      border: `1px solid ${T.violet}44`,
+      borderRadius: 12,
+      padding: "14px 16px",
+      marginBottom: 4
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 13,
+      fontWeight: 700,
+      color: T.violet
+    }
+  }, "✚ Create New Movement"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      setShowInlineCreate(false);
+      setInlineNewMov({
+        name: "",
+        muscles: [],
+        fiber: "mixed",
+        equipment: ["full"],
+        note: ""
+      });
+    },
+    style: {
+      background: "none",
+      border: "none",
+      color: T.dim,
+      fontSize: 16,
+      cursor: "pointer",
+      padding: "0 4px"
+    }
+  }, "✕")), /*#__PURE__*/React.createElement("input", {
+    placeholder: "Movement name (e.g. Deficit Push-Up)",
+    value: inlineNewMov.name,
+    onChange: e => setInlineNewMov(p => ({
+      ...p,
+      name: e.target.value
+    })),
+    style: {
+      width: "100%",
+      background: T.surface,
+      border: `1px solid ${inlineNewMov.name ? T.violet : T.border}`,
+      borderRadius: 8,
+      padding: "10px 12px",
+      color: T.bright,
+      fontSize: 13,
+      outline: "none",
+      fontFamily: "inherit",
+      boxSizing: "border-box",
+      marginBottom: 10
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: T.dim,
+      marginBottom: 6,
+      fontWeight: 700,
+      letterSpacing: "0.08em"
+    }
+  }, "PRIMARY MUSCLES (select all that apply)"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 4,
+      marginBottom: 10
+    }
+  }, ["Chest", "Upper Chest", "Lats", "Mid Back", "Lower Back", "Traps", "Rear Delt", "Front Delt", "Lateral Delt", "Quads", "Hamstrings", "Glutes", "Calves (Gastrocnemius)", "Biceps", "Triceps", "Abs", "Core (stability)", "Obliques"].map(m => {
+    const sel = inlineNewMov.muscles.includes(m);
+    return /*#__PURE__*/React.createElement("button", {
+      key: m,
+      onClick: () => setInlineNewMov(p => ({
+        ...p,
+        muscles: sel ? p.muscles.filter(x => x !== m) : [...p.muscles, m]
+      })),
+      style: {
+        fontSize: 10,
+        padding: "4px 8px",
+        borderRadius: 8,
+        cursor: "pointer",
+        background: sel ? getMovementColor([m]) + "22" : T.surface,
+        border: `1px solid ${sel ? getMovementColor([m]) : T.border}`,
+        color: sel ? getMovementColor([m]) : T.dim,
+        fontWeight: sel ? 700 : 400
+      }
+    }, m);
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: T.dim,
+      marginBottom: 6,
+      fontWeight: 700,
+      letterSpacing: "0.08em"
+    }
+  }, "MUSCLE FIBER TYPE"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      marginBottom: 10
+    }
+  }, [{
+    id: "fast",
+    l: "Fast — Strength (3-6 reps)"
+  }, {
+    id: "mixed",
+    l: "Mixed (6-12 reps)"
+  }, {
+    id: "slow",
+    l: "Slow — Endurance (12-20 reps)"
+  }].map(f => /*#__PURE__*/React.createElement("button", {
+    key: f.id,
+    onClick: () => setInlineNewMov(p => ({
+      ...p,
+      fiber: f.id
+    })),
+    style: {
+      flex: 1,
+      padding: "8px 4px",
+      borderRadius: 8,
+      cursor: "pointer",
+      fontSize: 9,
+      fontWeight: 700,
+      lineHeight: 1.3,
+      background: inlineNewMov.fiber === f.id ? FIBER_COLOR[f.id] + "22" : T.surface,
+      border: `1px solid ${inlineNewMov.fiber === f.id ? FIBER_COLOR[f.id] : T.border}`,
+      color: inlineNewMov.fiber === f.id ? FIBER_COLOR[f.id] : T.dim
+    }
+  }, f.l))), /*#__PURE__*/React.createElement("input", {
+    placeholder: "Optional note (form tip, equipment needed…)",
+    value: inlineNewMov.note,
+    onChange: e => setInlineNewMov(p => ({
+      ...p,
+      note: e.target.value
+    })),
+    style: {
+      width: "100%",
+      background: T.surface,
+      border: `1px solid ${T.border}`,
+      borderRadius: 8,
+      padding: "8px 12px",
+      color: T.bright,
+      fontSize: 12,
+      outline: "none",
+      fontFamily: "inherit",
+      boxSizing: "border-box",
+      marginBottom: 10
+    }
+  }), /*#__PURE__*/React.createElement(Btn, {
+    style: {
+      width: "100%",
+      background: T.violet,
+      color: T.bg
+    },
+    disabled: !inlineNewMov.name || inlineNewMov.muscles.length === 0,
+    onClick: () => {
+      const id = `custom-${Date.now()}`;
+      const entry = {
+        ...inlineNewMov,
+        id,
+        custom: true,
+        level: 1,
+        pattern: "push",
+        cue: "",
+        equipment: ["full", "home", "minimal"]
+      };
+      // Save to persistent custom library
+      storageSet(STORAGE_KEYS.CUSTOM_MOVEMENTS, [...storageGet(STORAGE_KEYS.CUSTOM_MOVEMENTS, []), entry]);
+      if (uid) fsSet(uid, "customMovements", id, entry);
+      // Immediately add to workout
+      selectMovement(entry);
+      setShowInlineCreate(false);
+      setInlineNewMov({
+        name: "",
+        muscles: [],
+        fiber: "mixed",
+        equipment: ["full"],
+        note: ""
+      });
+    }
+  }, "✓ Save & Add to Workout"))), filteredLib.length === 0 && !showInlineCreate && /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: "center",
       color: T.dim,
@@ -8645,6 +9510,432 @@ function Learn({
   }, "Training and cardio NEVER change between phases. Only calories change. Dropping training volume to lose fat is how you lose muscle instead of fat. Your body composition is determined in the kitchen — your muscle is preserved in the gym."))));
 }
 
+// ── TRAINING CALENDAR ─────────────────────────────────────────────
+function TrainingCalendar({
+  sessionLogs = {},
+  cycleDay,
+  setCycleDay,
+  setTab,
+  profile
+}) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayISO = today.toISOString().slice(0, 10);
+
+  // Compute the calendar anchor — the date when cycle day 1 started.
+  // Walk backwards from every logged session to find when day 1 was.
+  const anchorDate = useMemo(() => {
+    const history = getDerivedHistory(sessionLogs);
+    if (!history.length) return today;
+    // Find the most recent session and extrapolate back to day 1
+    // Sessions happen every 2 calendar days (training day + rest day)
+    const last = history[0];
+    const lastDate = new Date(last.date + "T00:00:00");
+    const lastCycleDay = last.cycleDay;
+    // Walk back: each cycle day is 2 real days apart
+    const anchor = new Date(lastDate);
+    anchor.setDate(anchor.getDate() - (lastCycleDay - 1) * 2);
+    return anchor;
+  }, [sessionLogs]);
+
+  // Build a real calendar grid — current month + surrounding weeks
+  const [viewDate, setViewDate] = useState(today);
+  const viewYear = viewDate.getFullYear();
+  const viewMonth = viewDate.getMonth();
+
+  // Get first day of the grid (Monday before month start)
+  const firstOfMonth = new Date(viewYear, viewMonth, 1);
+  const startOfGrid = new Date(firstOfMonth);
+  const dow = (firstOfMonth.getDay() + 6) % 7; // 0=Mon
+  startOfGrid.setDate(startOfGrid.getDate() - dow);
+
+  // Build 6 weeks of cells
+  const cells = [];
+  for (let i = 0; i < 42; i++) {
+    const d = new Date(startOfGrid);
+    d.setDate(startOfGrid.getDate() + i);
+    const iso = d.toISOString().slice(0, 10);
+    const isThisMonth = d.getMonth() === viewMonth;
+    const isToday = iso === todayISO;
+
+    // Did user actually log a session this day?
+    const logged = sessionLogs[iso];
+    const loggedCycleDay = logged?.cycleDay;
+    const loggedSession = loggedCycleDay ? SESSIONS_DATA[loggedCycleDay] : null;
+
+    // Project future sessions — calculate which cycle day falls on this date
+    let projectedCycleDay = null;
+    let projectedSession = null;
+    if (!logged) {
+      const diffMs = d.getTime() - anchorDate.getTime();
+      const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+      // Every 2 days = one cycle step
+      const rawCyclePos = diffDays; // 0 = day 1, 2 = day 3, etc.
+      if (rawCyclePos >= 0) {
+        // Map to cycle day: rawCyclePos 0→day1, 1→day2, 2→day3...
+        const cycPos = rawCyclePos % 16;
+        projectedCycleDay = CYCLE[cycPos]?.day;
+        projectedSession = projectedCycleDay ? SESSIONS_DATA[projectedCycleDay] : null;
+      }
+    }
+    const isRestDay = loggedCycleDay ? CYCLE.find(c => c.day === loggedCycleDay)?.rest : projectedCycleDay ? CYCLE.find(c => c.day === projectedCycleDay)?.rest : false;
+    const isFuture = d > today;
+    const isPast = d < today;
+    cells.push({
+      d,
+      iso,
+      isThisMonth,
+      isToday,
+      logged,
+      loggedSession,
+      loggedCycleDay,
+      projectedCycleDay,
+      projectedSession,
+      isRestDay,
+      isFuture,
+      isPast
+    });
+  }
+  const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  // Selected date for detail panel
+  const [selected, setSelected] = useState(todayISO);
+  const selectedCell = cells.find(c => c.iso === selected);
+  function prevMonth() {
+    const d = new Date(viewDate);
+    d.setMonth(d.getMonth() - 1);
+    setViewDate(d);
+  }
+  function nextMonth() {
+    const d = new Date(viewDate);
+    d.setMonth(d.getMonth() + 1);
+    setViewDate(d);
+  }
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 14
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: prevMonth,
+    style: {
+      background: "none",
+      border: `1px solid ${T.border}`,
+      color: T.muted,
+      borderRadius: 8,
+      padding: "6px 12px",
+      cursor: "pointer",
+      fontSize: 13
+    }
+  }, "‹"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 15,
+      fontWeight: 700,
+      color: T.bright
+    }
+  }, MONTH_NAMES[viewMonth], " ", viewYear), /*#__PURE__*/React.createElement("button", {
+    onClick: nextMonth,
+    style: {
+      background: "none",
+      border: `1px solid ${T.border}`,
+      color: T.muted,
+      borderRadius: 8,
+      padding: "6px 12px",
+      cursor: "pointer",
+      fontSize: 13
+    }
+  }, "›")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(7, 1fr)",
+      gap: 2,
+      marginBottom: 4
+    }
+  }, DAY_NAMES.map(d => /*#__PURE__*/React.createElement("div", {
+    key: d,
+    style: {
+      textAlign: "center",
+      fontSize: 9,
+      color: T.dim,
+      fontWeight: 700,
+      letterSpacing: "0.06em",
+      padding: "4px 0"
+    }
+  }, d))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(7, 1fr)",
+      gap: 2,
+      marginBottom: 16
+    }
+  }, cells.map(cell => {
+    const {
+      d,
+      iso,
+      isThisMonth,
+      isToday,
+      logged,
+      loggedSession,
+      projectedSession,
+      isRestDay,
+      isFuture,
+      isPast
+    } = cell;
+    const isSel = iso === selected;
+
+    // Color coding
+    let bg = "transparent";
+    let border = "transparent";
+    let labelColor = isThisMonth ? T.muted : T.dim;
+    let dot = null;
+    if (logged && loggedSession) {
+      // Completed session
+      const phase = loggedSession.phase;
+      bg = phase === "strength" ? T.crimson + "22" : T.steel + "22";
+      border = phase === "strength" ? T.crimson + "55" : T.steel + "55";
+      labelColor = T.bright;
+      dot = phase === "strength" ? T.crimson : T.steel;
+    } else if (logged && !loggedSession) {
+      // Logged but rest day
+      bg = T.emerald + "11";
+      labelColor = T.dim;
+    } else if (isFuture && projectedSession) {
+      // Projected training day
+      const phase = projectedSession.phase;
+      bg = phase === "strength" ? T.crimson + "0A" : T.steel + "0A";
+      border = phase === "strength" ? T.crimson + "22" : T.steel + "22";
+      labelColor = isThisMonth ? T.text : T.dim;
+      dot = null;
+    } else if (isRestDay && !isFuture) {
+      labelColor = T.dim;
+    }
+    if (isToday) {
+      border = T.accent;
+      bg = isSel ? T.accentBg : bg;
+    }
+    if (isSel && !isToday) {
+      border = T.accent + "88";
+      bg = T.accentBg;
+    }
+    return /*#__PURE__*/React.createElement("div", {
+      key: iso,
+      onClick: () => setSelected(iso),
+      style: {
+        aspectRatio: "1",
+        borderRadius: 8,
+        cursor: "pointer",
+        background: bg,
+        border: `1px solid ${border}`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        transition: "all 0.1s",
+        opacity: isThisMonth ? 1 : 0.35
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        fontWeight: isToday ? 800 : 500,
+        color: isToday ? T.accent : labelColor,
+        lineHeight: 1
+      }
+    }, d.getDate()), dot && /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 4,
+        height: 4,
+        borderRadius: "50%",
+        background: dot,
+        marginTop: 2
+      }
+    }), !dot && isFuture && projectedSession && /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 3,
+        height: 3,
+        borderRadius: "50%",
+        background: T.dim,
+        marginTop: 2,
+        opacity: 0.5
+      }
+    }));
+  })), selectedCell && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: T.card,
+      borderRadius: 12,
+      border: `1px solid ${T.border}`,
+      padding: "14px 16px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim,
+      fontWeight: 700,
+      letterSpacing: "0.08em",
+      marginBottom: 6
+    }
+  }, selectedCell.d.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric"
+  }), selectedCell.isToday && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: T.accent,
+      marginLeft: 6
+    }
+  }, "· TODAY")), selectedCell.logged && selectedCell.loggedSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      marginBottom: 4
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 8,
+      height: 8,
+      borderRadius: "50%",
+      background: selectedCell.loggedSession.phase === "strength" ? T.crimson : T.steel
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 15,
+      fontWeight: 700,
+      color: T.bright
+    }
+  }, selectedCell.loggedSession.label), /*#__PURE__*/React.createElement(Tag, {
+    text: selectedCell.loggedSession.phase.toUpperCase(),
+    color: selectedCell.loggedSession.phase === "strength" ? T.crimson : T.steel,
+    xs: true
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5,
+      flexWrap: "wrap",
+      marginBottom: 10
+    }
+  }, selectedCell.loggedSession.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
+    key: m,
+    text: m,
+    color: getMovementColor([m]),
+    xs: true
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.emerald,
+      fontWeight: 600
+    }
+  }, "✓ Completed · Day ", selectedCell.loggedCycleDay, " of 16")) : selectedCell.logged ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 13,
+      color: T.muted
+    }
+  }, "Rest day logged") : selectedCell.projectedSession && !selectedCell.isRestDay ?
+  /*#__PURE__*/
+  /* Projected future session */
+  React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      marginBottom: 4
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 8,
+      height: 8,
+      borderRadius: "50%",
+      background: T.dim,
+      opacity: 0.5
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 15,
+      fontWeight: 700,
+      color: selectedCell.isFuture ? T.text : T.dim
+    }
+  }, selectedCell.projectedSession.label), /*#__PURE__*/React.createElement(Tag, {
+    text: selectedCell.projectedSession.phase.toUpperCase(),
+    color: selectedCell.isFuture ? selectedCell.projectedSession.phase === "strength" ? T.crimson : T.steel : T.dim,
+    xs: true
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5,
+      flexWrap: "wrap",
+      marginBottom: 10
+    }
+  }, selectedCell.projectedSession.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
+    key: m,
+    text: m,
+    color: selectedCell.isFuture ? getMovementColor([m]) : T.dim,
+    xs: true
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim
+    }
+  }, selectedCell.isFuture ? "📅 Projected · Day " : "⚠ Missed · Day ", selectedCell.projectedCycleDay, " of 16"), selectedCell.isToday && /*#__PURE__*/React.createElement(Btn, {
+    style: {
+      width: "100%",
+      marginTop: 10
+    },
+    onClick: () => {
+      setCycleDay(selectedCell.projectedCycleDay);
+      setTab("session");
+    }
+  }, "🏋️ Start Today's Session →")) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 13,
+      color: T.dim
+    }
+  }, selectedCell.isRestDay ? "😴 Rest day — active recovery" : "No session scheduled")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 14,
+      marginTop: 12,
+      flexWrap: "wrap"
+    }
+  }, [{
+    color: T.crimson,
+    label: "Strength day"
+  }, {
+    color: T.steel,
+    label: "Hypertrophy day"
+  }, {
+    color: T.dim,
+    label: "Projected"
+  }, {
+    color: T.accent,
+    label: "Today"
+  }].map(({
+    color,
+    label
+  }) => /*#__PURE__*/React.createElement("div", {
+    key: label,
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 5
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 8,
+      height: 8,
+      borderRadius: "50%",
+      background: color
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: T.dim
+    }
+  }, label)))));
+}
+
 // ── PROGRESS ─────────────────────────────────────────
 
 // ── MEDITATION CARD ───────────────────────────────────
@@ -9970,14 +11261,19 @@ function Progress({
   supplementLog = {},
   setSupplementLog = () => {},
   uid = null,
+  setTab = () => {},
+  setCycleDay = () => {},
+  cycleDay = 1,
   weightLog: weightLogProp,
   setWeightLog: setWeightLogProp,
   recoveryLog: recoveryLogProp,
   setRecoveryLog: setRecoveryLogProp,
   bodyCompLog: bodyCompLogProp,
-  setBodyCompLog: setBodyCompLogProp
+  setBodyCompLog: setBodyCompLogProp,
+  customMovements: customMovementsProp,
+  setCustomMovements: setCustomMovementsProp
 }) {
-  const [activeSection, setActiveSection] = useState("strength");
+  const [activeSection, setActiveSection] = useState("calendar");
   const [activeLift, setActiveLift] = useState("bench");
   const [selectedBar, setSelectedBar] = useState(null);
   const [selectedMuscle, setSelectedMuscle] = useState(null);
@@ -9986,7 +11282,11 @@ function Progress({
   const [movementSearch, setMovementSearch] = useState("");
   const [movementMuscleFilter, setMovementMuscleFilter] = useState("ALL");
   const [showAddForm, setShowAddForm] = useState(false);
-  const [customLib, setCustomLib] = usePersistedState(STORAGE_KEYS.SESSION_LOGS + "_mvlib", []);
+  const [_customLib, _setCustomLib] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
+  const customLib = customMovementsProp !== undefined ? customMovementsProp : _customLib;
+  const setCustomLib = setCustomMovementsProp || _setCustomLib;
+  const [_bodyCompLogForExport] = usePersistedState(STORAGE_KEYS.BODYCOMP_LOG, []);
+  const bodyCompLogForExport = bodyCompLogProp !== undefined ? bodyCompLogProp : _bodyCompLogForExport;
   const [newMov, setNewMov] = useState({
     name: "",
     muscles: [],
@@ -9994,7 +11294,6 @@ function Progress({
     equipment: ["full"],
     note: ""
   });
-  // Use props from App() if provided (Firestore-synced), otherwise fall back to local state
   const [_weightLog, _setWeightLog] = usePersistedState(STORAGE_KEYS.WEIGHT_LOG, DEFAULT_WEIGHT_LOG);
   const weightLog = weightLogProp !== undefined ? weightLogProp : _weightLog;
   const setWeightLog = setWeightLogProp || _setWeightLog;
@@ -10007,9 +11306,6 @@ function Progress({
   const [_recoveryLog, _setRecoveryLog] = usePersistedState(STORAGE_KEYS.RECOVERY_LOG, DEFAULT_RECOVERY_LOG);
   const recoveryLog = recoveryLogProp !== undefined ? recoveryLogProp : _recoveryLog;
   const setRecoveryLog = setRecoveryLogProp || _setRecoveryLog;
-  // bodyCompLog for export — use prop if provided
-  const [_bodyCompLogForExport] = usePersistedState(STORAGE_KEYS.BODYCOMP_LOG, []);
-  const bodyCompLogForExport = bodyCompLogProp !== undefined ? bodyCompLogProp : _bodyCompLogForExport;
 
   // ── LIFT TRACKING — mapped to real exercise IDs ──────────────
   // Map lift picker → library IDs (primary movement per lift slot)
@@ -10208,6 +11504,9 @@ function Progress({
   const avgRecovery = recoveryLog.length ? (recoveryLog.reduce((a, b) => a + b.energy, 0) / recoveryLog.length).toFixed(1) : "—";
   const avgSleep = recoveryLog.length ? (recoveryLog.reduce((a, b) => a + b.sleep, 0) / recoveryLog.length).toFixed(1) : "—";
   const SECTIONS = [{
+    id: "calendar",
+    label: "📅 Calendar"
+  }, {
     id: "strength",
     label: "Strength"
   }, {
@@ -10311,7 +11610,13 @@ function Progress({
       fontWeight: activeSection === s.id ? 700 : 400,
       cursor: "pointer"
     }
-  }, s.label))), activeSection === "strength" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, s.label))), activeSection === "calendar" && /*#__PURE__*/React.createElement(TrainingCalendar, {
+    sessionLogs: sessionLogs,
+    cycleDay: cycleDay,
+    setCycleDay: setCycleDay,
+    setTab: setTab,
+    profile: profile
+  }), activeSection === "strength" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 5,
@@ -11579,6 +12884,7 @@ function Progress({
         custom: true
       };
       setCustomLib(prev => [...prev, entry]);
+      if (uid) fsSet(uid, "customMovements", id, entry);
       setNewMov({
         name: "",
         muscles: [],
@@ -12144,7 +13450,7 @@ function App() {
     const uid = currentUser.uid;
     async function loadFromFirestore() {
       // Load all collections in parallel
-      const [profileDoc, sessLogs, wLog, rLog, suppLog, templates, cWorkouts, bcLog] = await Promise.all([fsLoadDoc(uid, "profile", "data"), fsLoadCol(uid, "sessionLogs"), fsLoadCol(uid, "weightLog"), fsLoadCol(uid, "recoveryLog"), fsLoadCol(uid, "supplementLog"), fsLoadCol(uid, "savedTemplates"), fsLoadCol(uid, "customWorkouts"), fsLoadCol(uid, "bodyCompLog")]);
+      const [profileDoc, sessLogs, wLog, rLog, suppLog, templates, cWorkouts, bcLog, cMovements] = await Promise.all([fsLoadDoc(uid, "profile", "data"), fsLoadCol(uid, "sessionLogs"), fsLoadCol(uid, "weightLog"), fsLoadCol(uid, "recoveryLog"), fsLoadCol(uid, "supplementLog"), fsLoadCol(uid, "savedTemplates"), fsLoadCol(uid, "customWorkouts"), fsLoadCol(uid, "bodyCompLog"), fsLoadCol(uid, "customMovements")]);
 
       // Profile
       if (profileDoc && profileDoc.goal) {
@@ -12241,8 +13547,21 @@ function App() {
           _updatedAt,
           ...d
         }) => d).sort((a, b) => a.date?.localeCompare(b.date));
-        setBodyCompLog(sorted);
         storageSet(STORAGE_KEYS.BODYCOMP_LOG, sorted);
+        setBodyCompLog(sorted);
+      }
+      // Custom movements — user-created exercises not in the base library
+      if (cMovements?.length) {
+        const movs = cMovements.map(({
+          id: _id,
+          _updatedAt,
+          ...d
+        }) => ({
+          ...d,
+          id: _id
+        }));
+        storageSet(STORAGE_KEYS.CUSTOM_MOVEMENTS, movs);
+        setCustomMovements(movs);
       }
     }
     loadFromFirestore();
@@ -12262,6 +13581,7 @@ function App() {
   const [weightLog, setWeightLog] = usePersistedState(STORAGE_KEYS.WEIGHT_LOG, DEFAULT_WEIGHT_LOG);
   const [recoveryLog, setRecoveryLog] = usePersistedState(STORAGE_KEYS.RECOVERY_LOG, DEFAULT_RECOVERY_LOG);
   const [bodyCompLog, setBodyCompLog] = usePersistedState(STORAGE_KEYS.BODYCOMP_LOG, []);
+  const [customMovements, setCustomMovements] = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
 
   // ── ASYNC HYDRATION FROM window.storage ──────────────────────
   // On first mount, load all persisted data from window.storage (artifact API).
@@ -12313,6 +13633,31 @@ function App() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [cycleDay, setCycleDay] = useState(() => getCurrentCycleDay(storageGet(STORAGE_KEYS.SESSION_LOGS, {})));
 
+  // ── WORKOUT STATE — lifted to App so it survives tab switches ──
+  // Previously inside Session, which unmounted on every tab change.
+  // Now these survive navigation and restore the workout exactly where
+  // the user left off. Only resets on explicit "Finish" or new workout start.
+  const [sessionState, setSessionState] = useState("picker");
+  const [exercises, setExercises] = useState([]);
+  const [chosenWorkout, setChosenWorkout] = useState(null);
+  const [originalExIds, setOriginalExIds] = useState([]);
+  const [logs, setLogs] = useState({});
+  const [lockedSets, setLockedSets] = useState({});
+  const [activeSet, setActiveSet] = useState({});
+  const [setCount, setSetCount] = useState({});
+
+  // Reset all workout state (called on Finish or when starting fresh)
+  function resetWorkout() {
+    setSessionState("picker");
+    setExercises([]);
+    setChosenWorkout(null);
+    setOriginalExIds([]);
+    setLogs({});
+    setLockedSets({});
+    setActiveSet({});
+    setSetCount({});
+  }
+
   // Once hydrated, sync booted and cycleDay with what we loaded
   useEffect(() => {
     if (!hydrated) return;
@@ -12328,14 +13673,8 @@ function App() {
     const computed = getCurrentCycleDay(sessionLogs);
     setCycleDay(computed);
   }, [sessionLogs]);
-
-  // ── BOOT FROM FIRESTORE ───────────────────────────────────
-  // When profile arrives from Firestore (async, after sign-in),
-  // mark the app as booted so onboarding is skipped.
   useEffect(() => {
-    if (profile && profile.goal && profile.weight) {
-      setBooted(true);
-    }
+    if (profile && profile.goal && profile.weight) setBooted(true);
   }, [profile]);
 
   // ── LOADING SCREEN ────────────────────────────────────────
@@ -12678,8 +14017,13 @@ function App() {
     supplementLog: supplementLog,
     setSupplementLog: setSupplementLog,
     sessionLogs: sessionLogs,
+    setSessionLogs: setSessionLogs,
     uid: currentUser?.uid
-  }), tab === "session" && /*#__PURE__*/React.createElement(Session, {
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: tab === "session" ? "block" : "none"
+    }
+  }, /*#__PURE__*/React.createElement(Session, {
     profile: profile,
     cycleDay: cycleDay,
     setTab: setTab,
@@ -12689,21 +14033,43 @@ function App() {
     setCustomWorkouts: setCustomWorkouts,
     sessionLogs: sessionLogs,
     setSessionLogs: setSessionLogs,
-    uid: currentUser?.uid
-  }), tab === "learn" && /*#__PURE__*/React.createElement(Learn, {
+    uid: currentUser?.uid,
+    sessionState: sessionState,
+    setSessionState: setSessionState,
+    exercises: exercises,
+    setExercises: setExercises,
+    chosenWorkout: chosenWorkout,
+    setChosenWorkout: setChosenWorkout,
+    originalExIds: originalExIds,
+    setOriginalExIds: setOriginalExIds,
+    logs: logs,
+    setLogs: setLogs,
+    lockedSets: lockedSets,
+    setLockedSets: setLockedSets,
+    activeSet: activeSet,
+    setActiveSet: setActiveSet,
+    setCount: setCount,
+    setSetCount: setSetCount,
+    resetWorkout: resetWorkout
+  })), tab === "learn" && /*#__PURE__*/React.createElement(Learn, {
     profile: profile
   }), tab === "progress" && /*#__PURE__*/React.createElement(Progress, {
     profile: profile,
     sessionLogs: sessionLogs,
     supplementLog: supplementLog,
     setSupplementLog: setSupplementLog,
+    uid: currentUser?.uid,
+    setTab: setTab,
+    setCycleDay: setCycleDay,
+    cycleDay: cycleDay,
     weightLog: weightLog,
     setWeightLog: setWeightLog,
     recoveryLog: recoveryLog,
     setRecoveryLog: setRecoveryLog,
     bodyCompLog: bodyCompLog,
     setBodyCompLog: setBodyCompLog,
-    uid: currentUser?.uid
+    customMovements: customMovements,
+    setCustomMovements: setCustomMovements
   }), /*#__PURE__*/React.createElement("div", {
     role: "navigation",
     "aria-label": "Main navigation",
@@ -12779,3 +14145,4 @@ function App() {
     }));
   }))));
 }
+// v1783294638520
