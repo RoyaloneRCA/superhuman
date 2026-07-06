@@ -4782,6 +4782,7 @@ function Session({
   // "done" = session completed
   const [savePrompt, setSavePrompt] = useState(false); // show save-as-template prompt
   const [showBuilder, setShowBuilder] = useState(false); // custom workout builder
+  const [assigningDay, setAssigningDay] = useState(null); // cw.id being assigned to a day
   const [newWorkoutName, setNewWorkoutName] = useState("");
   const [builderExercises, setBuilderExercises] = useState([]);
   const [builderSearch, setBuilderSearch] = useState("");
@@ -5008,8 +5009,10 @@ function Session({
           [dateKey]: {
             ...dayLog,
             cycleDay,
-            label: dayLog.label || SESSIONS_DATA[cycleDay]?.label || "",
-            // preserve custom name
+            // Use custom workout name if running one, otherwise program label
+            label: dayLog.label || (chosenWorkout?.type === "custom" ? chosenWorkout.label : null) || SESSIONS_DATA[cycleDay]?.label || "",
+            // Store which custom workout was used so history is traceable
+            customWorkoutId: chosenWorkout?.type === "custom" ? chosenWorkout.id : undefined,
             sets: {
               ...dayLog.sets,
               [ex.id]: [...exSets, {
@@ -5313,8 +5316,11 @@ function Session({
             setChosenWorkout({
               type: "custom",
               label: cw.name,
-              id: cw.id
+              id: cw.id,
+              programDay: cw.programDay || null
             });
+            // If this custom workout is assigned to a program day, set cycleDay so it logs correctly
+            if (cw.programDay) setCycleDay(cw.programDay);
           }
         }
       }, /*#__PURE__*/React.createElement("div", {
@@ -5330,7 +5336,13 @@ function Session({
           color: T.muted,
           marginBottom: 6
         }
-      }, cw.exercises.length, " exercises · ", cw.createdAt), /*#__PURE__*/React.createElement("div", {
+      }, cw.exercises.length, " exercises · ", cw.createdAt, cw.programDay && /*#__PURE__*/React.createElement("span", {
+        style: {
+          marginLeft: 6,
+          color: T.violet,
+          fontWeight: 700
+        }
+      }, "· Day ", cw.programDay)), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 5,
@@ -5359,7 +5371,101 @@ function Session({
         text: cw.phase === "strength" ? "STR" : "HYP",
         color: cw.phase === "strength" ? T.crimson : T.steel,
         xs: true
-      }))), /*#__PURE__*/React.createElement("div", {
+      }), cw.programDay ? /*#__PURE__*/React.createElement(Tag, {
+        text: `Day ${cw.programDay}`,
+        color: T.violet,
+        xs: true
+      }) : /*#__PURE__*/React.createElement(Tag, {
+        text: "No day set",
+        color: T.dim,
+        xs: true
+      }))), !cw.programDay && assigningDay !== cw.id && /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 10,
+          color: T.dim,
+          marginTop: 4,
+          padding: "4px 6px",
+          background: T.surface,
+          borderRadius: 6
+        }
+      }, "⚠ Tap 📅 to assign this to a program day so it advances your cycle correctly."), assigningDay === cw.id && /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginTop: 8,
+          padding: "10px 12px",
+          background: T.surface,
+          borderRadius: 10,
+          border: `1px solid ${T.violet}44`
+        },
+        onClick: e => e.stopPropagation()
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          color: T.violet,
+          fontWeight: 700,
+          marginBottom: 8
+        }
+      }, "Which program day does this workout count as?"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 6
+        }
+      }, [1, 3, 5, 7, 9, 11, 13, 15].map(day => {
+        const s = SESSIONS_DATA[day];
+        const isCurrent = cw.programDay === day;
+        return /*#__PURE__*/React.createElement("button", {
+          key: day,
+          onClick: () => {
+            const tmpl = {
+              name: cw.name,
+              exercises: cw.exercises,
+              phase: cw.phase || "strength",
+              savedAt: new Date().toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric"
+              })
+            };
+            setSavedTemplates(prev => ({
+              ...prev,
+              [day]: tmpl
+            }));
+            if (uid) fsSet(uid, "savedTemplates", String(day), tmpl);
+            const updated = {
+              ...cw,
+              programDay: day
+            };
+            setCustomWorkouts(prev => prev.map(w => w.id === cw.id ? updated : w));
+            if (uid) fsSet(uid, "customWorkouts", cw.id, updated);
+            setAssigningDay(null);
+          },
+          style: {
+            padding: "6px 10px",
+            borderRadius: 8,
+            cursor: "pointer",
+            fontSize: 10,
+            fontWeight: isCurrent ? 800 : 500,
+            background: isCurrent ? T.violet + "22" : T.card,
+            border: `1px solid ${isCurrent ? T.violet : T.border}`,
+            color: isCurrent ? T.violet : T.text,
+            textAlign: "left"
+          }
+        }, /*#__PURE__*/React.createElement("div", null, "Day ", day), /*#__PURE__*/React.createElement("div", {
+          style: {
+            color: T.dim,
+            fontSize: 9
+          }
+        }, s?.label));
+      })), /*#__PURE__*/React.createElement("button", {
+        onClick: () => setAssigningDay(null),
+        style: {
+          marginTop: 8,
+          background: "none",
+          border: "none",
+          color: T.dim,
+          fontSize: 11,
+          cursor: "pointer"
+        }
+      }, "Cancel")), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 6,
@@ -5381,8 +5487,11 @@ function Session({
             setChosenWorkout({
               type: "custom",
               label: cw.name,
-              id: cw.id
+              id: cw.id,
+              programDay: cw.programDay || null
             });
+            // If this custom workout is assigned to a program day, set cycleDay so it logs correctly
+            if (cw.programDay) setCycleDay(cw.programDay);
           }
         }
       }, "▶ Start"), /*#__PURE__*/React.createElement(Btn, {
@@ -5403,25 +5512,10 @@ function Session({
       }, "✎ Edit"), /*#__PURE__*/React.createElement(Btn, {
         variant: "outline",
         size: "sm",
-        title: "Assign as default for a cycle day",
+        title: "Assign to a program day",
         onClick: e => {
           e.stopPropagation();
-          const day = window.prompt ? parseInt(window.prompt("Assign as default for which cycle day? (1-16, training days: 1,3,5,7,9,11,13,15)")) : null;
-          if (!day || day < 1 || day > 16) return;
-          const tmpl = {
-            name: cw.name,
-            exercises: cw.exercises,
-            phase: cw.phase || "strength",
-            savedAt: new Date().toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric"
-            })
-          };
-          setSavedTemplates(prev => ({
-            ...prev,
-            [day]: tmpl
-          }));
-          if (uid) fsSet(uid, "savedTemplates", String(day), tmpl);
+          setAssigningDay(assigningDay === cw.id ? null : cw.id);
         }
       }, "📅"), /*#__PURE__*/React.createElement(Btn, {
         variant: "outline",
@@ -14292,4 +14386,4 @@ function App() {
     }));
   }))));
 }
-// v1783331457800
+// v1783332634369
