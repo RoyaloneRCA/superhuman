@@ -9406,36 +9406,47 @@ function TrainingCalendar({
   profile,
   setReviewSession = () => {}
 }) {
-  const todayISO = new Date().toISOString().slice(0, 10);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const todayDate = new Date();
+  todayDate.setHours(0, 0, 0, 0);
+  const todayISO = todayDate.toISOString().slice(0, 10);
 
-  // ── CALENDAR GRID SETUP ──────────────────────────────
+  // Calendar view state
   const [viewDate, setViewDate] = useState(() => {
     const d = new Date();
     d.setHours(0, 0, 0, 0);
     return d;
   });
+  const [selected, setSelected] = useState(todayISO);
   const viewYear = viewDate.getFullYear();
   const viewMonth = viewDate.getMonth();
 
-  // First Monday on or before month start
+  // Grid start = Monday on or before 1st of month
   const firstOfMonth = new Date(viewYear, viewMonth, 1);
   const startOfGrid = new Date(firstOfMonth);
-  const dow = (firstOfMonth.getDay() + 6) % 7; // Mon=0
+  const dow = (firstOfMonth.getDay() + 6) % 7;
   startOfGrid.setDate(startOfGrid.getDate() - dow);
 
-  // ── FUTURE PROJECTION ────────────────────────────────
-  // Use today's cycleDay from App (ground truth) and advance 1 cycle day per calendar day.
-  // No anchor math — that breaks whenever the user trains off-schedule.
-  function getProjectedCycleDay(calDate) {
-    const diffMs = calDate.getTime() - today.getTime();
-    const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-    // ((cycleDay - 1) + offset) mod 16, 1-indexed
-    return ((cycleDay - 1 + diffDays) % 16 + 16) % 16 + 1;
-  }
+  // ── CELL DATA ──────────────────────────────────────────────────────
+  // Rules:
+  //   PAST:   show only real sessionLogs entries. Empty = show nothing.
+  //   TODAY:  show cycleDay from App (getCurrentCycleDay result).
+  //   FUTURE: project every-other-day sequence from today using cycleDay as anchor.
+  //           Never project backward.
 
-  // Build 42 cells (6 weeks)
+  function getFutureProjected(calDate) {
+    // How many days from today?
+    const diffDays = Math.round((calDate.getTime() - todayDate.getTime()) / 86400000);
+    if (diffDays < 0) return null; // never project into past
+    // Each 2 calendar days = 1 cycle step (1 training + 1 rest)
+    // diffDays=0 → cycleDay (today), diffDays=1 → cycleDay+1, diffDays=2 → cycleDay+2...
+    const raw = ((cycleDay - 1 + diffDays) % 16 + 16) % 16;
+    const projDay = raw + 1;
+    return {
+      cycleDay: projDay,
+      session: SESSIONS_DATA[projDay] || null,
+      isRest: CYCLE.find(c => c.day === projDay)?.rest ?? false
+    };
+  }
   const cells = [];
   for (let i = 0; i < 42; i++) {
     const d = new Date(startOfGrid);
@@ -9444,28 +9455,30 @@ function TrainingCalendar({
     const iso = d.toISOString().slice(0, 10);
     const isThisMonth = d.getMonth() === viewMonth;
     const isToday = iso === todayISO;
-    const isFuture = d > today;
-    const isPast = d < today;
+    const isFuture = d > todayDate;
+    const isPast = d < todayDate;
 
-    // PAST / TODAY: use only real sessionLogs — never reconstruct
+    // Real logged session (any date — past OR today if already logged)
     const logged = sessionLogs[iso] || null;
     const loggedCycleDay = logged?.cycleDay || null;
     const loggedSession = loggedCycleDay ? SESSIONS_DATA[loggedCycleDay] : null;
-    const loggedSets = logged ? Object.keys(logged.sets || {}).length : 0;
+    const hasLog = logged ? Object.keys(logged.sets || {}).length > 0 : false;
 
-    // FUTURE (and today if not logged): project from App cycleDay
-    let projCycleDay = null;
-    let projSession = null;
-    let projIsRest = false;
-    if (!logged || isToday) {
-      projCycleDay = getProjectedCycleDay(d);
-      projSession = SESSIONS_DATA[projCycleDay] || null;
-      projIsRest = CYCLE.find(c => c.day === projCycleDay)?.rest ?? false;
+    // Today (not yet logged) OR future: use projection
+    let proj = null;
+    if (!hasLog) {
+      if (isToday) {
+        // Today: always show the current cycle day (source of truth)
+        proj = {
+          cycleDay,
+          session: SESSIONS_DATA[cycleDay] || null,
+          isRest: CYCLE.find(c => c.day === cycleDay)?.rest ?? false
+        };
+      } else if (isFuture) {
+        proj = getFutureProjected(d);
+      }
+      // isPast && !hasLog: show nothing — program adapts, no phantom sessions
     }
-    const displayCycleDay = loggedCycleDay || projCycleDay;
-    const displaySession = loggedSession || projSession;
-    const isRest = loggedCycleDay ? CYCLE.find(c => c.day === loggedCycleDay)?.rest ?? false : projIsRest;
-    const hasLog = loggedSets > 0;
     cells.push({
       d,
       iso,
@@ -9477,18 +9490,15 @@ function TrainingCalendar({
       loggedCycleDay,
       loggedSession,
       hasLog,
-      projCycleDay,
-      projSession,
-      projIsRest,
-      displayCycleDay,
-      displaySession,
-      isRest
+      proj
     });
   }
-  const [selected, setSelected] = useState(todayISO);
   const selectedCell = cells.find(c => c.iso === selected) || null;
   const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  function phaseColor(phase) {
+    return phase === "strength" ? T.crimson : T.steel;
+  }
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
@@ -9564,50 +9574,58 @@ function TrainingCalendar({
       isFuture,
       isPast,
       hasLog,
-      displaySession,
-      isRest
+      logged,
+      loggedSession,
+      proj
     } = cell;
     const isSel = iso === selected;
-    const phase = displaySession?.phase;
-
-    // Color coding — clear hierarchy
     let bg = "transparent",
       border = "transparent",
       dotColor = null;
-    if (hasLog) {
-      // Real completed session — solid fill
-      bg = phase === "strength" ? `${T.crimson}28` : `${T.steel}28`;
-      border = phase === "strength" ? `${T.crimson}66` : `${T.steel}66`;
-      dotColor = phase === "strength" ? T.crimson : T.steel;
-    } else if (!isRest && displaySession && isFuture) {
-      // Projected future training day — faint
-      bg = phase === "strength" ? `${T.crimson}0C` : `${T.steel}0C`;
-      border = phase === "strength" ? `${T.crimson}28` : `${T.steel}28`;
-      dotColor = T.dim;
-    } else if (!isRest && displaySession && isPast && !hasLog) {
-      // Past unlogged training day — neutral, no judgment
-      // (app picks up where you left off, so these aren't truly "missed")
-      bg = "transparent";
-      border = "transparent";
-      dotColor = null;
+    if (hasLog && loggedSession) {
+      // Real logged session — solid color
+      bg = `${phaseColor(loggedSession.phase)}28`;
+      border = `${phaseColor(loggedSession.phase)}66`;
+      dotColor = phaseColor(loggedSession.phase);
+    } else if (hasLog && !loggedSession) {
+      // Logged but no SESSIONS_DATA match (custom or rest)
+      bg = `${T.emerald}18`;
+      border = `${T.emerald}44`;
+      dotColor = T.emerald;
+    } else if (proj && !proj.isRest) {
+      // Projected future training day (or today)
+      const col = phaseColor(proj.session?.phase);
+      if (isToday) {
+        bg = `${col}22`;
+        border = col; // solid border for today
+        dotColor = col;
+      } else {
+        bg = `${col}0C`;
+        border = `${col}33`;
+        dotColor = T.dim;
+      }
+    } else if (proj && proj.isRest && isToday) {
+      // Today is a rest day
+      border = T.border;
     }
-    if (isToday) border = T.accent;
-    if (isSel && !isToday) border = `${T.accent}88`;
+    // isPast && !hasLog && !proj → nothing (intentional empty)
+
+    if (isToday) border = border || T.accent; // always accent border today
     if (isSel) bg = bg || T.accentBg;
+    if (isSel && !isToday) border = `${T.accent}88`;
     return /*#__PURE__*/React.createElement("div", {
       key: iso,
       onClick: () => {
         setSelected(iso);
-        // Immediately open review modal for logged sessions
-        if (cell.hasLog) setReviewSession({
+        if (hasLog) setReviewSession({
           date: iso,
-          log: cell.logged
+          log: logged
         });
       },
       style: {
         aspectRatio: "1",
         borderRadius: 8,
-        cursor: "pointer",
+        cursor: hasLog ? "pointer" : "default",
         background: bg,
         border: `1px solid ${border}`,
         display: "flex",
@@ -9648,7 +9666,7 @@ function TrainingCalendar({
       color: T.dim,
       fontWeight: 700,
       letterSpacing: "0.08em",
-      marginBottom: 6
+      marginBottom: 8
     }
   }, selectedCell.d.toLocaleDateString("en-US", {
     weekday: "long",
@@ -9672,7 +9690,7 @@ function TrainingCalendar({
       height: 8,
       borderRadius: "50%",
       flexShrink: 0,
-      background: selectedCell.loggedSession?.phase === "strength" ? T.crimson : T.steel
+      background: selectedCell.loggedSession ? phaseColor(selectedCell.loggedSession.phase) : T.emerald
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9680,9 +9698,9 @@ function TrainingCalendar({
       fontWeight: 700,
       color: T.bright
     }
-  }, selectedCell.logged?.label || selectedCell.loggedSession?.label || "Session"), /*#__PURE__*/React.createElement(Tag, {
-    text: selectedCell.loggedSession?.phase?.toUpperCase() || "LOGGED",
-    color: selectedCell.loggedSession?.phase === "strength" ? T.crimson : T.steel,
+  }, selectedCell.logged?.label || selectedCell.loggedSession?.label || "Session"), selectedCell.loggedSession && /*#__PURE__*/React.createElement(Tag, {
+    text: selectedCell.loggedSession.phase?.toUpperCase(),
+    color: phaseColor(selectedCell.loggedSession.phase),
     xs: true
   })), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9702,7 +9720,7 @@ function TrainingCalendar({
       color: T.dim,
       marginBottom: 10
     }
-  }, "✓ Completed · Day ", selectedCell.loggedCycleDay, "/16 · ", selectedCell.loggedSets || Object.keys(selectedCell.logged?.sets || {}).length, " exercises logged"), /*#__PURE__*/React.createElement(Btn, {
+  }, "✓ Completed · Day ", selectedCell.loggedCycleDay, "/16 · ", Object.keys(selectedCell.logged?.sets || {}).length, " exercises"), /*#__PURE__*/React.createElement(Btn, {
     style: {
       width: "100%"
     },
@@ -9710,16 +9728,14 @@ function TrainingCalendar({
       date: selectedCell.iso,
       log: selectedCell.logged
     })
-  }, "📋 View & Edit Session Logs"))
+  }, "📋 View & Edit Session"))
 
-  /* CASE 2: Rest day */ : selectedCell.isRest ? /*#__PURE__*/React.createElement("div", {
+  /* Today — not yet logged */ : selectedCell.isToday && selectedCell.proj ? /*#__PURE__*/React.createElement("div", null, selectedCell.proj.isRest ? /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
-      color: T.dim
+      fontSize: 14,
+      color: T.muted
     }
-  }, "😴 Rest day — active recovery only")
-
-  /* CASE 3: Future training day */ : selectedCell.isFuture && selectedCell.projSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, "😴 Rest day — active recovery") : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       alignItems: "center",
@@ -9731,19 +9747,18 @@ function TrainingCalendar({
       width: 8,
       height: 8,
       borderRadius: "50%",
-      background: selectedCell.projSession.phase === "strength" ? T.crimson : T.steel,
-      opacity: 0.6,
-      flexShrink: 0
+      flexShrink: 0,
+      background: phaseColor(selectedCell.proj.session?.phase)
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 15,
       fontWeight: 700,
-      color: T.text
+      color: T.bright
     }
-  }, selectedCell.projSession.label), /*#__PURE__*/React.createElement(Tag, {
-    text: "PROJECTED",
-    color: selectedCell.projSession.phase === "strength" ? T.crimson : T.steel,
+  }, selectedCell.proj.session?.label || "Training"), /*#__PURE__*/React.createElement(Tag, {
+    text: "TODAY",
+    color: T.accent,
     xs: true
   })), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9752,7 +9767,63 @@ function TrainingCalendar({
       gap: 4,
       marginBottom: 10
     }
-  }, selectedCell.projSession.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
+  }, selectedCell.proj.session?.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
+    key: m,
+    text: m,
+    color: getMovementColor([m]),
+    xs: true
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim,
+      marginBottom: 10
+    }
+  }, "Day ", selectedCell.proj.cycleDay, "/16 · tap to start"), /*#__PURE__*/React.createElement(Btn, {
+    style: {
+      width: "100%",
+      background: T.accent,
+      color: T.bg
+    },
+    onClick: () => {
+      setCycleDay(cycleDay);
+      setTab("session");
+    }
+  }, "🏋️ Start Session →")))
+
+  /* Future projected */ : selectedCell.isFuture && selectedCell.proj && !selectedCell.proj.isRest ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      marginBottom: 6
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 8,
+      height: 8,
+      borderRadius: "50%",
+      flexShrink: 0,
+      background: phaseColor(selectedCell.proj.session?.phase),
+      opacity: 0.6
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 15,
+      fontWeight: 700,
+      color: T.text
+    }
+  }, selectedCell.proj.session?.label || "Training"), /*#__PURE__*/React.createElement(Tag, {
+    text: "PROJECTED",
+    color: T.dim,
+    xs: true
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 4,
+      marginBottom: 8
+    }
+  }, selectedCell.proj.session?.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
     key: m,
     text: m,
     color: getMovementColor([m]),
@@ -9762,30 +9833,27 @@ function TrainingCalendar({
       fontSize: 11,
       color: T.dim
     }
-  }, "Day ", selectedCell.projCycleDay, "/16 · projected schedule"))
-
-  /* CASE 4: Past unlogged training day — neutral */ : selectedCell.isPast && selectedCell.projSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      color: T.dim,
-      fontWeight: 600,
-      marginBottom: 4
-    }
-  }, selectedCell.projSession.label), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: T.dim
-    }
-  }, "Day ", selectedCell.projCycleDay, "/16 — not logged. The program picks up where you left off.")) : /*#__PURE__*/React.createElement("div", {
+  }, "Day ", selectedCell.proj.cycleDay, "/16 · projected if training every other day")) : selectedCell.isFuture && selectedCell.proj?.isRest ? /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
       color: T.dim
     }
-  }, "No session scheduled")), /*#__PURE__*/React.createElement("div", {
+  }, "😴 Projected rest day") : selectedCell.isPast && !selectedCell.hasLog ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 13,
+      color: T.dim
+    }
+  }, "No session logged — program continues from where you left off.") : /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 13,
+      color: T.dim
+    }
+  }, "Rest day")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 14,
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+      marginTop: 4
     }
   }, [{
     color: T.crimson,
@@ -14221,4 +14289,4 @@ function App() {
     }));
   }))));
 }
-// v1783316087004
+// v1783329970700
