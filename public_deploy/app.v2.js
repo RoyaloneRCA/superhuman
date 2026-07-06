@@ -9406,104 +9406,89 @@ function TrainingCalendar({
   profile,
   setReviewSession = () => {}
 }) {
+  const todayISO = new Date().toISOString().slice(0, 10);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const todayISO = today.toISOString().slice(0, 10);
 
-  // Compute the calendar anchor — the date when cycle day 1 started.
-  // Walk backwards from every logged session to find when day 1 was.
-  const anchorDate = useMemo(() => {
-    const history = getDerivedHistory(sessionLogs);
-    if (!history.length) return today;
-    // Find the most recent session and extrapolate back to day 1
-    // Sessions happen every 2 calendar days (training day + rest day)
-    const last = history[0];
-    const lastDate = new Date(last.date + "T00:00:00");
-    const lastCycleDay = last.cycleDay;
-    // Each cycle day = exactly 1 calendar day (training days AND rest days count)
-    // So anchor (day 1) = lastDate minus (lastCycleDay - 1) days
-    const anchor = new Date(lastDate);
-    anchor.setDate(anchor.getDate() - (lastCycleDay - 1));
-    return anchor;
-  }, [sessionLogs]);
-
-  // Build a real calendar grid — current month + surrounding weeks
+  // ── CALENDAR GRID SETUP ──────────────────────────────
   const [viewDate, setViewDate] = useState(() => {
-    // Jump to the month containing today
-    const t = new Date();
-    t.setHours(0, 0, 0, 0);
-    return t;
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    return d;
   });
   const viewYear = viewDate.getFullYear();
   const viewMonth = viewDate.getMonth();
 
-  // Get first day of the grid (Monday before month start)
+  // First Monday on or before month start
   const firstOfMonth = new Date(viewYear, viewMonth, 1);
   const startOfGrid = new Date(firstOfMonth);
-  const dow = (firstOfMonth.getDay() + 6) % 7; // 0=Mon
+  const dow = (firstOfMonth.getDay() + 6) % 7; // Mon=0
   startOfGrid.setDate(startOfGrid.getDate() - dow);
 
-  // Build 6 weeks of cells
+  // ── FUTURE PROJECTION ────────────────────────────────
+  // Use today's cycleDay from App (ground truth) and advance 1 cycle day per calendar day.
+  // No anchor math — that breaks whenever the user trains off-schedule.
+  function getProjectedCycleDay(calDate) {
+    const diffMs = calDate.getTime() - today.getTime();
+    const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+    // ((cycleDay - 1) + offset) mod 16, 1-indexed
+    return ((cycleDay - 1 + diffDays) % 16 + 16) % 16 + 1;
+  }
+
+  // Build 42 cells (6 weeks)
   const cells = [];
   for (let i = 0; i < 42; i++) {
     const d = new Date(startOfGrid);
     d.setDate(startOfGrid.getDate() + i);
+    d.setHours(0, 0, 0, 0);
     const iso = d.toISOString().slice(0, 10);
     const isThisMonth = d.getMonth() === viewMonth;
     const isToday = iso === todayISO;
-
-    // Did user actually log a session this day?
-    const logged = sessionLogs[iso];
-    const loggedCycleDay = logged?.cycleDay;
-    const loggedSession = loggedCycleDay ? SESSIONS_DATA[loggedCycleDay] : null;
-
-    // Project future and unlogged past sessions using anchor + offset
-    // Each calendar day maps to exactly one cycle day (1-16), wrapping
-    let projectedCycleDay = null;
-    let projectedSession = null;
-    if (!logged) {
-      const diffMs = d.getTime() - anchorDate.getTime();
-      const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-      if (diffDays >= 0) {
-        const cycPos = diffDays % 16; // 0-15
-        projectedCycleDay = CYCLE[cycPos]?.day ?? cycPos + 1;
-        projectedSession = SESSIONS_DATA[projectedCycleDay] ?? null;
-      }
-    }
-    const isRestDay = loggedCycleDay ? CYCLE.find(c => c.day === loggedCycleDay)?.rest : projectedCycleDay ? CYCLE.find(c => c.day === projectedCycleDay)?.rest : false;
     const isFuture = d > today;
     const isPast = d < today;
+
+    // PAST / TODAY: use only real sessionLogs — never reconstruct
+    const logged = sessionLogs[iso] || null;
+    const loggedCycleDay = logged?.cycleDay || null;
+    const loggedSession = loggedCycleDay ? SESSIONS_DATA[loggedCycleDay] : null;
+    const loggedSets = logged ? Object.keys(logged.sets || {}).length : 0;
+
+    // FUTURE (and today if not logged): project from App cycleDay
+    let projCycleDay = null;
+    let projSession = null;
+    let projIsRest = false;
+    if (!logged || isToday) {
+      projCycleDay = getProjectedCycleDay(d);
+      projSession = SESSIONS_DATA[projCycleDay] || null;
+      projIsRest = CYCLE.find(c => c.day === projCycleDay)?.rest ?? false;
+    }
+    const displayCycleDay = loggedCycleDay || projCycleDay;
+    const displaySession = loggedSession || projSession;
+    const isRest = loggedCycleDay ? CYCLE.find(c => c.day === loggedCycleDay)?.rest ?? false : projIsRest;
+    const hasLog = loggedSets > 0;
     cells.push({
       d,
       iso,
       isThisMonth,
       isToday,
-      logged,
-      loggedSession,
-      loggedCycleDay,
-      projectedCycleDay,
-      projectedSession,
-      isRestDay,
       isFuture,
-      isPast
+      isPast,
+      logged,
+      loggedCycleDay,
+      loggedSession,
+      hasLog,
+      projCycleDay,
+      projSession,
+      projIsRest,
+      displayCycleDay,
+      displaySession,
+      isRest
     });
   }
+  const [selected, setSelected] = useState(todayISO);
+  const selectedCell = cells.find(c => c.iso === selected) || null;
   const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-  // Selected date for detail panel
-  const [selected, setSelected] = useState(todayISO);
-  const selectedCell = cells.find(c => c.iso === selected);
-  function prevMonth() {
-    const d = new Date(viewDate);
-    d.setMonth(d.getMonth() - 1);
-    setViewDate(d);
-  }
-  function nextMonth() {
-    const d = new Date(viewDate);
-    d.setMonth(d.getMonth() + 1);
-    setViewDate(d);
-  }
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
@@ -9512,15 +9497,19 @@ function TrainingCalendar({
       marginBottom: 14
     }
   }, /*#__PURE__*/React.createElement("button", {
-    onClick: prevMonth,
+    onClick: () => setViewDate(d => {
+      const n = new Date(d);
+      n.setMonth(n.getMonth() - 1);
+      return n;
+    }),
     style: {
       background: "none",
       border: `1px solid ${T.border}`,
       color: T.muted,
       borderRadius: 8,
-      padding: "6px 12px",
+      padding: "6px 14px",
       cursor: "pointer",
-      fontSize: 13
+      fontSize: 16
     }
   }, "‹"), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9529,20 +9518,24 @@ function TrainingCalendar({
       color: T.bright
     }
   }, MONTH_NAMES[viewMonth], " ", viewYear), /*#__PURE__*/React.createElement("button", {
-    onClick: nextMonth,
+    onClick: () => setViewDate(d => {
+      const n = new Date(d);
+      n.setMonth(n.getMonth() + 1);
+      return n;
+    }),
     style: {
       background: "none",
       border: `1px solid ${T.border}`,
       color: T.muted,
       borderRadius: 8,
-      padding: "6px 12px",
+      padding: "6px 14px",
       cursor: "pointer",
-      fontSize: 13
+      fontSize: 16
     }
   }, "›")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
-      gridTemplateColumns: "repeat(7, 1fr)",
+      gridTemplateColumns: "repeat(7,1fr)",
       gap: 2,
       marginBottom: 4
     }
@@ -9559,70 +9552,56 @@ function TrainingCalendar({
   }, d))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
-      gridTemplateColumns: "repeat(7, 1fr)",
+      gridTemplateColumns: "repeat(7,1fr)",
       gap: 2,
       marginBottom: 16
     }
   }, cells.map(cell => {
     const {
-      d,
       iso,
       isThisMonth,
       isToday,
-      logged,
-      loggedSession,
-      projectedSession,
-      isRestDay,
       isFuture,
-      isPast
+      isPast,
+      hasLog,
+      displaySession,
+      isRest
     } = cell;
     const isSel = iso === selected;
+    const phase = displaySession?.phase;
 
-    // Color coding
-    let bg = "transparent";
-    let border = "transparent";
-    let labelColor = isThisMonth ? T.muted : T.dim;
-    let dot = null;
-    if (logged && loggedSession) {
-      // Completed session
-      const phase = loggedSession.phase;
-      bg = phase === "strength" ? T.crimson + "22" : T.steel + "22";
-      border = phase === "strength" ? T.crimson + "55" : T.steel + "55";
-      labelColor = T.bright;
-      dot = phase === "strength" ? T.crimson : T.steel;
-    } else if (logged && !loggedSession) {
-      // Logged but rest day
-      bg = T.emerald + "11";
-      labelColor = T.dim;
-    } else if (isFuture && projectedSession) {
-      // Projected training day
-      const phase = projectedSession.phase;
-      bg = phase === "strength" ? T.crimson + "0A" : T.steel + "0A";
-      border = phase === "strength" ? T.crimson + "22" : T.steel + "22";
-      labelColor = isThisMonth ? T.text : T.dim;
-      dot = null;
-    } else if (isRestDay && !isFuture) {
-      labelColor = T.dim;
+    // Color coding — clear hierarchy
+    let bg = "transparent",
+      border = "transparent",
+      dotColor = null;
+    if (hasLog) {
+      // Real completed session — solid fill
+      bg = phase === "strength" ? `${T.crimson}28` : `${T.steel}28`;
+      border = phase === "strength" ? `${T.crimson}66` : `${T.steel}66`;
+      dotColor = phase === "strength" ? T.crimson : T.steel;
+    } else if (!isRest && displaySession && isFuture) {
+      // Projected future training day — faint
+      bg = phase === "strength" ? `${T.crimson}0C` : `${T.steel}0C`;
+      border = phase === "strength" ? `${T.crimson}28` : `${T.steel}28`;
+      dotColor = T.dim;
+    } else if (!isRest && displaySession && isPast && !hasLog) {
+      // Missed training day
+      bg = `${T.amber}0C`;
+      border = `${T.amber}28`;
+      dotColor = T.amber;
     }
-    if (isToday) {
-      border = T.accent;
-      bg = isSel ? T.accentBg : bg;
-    }
-    if (isSel && !isToday) {
-      border = T.accent + "88";
-      bg = T.accentBg;
-    }
+    if (isToday) border = T.accent;
+    if (isSel && !isToday) border = `${T.accent}88`;
+    if (isSel) bg = bg || T.accentBg;
     return /*#__PURE__*/React.createElement("div", {
       key: iso,
       onClick: () => {
         setSelected(iso);
-        // Open review modal immediately for logged sessions
-        if (logged && Object.keys(logged.sets || {}).length > 0) {
-          setReviewSession({
-            date: iso,
-            log: logged
-          });
-        }
+        // Immediately open review modal for logged sessions
+        if (cell.hasLog) setReviewSession({
+          date: iso,
+          log: cell.logged
+        });
       },
       style: {
         aspectRatio: "1",
@@ -9634,33 +9613,24 @@ function TrainingCalendar({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        position: "relative",
-        transition: "all 0.1s",
-        opacity: isThisMonth ? 1 : 0.35
+        opacity: isThisMonth ? 1 : 0.3,
+        transition: "all 0.1s"
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 11,
         fontWeight: isToday ? 800 : 500,
-        color: isToday ? T.accent : labelColor,
+        color: isToday ? T.accent : isThisMonth ? T.text : T.dim,
         lineHeight: 1
       }
-    }, d.getDate()), dot && /*#__PURE__*/React.createElement("div", {
+    }, cell.d.getDate()), dotColor && /*#__PURE__*/React.createElement("div", {
       style: {
         width: 4,
         height: 4,
         borderRadius: "50%",
-        background: dot,
-        marginTop: 2
-      }
-    }), !dot && isFuture && projectedSession && /*#__PURE__*/React.createElement("div", {
-      style: {
-        width: 3,
-        height: 3,
-        borderRadius: "50%",
-        background: T.dim,
+        background: dotColor,
         marginTop: 2,
-        opacity: 0.5
+        opacity: hasLog ? 1 : 0.6
       }
     }));
   })), selectedCell && /*#__PURE__*/React.createElement("div", {
@@ -9668,7 +9638,8 @@ function TrainingCalendar({
       background: T.card,
       borderRadius: 12,
       border: `1px solid ${T.border}`,
-      padding: "14px 16px"
+      padding: "14px 16px",
+      marginBottom: 12
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9687,19 +9658,20 @@ function TrainingCalendar({
       color: T.accent,
       marginLeft: 6
     }
-  }, "· TODAY")), selectedCell.logged && selectedCell.loggedSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, "· TODAY")), selectedCell.hasLog ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       alignItems: "center",
       gap: 8,
-      marginBottom: 4
+      marginBottom: 6
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       width: 8,
       height: 8,
       borderRadius: "50%",
-      background: selectedCell.loggedSession.phase === "strength" ? T.crimson : T.steel
+      flexShrink: 0,
+      background: selectedCell.loggedSession?.phase === "strength" ? T.crimson : T.steel
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9707,18 +9679,18 @@ function TrainingCalendar({
       fontWeight: 700,
       color: T.bright
     }
-  }, selectedCell.loggedSession.label), /*#__PURE__*/React.createElement(Tag, {
-    text: selectedCell.loggedSession.phase.toUpperCase(),
-    color: selectedCell.loggedSession.phase === "strength" ? T.crimson : T.steel,
+  }, selectedCell.logged?.label || selectedCell.loggedSession?.label || "Session"), /*#__PURE__*/React.createElement(Tag, {
+    text: selectedCell.loggedSession?.phase?.toUpperCase() || "LOGGED",
+    color: selectedCell.loggedSession?.phase === "strength" ? T.crimson : T.steel,
     xs: true
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
-      gap: 5,
       flexWrap: "wrap",
+      gap: 4,
       marginBottom: 10
     }
-  }, selectedCell.loggedSession.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
+  }, selectedCell.loggedSession?.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
     key: m,
     text: m,
     color: getMovementColor([m]),
@@ -9726,86 +9698,103 @@ function TrainingCalendar({
   }))), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11,
-      color: T.emerald,
-      fontWeight: 600
+      color: T.dim,
+      marginBottom: 10
     }
-  }, "✓ Completed · Day ", selectedCell.loggedCycleDay, " of 16")) : selectedCell.logged ? /*#__PURE__*/React.createElement("div", {
+  }, "✓ Completed · Day ", selectedCell.loggedCycleDay, "/16 · ", selectedCell.loggedSets || Object.keys(selectedCell.logged?.sets || {}).length, " exercises logged"), /*#__PURE__*/React.createElement(Btn, {
+    style: {
+      width: "100%"
+    },
+    onClick: () => setReviewSession({
+      date: selectedCell.iso,
+      log: selectedCell.logged
+    })
+  }, "📋 View & Edit Session Logs"))
+
+  /* CASE 2: Rest day */ : selectedCell.isRest ? /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
-      color: T.muted
+      color: T.dim
     }
-  }, "Rest day logged") : selectedCell.projectedSession && !selectedCell.isRestDay ?
-  /*#__PURE__*/
-  /* Projected future session */
-  React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, "😴 Rest day — active recovery only")
+
+  /* CASE 3: Future training day */ : selectedCell.isFuture && selectedCell.projSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       alignItems: "center",
       gap: 8,
-      marginBottom: 4
+      marginBottom: 6
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       width: 8,
       height: 8,
       borderRadius: "50%",
-      background: T.dim,
-      opacity: 0.5
+      background: selectedCell.projSession.phase === "strength" ? T.crimson : T.steel,
+      opacity: 0.6,
+      flexShrink: 0
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 15,
       fontWeight: 700,
-      color: selectedCell.isFuture ? T.text : T.dim
+      color: T.text
     }
-  }, selectedCell.projectedSession.label), /*#__PURE__*/React.createElement(Tag, {
-    text: selectedCell.projectedSession.phase.toUpperCase(),
-    color: selectedCell.isFuture ? selectedCell.projectedSession.phase === "strength" ? T.crimson : T.steel : T.dim,
+  }, selectedCell.projSession.label), /*#__PURE__*/React.createElement(Tag, {
+    text: "PROJECTED",
+    color: selectedCell.projSession.phase === "strength" ? T.crimson : T.steel,
     xs: true
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
-      gap: 5,
       flexWrap: "wrap",
+      gap: 4,
       marginBottom: 10
     }
-  }, selectedCell.projectedSession.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
+  }, selectedCell.projSession.muscles?.slice(0, 4).map(m => /*#__PURE__*/React.createElement(Tag, {
     key: m,
     text: m,
-    color: selectedCell.isFuture ? getMovementColor([m]) : T.dim,
+    color: getMovementColor([m]),
     xs: true
   }))), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11,
       color: T.dim
     }
-  }, selectedCell.isFuture ? "📅 Projected · Day " : "⚠ Missed · Day ", selectedCell.projectedCycleDay, " of 16"), selectedCell.isToday && /*#__PURE__*/React.createElement(Btn, {
+  }, "Day ", selectedCell.projCycleDay, "/16 · projected schedule"))
+
+  /* CASE 4: Past missed day */ : selectedCell.isPast && selectedCell.projSession ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
-      width: "100%",
-      marginTop: 10
-    },
-    onClick: () => {
-      setCycleDay(selectedCell.projectedCycleDay);
-      setTab("session");
+      fontSize: 13,
+      color: T.amber,
+      fontWeight: 600,
+      marginBottom: 4
     }
-  }, "🏋️ Start Today's Session →")) : /*#__PURE__*/React.createElement("div", {
+  }, "⚠ Missed — ", selectedCell.projSession.label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim
+    }
+  }, "Day ", selectedCell.projCycleDay, " was projected for this date but not logged.")) : /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
       color: T.dim
     }
-  }, selectedCell.isRestDay ? "😴 Rest day — active recovery" : "No session scheduled")), /*#__PURE__*/React.createElement("div", {
+  }, "No session scheduled")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 14,
-      marginTop: 12,
       flexWrap: "wrap"
     }
   }, [{
     color: T.crimson,
-    label: "Strength day"
+    label: "Strength (logged)"
   }, {
     color: T.steel,
-    label: "Hypertrophy day"
+    label: "Hypertrophy (logged)"
+  }, {
+    color: T.amber,
+    label: "Missed"
   }, {
     color: T.dim,
     label: "Projected"
@@ -9824,14 +9813,14 @@ function TrainingCalendar({
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      width: 8,
-      height: 8,
+      width: 7,
+      height: 7,
       borderRadius: "50%",
       background: color
     }
   }), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
+      fontSize: 9,
       color: T.dim
     }
   }, label)))));
@@ -14225,4 +14214,4 @@ function App() {
     }));
   }))));
 }
-// v1783313127766
+// v1783314147427
