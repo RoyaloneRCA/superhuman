@@ -4818,6 +4818,7 @@ function Session({
   const [savePrompt, setSavePrompt] = useState(false); // show save-as-template prompt
   const [showBuilder, setShowBuilder] = useState(false); // custom workout builder
   const [assigningDay, setAssigningDay] = useState(null); // cw.id being assigned to a day
+  const [pendingCustomStart, setPendingCustomStart] = useState(null); // {cw} waiting for day assignment
   const [newWorkoutName, setNewWorkoutName] = useState("");
   const [builderExercises, setBuilderExercises] = useState([]);
   const [builderSearch, setBuilderSearch] = useState("");
@@ -4838,7 +4839,6 @@ function Session({
     const ids = Array.isArray(source) ? source : source.exercises || [];
     const ph = source.phase || phase;
     return ids.map(item => {
-      // item can be a plain ID string OR an object {id, sets, reps, note}
       const id = typeof item === "string" ? item : item.id;
       const overrides = typeof item === "object" ? item : {};
       const mv = FULL_LIBRARY.find(m => m.id === id);
@@ -4849,7 +4849,6 @@ function Session({
         ...plan,
         swapped: false,
         completed: false,
-        // Custom overrides from saved workout take precedence over defaults
         ...(overrides.sets && {
           sets: overrides.sets
         }),
@@ -4861,6 +4860,27 @@ function Session({
         })
       };
     }).filter(Boolean).filter(ex => !ex.equipment || ex.equipment.includes(equip) || ex.equipment.includes("full"));
+  }
+
+  // Start a custom workout — requires programDay to be set so the program
+  // knows which session this satisfies. If not set, show assignment modal first.
+  function startCustomWorkout(cw, forceStart = false) {
+    if (!cw.programDay && !forceStart) {
+      // Intercept — show required assignment modal
+      setPendingCustomStart(cw);
+      return;
+    }
+    setExercises(buildExercisesFrom(cw));
+    setOriginalExIds(cw.exercises.map(e => typeof e === "string" ? e : e.id));
+    setSessionState("building");
+    setChosenWorkout({
+      type: "custom",
+      label: cw.name,
+      id: cw.id,
+      programDay: cw.programDay || null
+    });
+    if (cw.programDay) setCycleDay(cw.programDay);
+    setPendingCustomStart(null);
   }
   const [expanded, setExpanded] = useState(null);
   const [dragIdx, setDragIdx] = useState(null);
@@ -5040,15 +5060,22 @@ function Session({
           sets: {}
         };
         const exSets = dayLog.sets[ex.id] || [];
+        // For custom workouts with no programDay: write cycleDay as null
+        // so getDerivedHistory ignores this session and the program doesn't advance.
+        // The user did their own workout — program picks up at the same next session.
+        // For custom workouts WITH programDay: cycleDay was already set via setCycleDay.
+        // For default/template workouts: cycleDay is always set correctly.
+        const isUnassignedCustom = chosenWorkout?.type === "custom" && !chosenWorkout?.programDay;
+        const logCycleDay = isUnassignedCustom ? dayLog.cycleDay || null : cycleDay;
         const newLog = {
           ...prev,
           [dateKey]: {
             ...dayLog,
-            cycleDay,
-            // Use custom workout name if running one, otherwise program label
+            cycleDay: logCycleDay,
             label: dayLog.label || (chosenWorkout?.type === "custom" ? chosenWorkout.label : null) || SESSIONS_DATA[cycleDay]?.label || "",
-            // Store which custom workout was used so history is traceable
             customWorkoutId: chosenWorkout?.type === "custom" ? chosenWorkout.id : undefined,
+            // Mark unassigned custom sessions so history can show them differently
+            isCustom: chosenWorkout?.type === "custom" && !chosenWorkout?.programDay,
             sets: {
               ...dayLog.sets,
               [ex.id]: [...exSets, {
@@ -5108,6 +5135,145 @@ function Session({
   }
 
   // ── WORKOUT PICKER SCREEN ──────────────────────────
+  // ── REQUIRED PROGRAM DAY ASSIGNMENT MODAL ────────────────────────────
+  // Fires when user tries to start a custom workout with no programDay.
+  // Fullscreen overlay — they cannot skip this.
+  if (pendingCustomStart) {
+    const cw = pendingCustomStart;
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: "20px 20px 120px"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: T.card,
+        borderRadius: 16,
+        border: `1px solid ${T.violet}55`,
+        padding: 24
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: T.violet,
+        letterSpacing: "0.1em",
+        marginBottom: 8
+      }
+    }, "BEFORE YOU START"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 19,
+        fontWeight: 700,
+        color: T.bright,
+        marginBottom: 8
+      }
+    }, "Which program day does", /*#__PURE__*/React.createElement("br", null), "\"", cw.name, "\" count as?"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: T.muted,
+        marginBottom: 20,
+        lineHeight: 1.5
+      }
+    }, "The program needs to know which session this satisfies so it can advance correctly and track your volume."), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: 8,
+        marginBottom: 16
+      }
+    }, [1, 3, 5, 7, 9, 11, 13, 15].map(day => {
+      const s = SESSIONS_DATA[day];
+      const isCurrentDay = day === cycleDay;
+      return /*#__PURE__*/React.createElement("button", {
+        key: day,
+        onClick: () => {
+          // Save programDay on the workout permanently
+          const updated = {
+            ...cw,
+            programDay: day
+          };
+          setCustomWorkouts(prev => prev.map(w => w.id === cw.id ? updated : w));
+          if (uid) fsSet(uid, "customWorkouts", cw.id, updated);
+          // Save as template for this day
+          const tmpl = {
+            name: cw.name,
+            exercises: cw.exercises,
+            phase: cw.phase || "strength",
+            savedAt: new Date().toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric"
+            })
+          };
+          setSavedTemplates(prev => ({
+            ...prev,
+            [day]: tmpl
+          }));
+          if (uid) fsSet(uid, "savedTemplates", String(day), tmpl);
+          // Now start
+          startCustomWorkout(updated, true);
+        },
+        style: {
+          padding: "12px 10px",
+          borderRadius: 10,
+          cursor: "pointer",
+          textAlign: "left",
+          transition: "all 0.1s",
+          background: isCurrentDay ? T.violet + "22" : T.surface,
+          border: `1px solid ${isCurrentDay ? T.violet : T.border}`
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          fontWeight: 700,
+          color: isCurrentDay ? T.violet : T.dim
+        }
+      }, "Day ", day, isCurrentDay && /*#__PURE__*/React.createElement("span", {
+        style: {
+          marginLeft: 6,
+          fontSize: 9,
+          color: T.violet
+        }
+      }, "← NEXT")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 12,
+          color: T.text,
+          marginTop: 2,
+          fontWeight: 600
+        }
+      }, s?.label), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 9,
+          color: T.dim,
+          marginTop: 1
+        }
+      }, s?.phase === "strength" ? "Strength" : "Hypertrophy"));
+    })), /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        startCustomWorkout(cw, true); // forceStart with no programDay → null cycleDay
+      },
+      style: {
+        width: "100%",
+        background: "none",
+        border: `1px solid ${T.border}`,
+        borderRadius: 10,
+        padding: "11px 0",
+        color: T.dim,
+        fontSize: 12,
+        cursor: "pointer",
+        marginBottom: 8
+      }
+    }, "This is a supplementary workout — don't count it toward the program"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setPendingCustomStart(null),
+      style: {
+        width: "100%",
+        background: "none",
+        border: "none",
+        color: T.dim,
+        fontSize: 12,
+        cursor: "pointer",
+        padding: "8px 0"
+      }
+    }, "← Cancel")));
+  }
   if (sessionMeta && sessionState === "picker") {
     return /*#__PURE__*/React.createElement("div", {
       style: {
@@ -5316,8 +5482,8 @@ function Session({
       }
     }, "MY SAVED WORKOUTS"), customWorkouts.map(cw => {
       const isEditing = editingWorkout === cw.id;
-      // Collapse other cards while one is being edited
-      const isCollapsed = editingWorkout && !isEditing;
+      // Hide all other cards when editing — no scrolling through others
+      if (editingWorkout && !isEditing) return null;
       return /*#__PURE__*/React.createElement("div", {
         key: cw.id,
         style: {
@@ -5328,25 +5494,7 @@ function Session({
           marginBottom: 8,
           overflow: "hidden"
         }
-      }, isCollapsed ? /*#__PURE__*/React.createElement("div", {
-        style: {
-          padding: "10px 16px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          opacity: 0.5
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 13,
-          color: T.muted
-        }
-      }, cw.name), /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 10,
-          color: T.dim
-        }
-      }, cw.exercises.length, " ex")) : !isEditing ?
+      }, !isEditing ?
       /*#__PURE__*/
       /* ── CARD VIEW ── */
       React.createElement("div", {
@@ -5369,17 +5517,7 @@ function Session({
           if (chosenWorkout?.type === "custom" && chosenWorkout?.id === cw.id && exercises.length > 0) {
             setSessionState("building");
           } else {
-            setExercises(buildExercisesFrom(cw));
-            setOriginalExIds(cw.exercises.map(e => typeof e === "string" ? e : e.id));
-            setSessionState("building");
-            setChosenWorkout({
-              type: "custom",
-              label: cw.name,
-              id: cw.id,
-              programDay: cw.programDay || null
-            });
-            // If this custom workout is assigned to a program day, set cycleDay so it logs correctly
-            if (cw.programDay) setCycleDay(cw.programDay);
+            startCustomWorkout(cw);
           }
         }
       }, /*#__PURE__*/React.createElement("div", {
@@ -5540,17 +5678,7 @@ function Session({
           if (chosenWorkout?.type === "custom" && chosenWorkout?.id === cw.id && exercises.length > 0) {
             setSessionState("building");
           } else {
-            setExercises(buildExercisesFrom(cw));
-            setOriginalExIds(cw.exercises.map(e => typeof e === "string" ? e : e.id));
-            setSessionState("building");
-            setChosenWorkout({
-              type: "custom",
-              label: cw.name,
-              id: cw.id,
-              programDay: cw.programDay || null
-            });
-            // If this custom workout is assigned to a program day, set cycleDay so it logs correctly
-            if (cw.programDay) setCycleDay(cw.programDay);
+            startCustomWorkout(cw);
           }
         }
       }, "▶ Start"), /*#__PURE__*/React.createElement(Btn, {
@@ -6206,15 +6334,8 @@ function Session({
         };
         setCustomWorkouts(prev => [...prev, newCW]);
         if (uid) fsSet(uid, "customWorkouts", newCW.id, newCW);
-        setExercises(buildExercisesFrom(newCW));
-        setOriginalExIds(newCW.exercises);
-        setSessionState("building");
-        setChosenWorkout({
-          type: "custom",
-          label: newCW.name,
-          id: newCW.id
-        });
         setShowBuilder(false);
+        startCustomWorkout(newCW);
       }
     }, "Save + Start →"))));
   }
@@ -14542,4 +14663,4 @@ function App() {
     }));
   })))));
 }
-// v1783401965287
+// v1783424235919
