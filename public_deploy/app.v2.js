@@ -290,6 +290,12 @@ function getRepsForFiber(fiber, phase) {
       rest: "45–60s"
     };
   }
+  // Fallback — never return undefined
+  return {
+    sets: 3,
+    reps: "8–12",
+    rest: "1–2 min"
+  };
 }
 
 // ── MOVEMENT LIBRARY ─────────────────────────────────
@@ -2809,7 +2815,7 @@ function Dashboard({
   }, [cycleDay]);
   const lastSession = sessionHistory[0] || null;
   const gap = lastSession ? daysSince(lastSession.date) : 0;
-  const missedDay = gap > 3; // every-other-day schedule means >2 days = missed
+  const missedDay = gap > 2; // every-other-day: >2 days without training = missed session
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
@@ -3089,16 +3095,43 @@ function Dashboard({
     }
   }, "Choose →")))) : /*#__PURE__*/React.createElement(Card, {
     glow: true,
-    color: T.emerald,
+    color: missedDay ? T.amber : T.emerald,
     style: {
       marginBottom: 14,
-      padding: 20
+      padding: 20,
+      border: missedDay ? `1px solid ${T.amber}55` : undefined
     },
     onClick: () => {
       setCycleDay(currentDay);
       setTab("session");
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, missedDay && lastSession && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      marginBottom: 12,
+      padding: "8px 10px",
+      background: T.amber + "18",
+      borderRadius: 8,
+      border: `1px solid ${T.amber}44`
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 16
+    }
+  }, "⏰"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 800,
+      color: T.amber
+    }
+  }, gap, " DAYS SINCE LAST SESSION"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: T.dim
+    }
+  }, "Pick up where you left off — ", sessionData?.label, " is waiting."))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       justifyContent: "space-between",
@@ -3109,8 +3142,8 @@ function Dashboard({
       flex: 1
     }
   }, /*#__PURE__*/React.createElement(Tag, {
-    text: !lastSession ? "START YOUR CYCLE" : gap === 0 ? "UP NEXT" : "TODAY'S SESSION",
-    color: T.emerald
+    text: !lastSession ? "START YOUR CYCLE" : gap === 0 ? "UP NEXT" : missedDay ? "PICK UP WHERE YOU LEFT OFF" : "TODAY'S SESSION",
+    color: missedDay ? T.amber : T.emerald
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 21,
@@ -11356,6 +11389,9 @@ function Progress({
   setBodyCompLog: setBodyCompLogProp
 }) {
   const [activeSection, setActiveSection] = useState("calendar");
+  // Days since last session — used in volume tab context
+  const progressHistory = getDerivedHistory(sessionLogs);
+  const gap = progressHistory.length > 0 ? daysSince(progressHistory[0].date) : 0;
   const [activeLift, setActiveLift] = useState("bench");
   const [selectedBar, setSelectedBar] = useState(null);
   const [selectedMuscle, setSelectedMuscle] = useState(null);
@@ -12365,28 +12401,48 @@ function Progress({
       color: T.accent,
       marginBottom: 5
     }
-  }, "THIS WEEK'S VOLUME"), /*#__PURE__*/React.createElement("div", {
+  }, "THIS WEEK'S VOLUME", gap > 2 && /*#__PURE__*/React.createElement("span", {
+    style: {
+      marginLeft: 8,
+      color: T.amber,
+      fontWeight: 500
+    }
+  }, "· ", gap, " days since last session")), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
       color: T.text,
       lineHeight: 1.6
     }
-  }, "Green = within MAV. Amber = approaching MRV (back off). Red = exceeded MRV (deload this muscle next session).")), VOLUME.map(v => {
+  }, "Green = within MAV. Amber = approaching MRV (back off). Red = exceeded MRV (deload this muscle next session).", gap > 2 && /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: "block",
+      marginTop: 4,
+      color: T.dim,
+      fontSize: 11
+    }
+  }, "Volume resets every 7 days. Your numbers are low because you haven't trained recently — that's expected."))), VOLUME.map(v => {
     const mevPct = v.mev / v.mrv * 100;
     const curPct = Math.min(v.current / v.mrv * 100, 100);
     const color = curPct < mevPct * 1.2 ? T.steel : curPct < 80 ? T.emerald : curPct < 95 ? T.amber : T.crimson;
     const status = curPct < mevPct * 1.2 ? "Below MEV" : curPct < 80 ? "In MAV" : curPct < 95 ? "Near MRV" : "Exceeded MRV";
     const isSel = selectedMuscle === v.muscle;
-    // Mock per-session contributions — production: derived from logged sets
-    const contributions = [{
-      session: "Day 1 — Strength",
-      sets: Math.ceil(v.current * 0.55),
-      date: "Jun 8"
-    }, {
-      session: "Day 9 — Hypertrophy",
-      sets: Math.floor(v.current * 0.45),
-      date: "Jun 1"
-    }];
+    // Real per-session contributions from this week's sessionLogs
+    const cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const contributions = Object.entries(sessionLogs).filter(([date]) => date >= cutoff).map(([date, log]) => {
+      let sets = 0;
+      Object.entries(log.sets || {}).forEach(([exId, setArr]) => {
+        const mv = LIBRARY.find(m => m.id === exId);
+        if (mv?.muscles?.includes(v.muscle)) sets += setArr.length;
+      });
+      return sets > 0 ? {
+        session: log.label || SESSIONS_DATA[log.cycleDay]?.label || `Day ${log.cycleDay}`,
+        sets,
+        date: new Date(date).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric"
+        })
+      } : null;
+    }).filter(Boolean).sort((a, b) => b.sets - a.sets);
     return /*#__PURE__*/React.createElement("div", {
       key: v.muscle,
       onClick: () => setSelectedMuscle(isSel ? null : v.muscle),
@@ -13507,6 +13563,74 @@ function AuthScreen({
     }
   }, "Your data syncs across devices and is stored securely in Firebase.")));
 }
+
+// ── ERROR BOUNDARY ────────────────────────────────────────────
+// Catches React render errors and shows what crashed instead of blank screen
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      info: null
+    };
+  }
+  componentDidCatch(error, info) {
+    this.setState({
+      error,
+      info
+    });
+  }
+  render() {
+    if (this.state.error) {
+      return /*#__PURE__*/React.createElement("div", {
+        style: {
+          background: "#0A0A0A",
+          minHeight: "100vh",
+          padding: 32,
+          fontFamily: "monospace",
+          color: "#EF4444"
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 16,
+          fontWeight: 700,
+          marginBottom: 12
+        }
+      }, "⚠ Render Error"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 12,
+          color: "#F87171",
+          marginBottom: 8
+        }
+      }, this.state.error?.message), /*#__PURE__*/React.createElement("pre", {
+        style: {
+          fontSize: 10,
+          color: "#6B7280",
+          whiteSpace: "pre-wrap",
+          maxHeight: 300,
+          overflow: "auto"
+        }
+      }, this.state.info?.componentStack), /*#__PURE__*/React.createElement("button", {
+        onClick: () => this.setState({
+          error: null,
+          info: null
+        }),
+        style: {
+          marginTop: 16,
+          background: "#EF4444",
+          color: "#000",
+          border: "none",
+          borderRadius: 8,
+          padding: "8px 16px",
+          cursor: "pointer",
+          fontSize: 13,
+          fontWeight: 700
+        }
+      }, "Try Again"));
+    }
+    return this.props.children;
+  }
+}
 function App() {
   // ── FIREBASE AUTH STATE ──────────────────────────────────────
   const [currentUser, setCurrentUser] = useState(null);
@@ -13850,7 +13974,7 @@ function App() {
     }));
   }
   const sessionMeta = SESSIONS_DATA[cycleDay];
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(ErrorBoundary, null, /*#__PURE__*/React.createElement("div", {
     style: {
       background: T.bg,
       minHeight: "100vh",
@@ -14416,6 +14540,6 @@ function App() {
         borderRadius: "1px 1px 0 0"
       }
     }));
-  }))));
+  })))));
 }
-// v1783378966993
+// v1783401965287
