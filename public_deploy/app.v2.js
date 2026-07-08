@@ -4834,6 +4834,30 @@ function Session({
   const [editExercises, setEditExercises] = useState([]);
   const [editSearch, setEditSearch] = useState("");
 
+  // ── FOLDER SYSTEM — organize custom workouts ──────────────────────
+  const [folders, setFolders] = useState(() => storageGet("sp_cw_folders", {}));
+  const [cwFolderMap, setCwFolderMap] = useState(() => storageGet("sp_cw_folder_map", {}));
+  const [expandedFolder, setExpandedFolder] = useState("__all__");
+  const [editingFolder, setEditingFolder] = useState(null); // folderId being renamed
+  const [newFolderName, setNewFolderName] = useState("");
+  const FOLDER_COLORS = [T.crimson, T.steel, T.emerald, T.amber, T.violet, "#F97316", "#06B6D4", "#EC4899"];
+  function saveFolder(id, data) {
+    const next = {
+      ...folders,
+      [id]: data
+    };
+    setFolders(next);
+    storageSet("sp_cw_folders", next);
+  }
+  function saveCwFolder(cwId, folderId) {
+    const next = folderId ? {
+      ...cwFolderMap,
+      [cwId]: folderId
+    } : Object.fromEntries(Object.entries(cwFolderMap).filter(([k]) => k !== cwId));
+    setCwFolderMap(next);
+    storageSet("sp_cw_folder_map", next);
+  }
+
   // Has a custom template been saved for this cycle day?
   const hasSavedTemplate = !!savedTemplates[cycleDay];
   const savedTemplate = savedTemplates[cycleDay];
@@ -5526,29 +5550,177 @@ function Session({
         fontSize: 24,
         flexShrink: 0
       }
-    }, "⭐")))), customWorkouts.length > 0 && /*#__PURE__*/React.createElement("div", {
+    }, "⭐")))), (customWorkouts.length > 0 || Object.keys(folders).length > 0) && /*#__PURE__*/React.createElement("div", {
       style: {
         marginBottom: 10
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 8,
+        marginTop: 4
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 10,
         fontWeight: 700,
         color: T.dim,
-        letterSpacing: "0.1em",
-        marginBottom: 8,
-        marginTop: 4
+        letterSpacing: "0.1em"
       }
-    }, "MY SAVED WORKOUTS"), customWorkouts.map(cw => {
+    }, "MY WORKOUTS"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        const id = uid_gen("folder");
+        const color = FOLDER_COLORS[Object.keys(folders).length % FOLDER_COLORS.length];
+        saveFolder(id, {
+          name: "New Folder",
+          color
+        });
+        setEditingFolder(id);
+        setNewFolderName("New Folder");
+      },
+      style: {
+        background: "none",
+        border: `1px solid ${T.border}`,
+        borderRadius: 6,
+        padding: "3px 8px",
+        color: T.dim,
+        fontSize: 10,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        gap: 4
+      }
+    }, "+ New Folder")), Object.keys(folders).length > 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        flexWrap: "wrap",
+        marginBottom: 10
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => setExpandedFolder("__all__"),
+      style: {
+        padding: "5px 10px",
+        borderRadius: 20,
+        fontSize: 11,
+        cursor: "pointer",
+        background: expandedFolder === "__all__" ? T.accent : T.surface,
+        border: `1px solid ${expandedFolder === "__all__" ? T.accent : T.border}`,
+        color: expandedFolder === "__all__" ? T.bg : T.dim,
+        fontWeight: 700
+      }
+    }, "All"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setExpandedFolder("__none__"),
+      style: {
+        padding: "5px 10px",
+        borderRadius: 20,
+        fontSize: 11,
+        cursor: "pointer",
+        background: expandedFolder === "__none__" ? T.dim : T.surface,
+        border: `1px solid ${expandedFolder === "__none__" ? T.dim : T.border}`,
+        color: expandedFolder === "__none__" ? T.bg : T.dim,
+        fontWeight: 700
+      }
+    }, "Uncategorized"), Object.entries(folders).map(([fid, folder]) => /*#__PURE__*/React.createElement("div", {
+      key: fid,
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 2
+      }
+    }, editingFolder === fid ? /*#__PURE__*/React.createElement("input", {
+      autoFocus: true,
+      value: newFolderName,
+      onChange: e => setNewFolderName(e.target.value),
+      onBlur: () => {
+        if (newFolderName.trim()) saveFolder(fid, {
+          ...folder,
+          name: newFolderName.trim()
+        });
+        setEditingFolder(null);
+        setNewFolderName("");
+      },
+      onKeyDown: e => {
+        if (e.key === "Enter") {
+          e.target.blur();
+        }
+      },
+      style: {
+        width: 80,
+        background: T.surface,
+        border: `1px solid ${folder.color}`,
+        borderRadius: 20,
+        padding: "5px 10px",
+        color: T.bright,
+        fontSize: 11,
+        outline: "none",
+        fontFamily: "inherit"
+      }
+    }) : /*#__PURE__*/React.createElement("button", {
+      onClick: () => setExpandedFolder(fid),
+      style: {
+        padding: "5px 10px",
+        borderRadius: 20,
+        fontSize: 11,
+        cursor: "pointer",
+        background: expandedFolder === fid ? folder.color + "33" : T.surface,
+        border: `1px solid ${expandedFolder === fid ? folder.color : T.border}`,
+        color: expandedFolder === fid ? folder.color : T.dim,
+        fontWeight: 700
+      }
+    }, folder.name), /*#__PURE__*/React.createElement("button", {
+      onClick: e => {
+        e.stopPropagation();
+        setEditingFolder(fid);
+        setNewFolderName(folder.name);
+      },
+      style: {
+        background: "none",
+        border: "none",
+        color: T.dim,
+        fontSize: 10,
+        cursor: "pointer",
+        padding: "2px"
+      }
+    }, "✎"), /*#__PURE__*/React.createElement("button", {
+      onClick: e => {
+        e.stopPropagation();
+        const next = {
+          ...folders
+        };
+        delete next[fid];
+        setFolders(next);
+        storageSet("sp_cw_folders", next);
+        // Move workouts in this folder to uncategorized
+        const nextMap = Object.fromEntries(Object.entries(cwFolderMap).filter(([, v]) => v !== fid));
+        setCwFolderMap(nextMap);
+        storageSet("sp_cw_folder_map", nextMap);
+        if (expandedFolder === fid) setExpandedFolder("__all__");
+      },
+      style: {
+        background: "none",
+        border: "none",
+        color: T.dim,
+        fontSize: 10,
+        cursor: "pointer",
+        padding: "2px"
+      }
+    }, "✕")))), customWorkouts.filter(cw => {
+      if (editingWorkout) return cw.id === editingWorkout;
+      if (expandedFolder === "__all__") return true;
+      if (expandedFolder === "__none__") return !cwFolderMap[cw.id];
+      return cwFolderMap[cw.id] === expandedFolder;
+    }).map(cw => {
       const isEditing = editingWorkout === cw.id;
-      // Hide all other cards when editing — no scrolling through others
-      if (editingWorkout && !isEditing) return null;
+      const cwFolder = cwFolderMap[cw.id] ? folders[cwFolderMap[cw.id]] : null;
       return /*#__PURE__*/React.createElement("div", {
         key: cw.id,
         style: {
           background: T.card,
-          border: `1px solid ${isEditing ? T.violet : T.violet + "33"}`,
-          borderLeft: `4px solid ${T.violet}`,
+          border: `1px solid ${isEditing ? T.violet : cwFolder ? cwFolder.color + "44" : T.violet + "33"}`,
+          borderLeft: `4px solid ${cwFolder ? cwFolder.color : T.violet}`,
           borderRadius: 12,
           marginBottom: 8,
           overflow: "hidden"
@@ -5589,8 +5761,7 @@ function Session({
       }, cw.name), /*#__PURE__*/React.createElement("div", {
         style: {
           fontSize: 11,
-          color: T.muted,
-          marginBottom: 6
+          color: T.dim
         }
       }, cw.exercises.length, " exercises · ", cw.createdAt, cw.programDay && /*#__PURE__*/React.createElement("span", {
         style: {
@@ -5598,25 +5769,7 @@ function Session({
           color: T.violet,
           fontWeight: 700
         }
-      }, "· Day ", cw.programDay)), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          gap: 5,
-          flexWrap: "wrap"
-        }
-      }, cw.exercises.slice(0, 4).map((exId, i) => {
-        const mv = FULL_LIBRARY.find(m => m.id === exId);
-        return mv ? /*#__PURE__*/React.createElement(Tag, {
-          key: i,
-          text: mv.name.split(" ")[0],
-          color: getMovementColor(mv.muscles),
-          xs: true
-        }) : null;
-      }), cw.exercises.length > 4 && /*#__PURE__*/React.createElement(Tag, {
-        text: `+${cw.exercises.length - 4}`,
-        color: T.dim,
-        xs: true
-      }))), /*#__PURE__*/React.createElement("div", {
+      }, "· Day ", cw.programDay))), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 4,
@@ -5632,21 +5785,64 @@ function Session({
         color: T.violet,
         xs: true
       }) : /*#__PURE__*/React.createElement(Tag, {
-        text: "No day set",
+        text: "No day",
         color: T.dim,
         xs: true
-      }))), !cw.programDay && assigningDay !== cw.id && /*#__PURE__*/React.createElement("div", {
+      }))), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 4,
+          flexWrap: "wrap",
+          marginBottom: 8
+        }
+      }, cw.exercises.slice(0, 5).map((exId, i) => {
+        const id = typeof exId === "string" ? exId : exId?.id;
+        const mv = FULL_LIBRARY.find(m => m.id === id);
+        return mv ? /*#__PURE__*/React.createElement(Tag, {
+          key: i,
+          text: mv.name,
+          color: getMovementColor(mv.muscles),
+          xs: true
+        }) : null;
+      }), cw.exercises.length > 5 && /*#__PURE__*/React.createElement(Tag, {
+        text: `+${cw.exercises.length - 5}`,
+        color: T.dim,
+        xs: true
+      })), Object.keys(folders).length > 0 && /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginBottom: 8
+        }
+      }, /*#__PURE__*/React.createElement("select", {
+        value: cwFolderMap[cw.id] || "",
+        onChange: e => saveCwFolder(cw.id, e.target.value || null),
+        onClick: e => e.stopPropagation(),
+        style: {
+          fontSize: 10,
+          background: T.surface,
+          color: T.dim,
+          border: `1px solid ${T.border}`,
+          borderRadius: 6,
+          padding: "3px 6px",
+          cursor: "pointer",
+          outline: "none"
+        }
+      }, /*#__PURE__*/React.createElement("option", {
+        value: ""
+      }, "No folder"), Object.entries(folders).map(([fid, f]) => /*#__PURE__*/React.createElement("option", {
+        key: fid,
+        value: fid
+      }, f.name)))), !cw.programDay && assigningDay !== cw.id && /*#__PURE__*/React.createElement("div", {
         style: {
           fontSize: 10,
           color: T.dim,
-          marginTop: 4,
+          marginBottom: 8,
           padding: "4px 6px",
           background: T.surface,
           borderRadius: 6
         }
-      }, "⚠ Tap 📅 to assign this to a program day so it advances your cycle correctly."), assigningDay === cw.id && /*#__PURE__*/React.createElement("div", {
+      }, "⚠ Tap 📅 to assign a program day"), assigningDay === cw.id && /*#__PURE__*/React.createElement("div", {
         style: {
-          marginTop: 8,
+          marginBottom: 8,
           padding: "10px 12px",
           background: T.surface,
           borderRadius: 10,
@@ -5660,7 +5856,7 @@ function Session({
           fontWeight: 700,
           marginBottom: 8
         }
-      }, "Which program day does this workout count as?"), /*#__PURE__*/React.createElement("div", {
+      }, "Which program day does this satisfy?"), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           flexWrap: "wrap",
@@ -5668,7 +5864,6 @@ function Session({
         }
       }, [1, 3, 5, 7, 9, 11, 13, 15].map(day => {
         const s = SESSIONS_DATA[day];
-        const isCurrent = cw.programDay === day;
         return /*#__PURE__*/React.createElement("button", {
           key: day,
           onClick: () => {
@@ -5699,10 +5894,10 @@ function Session({
             borderRadius: 8,
             cursor: "pointer",
             fontSize: 10,
-            fontWeight: isCurrent ? 800 : 500,
-            background: isCurrent ? T.violet + "22" : T.card,
-            border: `1px solid ${isCurrent ? T.violet : T.border}`,
-            color: isCurrent ? T.violet : T.text,
+            fontWeight: cw.programDay === day ? 800 : 500,
+            background: cw.programDay === day ? T.violet + "22" : T.card,
+            border: `1px solid ${cw.programDay === day ? T.violet : T.border}`,
+            color: cw.programDay === day ? T.violet : T.text,
             textAlign: "left"
           }
         }, /*#__PURE__*/React.createElement("div", null, "Day ", day), /*#__PURE__*/React.createElement("div", {
@@ -5758,7 +5953,7 @@ function Session({
       }, "✎ Edit"), /*#__PURE__*/React.createElement(Btn, {
         variant: "outline",
         size: "sm",
-        title: "Assign to a program day",
+        title: "Assign to program day",
         onClick: e => {
           e.stopPropagation();
           setAssigningDay(assigningDay === cw.id ? null : cw.id);
@@ -5802,83 +5997,59 @@ function Session({
           color: T.violet,
           marginBottom: 10
         }
-      }, "Editing Workout"), /*#__PURE__*/React.createElement("div", {
-        style: {
-          marginBottom: 10
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 9,
-          color: T.dim,
-          letterSpacing: "0.08em",
-          marginBottom: 4,
-          textTransform: "uppercase"
-        }
-      }, "Name"), /*#__PURE__*/React.createElement("input", {
+      }, "Editing Workout"), /*#__PURE__*/React.createElement("input", {
         value: editName,
         onChange: e => setEditName(e.target.value),
+        placeholder: "Workout name",
         style: {
           width: "100%",
           background: T.surface,
           border: `1px solid ${editName ? T.violet : T.border}`,
           borderRadius: 8,
-          padding: "9px 12px",
+          padding: "10px 12px",
           color: T.bright,
-          fontSize: 13,
+          fontSize: 14,
+          fontWeight: 700,
           outline: "none",
           fontFamily: "inherit",
-          boxSizing: "border-box"
+          boxSizing: "border-box",
+          marginBottom: 10
         }
-      })), /*#__PURE__*/React.createElement("div", {
+      }), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          gap: 8,
+          marginBottom: 10
+        }
+      }, ["strength", "hypertrophy"].map(ph => /*#__PURE__*/React.createElement("button", {
+        key: ph,
+        onClick: () => setCustomWorkouts(prev => prev.map(w => w.id === cw.id ? {
+          ...w,
+          phase: ph
+        } : w)),
+        style: {
+          flex: 1,
+          padding: "8px 0",
+          borderRadius: 8,
+          cursor: "pointer",
+          fontSize: 11,
+          fontWeight: 700,
+          background: cw.phase === ph ? T.violet + "22" : T.surface,
+          border: `1px solid ${cw.phase === ph ? T.violet : T.border}`,
+          color: cw.phase === ph ? T.violet : T.dim
+        }
+      }, ph.charAt(0).toUpperCase() + ph.slice(1)))), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          color: T.dim,
+          fontWeight: 700,
+          marginBottom: 6
+        }
+      }, "Exercises (", editExercises.length, ")"), /*#__PURE__*/React.createElement("div", {
         style: {
           marginBottom: 10
         }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 9,
-          color: T.dim,
-          letterSpacing: "0.08em",
-          marginBottom: 4,
-          textTransform: "uppercase"
-        }
-      }, "Phase"), /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          gap: 6
-        }
-      }, ["strength", "hypertrophy"].map(ph => {
-        const isCurPhase = editingWorkout && customWorkouts.find(w => w.id === editingWorkout)?.phase === ph;
-        return /*#__PURE__*/React.createElement("button", {
-          key: ph,
-          onClick: () => setCustomWorkouts(prev => prev.map(w => w.id === cw.id ? {
-            ...w,
-            phase: ph
-          } : w)),
-          style: {
-            flex: 1,
-            padding: "7px 0",
-            borderRadius: 8,
-            cursor: "pointer",
-            fontSize: 11,
-            fontWeight: 700,
-            background: isCurPhase ? (ph === "strength" ? T.crimson : T.steel) + "22" : "transparent",
-            border: `1px solid ${isCurPhase ? ph === "strength" ? T.crimson : T.steel : T.border}`,
-            color: isCurPhase ? ph === "strength" ? T.crimson : T.steel : T.muted
-          }
-        }, ph.charAt(0).toUpperCase() + ph.slice(1));
-      }))), /*#__PURE__*/React.createElement("div", {
-        style: {
-          marginBottom: 8
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          fontSize: 9,
-          color: T.dim,
-          letterSpacing: "0.08em",
-          marginBottom: 6,
-          textTransform: "uppercase"
-        }
-      }, "Exercises (", editExercises.length, ")"), editExercises.map((exObj, idx) => {
+      }, editExercises.map((exObj, idx) => {
         const exId = typeof exObj === "string" ? exObj : exObj.id;
         const mv = FULL_LIBRARY.find(m => m.id === exId);
         if (!mv) return null;
@@ -5888,74 +6059,17 @@ function Session({
           key: `${exId}-${idx}`,
           style: {
             borderBottom: `1px solid ${T.border}`,
-            paddingBottom: 8,
-            marginBottom: 8
+            padding: "8px 0"
           }
         }, /*#__PURE__*/React.createElement("div", {
           style: {
             display: "flex",
             alignItems: "center",
-            gap: 8,
-            padding: "4px 0"
+            gap: 8
           }
         }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            color: T.dim,
-            fontSize: 12
-          }
-        }, "⠿"), /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            gap: 1
-          }
-        }, /*#__PURE__*/React.createElement("button", {
-          onClick: () => {
-            if (idx === 0) return;
-            const arr = [...editExercises];
-            [arr[idx - 1], arr[idx]] = [arr[idx], arr[idx - 1]];
-            setEditExercises(arr);
-          },
-          style: {
-            background: "none",
-            border: "none",
-            color: idx === 0 ? T.dim : T.accent,
-            cursor: "pointer",
-            fontSize: 10,
-            lineHeight: 1,
-            padding: "1px 3px"
-          }
-        }, "▲"), /*#__PURE__*/React.createElement("button", {
-          onClick: () => {
-            if (idx === editExercises.length - 1) return;
-            const arr = [...editExercises];
-            [arr[idx], arr[idx + 1]] = [arr[idx + 1], arr[idx]];
-            setEditExercises(arr);
-          },
-          style: {
-            background: "none",
-            border: "none",
-            color: idx === editExercises.length - 1 ? T.dim : T.accent,
-            cursor: "pointer",
-            fontSize: 10,
-            lineHeight: 1,
-            padding: "1px 3px"
-          }
-        }, "▼")), /*#__PURE__*/React.createElement("div", {
-          style: {
-            width: 7,
-            height: 7,
-            borderRadius: "50%",
-            background: getMovementColor(mv.muscles),
-            flexShrink: 0
-          }
-        }), /*#__PURE__*/React.createElement("div", {
           style: {
             flex: 1,
-            minWidth: 0
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
             fontSize: 12,
             color: T.text
           }
@@ -5964,7 +6078,7 @@ function Session({
             fontSize: 10,
             color: T.dim
           }
-        }, mv.muscles.slice(0, 2).join(", "))), /*#__PURE__*/React.createElement("button", {
+        }, plan.sets, "×", plan.reps), /*#__PURE__*/React.createElement("button", {
           onClick: () => setOpenNotes(prev => ({
             ...prev,
             [idx]: !prev[idx]
@@ -5976,190 +6090,85 @@ function Session({
             cursor: "pointer",
             color: exObj.note ? T.accent : T.dim
           }
-        }, "📝"), /*#__PURE__*/React.createElement(Tag, {
-          text: FIBER_LABEL[mv.fiber],
-          color: FIBER_COLOR[mv.fiber],
-          xs: true
-        }), /*#__PURE__*/React.createElement("button", {
-          onClick: () => setEditExercises(prev => prev.filter((_, i) => i !== idx)),
+        }, "📝"), /*#__PURE__*/React.createElement("button", {
+          onClick: () => setEditExercises(prev => prev.filter((_, j) => j !== idx)),
           style: {
             background: "none",
             border: "none",
             color: T.crimson,
-            cursor: "pointer",
-            fontSize: 16,
-            padding: "0 4px",
-            lineHeight: 1
+            fontSize: 14,
+            cursor: "pointer"
           }
-        }, "×")), /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            gap: 6,
-            marginTop: 4,
-            paddingLeft: 36
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 4
-          }
-        }, /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 9,
-            color: T.dim
-          }
-        }, "Sets"), /*#__PURE__*/React.createElement("input", {
-          type: "number",
-          placeholder: String(plan.sets),
-          value: exObj.sets || "",
-          onChange: e => setEditExercises(prev => prev.map((x, i) => i === idx ? {
-            ...(typeof x === "string" ? {
-              id: x
-            } : x),
-            sets: e.target.value ? Number(e.target.value) : undefined
-          } : x)),
-          style: {
-            width: 36,
-            background: T.surface,
-            border: `1px solid ${exObj.sets ? T.violet : T.border}`,
-            borderRadius: 6,
-            padding: "3px 6px",
-            color: T.bright,
-            fontSize: 11,
-            textAlign: "center",
-            outline: "none",
-            fontFamily: "inherit"
-          }
-        })), /*#__PURE__*/React.createElement("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 4
-          }
-        }, /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 9,
-            color: T.dim
-          }
-        }, "Reps"), /*#__PURE__*/React.createElement("input", {
-          type: "number",
-          placeholder: String(plan.reps),
-          value: exObj.reps || "",
-          onChange: e => setEditExercises(prev => prev.map((x, i) => i === idx ? {
-            ...(typeof x === "string" ? {
-              id: x
-            } : x),
-            reps: e.target.value ? Number(e.target.value) : undefined
-          } : x)),
-          style: {
-            width: 36,
-            background: T.surface,
-            border: `1px solid ${exObj.reps ? T.violet : T.border}`,
-            borderRadius: 6,
-            padding: "3px 6px",
-            color: T.bright,
-            fontSize: 11,
-            textAlign: "center",
-            outline: "none",
-            fontFamily: "inherit"
-          }
-        })), /*#__PURE__*/React.createElement("div", {
-          style: {
-            fontSize: 9,
-            color: T.dim,
-            alignSelf: "center"
-          }
-        }, "default: ", plan.sets, "×", plan.reps)), showNote && /*#__PURE__*/React.createElement("div", {
-          style: {
-            paddingLeft: 36,
-            marginTop: 4
-          }
-        }, /*#__PURE__*/React.createElement("input", {
-          placeholder: "Note: e.g. 'Keep elbows tucked', 'Target weight: 185'",
+        }, "✕")), showNote && /*#__PURE__*/React.createElement("input", {
           value: exObj.note || "",
-          onChange: e => setEditExercises(prev => prev.map((x, i) => i === idx ? {
-            ...(typeof x === "string" ? {
-              id: x
-            } : x),
-            note: e.target.value || undefined
-          } : x)),
+          placeholder: "Note…",
+          onChange: e => setEditExercises(prev => prev.map((ex, j) => j === idx ? {
+            ...ex,
+            note: e.target.value
+          } : ex)),
           style: {
             width: "100%",
+            marginTop: 4,
             background: T.surface,
-            border: `1px solid ${exObj.note ? T.accent : T.border}`,
+            border: `1px solid ${T.border}`,
             borderRadius: 6,
-            padding: "5px 8px",
-            color: T.bright,
+            padding: "6px 8px",
+            color: T.text,
             fontSize: 11,
             outline: "none",
             fontFamily: "inherit",
             boxSizing: "border-box"
           }
-        })));
-      })), /*#__PURE__*/React.createElement("div", {
-        style: {
-          marginBottom: 12
-        }
-      }, /*#__PURE__*/React.createElement("input", {
-        placeholder: "Search to add exercise...",
+        }));
+      })), /*#__PURE__*/React.createElement("input", {
         value: editSearch,
         onChange: e => setEditSearch(e.target.value),
+        placeholder: "Add exercise…",
         style: {
           width: "100%",
           background: T.surface,
-          border: `1px solid ${T.border}`,
+          border: `1px solid ${editSearch ? T.violet : T.border}`,
           borderRadius: 8,
           padding: "8px 12px",
           color: T.bright,
           fontSize: 12,
           outline: "none",
           fontFamily: "inherit",
-          boxSizing: "border-box"
+          boxSizing: "border-box",
+          marginBottom: 6
         }
-      }), editSearch.length > 1 && /*#__PURE__*/React.createElement("div", {
+      }), editSearch && /*#__PURE__*/React.createElement("div", {
         style: {
+          maxHeight: 160,
+          overflowY: "auto",
           background: T.surface,
-          borderRadius: "0 0 8px 8px",
-          border: `1px solid ${T.border}`,
-          borderTop: "none",
-          maxHeight: 150,
-          overflowY: "auto"
+          borderRadius: 8,
+          marginBottom: 8
         }
-      }, FULL_LIBRARY.filter(mv => (mv.name.toLowerCase().includes(editSearch.toLowerCase()) || mv.muscles.some(m => m.toLowerCase().includes(editSearch.toLowerCase()))) && !editExercises.some(e => (typeof e === "string" ? e : e.id) === mv.id)).slice(0, 6).map(mv => /*#__PURE__*/React.createElement("div", {
+      }, FULL_LIBRARY.filter(mv => (mv.name.toLowerCase().includes(editSearch.toLowerCase()) || mv.muscles.some(m => m.toLowerCase().includes(editSearch.toLowerCase()))) && !editExercises.find(e => (typeof e === "string" ? e : e.id) === mv.id)).slice(0, 8).map(mv => /*#__PURE__*/React.createElement("div", {
         key: mv.id,
         onClick: () => {
           setEditExercises(prev => [...prev, {
-            id: mv.id
+            id: mv.id,
+            name: mv.name,
+            muscles: mv.muscles
           }]);
           setEditSearch("");
         },
         style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
           padding: "8px 12px",
-          borderBottom: `1px solid ${T.border}`,
-          cursor: "pointer"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: 6,
-          height: 6,
-          borderRadius: "50%",
-          background: getMovementColor(mv.muscles)
-        }
-      }), /*#__PURE__*/React.createElement("div", {
-        style: {
-          flex: 1,
+          cursor: "pointer",
           fontSize: 12,
-          color: T.text
+          color: T.text,
+          borderBottom: `1px solid ${T.border}`
         }
-      }, mv.name), /*#__PURE__*/React.createElement(Tag, {
-        text: FIBER_LABEL[mv.fiber],
-        color: FIBER_COLOR[mv.fiber],
-        xs: true
-      }))))), /*#__PURE__*/React.createElement("div", {
+      }, mv.name, /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 10,
+          color: T.dim,
+          marginLeft: 6
+        }
+      }, mv.muscles.slice(0, 2).join(", "))))), /*#__PURE__*/React.createElement("div", {
         style: {
           display: "flex",
           gap: 8
@@ -13922,7 +13931,10 @@ function App() {
           id: _id,
           _updatedAt,
           ...d
-        }) => d);
+        }) => ({
+          ...d,
+          id: _id
+        }));
         setCustomWorkouts(wks.length ? wks : DEFAULT_CUSTOM_WORKOUTS);
         storageSet(STORAGE_KEYS.CUSTOM_WORKOUTS, wks);
       }
@@ -14802,4 +14814,4 @@ function App() {
     }));
   })))));
 }
-// v1783482806418
+// v1783484046762
