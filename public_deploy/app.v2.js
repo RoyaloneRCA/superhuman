@@ -5275,6 +5275,13 @@ function Session({
     }, "← Cancel")));
   }
   if (sessionMeta && sessionState === "picker") {
+    // ── EDIT MODE: show ONLY the edit form for the active workout ──
+    if (editingWorkout) {
+      const cwBeingEdited = customWorkouts.find(w => w.id === editingWorkout);
+      if (!cwBeingEdited) {
+        setEditingWorkout(null);
+      }
+    }
     return /*#__PURE__*/React.createElement("div", {
       style: {
         padding: "20px 20px 120px"
@@ -5284,7 +5291,17 @@ function Session({
         marginBottom: 20
       }
     }, /*#__PURE__*/React.createElement("button", {
-      onClick: () => setTab("home"),
+      onClick: () => {
+        if (editingWorkout) {
+          setEditingWorkout(null);
+          setEditName("");
+          setEditExercises([]);
+          setEditSearch("");
+          setOpenNotes({});
+        } else {
+          setTab("home");
+        }
+      },
       style: {
         background: "none",
         border: "none",
@@ -5296,7 +5313,7 @@ function Session({
         alignItems: "center",
         gap: 4
       }
-    }, "← Back"), /*#__PURE__*/React.createElement("div", {
+    }, editingWorkout ? "← Back to Workouts" : "← Back"), !editingWorkout && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
       style: {
         fontSize: 9,
         fontWeight: 700,
@@ -5318,9 +5335,18 @@ function Session({
         fontSize: 13,
         color: T.muted
       }
-    }, "Choose how you want to train today")), /*#__PURE__*/React.createElement("div", {
+    }, "Choose how you want to train today"))), !editingWorkout && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: T.card,
+        border: `1px solid ${phase === "strength" ? T.crimson : T.steel}55`,
+        borderLeft: `4px solid ${phase === "strength" ? T.crimson : T.steel}`,
+        borderRadius: 12,
+        padding: "16px 18px",
+        marginBottom: 10,
+        boxShadow: `0 2px 16px ${phase === "strength" ? T.crimson : T.steel}12`
+      }
+    }, /*#__PURE__*/React.createElement("div", {
       onClick: () => {
-        // Resuming the exact workout already in progress — don't wipe state
         if (chosenWorkout?.type === "default" && exercises.length > 0) {
           setSessionState("building");
         } else {
@@ -5334,15 +5360,7 @@ function Session({
         }
       },
       style: {
-        background: T.card,
-        border: `1px solid ${phase === "strength" ? T.crimson : T.steel}55`,
-        borderLeft: `4px solid ${phase === "strength" ? T.crimson : T.steel}`,
-        borderRadius: 12,
-        padding: "16px 18px",
-        marginBottom: 10,
-        cursor: "pointer",
-        transition: "all 0.15s",
-        boxShadow: `0 2px 16px ${phase === "strength" ? T.crimson : T.steel}12`
+        cursor: "pointer"
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -5398,7 +5416,43 @@ function Session({
         flexShrink: 0,
         marginLeft: 8
       }
-    }, phase === "strength" ? "💪" : "🔬"))), hasSavedTemplate && /*#__PURE__*/React.createElement("div", {
+    }, phase === "strength" ? "💪" : "🔬"))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 10,
+        paddingTop: 10,
+        borderTop: `1px solid ${T.border}`,
+        display: "flex",
+        gap: 8
+      }
+    }, /*#__PURE__*/React.createElement(Btn, {
+      size: "sm",
+      style: {
+        flex: 2,
+        background: phase === "strength" ? T.crimson : T.steel,
+        color: "#000"
+      },
+      onClick: () => {
+        setExercises(buildExercisesFrom(sessionMeta.exercises));
+        setOriginalExIds(sessionMeta.exercises);
+        setSessionState("building");
+        setChosenWorkout({
+          type: "default",
+          label: sessionMeta.label
+        });
+      }
+    }, "▶ Start as Programmed"), /*#__PURE__*/React.createElement(Btn, {
+      size: "sm",
+      variant: "outline",
+      style: {
+        flex: 1
+      },
+      onClick: () => {
+        // Pre-populate builder with default exercises so user can customize
+        setBuilderExercises(buildExercisesFrom(sessionMeta.exercises));
+        setNewWorkoutName(`My ${sessionMeta.label}`);
+        setShowBuilder(true);
+      }
+    }, "✏ Customize"))), hasSavedTemplate && /*#__PURE__*/React.createElement("div", {
       onClick: () => {
         if (chosenWorkout?.type === "template" && exercises.length > 0) {
           setSessionState("building");
@@ -5467,7 +5521,7 @@ function Session({
         fontSize: 24,
         flexShrink: 0
       }
-    }, "⭐"))), customWorkouts.length > 0 && /*#__PURE__*/React.createElement("div", {
+    }, "⭐")))), customWorkouts.length > 0 && /*#__PURE__*/React.createElement("div", {
       style: {
         marginBottom: 10
       }
@@ -6143,7 +6197,7 @@ function Session({
           setOpenNotes({});
         }
       }, "✓ Save Changes"))));
-    })), !showBuilder ? /*#__PURE__*/React.createElement("button", {
+    })), !editingWorkout && (!showBuilder ? /*#__PURE__*/React.createElement("button", {
       onClick: () => setShowBuilder(true),
       style: {
         width: "100%",
@@ -6337,7 +6391,7 @@ function Session({
         setShowBuilder(false);
         startCustomWorkout(newCW);
       }
-    }, "Save + Start →"))));
+    }, "Save + Start →")))));
   }
   if (!sessionMeta) {
     return /*#__PURE__*/React.createElement(RestDayScreen, {
@@ -14493,7 +14547,86 @@ function App() {
       color: T.dim,
       marginTop: 2
     }
-  }, "tap name to rename · tap any set to edit")), /*#__PURE__*/React.createElement("button", {
+  }, "tap name to rename · tap any set to edit"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 10,
+      paddingTop: 10,
+      borderTop: `1px solid ${T.border}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: T.dim,
+      fontWeight: 700,
+      letterSpacing: "0.08em",
+      marginBottom: 6
+    }
+  }, "COUNTS AS PROGRAM DAY"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 4
+    }
+  }, [1, 3, 5, 7, 9, 11, 13, 15].map(day => {
+    const s = SESSIONS_DATA[day];
+    const isSelected = reviewSession.log?.cycleDay === day;
+    return /*#__PURE__*/React.createElement("button", {
+      key: day,
+      onClick: () => {
+        const updated = {
+          ...reviewSession.log,
+          cycleDay: day,
+          label: reviewSession.log.label || s?.label
+        };
+        setSessionLogs(prev => ({
+          ...prev,
+          [reviewSession.date]: updated
+        }));
+        if (currentUser) fsSet(currentUser.uid, "sessionLogs", reviewSession.date, updated);
+        setReviewSession(prev => ({
+          ...prev,
+          log: updated
+        }));
+      },
+      style: {
+        padding: "5px 8px",
+        borderRadius: 8,
+        cursor: "pointer",
+        fontSize: 10,
+        fontWeight: isSelected ? 700 : 400,
+        background: isSelected ? T.violet + "22" : T.surface,
+        border: `1px solid ${isSelected ? T.violet : T.border}`,
+        color: isSelected ? T.violet : T.dim
+      }
+    }, "Day ", day, " · ", s?.label?.split("—")[0]?.trim() || "?");
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      // Clear cycleDay — mark as supplementary (won't advance program)
+      const updated = {
+        ...reviewSession.log,
+        cycleDay: null
+      };
+      setSessionLogs(prev => ({
+        ...prev,
+        [reviewSession.date]: updated
+      }));
+      if (currentUser) fsSet(currentUser.uid, "sessionLogs", reviewSession.date, updated);
+      setReviewSession(prev => ({
+        ...prev,
+        log: updated
+      }));
+    },
+    style: {
+      padding: "5px 8px",
+      borderRadius: 8,
+      cursor: "pointer",
+      fontSize: 10,
+      fontWeight: !reviewSession.log?.cycleDay ? 700 : 400,
+      background: !reviewSession.log?.cycleDay ? T.amber + "22" : T.surface,
+      border: `1px solid ${!reviewSession.log?.cycleDay ? T.amber : T.border}`,
+      color: !reviewSession.log?.cycleDay ? T.amber : T.dim
+    }
+  }, "Supplementary")))), /*#__PURE__*/React.createElement("button", {
     onClick: () => setReviewSession(null),
     style: {
       background: "none",
@@ -14663,4 +14796,4 @@ function App() {
     }));
   })))));
 }
-// v1783424235919
+// v1783479798866
