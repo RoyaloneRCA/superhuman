@@ -90,6 +90,11 @@ const STORAGE_KEYS = {
 // ── localStorage helpers ────────────────────────────────────────
 const STORAGE_VERSION = "sp_v2"; // bump to reset all users to onboarding
 
+// Guaranteed unique ID — prefix + timestamp + 4 random chars
+function uid_gen(prefix = "id") {
+  return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+}
+
 // ── STORAGE LAYER ──────────────────────────────────────────────
 // Uses window.storage (Claude artifact persistent API) as primary,
 // with localStorage as fallback for deployed Firebase hosting.
@@ -5765,7 +5770,7 @@ function Session({
           e.stopPropagation();
           const copy = {
             ...cw,
-            id: Date.now().toString(),
+            id: uid_gen("cw"),
             name: `${cw.name} (Copy)`,
             savedAt: new Date().toLocaleDateString("en-US", {
               month: "short",
@@ -6377,7 +6382,7 @@ function Session({
       disabled: !newWorkoutName || builderExercises.length === 0,
       onClick: () => {
         const newCW = {
-          id: `cw${Date.now()}`,
+          id: uid_gen("cw"),
           name: newWorkoutName,
           phase,
           exercises: builderExercises.map(e => e.id),
@@ -7595,8 +7600,8 @@ function Session({
       marginBottom: 6,
       textAlign: chosenWorkout?.type === "custom" ? "center" : "left"
     }
-  }, chosenWorkout?.type === "custom" ? "or save as a new workout" : ""), /*#__PURE__*/React.createElement("input", {
-    placeholder: `My Day ${cycleDay} — ${sessionMeta.label}`,
+  }, chosenWorkout?.type === "custom" ? "or save as a separate new workout:" : "Name this workout:"), /*#__PURE__*/React.createElement("input", {
+    placeholder: chosenWorkout?.type === "custom" ? "New workout name (required)" : `My Day ${cycleDay} — ${sessionMeta.label}`,
     value: saveTemplateName,
     onChange: e => setSaveTemplateName(e.target.value),
     style: {
@@ -7614,6 +7619,7 @@ function Session({
     }
   }), /*#__PURE__*/React.createElement(Btn, {
     variant: chosenWorkout?.type === "custom" ? "outline" : undefined,
+    disabled: chosenWorkout?.type === "custom" && !saveTemplateName.trim(),
     style: {
       width: "100%",
       ...(chosenWorkout?.type !== "custom" && {
@@ -7622,7 +7628,8 @@ function Session({
       })
     },
     onClick: () => {
-      const name = saveTemplateName || `My Day ${cycleDay} — ${sessionMeta.label}`;
+      const name = saveTemplateName.trim() || `My Day ${cycleDay} — ${sessionMeta.label}`;
+      if (chosenWorkout?.type === "custom" && !saveTemplateName.trim()) return;
       const today = new Date().toLocaleDateString("en-US", {
         month: "short",
         day: "numeric"
@@ -7632,7 +7639,6 @@ function Session({
         name: e.name,
         muscles: e.muscles
       }));
-      // Always also save as a quick day-template
       const tmpl = {
         name,
         exercises: newExercises,
@@ -7644,9 +7650,8 @@ function Session({
         [cycleDay]: tmpl
       }));
       if (uid) fsSet(uid, "savedTemplates", String(cycleDay), tmpl);
-      // Also save as a new reusable custom workout
       const newCustom = {
-        id: `cw${Date.now()}`,
+        id: uid_gen("cw"),
         name,
         phase,
         exercises: newExercises.map(e => e.id),
@@ -7654,6 +7659,7 @@ function Session({
       };
       setCustomWorkouts(prev => [...prev, newCustom]);
       if (uid) fsSet(uid, "customWorkouts", newCustom.id, newCustom);
+      setSaveTemplateName("");
       setSavePrompt("saved");
     }
   }, chosenWorkout?.type === "custom" ? "Save as New Workout" : "✓ Save Template")), savePrompt === "saved" && /*#__PURE__*/React.createElement("div", {
@@ -8158,7 +8164,7 @@ function Session({
     },
     disabled: !inlineNewMov.name || inlineNewMov.muscles.length === 0,
     onClick: () => {
-      const id = `custom-${Date.now()}`;
+      const id = uid_gen("custom");
       const entry = {
         ...inlineNewMov,
         id,
@@ -13189,7 +13195,7 @@ function Progress({
     },
     disabled: !newMov.name || newMov.muscles.length === 0,
     onClick: () => {
-      const id = `custom-${Date.now()}`;
+      const id = uid_gen("custom");
       const entry = {
         ...newMov,
         id,
@@ -14796,4 +14802,4 @@ function App() {
     }));
   })))));
 }
-// v1783479798866
+// v1783482806418
