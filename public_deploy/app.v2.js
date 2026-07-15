@@ -2688,18 +2688,20 @@ function getPrevLifts(sessionLogs, exerciseId) {
 function getDerivedHistory(sessionLogs) {
   return Object.entries(sessionLogs).sort(([a], [b]) => b.localeCompare(a)).map(([date, log]) => ({
     date,
-    cycleDay: log.cycleDay,
-    // Use custom renamed label if set, otherwise derive from program
-    label: log.label || SESSIONS_DATA[log.cycleDay]?.label || "Session",
+    cycleDay: log.cycleDay ? Number(log.cycleDay) : null,
+    // coerce string to number
+    label: log.label || SESSIONS_DATA[Number(log.cycleDay)]?.label || "Session",
     exercises: Object.keys(log.sets || {}).length
-  })).filter(h => h.cycleDay);
+  })).filter(h => h.cycleDay); // null/0/undefined filtered out
 }
 
 // Get the last training cycle day from sessionLogs
 function getCurrentCycleDay(sessionLogs) {
   const history = getDerivedHistory(sessionLogs);
   if (!history.length) return 1;
-  const lastDay = history[0].cycleDay;
+  // Coerce to number — if stored as string "1", "1"+1="11" (JS bug). Number("1")=1 ✓
+  const lastDay = Number(history[0].cycleDay);
+  if (!lastDay || lastDay < 1 || lastDay > 16) return 1;
   // Advance to next training day
   for (let d = lastDay + 1; d <= 16; d++) {
     if (!CYCLE.find(c => c.day === d)?.rest) return d;
@@ -5095,7 +5097,7 @@ function Session({
         // For custom workouts WITH programDay: cycleDay was already set via setCycleDay.
         // For default/template workouts: cycleDay is always set correctly.
         const isUnassignedCustom = chosenWorkout?.type === "custom" && !chosenWorkout?.programDay;
-        const logCycleDay = isUnassignedCustom ? dayLog.cycleDay || null : cycleDay;
+        const logCycleDay = isUnassignedCustom ? dayLog.cycleDay ? Number(dayLog.cycleDay) : null : Number(cycleDay); // always store as number, never string
         const newLog = {
           ...prev,
           [dateKey]: {
@@ -9810,7 +9812,9 @@ function TrainingCalendar({
     const logged = sessionLogs[iso] || null;
     const loggedCycleDay = logged?.cycleDay || null;
     const loggedSession = loggedCycleDay ? SESSIONS_DATA[loggedCycleDay] : null;
-    const hasLog = logged ? Object.keys(logged.sets || {}).length > 0 : false;
+    const hasSets = logged ? Object.keys(logged.sets || {}).length > 0 : false;
+    const isSupplementary = hasSets && !loggedCycleDay; // sets logged but not tied to program day
+    const hasLog = hasSets; // any session with sets = logged (including supplementary)
 
     // Today (not yet logged) OR future: use projection
     let proj = null;
@@ -9838,6 +9842,7 @@ function TrainingCalendar({
       loggedCycleDay,
       loggedSession,
       hasLog,
+      isSupplementary,
       proj
     });
   }
@@ -9936,10 +9941,10 @@ function TrainingCalendar({
       border = `${phaseColor(loggedSession.phase)}66`;
       dotColor = phaseColor(loggedSession.phase);
     } else if (hasLog && !loggedSession) {
-      // Logged but no SESSIONS_DATA match (custom or rest)
-      bg = `${T.emerald}18`;
-      border = `${T.emerald}44`;
-      dotColor = T.emerald;
+      // Supplementary session (sets logged, no program day assigned) — amber
+      bg = `${T.amber}18`;
+      border = `${T.amber}44`;
+      dotColor = T.amber;
     } else if (proj && !proj.isRest) {
       // Projected future training day (or today)
       const col = phaseColor(proj.session?.phase);
@@ -10038,7 +10043,7 @@ function TrainingCalendar({
       height: 8,
       borderRadius: "50%",
       flexShrink: 0,
-      background: selectedCell.loggedSession ? phaseColor(selectedCell.loggedSession.phase) : T.emerald
+      background: selectedCell.isSupplementary ? T.amber : selectedCell.loggedSession ? phaseColor(selectedCell.loggedSession.phase) : T.emerald
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -10046,11 +10051,15 @@ function TrainingCalendar({
       fontWeight: 700,
       color: T.bright
     }
-  }, selectedCell.logged?.label || selectedCell.loggedSession?.label || "Session"), selectedCell.loggedSession && /*#__PURE__*/React.createElement(Tag, {
+  }, selectedCell.logged?.label || selectedCell.loggedSession?.label || "Session"), selectedCell.isSupplementary ? /*#__PURE__*/React.createElement(Tag, {
+    text: "SUPPLEMENTARY",
+    color: T.amber,
+    xs: true
+  }) : selectedCell.loggedSession && /*#__PURE__*/React.createElement(Tag, {
     text: selectedCell.loggedSession.phase?.toUpperCase(),
     color: phaseColor(selectedCell.loggedSession.phase),
     xs: true
-  })), /*#__PURE__*/React.createElement("div", {
+  })), !selectedCell.isSupplementary && /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       flexWrap: "wrap",
@@ -10068,7 +10077,7 @@ function TrainingCalendar({
       color: T.dim,
       marginBottom: 10
     }
-  }, "✓ Completed · Day ", selectedCell.loggedCycleDay, "/16 · ", Object.keys(selectedCell.logged?.sets || {}).length, " exercises"), /*#__PURE__*/React.createElement(Btn, {
+  }, selectedCell.isSupplementary ? "Supplementary — sets saved but not tied to program. Tap '📋 View' to reassign a program day." : `✓ Completed · Day ${selectedCell.loggedCycleDay}/16 · ${Object.keys(selectedCell.logged?.sets || {}).length} exercises`), /*#__PURE__*/React.createElement(Btn, {
     style: {
       width: "100%"
     },
@@ -10076,7 +10085,7 @@ function TrainingCalendar({
       date: selectedCell.iso,
       log: selectedCell.logged
     })
-  }, "📋 View & Edit Session"))
+  }, "📋 ", selectedCell.isSupplementary ? "View & Assign Program Day" : "View & Edit Session"))
 
   /* Today — not yet logged */ : selectedCell.isToday && selectedCell.proj ? /*#__PURE__*/React.createElement("div", null, selectedCell.proj.isRest ? /*#__PURE__*/React.createElement("div", {
     style: {
@@ -10209,6 +10218,9 @@ function TrainingCalendar({
   }, {
     color: T.steel,
     label: "Hypertrophy (logged)"
+  }, {
+    color: T.amber,
+    label: "Supplementary"
   }, {
     color: T.dim,
     label: "Projected"
@@ -14593,7 +14605,7 @@ function App() {
       onClick: () => {
         const updated = {
           ...reviewSession.log,
-          cycleDay: day,
+          cycleDay: Number(day),
           label: reviewSession.log.label || s?.label
         };
         setSessionLogs(prev => ({
@@ -14619,10 +14631,11 @@ function App() {
     }, "Day ", day, " · ", s?.label?.split("—")[0]?.trim() || "?");
   }), /*#__PURE__*/React.createElement("button", {
     onClick: () => {
-      // Clear cycleDay — mark as supplementary (won't advance program)
+      if (!window.confirm("Mark as supplementary? This removes the session from your program progress — the sets are still saved but the program won't advance. You can re-assign a day anytime.")) return;
       const updated = {
         ...reviewSession.log,
-        cycleDay: null
+        cycleDay: null,
+        isCustom: true
       };
       setSessionLogs(prev => ({
         ...prev,
@@ -14644,7 +14657,7 @@ function App() {
       border: `1px solid ${!reviewSession.log?.cycleDay ? T.amber : T.border}`,
       color: !reviewSession.log?.cycleDay ? T.amber : T.dim
     }
-  }, "Supplementary")))), /*#__PURE__*/React.createElement("button", {
+  }, "⚠ Supplementary (doesn't count toward program)")))), /*#__PURE__*/React.createElement("button", {
     onClick: () => setReviewSession(null),
     style: {
       background: "none",
@@ -14814,4 +14827,4 @@ function App() {
     }));
   })))));
 }
-// v1783484046762
+// v1784096799678
