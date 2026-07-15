@@ -2660,9 +2660,13 @@ function Onboarding({
 // See getDerivedHistory(sessionLogs) below
 
 function daysSince(dateStr) {
-  const then = new Date(dateStr + "T12:00:00");
-  const now = new Date();
-  return Math.floor((now - then) / (1000 * 60 * 60 * 24));
+  // Compare date strings directly to avoid time-of-day issues (session logged before noon = -1 bug)
+  const todayISO = new Date().toISOString().slice(0, 10);
+  const thenParts = dateStr.split('-').map(Number);
+  const todayParts = todayISO.split('-').map(Number);
+  const then = new Date(thenParts[0], thenParts[1] - 1, thenParts[2]);
+  const today = new Date(todayParts[0], todayParts[1] - 1, todayParts[2]);
+  return Math.round((today - then) / (1000 * 60 * 60 * 24));
 }
 function formatDate(dateStr) {
   return new Date(dateStr + "T12:00:00").toLocaleDateString("en-US", {
@@ -4823,6 +4827,7 @@ function Session({
   // "building" = actively in session
   // "done" = session completed
   const [savePrompt, setSavePrompt] = useState(false); // show save-as-template prompt
+  const [sessionStartCycleDay, setSessionStartCycleDay] = useState(null); // cycleDay when workout started
   const [showBuilder, setShowBuilder] = useState(false); // custom workout builder
   const [assigningDay, setAssigningDay] = useState(null); // cw.id being assigned to a day
   const [pendingCustomStart, setPendingCustomStart] = useState(null); // {cw} waiting for day assignment
@@ -4911,6 +4916,7 @@ function Session({
       programDay: cw.programDay || null
     });
     if (cw.programDay) setCycleDay(cw.programDay);
+    setSessionStartCycleDay(cw.programDay || cycleDay);
     setPendingCustomStart(null);
   }
   const [expanded, setExpanded] = useState(null);
@@ -5097,13 +5103,15 @@ function Session({
         // For custom workouts WITH programDay: cycleDay was already set via setCycleDay.
         // For default/template workouts: cycleDay is always set correctly.
         const isUnassignedCustom = chosenWorkout?.type === "custom" && !chosenWorkout?.programDay;
-        const logCycleDay = isUnassignedCustom ? dayLog.cycleDay ? Number(dayLog.cycleDay) : null : Number(cycleDay); // always store as number, never string
+        // Use sessionStartCycleDay (frozen at workout start) not cycleDay (advances after first set)
+        const writeCycleDay = sessionStartCycleDay || cycleDay;
+        const logCycleDay = isUnassignedCustom ? dayLog.cycleDay ? Number(dayLog.cycleDay) : null : Number(writeCycleDay); // always the day THIS workout counts as
         const newLog = {
           ...prev,
           [dateKey]: {
             ...dayLog,
             cycleDay: logCycleDay,
-            label: dayLog.label || (chosenWorkout?.type === "custom" ? chosenWorkout.label : null) || SESSIONS_DATA[cycleDay]?.label || "",
+            label: dayLog.label || (chosenWorkout?.type === "custom" ? chosenWorkout.label : null) || SESSIONS_DATA[sessionStartCycleDay || cycleDay]?.label || "",
             customWorkoutId: chosenWorkout?.type === "custom" ? chosenWorkout.id : undefined,
             // Mark unassigned custom sessions so history can show them differently
             isCustom: chosenWorkout?.type === "custom" && !chosenWorkout?.programDay,
@@ -5388,6 +5396,7 @@ function Session({
             type: "default",
             label: sessionMeta.label
           });
+          setSessionStartCycleDay(cycleDay); // stamp the day this workout counts as
         }
       },
       style: {
@@ -5470,6 +5479,7 @@ function Session({
           type: "default",
           label: sessionMeta.label
         });
+        setSessionStartCycleDay(cycleDay);
       }
     }, "▶ Start as Programmed"), /*#__PURE__*/React.createElement(Btn, {
       size: "sm",
@@ -5495,6 +5505,7 @@ function Session({
             type: "template",
             label: savedTemplate.name
           });
+          setSessionStartCycleDay(cycleDay);
         }
       },
       style: {
@@ -7529,13 +7540,13 @@ function Session({
       color: T.violet,
       marginBottom: 4
     }
-  }, "Save this as your Day ", cycleDay, " template?"), /*#__PURE__*/React.createElement("div", {
+  }, "Save this as your Day ", sessionStartCycleDay || cycleDay, " template?"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11,
       color: T.muted,
       marginBottom: 10
     }
-  }, "Next time you open Day ", cycleDay, ", your version loads by default."), /*#__PURE__*/React.createElement("div", {
+  }, "Next time you open Day ", sessionStartCycleDay || cycleDay, ", your version loads by default."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 8
@@ -7612,7 +7623,7 @@ function Session({
       textAlign: chosenWorkout?.type === "custom" ? "center" : "left"
     }
   }, chosenWorkout?.type === "custom" ? "or save as a separate new workout:" : "Name this workout:"), /*#__PURE__*/React.createElement("input", {
-    placeholder: chosenWorkout?.type === "custom" ? "New workout name (required)" : `My Day ${cycleDay} — ${sessionMeta.label}`,
+    placeholder: chosenWorkout?.type === "custom" ? "New workout name (required)" : `My Day ${sessionStartCycleDay || cycleDay} — ${sessionMeta?.label || ""}`,
     value: saveTemplateName,
     onChange: e => setSaveTemplateName(e.target.value),
     style: {
@@ -7639,7 +7650,8 @@ function Session({
       })
     },
     onClick: () => {
-      const name = saveTemplateName.trim() || `My Day ${cycleDay} — ${sessionMeta.label}`;
+      const saveDay = sessionStartCycleDay || cycleDay;
+      const name = saveTemplateName.trim() || `My Day ${saveDay} — ${sessionMeta?.label || ""}`;
       if (chosenWorkout?.type === "custom" && !saveTemplateName.trim()) return;
       const today = new Date().toLocaleDateString("en-US", {
         month: "short",
@@ -7658,9 +7670,9 @@ function Session({
       };
       setSavedTemplates(prev => ({
         ...prev,
-        [cycleDay]: tmpl
+        [saveDay]: tmpl
       }));
-      if (uid) fsSet(uid, "savedTemplates", String(cycleDay), tmpl);
+      if (uid) fsSet(uid, "savedTemplates", String(saveDay), tmpl);
       const newCustom = {
         id: uid_gen("cw"),
         name,
@@ -14072,6 +14084,7 @@ function App() {
     setLockedSets({});
     setActiveSet({});
     setSetCount({});
+    setSessionStartCycleDay(null);
   }
 
   // Once hydrated, sync booted and cycleDay with what we loaded
@@ -14085,10 +14098,16 @@ function App() {
   }, [hydrated]);
 
   // ── SINGLE SOURCE OF TRUTH ────────────────────────────────
+  // Only advance cycleDay when no workout is in progress.
+  // During a workout (sessionState==="building"), cycleDay must stay frozen
+  // at the value it had when the workout started — otherwise the first logged
+  // set would advance cycleDay from Day 3 to Day 5, and every subsequent set
+  // in that same Chest session would write cycleDay=5 (Back) instead of 3.
   useEffect(() => {
+    if (sessionState === "building") return; // frozen during active workout
     const computed = getCurrentCycleDay(sessionLogs);
     setCycleDay(computed);
-  }, [sessionLogs]);
+  }, [sessionLogs, sessionState]);
   useEffect(() => {
     if (profile && profile.goal && profile.weight) setBooted(true);
   }, [profile]);
@@ -14234,7 +14253,7 @@ function App() {
       marginTop: 1,
       letterSpacing: "0.02em"
     }
-  }, "Day ", cycleDay, sessionMeta ? ` · ${sessionMeta.label} — ${sessionMeta.phase === "strength" ? "Strength" : "Hypertrophy"}` : " · Rest")), /*#__PURE__*/React.createElement("div", {
+  }, "Day ", cycleDay, sessionMeta ? ` · ${sessionMeta.label}` : " · Rest")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "relative"
     }
@@ -14827,4 +14846,4 @@ function App() {
     }));
   })))));
 }
-// v1784096799678
+// v1784146648765
