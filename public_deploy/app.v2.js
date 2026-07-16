@@ -4794,6 +4794,9 @@ function Session({
   setSessionLogs = () => {},
   customLib = [],
   setCustomLib = () => {},
+  setCycleDay = () => {},
+  triggerRestDayModal = false,
+  setTriggerRestDayModal = () => {},
   // Lifted workout state — survives tab switches
   sessionState = "picker",
   setSessionState = () => {},
@@ -5174,6 +5177,129 @@ function Session({
   }
 
   // ── WORKOUT PICKER SCREEN ──────────────────────────
+  // ── REST DAY TRAINING MODAL ───────────────────────────────────────
+  // Triggered when user taps "Train on rest day" from calendar.
+  // Shows the next program sessions so user can pick which to do.
+  // Completing it advances the cycle exactly as a normal scheduled session.
+  if (triggerRestDayModal) {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: "20px 20px 120px"
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        setTriggerRestDayModal(false);
+        setTab("progress");
+      },
+      style: {
+        background: "none",
+        border: "none",
+        color: T.muted,
+        fontSize: 13,
+        cursor: "pointer",
+        padding: "0 0 16px",
+        display: "flex",
+        alignItems: "center",
+        gap: 4
+      }
+    }, "← Back to Calendar"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: T.card,
+        borderRadius: 16,
+        border: `1px solid ${T.amber}44`,
+        padding: 24
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: T.amber,
+        letterSpacing: "0.1em",
+        marginBottom: 8
+      }
+    }, "TRAINING ON A REST DAY"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 19,
+        fontWeight: 700,
+        color: T.bright,
+        marginBottom: 8
+      }
+    }, "Which session do you want to do?"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: T.muted,
+        marginBottom: 20,
+        lineHeight: 1.5
+      }
+    }, "Completing this advances your cycle. The rest of the schedule shifts forward by one day."), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: 8,
+        marginBottom: 16
+      }
+    }, [1, 3, 5, 7, 9, 11, 13, 15].map(day => {
+      const s = SESSIONS_DATA[day];
+      const isNextDay = day === cycleDay;
+      return /*#__PURE__*/React.createElement("button", {
+        key: day,
+        onClick: () => {
+          setCycleDay(day);
+          setSessionStartCycleDay(day);
+          setTriggerRestDayModal(false);
+        },
+        style: {
+          padding: "12px 10px",
+          borderRadius: 10,
+          cursor: "pointer",
+          textAlign: "left",
+          transition: "all 0.1s",
+          background: isNextDay ? T.amber + "22" : T.surface,
+          border: `1px solid ${isNextDay ? T.amber : T.border}`
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 11,
+          fontWeight: 700,
+          color: isNextDay ? T.amber : T.dim
+        }
+      }, "Day ", day, isNextDay && /*#__PURE__*/React.createElement("span", {
+        style: {
+          marginLeft: 6,
+          fontSize: 9
+        }
+      }, "← NEXT UP")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 12,
+          color: T.text,
+          marginTop: 2,
+          fontWeight: 600
+        }
+      }, s?.label), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: 9,
+          color: T.dim,
+          marginTop: 1
+        }
+      }, s?.phase === "strength" ? "Strength" : "Hypertrophy"));
+    })), /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        setTriggerRestDayModal(false);
+        setTab("progress");
+      },
+      style: {
+        width: "100%",
+        background: "none",
+        border: `1px solid ${T.border}`,
+        borderRadius: 10,
+        padding: "11px 0",
+        color: T.dim,
+        fontSize: 12,
+        cursor: "pointer"
+      }
+    }, "Keep it as a rest day")));
+  }
+
   // ── REQUIRED PROGRAM DAY ASSIGNMENT MODAL ────────────────────────────
   // Fires when user tries to start a custom workout with no programDay.
   // Fullscreen overlay — they cannot skip this.
@@ -9766,7 +9892,8 @@ function TrainingCalendar({
   setCycleDay,
   setTab,
   profile,
-  setReviewSession = () => {}
+  setReviewSession = () => {},
+  setTriggerRestDayModal = () => {}
 }) {
   const todayDate = new Date();
   todayDate.setHours(0, 0, 0, 0);
@@ -9791,17 +9918,20 @@ function TrainingCalendar({
   // ── CELL DATA ──────────────────────────────────────────────────────
   // Rules:
   //   PAST:   show only real sessionLogs entries. Empty = show nothing.
-  //   TODAY:  show cycleDay from App (getCurrentCycleDay result).
-  //   FUTURE: project every-other-day sequence from today using cycleDay as anchor.
-  //           Never project backward.
+  //   TODAY:  if not yet logged, show current cycleDay. If already logged, show as logged.
+  //   FUTURE: project the cycle sequence forward from today.
+  //           If today already has a logged session, projections start from tomorrow
+  //           so the NEXT session (cycleDay) appears tomorrow, not today.
 
+  const todayAlreadyLogged = !!(sessionLogs[todayISO] && Object.keys(sessionLogs[todayISO]?.sets || {}).length > 0);
   function getFutureProjected(calDate) {
-    // How many days from today?
     const diffDays = Math.round((calDate.getTime() - todayDate.getTime()) / 86400000);
     if (diffDays < 0) return null; // never project into past
-    // Each 2 calendar days = 1 cycle step (1 training + 1 rest)
-    // diffDays=0 → cycleDay (today), diffDays=1 → cycleDay+1, diffDays=2 → cycleDay+2...
-    const raw = ((cycleDay - 1 + diffDays) % 16 + 16) % 16;
+    // If today is already logged, shift anchor by -1 so cycleDay lands on tomorrow (+1)
+    // instead of today (+0), making the next session visible on the calendar.
+    const offset = todayAlreadyLogged ? diffDays - 1 : diffDays;
+    if (offset < 0) return null; // don't project today if already logged
+    const raw = ((cycleDay - 1 + offset) % 16 + 16) % 16;
     const projDay = raw + 1;
     return {
       cycleDay: projDay,
@@ -10202,12 +10332,49 @@ function TrainingCalendar({
       fontSize: 11,
       color: T.dim
     }
-  }, "Day ", selectedCell.proj.cycleDay, "/16 · projected if training every other day")) : selectedCell.isFuture && selectedCell.proj?.isRest ? /*#__PURE__*/React.createElement("div", {
+  }, "Day ", selectedCell.proj.cycleDay, "/16 · projected if training every other day")) : selectedCell.isFuture && selectedCell.proj?.isRest ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
-      color: T.dim
+      fontSize: 14,
+      color: T.muted,
+      marginBottom: 10
     }
-  }, "😴 Projected rest day") : selectedCell.isPast && !selectedCell.hasLog ? /*#__PURE__*/React.createElement("div", {
+  }, "😴 Rest day — recovery and growth"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim,
+      marginBottom: 12
+    }
+  }, "The program schedules rest here. If you want to train the next session early, you can — it will advance your cycle."), /*#__PURE__*/React.createElement(Btn, {
+    variant: "outline",
+    style: {
+      width: "100%"
+    },
+    onClick: () => {
+      setTriggerRestDayModal(true);
+      setTab("session");
+    }
+  }, "🏋️ Train Next Session Early →")) : selectedCell.isToday && selectedCell.proj?.isRest ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 14,
+      color: T.muted,
+      marginBottom: 10
+    }
+  }, "😴 Rest day — recovery and growth"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: T.dim,
+      marginBottom: 12
+    }
+  }, "Today is scheduled as rest. Train your next session if you feel ready — it will advance your cycle."), /*#__PURE__*/React.createElement(Btn, {
+    variant: "outline",
+    style: {
+      width: "100%"
+    },
+    onClick: () => {
+      setTriggerRestDayModal(true);
+      setTab("session");
+    }
+  }, "🏋️ Train Next Session Today →")) : selectedCell.isPast && !selectedCell.hasLog ? /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
       color: T.dim
@@ -11595,6 +11762,7 @@ function Progress({
   setReviewSession = () => {},
   customLib = [],
   setCustomLib = () => {},
+  setTriggerRestDayModal = () => {},
   weightLog: weightLogProp,
   setWeightLog: setWeightLogProp,
   recoveryLog: recoveryLogProp,
@@ -11615,6 +11783,7 @@ function Progress({
   const [movementMuscleFilter, setMovementMuscleFilter] = useState("ALL");
   const [showAddForm, setShowAddForm] = useState(false);
   // customLib and setCustomLib received as props from App
+  // Same storage key as BodyCompCalculator — single source of truth, read-only here for export
   const [_bodyCompLogForExport] = usePersistedState(STORAGE_KEYS.BODYCOMP_LOG, []);
   const bodyCompLogForExport = bodyCompLogProp !== undefined ? bodyCompLogProp : _bodyCompLogForExport;
   const [newMov, setNewMov] = useState({
@@ -11946,7 +12115,8 @@ function Progress({
     setCycleDay: setCycleDay,
     setTab: setTab,
     profile: profile,
-    setReviewSession: setReviewSession
+    setReviewSession: setReviewSession,
+    setTriggerRestDayModal: setTriggerRestDayModal
   }), activeSection === "strength" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
@@ -14057,6 +14227,8 @@ function App() {
   const [tab, setTab] = useState("home");
   const [showSettingsMenu, setShowSettingsMenu] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  // Rest day training — triggers day picker in Session
+  const [triggerRestDayModal, setTriggerRestDayModal] = useState(false);
   // Session review modal — lifted to App so both Home and Calendar can open it
   const [reviewSession, setReviewSession] = useState(null);
   const [cycleDay, setCycleDay] = useState(() => getCurrentCycleDay(storageGet(STORAGE_KEYS.SESSION_LOGS, {})));
@@ -14489,7 +14661,10 @@ function App() {
     setActiveSet: setActiveSet,
     setCount: setCount,
     setSetCount: setSetCount,
-    resetWorkout: resetWorkout
+    resetWorkout: resetWorkout,
+    setCycleDay: setCycleDay,
+    triggerRestDayModal: triggerRestDayModal,
+    setTriggerRestDayModal: setTriggerRestDayModal
   })), tab === "learn" && /*#__PURE__*/React.createElement(Learn, {
     profile: profile
   }), tab === "progress" && /*#__PURE__*/React.createElement(Progress, {
@@ -14504,6 +14679,7 @@ function App() {
     setReviewSession: setReviewSession,
     customLib: customLib,
     setCustomLib: setCustomLib,
+    setTriggerRestDayModal: setTriggerRestDayModal,
     weightLog: weightLog,
     setWeightLog: setWeightLog,
     recoveryLog: recoveryLog,
@@ -14846,4 +15022,4 @@ function App() {
     }));
   })))));
 }
-// v1784146648765
+// v1784244958024
