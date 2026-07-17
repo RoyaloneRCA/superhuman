@@ -95,6 +95,12 @@ function uid_gen(prefix = "id") {
   return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
 }
 
+// Local date ISO string — avoids UTC rollover bug where 8pm local = next day UTC
+function localDateISO(d) {
+  const date = d || new Date();
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+}
+
 // ── STORAGE LAYER ──────────────────────────────────────────────
 // Uses window.storage (Claude artifact persistent API) as primary,
 // with localStorage as fallback for deployed Firebase hosting.
@@ -2661,7 +2667,7 @@ function Onboarding({
 
 function daysSince(dateStr) {
   // Compare date strings directly to avoid time-of-day issues (session logged before noon = -1 bug)
-  const todayISO = new Date().toISOString().slice(0, 10);
+  const todayISO = localDateISO();
   const thenParts = dateStr.split('-').map(Number);
   const todayParts = todayISO.split('-').map(Number);
   const then = new Date(thenParts[0], thenParts[1] - 1, thenParts[2]);
@@ -3441,7 +3447,7 @@ function Dashboard({
     const suppLabel = isAM ? "AM Supplements" : "PM Supplements";
     const suppItems = isAM ? "Creatine · D3 · K2 · Zinc · Boron · Royal Jelly · Bee Pollen · Bamboo" : "Magnesium · Fish Oil · Zinc · Glycine · Melatonin";
     const suppTime = isAM ? "Take with breakfast" : "Take 30–60 min before sleep";
-    const todayKey = new Date().toISOString().slice(0, 10);
+    const todayKey = localDateISO();
     const todayLog = supplementLog[todayKey] || {
       am: false,
       pm: false
@@ -5092,7 +5098,10 @@ function Session({
     const w = parseFloat(logs[`${exIdx}-${setIdx}-w`] || 0);
     const r = parseInt(logs[`${exIdx}-${setIdx}-r`] || 0);
     const rir = parseInt(logs[`${exIdx}-${setIdx}-rir`] || 0);
-    const dateKey = new Date().toISOString().slice(0, 10);
+    // Use local date not UTC — toISOString() returns UTC which can be tomorrow
+    // if user trains in the evening in a timezone behind UTC
+    const now = new Date();
+    const dateKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     if (w > 0 && r > 0) {
       setSessionLogs(prev => {
         const dayLog = prev[dateKey] || {
@@ -9897,7 +9906,7 @@ function TrainingCalendar({
 }) {
   const todayDate = new Date();
   todayDate.setHours(0, 0, 0, 0);
-  const todayISO = todayDate.toISOString().slice(0, 10);
+  const todayISO = localDateISO(todayDate);
 
   // Calendar view state
   const [viewDate, setViewDate] = useState(() => {
@@ -9915,22 +9924,32 @@ function TrainingCalendar({
   const dow = (firstOfMonth.getDay() + 6) % 7;
   startOfGrid.setDate(startOfGrid.getDate() - dow);
 
-  // ── CELL DATA ──────────────────────────────────────────────────────
-  // Rules:
-  //   PAST:   show only real sessionLogs entries. Empty = show nothing.
-  //   TODAY:  if not yet logged, show current cycleDay. If already logged, show as logged.
-  //   FUTURE: project the cycle sequence forward from today.
-  //           If today already has a logged session, projections start from tomorrow
-  //           so the NEXT session (cycleDay) appears tomorrow, not today.
+  // ── PROJECTION ANCHOR ─────────────────────────────────────────────
+  // Find the most recent logged session date (past OR future — user may have
+  // logged a session on a future date). Projection starts the day after that.
+  // This prevents Shoulders appearing on July 18 when Chest was already logged
+  // on July 17 (a future date from today's perspective).
+  const allLoggedDates = Object.entries(sessionLogs).filter(([, log]) => Object.keys(log.sets || {}).length > 0 && log.cycleDay).map(([date]) => date).sort();
+  const lastLoggedDate = allLoggedDates.length > 0 ? allLoggedDates[allLoggedDates.length - 1] : null;
+  const lastLoggedDateObj = lastLoggedDate ? new Date(lastLoggedDate + 'T00:00:00') : null;
 
-  const todayAlreadyLogged = !!(sessionLogs[todayISO] && Object.keys(sessionLogs[todayISO]?.sets || {}).length > 0);
+  // todayAlreadyLogged: kept for backward compat but projection now uses lastLoggedDate
+  const todayAlreadyLogged = lastLoggedDate === todayISO;
   function getFutureProjected(calDate) {
     const diffDays = Math.round((calDate.getTime() - todayDate.getTime()) / 86400000);
-    if (diffDays < 0) return null; // never project into past
-    // If today is already logged, shift anchor by -1 so cycleDay lands on tomorrow (+1)
-    // instead of today (+0), making the next session visible on the calendar.
-    const offset = todayAlreadyLogged ? diffDays - 1 : diffDays;
-    if (offset < 0) return null; // don't project today if already logged
+    if (diffDays < 0) return null;
+
+    // If there's a logged session on or after today, project from day after that
+    // instead of from today, so the sequence doesn't conflict with logged sessions
+    let offset = diffDays;
+    if (lastLoggedDateObj && lastLoggedDateObj >= todayDate) {
+      const daysSinceLastLogged = Math.round((calDate.getTime() - lastLoggedDateObj.getTime()) / 86400000);
+      if (daysSinceLastLogged <= 0) return null; // on or before last logged — no proj
+      offset = daysSinceLastLogged - 1;
+    } else if (todayAlreadyLogged) {
+      offset = diffDays - 1;
+      if (offset < 0) return null;
+    }
     const raw = ((cycleDay - 1 + offset) % 16 + 16) % 16;
     const projDay = raw + 1;
     return {
@@ -9944,7 +9963,7 @@ function TrainingCalendar({
     const d = new Date(startOfGrid);
     d.setDate(startOfGrid.getDate() + i);
     d.setHours(0, 0, 0, 0);
-    const iso = d.toISOString().slice(0, 10);
+    const iso = localDateISO(d);
     const isThisMonth = d.getMonth() === viewMonth;
     const isToday = iso === todayISO;
     const isFuture = d > todayDate;
@@ -10698,7 +10717,7 @@ function BodyCompCalculator({
     const fatLbs = pct / 100 * currentWeight;
     const leanLbs = currentWeight - fatLbs;
     const muscleLbs = leanLbs * 0.85;
-    const today = new Date().toISOString().slice(0, 10);
+    const today = localDateISO();
     const entry = {
       date: today,
       dateLabel: new Date().toLocaleDateString("en-US", {
@@ -15022,4 +15041,4 @@ function App() {
     }));
   })))));
 }
-// v1784244958024
+// v1784265365756
