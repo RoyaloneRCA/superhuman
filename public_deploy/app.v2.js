@@ -23,8 +23,10 @@ const fsUserCol = (uid, col) => fbDb()?.collection("users").doc(uid).collection(
 async function fsSet(uid, col, id, data) {
   if (!fbDb() || !uid) return;
   try {
+    // Strip undefined values — Firestore rejects them
+    const clean = JSON.parse(JSON.stringify(data));
     await fsUserDoc(uid, col, id).set({
-      ...data,
+      ...clean,
       _updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     }, {
       merge: true
@@ -4820,7 +4822,9 @@ function Session({
   setActiveSet = () => {},
   setCount = {},
   setSetCount = () => {},
-  resetWorkout = () => {}
+  resetWorkout = () => {},
+  sessionStartCycleDay = null,
+  setSessionStartCycleDay = () => {}
 }) {
   const sessionKey = cycleDay;
   const sessionMeta = SESSIONS_DATA[sessionKey];
@@ -4836,7 +4840,6 @@ function Session({
   // "building" = actively in session
   // "done" = session completed
   const [savePrompt, setSavePrompt] = useState(false); // show save-as-template prompt
-  const [sessionStartCycleDay, setSessionStartCycleDay] = useState(null); // cycleDay when workout started
   const [showBuilder, setShowBuilder] = useState(false); // custom workout builder
   const [assigningDay, setAssigningDay] = useState(null); // cw.id being assigned to a day
   const [pendingCustomStart, setPendingCustomStart] = useState(null); // {cw} waiting for day assignment
@@ -14264,6 +14267,7 @@ function App() {
   const [lockedSets, setLockedSets] = useState({});
   const [activeSet, setActiveSet] = useState({});
   const [setCount, setSetCount] = useState({});
+  const [sessionStartCycleDay, setSessionStartCycleDay] = useState(null);
 
   // Reset all workout state (called on Finish or when starting fresh)
   function resetWorkout() {
@@ -14681,6 +14685,8 @@ function App() {
     setCount: setCount,
     setSetCount: setSetCount,
     resetWorkout: resetWorkout,
+    sessionStartCycleDay: sessionStartCycleDay,
+    setSessionStartCycleDay: setSessionStartCycleDay,
     setCycleDay: setCycleDay,
     triggerRestDayModal: triggerRestDayModal,
     setTriggerRestDayModal: setTriggerRestDayModal
@@ -15041,4 +15047,4 @@ function App() {
     }));
   })))));
 }
-// v1784265365756
+// v1784275305449
