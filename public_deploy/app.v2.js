@@ -11858,7 +11858,7 @@ function Progress({
   };
 
   // Build chart data from real sessionLogs for the active lift
-  const activeLiftMeta = LIFTS_MAP[activeLift];
+  const activeLiftMeta = LIFTS_MAP[activeLift] || LIFTS_MAP["bench"];
   const liftHistory = useMemo(() => {
     const allData = [];
     activeLiftMeta.exIds.forEach(id => {
@@ -12268,7 +12268,7 @@ function Progress({
       color: T.steel
     }
   }, "■"), " Hypertrophy"))), (() => {
-    const cycles = [...new Set(activeLiftMeta.data.map(d => d.cycle))];
+    const cycles = [...new Set(liftHistory.map(d => d.cycle))];
     return /*#__PURE__*/React.createElement("div", {
       style: {
         display: "flex",
@@ -15047,4 +15047,4 @@ function App() {
     }));
   })))));
 }
-// v1784275305449
+// v1784322934929
