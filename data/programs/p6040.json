@@ -1,0 +1,378 @@
+{
+ "id": "p6040",
+ "name": "60/40",
+ "description": "Push, Pull, Legs, Upper, Lower.",
+ "cycleDays": 8,
+ "schedule": [
+  "D1",
+  "rest",
+  "D2",
+  "D3",
+  "rest",
+  "UP",
+  "LO",
+  "rest"
+ ],
+ "sessions": {
+  "D1": {
+   "label": "Day 1 - Push",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": [
+      "5-6",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": [
+      "6-8",
+      "3-8",
+      "3-8"
+     ]
+    },
+    {
+     "name": "High to Low Fly/Press",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": [
+      "6-8",
+      "3-8",
+      "3-8"
+     ]
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": [
+      "6-8",
+      "3-8",
+      "3-8"
+     ]
+    },
+    {
+     "name": "Upper Trap Shrug",
+     "sets": 3,
+     "reps": [
+      "15-20",
+      "8-20",
+      "3-20"
+     ]
+    }
+   ]
+  },
+  "D2": {
+   "label": "Day 2 - Pull",
+   "exercises": [
+    {
+     "name": "Neutral Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Standard Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Pullover",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-15",
+      "6-15"
+     ]
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Erector Crunches",
+     "sets": 3,
+     "reps": [
+      "8-15",
+      "6-15",
+      "6-15"
+     ]
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12-20"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-8",
+      "3-8"
+     ]
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    }
+   ]
+  },
+  "D3": {
+   "label": "Day 3 - Legs",
+   "exercises": [
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": [
+      "12-15",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": [
+      "12-15",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  },
+  "UP": {
+   "label": "Upper",
+   "exercises": [
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 3,
+     "reps": [
+      "6-8",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Standard Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12-20"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-8",
+      "4-8"
+     ]
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": [
+      "6-8",
+      "4-12"
+     ]
+    }
+   ]
+  },
+  "LO": {
+   "label": "Lower",
+   "exercises": [
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": [
+      "12-15",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": [
+      "12-15",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Hamstring Curl (Pulse Reps)",
+     "sets": 3,
+     "reps": "4-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,541 @@
+{
+ "id": "mansour_nightmare",
+ "name": "Mansour Method (Nightmare Mode)",
+ "description": "Coach Z's original program. Ridiculous volume. Not for the faint of heart. Every aspect of your lifestyle needs to be on point.",
+ "cycleDays": 16,
+ "workouts": 8,
+ "schedule": [
+  "D1",
+  "rest",
+  "D2",
+  "rest",
+  "D3",
+  "rest",
+  "D4",
+  "rest",
+  "D5",
+  "rest",
+  "D6",
+  "rest",
+  "D7",
+  "rest",
+  "D8",
+  "rest"
+ ],
+ "sessions": {
+  "D1": {
+   "label": "Day 1 - Legs (Strength)",
+   "focus": "Legs",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "name": "Machine Adductor",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Machine Abductor",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Barbell Squat (Low Bar)",
+     "sets": 5,
+     "reps": "5"
+    },
+    {
+     "name": "Barbell Bulgarian Split Squat",
+     "sets": 5,
+     "reps": "6-8",
+     "perSide": true
+    },
+    {
+     "name": "Barbell RDL",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Machine Hyperextension",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Machine Quad Extension",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Machine Seated Hamstring Curl",
+     "sets": 5,
+     "reps": "6-10"
+    },
+    {
+     "name": "Machine Standing Calf Raise",
+     "sets": 5,
+     "reps": "12"
+    }
+   ]
+  },
+  "D2": {
+   "label": "Day 2 - Chest (Strength)",
+   "focus": "Chest",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "name": "Bodyweight Push-Ups (Elbows Tucked)",
+     "sets": 5,
+     "reps": "20 MAX"
+    },
+    {
+     "name": "Bodyweight Diamond Push-Up",
+     "sets": 5,
+     "reps": "20 MAX"
+    },
+    {
+     "name": "Barbell Bench Press",
+     "sets": 5,
+     "reps": "5"
+    },
+    {
+     "name": "Barbell Incline Press (Elbows Flared)",
+     "sets": 10,
+     "reps": [
+      "12",
+      "8",
+      "6",
+      "6",
+      "6",
+      "6",
+      "6",
+      "6",
+      "8",
+      "12"
+     ]
+    },
+    {
+     "name": "Pec Deck Fly (Entire Chest)",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Cable Low to High Chest Fly",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Weighted Dips",
+     "sets": 5,
+     "reps": "3-5"
+    }
+   ]
+  },
+  "D3": {
+   "label": "Day 3 - Back/Bi (Strength)",
+   "focus": "Back/Bi",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "superset": [
+      {
+       "name": "Standard Grip Pull-Up",
+       "sets": 5,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Neutral Grip Pull-Up",
+       "sets": 5,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Underhand Grip Pull-Up",
+       "sets": 10,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Barbell Deadlift",
+       "sets": 10,
+       "reps": "5"
+      }
+     ]
+    },
+    {
+     "name": "Barbell Upper Back Row",
+     "sets": 5,
+     "reps": "3-6"
+    },
+    {
+     "name": "Dumbbell Lat Sweep",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Barbell Supinated Curl",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Dumbbell Standing Hammer Curl",
+     "sets": 5,
+     "reps": "6-8"
+    }
+   ]
+  },
+  "D4": {
+   "label": "Day 4 - Shoulder/Tri (Strength)",
+   "focus": "Shoulder/Tri",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "name": "Barbell Vertical Press (Military Press)",
+     "sets": 5,
+     "reps": "2-6"
+    },
+    {
+     "name": "Barbell Behind-the-Head Military Press",
+     "sets": 5,
+     "reps": "3-5"
+    },
+    {
+     "name": "Barbell Bradfords",
+     "sets": 5,
+     "reps": "6-8"
+    },
+    {
+     "name": "Barbell Shrugs",
+     "sets": 5,
+     "reps": "6-12"
+    },
+    {
+     "name": "Dumbbell Lateral Raise",
+     "sets": 5,
+     "reps": "6-10"
+    },
+    {
+     "name": "Barbell Overhead Tricep Extension",
+     "sets": 5,
+     "reps": "3-8"
+    },
+    {
+     "name": "Barbell Close Grip Bench",
+     "sets": 5,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "D5": {
+   "label": "Day 5 - Legs (Hypertrophy)",
+   "focus": "Legs",
+   "phase": "Hypertrophy",
+   "exercises": [
+    {
+     "name": "Machine Adductor",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Machine Abductor",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Barbell Adductor Bias Squat",
+     "sets": 5,
+     "reps": "5-8"
+    },
+    {
+     "superset": [
+      {
+       "name": "Machine B-Stance Hip Thrust",
+       "sets": 5,
+       "reps": "12",
+       "perSide": true
+      },
+      {
+       "name": "Machine Hip Thrust",
+       "sets": 5,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "name": "Barbell Step Back Lunges",
+     "sets": 5,
+     "reps": "6-8",
+     "perSide": true
+    },
+    {
+     "name": "Machine Quad Extension",
+     "sets": 5,
+     "reps": "8-12"
+    },
+    {
+     "name": "Machine Standing Hamstring Curl (Pulse Reps)",
+     "sets": 5,
+     "reps": "8-12"
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 5,
+     "reps": "10 full / 10 top half / 10 sec top hold"
+    }
+   ]
+  },
+  "D6": {
+   "label": "Day 6 - Chest (Hypertrophy)",
+   "focus": "Chest",
+   "phase": "Hypertrophy",
+   "exercises": [
+    {
+     "name": "Bodyweight Push-Ups (Elbows Tucked)",
+     "sets": 5,
+     "reps": "12 MAX"
+    },
+    {
+     "name": "Bodyweight Diamond Push-Up",
+     "sets": 5,
+     "reps": "12 MAX"
+    },
+    {
+     "superset": [
+      {
+       "name": "Barbell Guillotine Press",
+       "sets": 5,
+       "reps": "8-12"
+      },
+      {
+       "name": "Dumbbell Flat Chest Flies",
+       "sets": 5,
+       "reps": "8-12"
+      },
+      {
+       "name": "End-of-Bench Close Grip Push-Ups",
+       "sets": 5,
+       "reps": "8-12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Barbell Incline Press (Elbows Flared)",
+       "sets": 5,
+       "reps": "12-15"
+      },
+      {
+       "name": "Dumbbell Low to High Fly",
+       "sets": 5,
+       "reps": "12-15"
+      }
+     ]
+    },
+    {
+     "name": "Karate Chop Flies",
+     "sets": 5,
+     "reps": "10-12"
+    },
+    {
+     "superset": [
+      {
+       "name": "Dumbbell Incline Fly",
+       "sets": 5,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Dumbbell Incline Squeeze Press",
+       "sets": 5,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Dumbbell Incline Press (Elbows Flared)",
+       "sets": 5,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Bodyweight Dips",
+       "sets": 5,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Bodyweight Push-Up Dips",
+       "sets": 5,
+       "reps": "12 MAX"
+      }
+     ]
+    }
+   ]
+  },
+  "D7": {
+   "label": "Day 7 - Back/Bi (Hypertrophy)",
+   "focus": "Back/Bi",
+   "phase": "Hypertrophy",
+   "exercises": [
+    {
+     "superset": [
+      {
+       "name": "Standard Grip Pull-Up",
+       "sets": 5,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Neutral Grip Pull-Up",
+       "sets": 5,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "name": "Underhand Grip Pull-Up",
+     "sets": 10,
+     "reps": "12 MAX"
+    },
+    {
+     "superset": [
+      {
+       "name": "Barbell Upper Back Row",
+       "sets": 5,
+       "reps": "8-12"
+      },
+      {
+       "name": "Barbell Underhand Deficit Lat Sweep",
+       "sets": 5,
+       "reps": "8-12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Lat Pulldown Upper Back Row",
+       "sets": 5,
+       "reps": "8-12"
+      },
+      {
+       "name": "Cable Lat Sweep",
+       "sets": 5,
+       "reps": "8-12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Lat Pulldown Pullover",
+       "sets": 5,
+       "reps": "8-12"
+      },
+      {
+       "name": "Cable Supinated Rope Curl",
+       "sets": 5,
+       "reps": "8-12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Preacher Supinated Curl",
+       "sets": 5,
+       "reps": "8-12"
+      },
+      {
+       "name": "1-11 Plate Curl",
+       "sets": 5,
+       "reps": "8-12"
+      }
+     ]
+    }
+   ]
+  },
+  "D8": {
+   "label": "Day 8 - Shoulder/Tri (Hypertrophy)",
+   "focus": "Shoulder/Tri",
+   "phase": "Hypertrophy",
+   "exercises": [
+    {
+     "superset": [
+      {
+       "name": "Barbell Landmine Press",
+       "sets": 5,
+       "reps": "12"
+      },
+      {
+       "name": "Dumbbell Around the World Raise",
+       "sets": 5,
+       "reps": "12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Dumbbell Front Delt Raise",
+       "sets": 5,
+       "reps": "12"
+      },
+      {
+       "name": "Weight Plate Front Delt Raises",
+       "sets": 5,
+       "reps": "12"
+      },
+      {
+       "name": "Weight Plate Upright Row",
+       "sets": 5,
+       "reps": "12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Dumbbell Lateral Raise",
+       "sets": 5,
+       "reps": "12"
+      },
+      {
+       "name": "Dumbbell Lateral Raise (Top Partials)",
+       "sets": 5,
+       "reps": "12-15"
+      }
+     ]
+    },
+    {
+     "name": "Machine Calf Raise Shrug",
+     "sets": 5,
+     "reps": "12-20"
+    },
+    {
+     "superset": [
+      {
+       "name": "Dumbbell Supine Skullcrushers",
+       "sets": 5,
+       "reps": "12-15"
+      },
+      {
+       "name": "Bench Dips",
+       "sets": 5,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "name": "Cable Tricep Lever Press (Unilateral)",
+     "sets": 5,
+     "reps": "12"
+    },
+    {
+     "name": "Cable Tricep Extension (Unilateral)",
+     "sets": 5,
+     "reps": "12"
+    }
+   ]
+  }
+ }
+}

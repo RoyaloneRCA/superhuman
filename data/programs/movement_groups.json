@@ -1,0 +1,458 @@
+{
+ "Ab Crunch": [
+  "Barbell Ab Roller Crunch",
+  "Bodyweight Serratus Dips",
+  "Cable Ab Crunch",
+  "Cable Hanging Ab Crunch",
+  "Machine Ab Crunch",
+  "Machine Leg Stabilized Ab Crunch"
+ ],
+ "Ab Rotation": [
+  "Barbell Ab Twist",
+  "Cable Ab Twist"
+ ],
+ "Abductor": [
+  "Cable Abductor",
+  "Machine Abductor"
+ ],
+ "Adductor": [
+  "Bodyweight Copenhagens",
+  "Cable Adductor",
+  "Machine Adductor"
+ ],
+ "Adductor Bias Squat": [
+  "Barbell Adductor Bias Squat",
+  "Barbell Cossack Squat",
+  "Barbell Sumo Squat",
+  "Dumbbell Cossack Squat",
+  "Dumbbell Sumo Squat",
+  "Hack Squat Adductor Bias",
+  "Leg Press Adductor Bias",
+  "Pendulum Adductor Bias",
+  "Smith Machine Adductor Bias Squat",
+  "Smith Machine Sumo Squat"
+ ],
+ "Bent Knee Hinge": [
+  "Barbell B-Stance Hip Thrust",
+  "Barbell Hip Thrust",
+  "Barbell RDL",
+  "Cable Kickback",
+  "Dumbbell Hip Thrust",
+  "Dumbbell RDL",
+  "Dumbbell RDL (Unilateral)",
+  "Machine Bent Knee Hinge",
+  "Machine Bent Knee Hinge (Glute Builder)",
+  "Machine B-Stance Hip Thrust",
+  "Machine Hip Thrust",
+  "Seated Cable Row RDL",
+  "Smith Machine Hip Thrust",
+  "Smith Machine RDL"
+ ],
+ "Bodyweight Abs": [
+  "Ab Roller",
+  "Around the World Leg Raise",
+  "Cable Crunches",
+  "Chin-Up",
+  "Copenhagen Plank",
+  "Cross-Body Cable Press",
+  "Crunch Hold",
+  "Decline Bench Crunch",
+  "Decline Bench Mason Twists",
+  "Decline Bench Rainbows",
+  "Farmer's Carry",
+  "Front Plank",
+  "Half-Kneeling Medicine Ball Rotations",
+  "Hanging Leg Raise",
+  "Plank with Weight Slide",
+  "Pull-Up",
+  "Resistance Band Open Book",
+  "Side Plank",
+  "Side Plank Clamshell",
+  "Suitcase Carry"
+ ],
+ "Calf Raise": [
+  "Barbell Calf Raise",
+  "Dumbbell Single Calf Raise",
+  "Dumbbell Standing Calf Raise",
+  "Leg Press Calf Raise",
+  "Machine Donkey Calf Raise",
+  "Machine Standing Calf Raise",
+  "Smith Machine Calf Raise"
+ ],
+ "Chest Fly": [
+  "Cable Chest Fly",
+  "Dumbbell Flat Chest Flies",
+  "Pec Deck Fly (Entire Chest)"
+ ],
+ "Chest Press (Elbows Flared)": [
+  "Barbell Guillotine Press",
+  "Bodyweight Wide Push-Ups",
+  "Dumbbell Flat Chest Press (Elbows Flared)",
+  "Machine Flat Chest Press (Elbows Flared)",
+  "Machine Seated Chest Press (Elbows Flared)",
+  "Smith Machine Chest Press (Elbows Flared)"
+ ],
+ "Chest Press (Elbows Tucked)": [
+  "Barbell Bench Press",
+  "Barbell Block Press",
+  "Barbell Pause Bench",
+  "Bodyweight Push-Ups (Elbows Tucked)",
+  "Dumbbell Flat Chest Press (Elbows Tucked)",
+  "Machine Flat Chest Press (Elbows Tucked)",
+  "Machine Seated Chest Press (Elbows Tucked)",
+  "Smith Machine Chest Press (Elbows Tucked)",
+  "Smith Machine Underhand Chest Press"
+ ],
+ "Deadlift": [
+  "Barbell Deadlift",
+  "Barbell Deficit Deadlift",
+  "Barbell Pause Deadlift",
+  "Barbell Rack Pull",
+  "Barbell Sumo Deadlift",
+  "Trap Bar Deadlift"
+ ],
+ "Double Joint Tricep": [
+  "Barbell Close Grip Bench",
+  "Barbell JM Press",
+  "Bench Dips",
+  "Bodyweight Diamond Push-Up",
+  "Bodyweight Tricep Dips",
+  "Cable Tricep Lever Press (Unilateral)",
+  "Dumbbell Close Grip Press",
+  "End-of-Bench Close Grip Push-Ups",
+  "Machine Assisted Tricep Dips",
+  "Machine JM Press",
+  "Machine Tricep Dips",
+  "Smith Machine Close Grip Press",
+  "Smith Machine JM Press",
+  "Weighted Tricep Dip"
+ ],
+ "Erector Crunches": [
+  "Machine Erector Crunches",
+  "Seated Cable Row Erector Crunches"
+ ],
+ "Front Delt Raise": [
+  "Cable Front Delt Raise",
+  "Dumbbell Chest Supported Front Delt Raise",
+  "Dumbbell Front Delt Raise",
+  "Preacher Front Delt Raise",
+  "Weight Plate Front Delt Raises"
+ ],
+ "Hammer Curl": [
+  "1-11 Plate Curl",
+  "Cable Hammer Curls",
+  "Dumbbell Hammer Squeeze Curl",
+  "Dumbbell Incline Hammer Curl",
+  "Dumbbell Slouching Hammer Curl",
+  "Dumbbell Standing Hammer Curl",
+  "Dumbbell Upright Hammer Curl",
+  "Machine Hammer Preacher Curl",
+  "Preacher Unilateral Hammer Curl",
+  "Seated Cable Row Hammer Curl"
+ ],
+ "Hamstring Curl": [
+  "Dumbbell Supine Hamstring Curl",
+  "Machine Laying Hamstring Curls",
+  "Machine Seated Hamstring Curl",
+  "Machine Seated Hamstring Curl (Unilateral)",
+  "Machine Standing Hamstring Curl"
+ ],
+ "Hamstring Curl (Pulse Reps)": [
+  "Machine Laying Hamstring Curl (Pulse Reps)",
+  "Machine Seated Hamstring Curl (Pulse Reps)",
+  "Machine Standing Hamstring Curl (Pulse Reps)"
+ ],
+ "High to Low Fly/Press": [
+  "Barbell Decline Press",
+  "Bodyweight Dips",
+  "Bodyweight Push-Up Dips",
+  "Cable High to Low Chest Fly",
+  "Dumbbell Decline Fly",
+  "Dumbbell Decline Press",
+  "Dumbbell Pullover",
+  "Elevated Push-Ups",
+  "Machine Assisted Dips",
+  "Machine Dips",
+  "Pec Deck Fly (High to Low)",
+  "Weighted Dips"
+ ],
+ "Incline Chest Press (Elbows Flared)": [
+  "Barbell Incline Press (Elbows Flared)",
+  "Dumbbell Incline Press (Elbows Flared)",
+  "Machine Incline Press (Elbows Flared)",
+  "Smith Machine Incline Press (Elbows Flared)"
+ ],
+ "Incline Fly": [
+  "Cable Incline Fly",
+  "Dumbbell Incline Fly",
+  "Machine Incline Fly"
+ ],
+ "Lat Biased Row": [
+  "Lat Pulldown",
+  "Seated Cable Lat Biased Row",
+  "T-Bar Lat Biased Row"
+ ],
+ "Lat Sweep": [
+  "Barbell Underhand Deficit Lat Sweep",
+  "Cable Incline Chest Supported Lat Sweep",
+  "Cable Incline Chest Supported Lat Sweep (Unilateral)",
+  "Cable Lat Sweep",
+  "Cable Lat Sweep (Unilateral)",
+  "Dumbbell Lat Sweep",
+  "Machine Lat Sweep",
+  "Machine Lat Sweep (Unilateral)",
+  "Seated Cable Row Lat Sweep"
+ ],
+ "Lateral Raise": [
+  "Cable Lateral Raise",
+  "Cable Upright Row",
+  "Dumbbell Around the World Raise",
+  "Dumbbell Lateral Raise",
+  "Machine Lateral Raise",
+  "Machine Lateral Raise (Seated)",
+  "Smith Machine Upright Row",
+  "Weight Plate Upright Row"
+ ],
+ "Lateral Raise (Top Partials)": [
+  "Dumbbell Lateral Raise (Top Partials)",
+  "Machine Lateral Raise (Top Partials)"
+ ],
+ "Low to High Fly/Press": [
+  "Barbell Incline Press (Elbows Tucked)",
+  "Barbell Incline Underhand Press",
+  "Cable Low to High Chest Fly",
+  "Dumbbell Incline Press (Elbows Tucked)",
+  "Dumbbell Incline Squeeze Press",
+  "Dumbbell Low to High Fly",
+  "Karate Chop Flies",
+  "Machine Incline Press (Elbows Tucked)",
+  "Machine Side Seated Chest Press",
+  "Smith Machine Incline Press (Elbows Tucked)",
+  "Smith Machine Underhand Incline Press"
+ ],
+ "Middle/Lower Trap Shrug": [
+  "Machine Incline Middle-Lower Trap Shrug",
+  "Machine Kelso Shrug",
+  "Seated Cable Row Kelso Shrug",
+  "Smith Machine Kelso Shrug"
+ ],
+ "Pullover": [
+  "Cable Pullover",
+  "Lat Pulldown Pullover",
+  "Machine Pullover",
+  "Machine Super Pullover"
+ ],
+ "Quad Extension": [
+  "Machine Quad Extension",
+  "Machine Quad Extension (Unilateral)"
+ ],
+ "Rear Delt Fly": [
+  "Cable Bent Over Rear Delt Fly",
+  "Cable Chest Supported Rear Delt Fly",
+  "Dumbbell Rear Delt Fly",
+  "Lat Pulldown Rear Delt Fly",
+  "Pec Deck Rear Delt Fly (Unilateral)"
+ ],
+ "Reverse Curl": [
+  "3-9 Plate Curl",
+  "Cable Reverse Curl",
+  "Dumbbell Reverse Curl",
+  "Preacher Reverse Curl",
+  "Seated Cable Row Reverse Curls"
+ ],
+ "Single Joint Tricep": [
+  "Barbell Overhead Tricep Extension",
+  "Cable Bent Over Overhead Tricep Extension",
+  "Cable Tricep Extension",
+  "Cable Tricep Extension (Unilateral)",
+  "Cable Tricep Overhead Extension (Unilateral)",
+  "Cable Tricep Ski Extensions (Unilateral)",
+  "Dumbbell Supine Skullcrushers",
+  "Dumbbell Upright Overhead Extension (Unilateral)",
+  "Lat Pulldown Tricep Extension (Unilateral)",
+  "Machine Overhead Tricep Extension (Unilateral)",
+  "Seated Dumbbell Overhead Tricep Extension",
+  "Seated EZ Bar Overhead Tricep Extension",
+  "Supine EZ Bar Skullcrusher"
+ ],
+ "Squat": [
+  "Barbell Box Squat",
+  "Barbell Cannonball Squat",
+  "Barbell Front Squat",
+  "Barbell Hack Squat",
+  "Barbell Pause Squat",
+  "Barbell Pin Squat",
+  "Barbell Squat (High Bar)",
+  "Barbell Squat (Low Bar)",
+  "Barbell Step Back Lunges",
+  "Barbell Suicide Squat",
+  "Barbell Tempo Squat",
+  "Barbell Zercher Squat",
+  "Belt Squat",
+  "Bodyweight Sissy Squat",
+  "Cable Goblet Squat",
+  "Cable Step Back Lunges",
+  "Dumbbell Bulgarian Split Squat",
+  "Dumbbell Cannonball Squats",
+  "Dumbbell Goblet Squat",
+  "Dumbbell Lunges",
+  "Hack Squat B-Stance",
+  "Hack Squat",
+  "Leg Press Glute Bias",
+  "Leg Press Quad Bias",
+  "Leg Press Squat (Single Leg)",
+  "Pendulum B-Stance",
+  "Pendulum Squat",
+  "Smith Machine Bulgarian Split Squat",
+  "Smith Machine Cannonball Squat",
+  "Smith Machine Front Squat",
+  "Smith Machine Squat"
+ ],
+ "Straight Knee Hinge": [
+  "Barbell Pinned Goodmornings",
+  "Barbell Straight Leg Deadlift",
+  "Cable Straight Leg Hinge (Pullthroughs)",
+  "Dumbbell Straight Leg Hinge",
+  "Hyperextension",
+  "Machine Hyperextension",
+  "Seated Cable Row Straight Leg Hinge",
+  "Smith Machine Straight Leg Deadlift",
+  "V-Squat Goodmornings"
+ ],
+ "Supinated Curl": [
+  "Barbell Supinated Curl",
+  "Cable Supinated Rope Curl",
+  "Dumbbell Drag Curl",
+  "Dumbbell Incline Supinated Curl",
+  "Dumbbell Standing Supinated Curls",
+  "Dumbbell Supinated Squeeze Curl",
+  "Dumbbell Upright Supinated Curl",
+  "Dumbbell Waiter Curls",
+  "Machine Chest Press Curls",
+  "Machine Supinated Preacher Curl",
+  "Preacher Supinated Curl",
+  "Preacher Unilateral Supinated Curl",
+  "Seated Cable Row Supinated Curls"
+ ],
+ "Upper Back Row": [
+  "Barbell Pendlay Row",
+  "Barbell Upper Back Row",
+  "Dumbbell Upper Back Row",
+  "Lat Pulldown Upper Back Row",
+  "Machine Upper Back Row",
+  "Seated Cable Row Upper Back Row",
+  "Smith Machine Upper Back Row",
+  "T-Bar Upper Back Row"
+ ],
+ "Upper Trap Shrug": [
+  "Barbell Shrugs",
+  "Dumbbell Shrugs",
+  "Machine Calf Raise Shrug",
+  "Barbell Upper Trap Shrugs"
+ ],
+ "Vertical Press (Elbows Flared)": [
+  "Barbell Behind-the-Head Military Press",
+  "Barbell Vertical Press (Elbows Flared)",
+  "Dumbbell Vertical Press (Elbows Flared)",
+  "Machine Standing Vertical Press (Elbows Flared)",
+  "Machine Vertical Press (Elbows Flared)",
+  "Smith Machine Vertical Press (Elbows Flared)"
+ ],
+ "Vertical Press (Elbows Tucked)": [
+  "Barbell Landmine Press",
+  "Barbell Vertical Press (Elbows Tucked)",
+  "Barbell Vertical Press (Military Press)",
+  "Cable Vertical Press (Elbows Tucked)",
+  "Dumbbell Vertical Press (Elbows Tucked)",
+  "EZ Bar Vertical Press (Elbows Tucked)",
+  "Machine Standing Vertical Press (Elbows Tucked)",
+  "Machine Vertical Press (Elbows Tucked)",
+  "Smith Machine Vertical Press (Elbows Tucked)"
+ ],
+ "Pull-Ups": [
+  "Standard Grip Pull-Up",
+  "Neutral Grip Pull-Up",
+  "Underhand Grip Pull-Up",
+  "Weighted Pull-Up",
+  "Machine Assisted Pull-Up",
+  "Resistance Band Assisted Pull-Up"
+ ],
+ "Other": [
+  "Barbell Bradfords",
+  "Barbell Bulgarian Split Squat",
+  "Seated Cable Row (Retraction/Depression)",
+  "Z-Twists"
+ ],
+ "_equipment": [
+  "Band",
+  "Barbell",
+  "Bodyweight",
+  "Box",
+  "Cable",
+  "Dumbbell",
+  "Kettlebell",
+  "Machine",
+  "Smith Machine",
+  "EZ Bar",
+  "Weight Plate",
+  "Lat Pulldown",
+  "Seated Cable Row",
+  "Leg Press",
+  "Hack Squat",
+  "Pendulum",
+  "Preacher",
+  "T-Bar",
+  "V-Squat",
+  "Pec Deck",
+  "Trap Bar",
+  "Belt Squat"
+ ],
+ "_filters": {
+  "bodyRegion": [
+   "Full Body",
+   "Hip",
+   "Knee",
+   "Legs",
+   "Shoulder",
+   "Spine",
+   "Torso"
+  ],
+  "muscle": [
+   "Adductors (Groin)",
+   "Back",
+   "Biceps",
+   "Chest",
+   "Core (Anterior)",
+   "Core (Lateral)",
+   "Core (Posterior)",
+   "Forearms",
+   "Glutes",
+   "Rotator Cuff",
+   "Scapular Stabilizers",
+   "Shoulders",
+   "(list continues past Shoulders)"
+  ],
+  "movement": [
+   "Carry",
+   "Flexion",
+   "Hinge",
+   "Isometric",
+   "Pull (Horizontal)",
+   "Push (Horizontal)",
+   "Push (Vertical)",
+   "Rotation",
+   "(may continue)"
+  ],
+  "equipment": [
+   "Band",
+   "Barbell",
+   "Bodyweight",
+   "Box",
+   "Cable",
+   "Dumbbell",
+   "Kettlebell",
+   "Machine",
+   "(list continues)"
+  ]
+ }
+}

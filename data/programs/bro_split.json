@@ -1,0 +1,638 @@
+{
+ "id": "bro_split",
+ "name": "Bro Split",
+ "description": "Giving tender love and attention to each individual muscle group. Less frequency, more effort.",
+ "note": "Exercises are generic movement patterns; user picks the equipment variation.",
+ "variants": {
+  "4day": {
+   "sessions": [
+    "D1",
+    "D2",
+    "D3",
+    "D4"
+   ],
+   "schedules": {
+    "option1": [
+     "D1",
+     "D2",
+     "D3",
+     "D4",
+     "rest",
+     "rest"
+    ],
+    "option2": [
+     "D1",
+     "rest",
+     "D2",
+     "rest",
+     "D3",
+     "rest",
+     "D4",
+     "rest"
+    ]
+   }
+  },
+  "5day": {
+   "sessions": [
+    "D1b",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+   ],
+   "schedules": {
+    "option1": [
+     "D1b",
+     "D2",
+     "D3",
+     "D4",
+     "D5",
+     "rest",
+     "rest"
+    ],
+    "option2": [
+     "D1b",
+     "D2",
+     "rest",
+     "D3",
+     "D4",
+     "D5",
+     "rest"
+    ]
+   }
+  },
+  "6day": {
+   "sessions": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6"
+   ],
+   "schedules": {
+    "option1": [
+     "D1",
+     "D2",
+     "D3",
+     "D4",
+     "D5",
+     "D6",
+     "rest"
+    ],
+    "option2": [
+     "D1",
+     "D2",
+     "D3",
+     "rest",
+     "D4",
+     "D5",
+     "D6",
+     "rest"
+    ]
+   }
+  }
+ },
+ "sessions": {
+  "D1": {
+   "label": "Day 1 - Legs",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 4,
+     "reps": "6-12"
+    },
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  },
+  "D2": {
+   "label": "Day 2 - Chest",
+   "exercises": [
+    {
+     "name": "Bodyweight Push-Ups (Elbows Tucked)",
+     "sets": 5,
+     "reps": "20"
+    },
+    {
+     "name": "Bodyweight Diamond Push-Up",
+     "sets": 5,
+     "reps": "20"
+    },
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Incline Fly",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "High to Low Press/Fly",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    }
+   ]
+  },
+  "D3": {
+   "label": "Day 3 - Back/Bi",
+   "exercises": [
+    {
+     "name": "Standard Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Neutral Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Deadlift",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Pullover",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Middle/Lower Trap Shrug",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    }
+   ]
+  },
+  "D4": {
+   "label": "Day 4 - Shoulder/Tri",
+   "exercises": [
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Front Delt Raise",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Upper Trap Shrug",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    }
+   ]
+  },
+  "D5": {
+   "label": "Day 5 - Legs",
+   "exercises": [
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 3,
+     "reps": "8-12"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Hamstring Curl (Pulse Reps)",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  },
+  "D6": {
+   "label": "Day 6 - Arms/Abs",
+   "exercises": [
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Cable Supinated Rope Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Reverse Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Seated Dumbbell Overhead Tricep Extension",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Cable Tricep Extension (Unilateral)",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Double Joint Tricep Extension",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Ab Rotation",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    }
+   ]
+  },
+  "D1b": {
+   "label": "Day 1 - Legs (5-day)",
+   "exercises": [
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 4,
+     "reps": [
+      "4-8",
+      "3-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 4,
+     "reps": "6-12"
+    },
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  }
+ },
+ "missing": []
+}

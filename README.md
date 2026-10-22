@@ -1,16 +1,36 @@
-# React + Vite
+# Superhuman Physique
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Periodized strength and physique training app (Solutus Nexus). Single-page React 18 app, served as one self-contained HTML file on Firebase Hosting.
 
-Currently, two official plugins are available:
+**Live:** Firebase project `super-human-e6074`. Every push to `main` deploys automatically (`.github/workflows/deploy.yml`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What's in it
+- **12 programs** (First Gate, The Forge, Gauntlet, Split, Triad, Rotation, Power I/II, Upper Hand, Balance, Total, Ember) with schedule options, low-volume variants and set-by-set rep targets
+- **Phases** (Recomp / Lean Bulk / Cut / Peak): change calories and macros, never training
+- **Movement library**: 539 movements; general movements (e.g. "Squat") let the user pick a version, tracked separately
+- Calendar that follows each program's real cycle, rest days included
+- Progress tracking, Muscle Science dashboard, Learn tab
 
-## React Compiler
+## Repo layout
+| Path | Purpose |
+|---|---|
+| `src/superhuman_v3.jsx` | App source (single file) |
+| `data/programs/*.json` | Program data and movement library |
+| `tools/` | Generators and build scripts |
+| `public_deploy/index.html` | Built app, the only file Firebase serves |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build
+```bash
+npm install
+npm run build        # src/superhuman_v3.jsx -> public_deploy/index.html
+```
+Program and library data are embedded in the source. To regenerate after editing `data/programs/`:
+```bash
+python3 tools/gen_library.py     # movement_groups.json -> movement_library.json
+python3 tools/gen_programs.py    # programs + library -> build/programs_block.js
+```
+then replace the `const GENERIC_LIBRARY` and `const PROGRAMS_V2` lines in the source with the ones from `build/programs_block.js`.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes
+- Data is stored in the browser (localStorage). Firebase Auth/Firestore sync is coded but not enabled (`window._fbAuth` is null in the build).
+- Program content came from a third-party app; keep this repository **private**.

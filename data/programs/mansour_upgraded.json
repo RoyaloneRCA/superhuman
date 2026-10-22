@@ -1,0 +1,534 @@
+{
+ "id": "mansour_upgraded",
+ "name": "Upgraded Mansour Method",
+ "description": "Coach Z's personal go-to program. Train every other day, alternating between high weight/low reps and low weight/high reps to mitigate fatigue, never needing to take a deload.",
+ "cycleDays": 16,
+ "workouts": 8,
+ "schedule": [
+  "D1",
+  "rest",
+  "D2",
+  "rest",
+  "D3",
+  "rest",
+  "D4",
+  "rest",
+  "D5",
+  "rest",
+  "D6",
+  "rest",
+  "D7",
+  "rest",
+  "D8",
+  "rest"
+ ],
+ "sessions": {
+  "D1": {
+   "label": "Day 1 - Legs (Strength)",
+   "focus": "Legs",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-8",
+      "3-8"
+     ]
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-8",
+      "3-8"
+     ]
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Adductors",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Abductors",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  },
+  "D2": {
+   "label": "Day 2 - Chest (Strength)",
+   "focus": "Chest",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "High to Low Fly/Press",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    }
+   ]
+  },
+  "D3": {
+   "label": "Day 3 - Back/Bi (Strength)",
+   "focus": "Back/Bi",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Standard Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Neutral Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Underhand Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Deadlift",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "4-8",
+     "perSide": true
+    }
+   ]
+  },
+  "D4": {
+   "label": "Day 4 - Shoulder/Tri (Strength)",
+   "focus": "Shoulder/Tri",
+   "phase": "Strength",
+   "exercises": [
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Barbell Bradfords",
+     "sets": 3,
+     "reps": "6-8"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Upper Trap Shrug",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": [
+      "4-8",
+      "3-6",
+      "3-6"
+     ]
+    }
+   ]
+  },
+  "D5": {
+   "label": "Day 5 - Legs (Volume)",
+   "focus": "Legs",
+   "phase": "Volume",
+   "exercises": [
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Hamstring Curl (Pulse Reps)",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Middle/Lower Trap Shrug",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8-15"
+    }
+   ]
+  },
+  "D6": {
+   "label": "Day 6 - Chest (Volume)",
+   "focus": "Chest",
+   "phase": "Volume",
+   "exercises": [
+    {
+     "name": "Bodyweight Push-Ups (Elbows Tucked)",
+     "sets": 5,
+     "reps": "20"
+    },
+    {
+     "name": "Bodyweight Diamond Push-Up",
+     "sets": 5,
+     "reps": "20"
+    },
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Incline Fly",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "High to Low Fly/Press",
+     "sets": 3,
+     "reps": "8-15"
+    }
+   ]
+  },
+  "D7": {
+   "label": "Day 7 - Back/Bi (Volume)",
+   "focus": "Back/Bi",
+   "phase": "Volume",
+   "exercises": [
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Standard Grip Pull-Up",
+     "sets": 5,
+     "reps": "12"
+    },
+    {
+     "name": "Neutral Grip Pull-Up",
+     "sets": 5,
+     "reps": "12"
+    },
+    {
+     "name": "Underhand Grip Pull-Up",
+     "sets": 5,
+     "reps": "12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Pullover",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Middle/Lower Trap Shrug",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "8-15"
+    }
+   ]
+  },
+  "D8": {
+   "label": "Day 8 - Shoulder/Tri (Volume)",
+   "focus": "Shoulder/Tri",
+   "phase": "Volume",
+   "exercises": [
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Front Delt Raise",
+     "sets": 3,
+     "reps": "8-15",
+     "perSide": true
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 5,
+     "reps": "8-15"
+    },
+    {
+     "name": "Upper Trap Shrug",
+     "sets": 3,
+     "reps": "8-15"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 4,
+     "reps": "8-15"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 4,
+     "reps": "8-15"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,415 @@
+{
+ "id": "upper_lower_mens",
+ "name": "Upper/Lower Men's",
+ "description": "One of the best programs for prioritizing training frequency. Alternates between complete upper-body workouts and complete lower-body workouts.",
+ "schedules": {
+  "4day_option1": [
+   "UA",
+   "LA",
+   "rest",
+   "UB",
+   "rest",
+   "LB",
+   "rest"
+  ],
+  "4day_option2": [
+   "UA",
+   "LA",
+   "rest",
+   "UB",
+   "LB",
+   "rest",
+   "rest"
+  ],
+  "5day_option1": [
+   "UA",
+   "LA",
+   "UB",
+   "LB",
+   "UA",
+   "rest",
+   "rest",
+   "LA",
+   "UB",
+   "LB",
+   "UA",
+   "LA",
+   "rest",
+   "rest"
+  ],
+  "5day_option2": [
+   "UA",
+   "LA",
+   "rest",
+   "UB",
+   "LB",
+   "UA",
+   "rest",
+   "LB",
+   "UB",
+   "rest",
+   "LB",
+   "UA",
+   "LA",
+   "rest"
+  ],
+  "6day_option1": [
+   "UA",
+   "LA",
+   "UB",
+   "LB",
+   "UA",
+   "LA",
+   "rest",
+   "UB",
+   "LB",
+   "UA",
+   "LA",
+   "UB",
+   "LB",
+   "rest",
+   "rest"
+  ],
+  "eod": [
+   "UA",
+   "rest",
+   "UB",
+   "rest",
+   "LA",
+   "rest",
+   "LB",
+   "rest"
+  ],
+  "6day_option2": [
+   "UA",
+   "LA",
+   "UB",
+   "LB",
+   "UA",
+   "LA",
+   "rest",
+   "UB",
+   "LB",
+   "UA",
+   "LA",
+   "UB",
+   "LB",
+   "rest",
+   "rest"
+  ]
+ },
+ "sessions": {
+  "UA": {
+   "label": "Upper A",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 3,
+     "reps": [
+      "6-8",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Standard Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Pullover",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12-20"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-8 each arm",
+      "4-8 each arm"
+     ]
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": [
+      "6-8",
+      "4-12"
+     ]
+    }
+   ]
+  },
+  "UB": {
+   "label": "Upper B",
+   "exercises": [
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 3,
+     "reps": [
+      "6-8",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Neutral Grip Pull-Up",
+     "sets": 3,
+     "reps": "12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Pullover",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12-20"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-8 each arm",
+      "4-8 each arm"
+     ]
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": [
+      "6-8",
+      "4-12"
+     ]
+    }
+   ]
+  },
+  "LA": {
+   "label": "Lower A",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": [
+      "12-15",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": [
+      "12-15",
+      "6-12",
+      "6-12"
+     ]
+    }
+   ]
+  },
+  "LB": {
+   "label": "Lower B",
+   "exercises": [
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ],
+     "rest": "60s"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "4-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": "6-15"
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": [
+      "12-15",
+      "6-12",
+      "6-12"
+     ]
+    }
+   ]
+  }
+ },
+ "unverified": [
+  "4day_option2 day 6 assumed rest"
+ ]
+}

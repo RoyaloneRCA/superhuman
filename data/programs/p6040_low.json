@@ -1,0 +1,196 @@
+{
+ "id": "p6040_low",
+ "name": "60/40 Low Volume",
+ "description": "The 60/40 program in a low-volume format. Push, Pull, Legs, Upper, Lower \u2014 reduced volume, uncompromised intensity.",
+ "cycleDays": 16,
+ "schedule": [
+  "PA",
+  "rest",
+  "PL",
+  "LA",
+  "rest",
+  "UP",
+  "LO",
+  "rest",
+  "PA",
+  "rest",
+  "PL",
+  "LA",
+  "rest",
+  "UP",
+  "LO",
+  "rest"
+ ],
+ "sessions": {
+  "PA": {
+   "label": "Push A",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "PL": {
+   "label": "Pull A",
+   "exercises": [
+    {
+     "name": "Upper Back Row",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "LA": {
+   "label": "Legs A",
+   "exercises": [
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Squat",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "UP": {
+   "label": "Upper",
+   "exercises": [
+    {
+     "name": "Chest Fly",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "LO": {
+   "label": "Lower",
+   "exercises": [
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Adductor",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Abductor",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  }
+ }
+}

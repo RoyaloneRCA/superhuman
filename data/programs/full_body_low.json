@@ -1,0 +1,123 @@
+{
+ "id": "full_body_low",
+ "name": "Full Body Low Volume",
+ "description": "Full-body training in a low-volume format. Two rotating full-body sessions, minimal volume per movement.",
+ "cycleDays": 8,
+ "schedule": [
+  "FA",
+  "rest",
+  "FB",
+  "rest",
+  "FA",
+  "rest",
+  "FB",
+  "rest"
+ ],
+ "sessions": {
+  "FA": {
+   "label": "Full Body A",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Squat",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "FB": {
+   "label": "Full Body B",
+   "exercises": [
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  }
+ }
+}

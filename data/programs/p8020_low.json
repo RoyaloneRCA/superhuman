@@ -1,0 +1,179 @@
+{
+ "id": "p8020_low",
+ "name": "80/20 Low Volume",
+ "description": "The 80/20 program in a low-volume format. Push, Pull, Legs, Push, Pull \u2014 fewer working sets per movement, maximum intent per set.",
+ "cycleDays": 18,
+ "schedule": [
+  "PA",
+  "rest",
+  "PLA",
+  "LA",
+  "rest",
+  "PB",
+  "rest",
+  "PLB",
+  "rest",
+  "PA",
+  "rest",
+  "PLB",
+  "LA",
+  "rest",
+  "PB",
+  "rest",
+  "PLB",
+  "rest"
+ ],
+ "sessions": {
+  "PA": {
+   "label": "Push A",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Flared)",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "PLA": {
+   "label": "Pull A",
+   "exercises": [
+    {
+     "name": "Upper Back Row",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "LA": {
+   "label": "Legs A",
+   "exercises": [
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Squat",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "PB": {
+   "label": "Push B",
+   "exercises": [
+    {
+     "name": "Chest Fly",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  },
+  "PLB": {
+   "label": "Pull B",
+   "exercises": [
+    {
+     "name": "Upper Back Row",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "4-8"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 1,
+     "reps": "4-8"
+    }
+   ]
+  }
+ },
+ "note": "Day 12 is Pull B in source (not Pull A) \u2014 kept as shown"
+}

@@ -1,0 +1,268 @@
+{
+ "id": "quick_burn",
+ "name": "Quick Burn",
+ "cycleDays": 7,
+ "schedule": [
+  "D1",
+  "D2",
+  "D4",
+  "D3",
+  "D5",
+  "rest",
+  "rest"
+ ],
+ "sessions": {
+  "D1": {
+   "label": "Day 1 - Chest",
+   "exercises": [
+    {
+     "superset": [
+      {
+       "name": "Chest Press (Elbows Tucked)",
+       "sets": 3,
+       "reps": "12-15"
+      },
+      {
+       "name": "Chest Fly",
+       "sets": 3,
+       "reps": "12-15"
+      },
+      {
+       "name": "End-of-Bench Close Grip Push-Ups",
+       "sets": 3,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Incline Chest Press (Elbows Flared)",
+       "sets": 3,
+       "reps": "12-15"
+      },
+      {
+       "name": "Low to High Fly/Press",
+       "sets": 3,
+       "reps": "12-15"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Dumbbell Incline Fly",
+       "sets": 3,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Dumbbell Incline Squeeze Press",
+       "sets": 3,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Dumbbell Incline Press (Elbows Flared)",
+       "sets": 3,
+       "reps": "12 MAX"
+      }
+     ]
+    }
+   ]
+  },
+  "D2": {
+   "label": "Day 2 - Legs Quad/Glute",
+   "exercises": [
+    {
+     "name": "Smith Machine Bulgarian Split Squat",
+     "sets": 3,
+     "reps": "8-12"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": "8-12"
+    },
+    {
+     "name": "Machine Quad Extension",
+     "sets": 3,
+     "reps": "8 toes out, 8 toes in, 8 forward"
+    },
+    {
+     "name": "Hamstring Curl (Pulse Reps)",
+     "sets": 3,
+     "reps": "8-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "10 full / 10 top half / 10 sec top hold"
+    }
+   ]
+  },
+  "D3": {
+   "label": "Day 3 - Shoulders/Tri",
+   "exercises": [
+    {
+     "superset": [
+      {
+       "name": "Dumbbell Around the World Raise",
+       "sets": 3,
+       "reps": "12"
+      },
+      {
+       "name": "Weight Plate Front Delt Raises",
+       "sets": 3,
+       "reps": "12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Dumbbell Supine Skullcrushers",
+       "sets": 3,
+       "reps": "12"
+      },
+      {
+       "name": "Bench Dips",
+       "sets": 3,
+       "reps": "12-15"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Lateral Raise",
+       "sets": 3,
+       "reps": "12-15"
+      },
+      {
+       "name": "Lateral Raise (Top Partials)",
+       "sets": 3,
+       "reps": "12-15"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Cable Tricep Extension",
+       "sets": 3,
+       "reps": "12"
+      },
+      {
+       "name": "Cable Bent Over Overhead Tricep Extension",
+       "sets": 3,
+       "reps": "12"
+      }
+     ]
+    }
+   ]
+  },
+  "D4": {
+   "label": "Day 4 - Back / Bi",
+   "exercises": [
+    {
+     "superset": [
+      {
+       "name": "Standard Grip Pull-Up",
+       "sets": 3,
+       "reps": "12 MAX"
+      },
+      {
+       "name": "Neutral Grip Pull-Up",
+       "sets": 3,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Upper Back Row",
+       "sets": 3,
+       "reps": "12-15"
+      },
+      {
+       "name": "Pullover",
+       "sets": 3,
+       "reps": "12-15"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Supinated Curl",
+       "sets": 3,
+       "reps": "10-12"
+      },
+      {
+       "name": "Hammer Curl",
+       "sets": 3,
+       "reps": "10-12"
+      }
+     ]
+    },
+    {
+     "name": "Cable Supinated Rope Curl",
+     "sets": 3,
+     "reps": "12-15"
+    }
+   ]
+  },
+  "D5": {
+   "label": "Day 5 - Legs Hams/Adductor",
+   "exercises": [
+    {
+     "superset": [
+      {
+       "name": "Adductor",
+       "sets": 3,
+       "reps": "12"
+      },
+      {
+       "name": "Abductor",
+       "sets": 3,
+       "reps": "12"
+      }
+     ]
+    },
+    {
+     "superset": [
+      {
+       "name": "Machine B-Stance Hip Thrust",
+       "sets": 3,
+       "reps": "12"
+      },
+      {
+       "name": "Machine Hip Thrust",
+       "sets": 3,
+       "reps": "12 MAX"
+      }
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "8-12"
+    },
+    {
+     "superset": [
+      {
+       "name": "Machine Quad Extension",
+       "sets": 3,
+       "reps": "10-12"
+      },
+      {
+       "name": "Hamstring Curl (Pulse Reps)",
+       "sets": 3,
+       "reps": "10"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

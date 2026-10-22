@@ -1,0 +1,11 @@
+{
+  "name": "superhuman-physique",
+  "private": true,
+  "scripts": {
+    "build": "node tools/transpile.js && python3 tools/build.py"
+  },
+  "devDependencies": {
+    "@babel/core": "7.25.2",
+    "@babel/preset-react": "7.24.7"
+  }
+}

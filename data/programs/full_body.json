@@ -1,0 +1,193 @@
+{
+ "id": "full_body",
+ "name": "Full Body",
+ "description": "Train every muscle group every session. Maximizes training frequency but gives each muscle group only crumbs. You decide whether the tradeoff is worth it.",
+ "cycleDays": 4,
+ "schedule": [
+  "FA",
+  "rest",
+  "FB",
+  "rest"
+ ],
+ "sessions": {
+  "FA": {
+   "label": "Full Body A",
+   "exercises": [
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Pullover",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": [
+      "6-8",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": [
+      "6-8",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  },
+  "FB": {
+   "label": "Full Body B",
+   "exercises": [
+    {
+     "name": "Chest Fly",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "4-12",
+      "4-12"
+     ]
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "6-12",
+      "6-12"
+     ]
+    },
+    {
+     "name": "Z-Twists",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Adductor Bias Squat",
+     "sets": 3,
+     "reps": [
+      "6-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": [
+      "8-12",
+      "3-12",
+      "3-12"
+     ]
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "6-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6-12"
+    }
+   ]
+  }
+ }
+}
