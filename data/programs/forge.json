@@ -1,6 +1,6 @@
 {
- "id": "mansour_upgraded",
- "name": "Upgraded Mansour Method",
+ "id": "forge",
+ "name": "The Forge",
  "description": "Coach Z's personal go-to program. Train every other day, alternating between high weight/low reps and low weight/high reps to mitigate fatigue, never needing to take a deload.",
  "cycleDays": 16,
  "workouts": 8,

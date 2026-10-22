@@ -86,9 +86,9 @@ def bro(p):
     return o
 P=[
 ("forge","The Forge","Every-other-day split, strength + size","Train every other day. Strength days and size days alternate so you never need a deload.",False,"#A0694B",
-  {"standard":build("forge","mansour_upgraded.json",one("Every other day · 16-day cycle"))}),
+  {"standard":build("forge","forge.json",one("Every other day · 16-day cycle"))}),
 ("gauntlet","Gauntlet","The Forge, high-volume hard mode","Ridiculous volume. Supersets, giant sets and 10-set pyramids. Sleep, food and recovery all need to be on point.",True,"#B3261A",
-  {"standard":build("gauntlet","mansour_nightmare.json",one("Every other day · 16-day cycle"))}),
+  {"standard":build("gauntlet","gauntlet.json",one("Every other day · 16-day cycle"))}),
 ("split","Split","Bro split, one muscle a day","Full attention on one muscle group per session. Less frequency, more effort.",False,"#7A7268",
   {"standard":build("split","bro_split.json",bro)}),
 ("triad","Triad","Push · Pull · Legs","A classic. Push day for chest, shoulders and triceps; pull day for back, rear delts and biceps; then legs.",False,"#4CC3DE",
