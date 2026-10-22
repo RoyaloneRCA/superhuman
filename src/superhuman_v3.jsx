@@ -1700,7 +1700,7 @@ function Onboarding({onComplete}) {
           {/* honest numbers */}
           <div style={{display:"flex", border:`1px solid ${T.border}`, borderTop:"none", marginBottom:16}}>
             {[
-              {v:"16", l:"Day cycle", c:T.white},
+              {v:"4–32", l:"Day cycles", c:T.white},
               {v:String(visibleLibrary().length), l:"Movements", c:T.cyan},
               {v:String(PROGRAM_LIST.length), l:"Programs", c:T.emeraldPR},
             ].map((x,i)=>(
@@ -1805,7 +1805,7 @@ function Onboarding({onComplete}) {
               {l:"Protein Target", v:`${protein}g/day`,  c:T.emerald, icon:""},
               {l:"Equipment",     v:equip?.label,         c:T.accent,  icon:equip?.icon},
               {l:"Experience",    v:exp?.label,            c:T.steel,   icon:exp?.icon||""},
-              {l:"Cycle Length",  v:"16 days",             c:T.amber,   icon:""},
+              {l:"Program",  v: sel.experience==="beginner" ? "First Gate" : "The Forge", c:T.amber, icon:""},
             ].map(s=>(
               <div key={s.l} style={{background:T.card,
                 border:`1px solid ${T.border}`, borderRadius:8,
