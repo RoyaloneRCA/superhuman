@@ -6438,6 +6438,36 @@ function Learn({profile, setProfile=()=>{}}) {
   );
 }
 
+// ── WORKOUT PREVIEW — full exercise list for any day ──
+function WorkoutPreview({session}) {
+  if (!session?.exercises?.length) return null;
+  const pref = getVariantPref();
+  const rows = session.exercises.map(it => {
+    const id = typeof it === "string" ? it : it.id;
+    let mv = LIBRARY.find(m => m.id === id);
+    if (!mv) return null;
+    if (mv.isGroup && pref[mv.group]) mv = LIBRARY.find(m => m.id === pref[mv.group]) || mv;
+    const o = typeof it === "object" ? it : {};
+    const plan = o.sets ? {sets:o.sets, reps:o.reps} : getRepsForFiber(mv.fiber, session.phase);
+    return {name: mv.name, sets: plan.sets, reps: plan.reps, superset: o.superset, color: getMovementColor(mv.muscles)};
+  }).filter(Boolean);
+  return (
+    <div style={{border:`1px solid ${T.border}`, borderRadius:8, overflow:"hidden", marginBottom:10}}>
+      {rows.map((r,i)=>(
+        <div key={i} style={{display:"flex", alignItems:"center", gap:8, padding:"8px 10px",
+          borderTop: i ? `1px solid ${T.surface2}` : "none", background:T.surface}}>
+          <span style={{fontFamily:FONT_MONO, fontSize:10, color:T.muted, width:18}}>{String(i+1).padStart(2,"0")}</span>
+          <span style={{width:2, alignSelf:"stretch", background:r.color, borderRadius:1}}/>
+          <span style={{flex:1, minWidth:0, fontSize:13, color:T.bright}}>
+            {r.name}{r.superset && <span style={{fontSize:10, color:T.bloodHi}}> · SS {r.superset}</span>}
+          </span>
+          <span style={{fontFamily:FONT_MONO, fontSize:11, color:T.muted, whiteSpace:"nowrap"}}>{r.sets} × {r.reps}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ── TRAINING CALENDAR ─────────────────────────────────────────────
 function TrainingCalendar({sessionLogs={}, cycleDay, setCycleDay, setTab, profile, setReviewSession=()=>{}, setTriggerRestDayModal=()=>{}}) {
   const activeSessions = getActiveSessions(profile);
@@ -6662,7 +6692,7 @@ function TrainingCalendar({sessionLogs={}, cycleDay, setCycleDay, setTab, profil
               <div style={{fontSize:11,color:T.dim,marginBottom:10}}>
                 {selectedCell.isSupplementary
                   ? "Supplementary — sets saved but not tied to program. Tap 'View' to reassign a program day."
-                  : `✓ Completed · Day ${selectedCell.loggedCycleDay}/16 · ${Object.keys(selectedCell.logged?.sets||{}).length} exercises`}
+                  : `✓ Completed · Day ${selectedCell.loggedCycleDay}/${CYCLE.length} · ${Object.keys(selectedCell.logged?.sets||{}).length} exercises`}
               </div>
               <Btn style={{width:"100%"}}
                 onClick={()=>setReviewSession({date:selectedCell.iso,log:selectedCell.logged})}>
@@ -6690,8 +6720,9 @@ function TrainingCalendar({sessionLogs={}, cycleDay, setCycleDay, setTab, profil
                       <Tag key={m} text={m} color={getMovementColor([m])} xs/>
                     ))}
                   </div>
+                  <WorkoutPreview session={selectedCell.proj.session}/>
                   <div style={{fontSize:11,color:T.dim,marginBottom:10}}>
-                    Day {selectedCell.proj.cycleDay}/16 · tap to start
+                    Day {selectedCell.proj.cycleDay}/{CYCLE.length}
                   </div>
                   <Btn style={{width:"100%",background:T.accent,color:T.bg}}
                     onClick={()=>{ setCycleDay(cycleDay); setTab("session"); }}>
@@ -6717,8 +6748,9 @@ function TrainingCalendar({sessionLogs={}, cycleDay, setCycleDay, setTab, profil
                   <Tag key={m} text={m} color={getMovementColor([m])} xs/>
                 ))}
               </div>
+              <WorkoutPreview session={selectedCell.proj.session}/>
               <div style={{fontSize:11,color:T.dim}}>
-                Day {selectedCell.proj.cycleDay}/16 · projected if training every other day
+                Day {selectedCell.proj.cycleDay}/{CYCLE.length} · if you train on schedule
               </div>
             </div>
 
