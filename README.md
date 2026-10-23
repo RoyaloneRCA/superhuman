@@ -32,5 +32,7 @@ python3 tools/gen_programs.py    # programs + library -> build/programs_block.js
 then replace the `const GENERIC_LIBRARY` and `const PROGRAMS_V2` lines in the source with the ones from `build/programs_block.js`.
 
 ## Notes
-- Data is stored in the browser (localStorage). Firebase Auth/Firestore sync is coded but not enabled (`window._fbAuth` is null in the build).
+- Accounts: email/password and Google sign-in (Firebase Auth). Data is saved to Firestore under `users/{uid}/...` and cached on the device. On first sign-in, data already on the device is uploaded to the account.
+- `npm run build` makes the cloud build for deploy; `npm run build:local` makes a no-account build for previews.
+- Deploy with `./deploy.sh` (hosting + Firestore rules).
 - Program content came from a third-party app; keep this repository **private**.

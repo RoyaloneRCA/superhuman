@@ -2,7 +2,8 @@
   "name": "superhuman-physique",
   "private": true,
   "scripts": {
-    "build": "node tools/transpile.js && python3 tools/build.py"
+    "build": "node tools/transpile.js && python3 tools/build.py",
+    "build:local": "node tools/transpile.js && python3 tools/build.py --local"
   },
   "devDependencies": {
     "@babel/core": "7.25.2",

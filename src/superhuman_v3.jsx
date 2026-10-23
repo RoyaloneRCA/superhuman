@@ -20,8 +20,7 @@ async function fsSet(uid, col, id, data) {
   if (!fbDb() || !uid) return;
   try {
     await fsUserDoc(uid, col, id).set(
-      { ...data, _updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
-      { merge: true }
+      { ...data, _updatedAt: firebase.firestore.FieldValue.serverTimestamp() }
     );
   } catch(e) { console.warn("Firestore write failed:", e.message); }
 }
@@ -48,6 +47,32 @@ async function fsLoadDoc(uid, col, id) {
     const snap = await fsUserDoc(uid, col, id).get();
     return snap.exists ? { id: snap.id, ...snap.data() } : null;
   } catch { return null; }
+}
+
+// Upload everything stored on this device to the signed-in account.
+// Used on first sign-in so existing logs aren't stranded on the phone.
+async function fsUploadLocal(uid, {onlyMissingSessions=null} = {}) {
+  if (!fbDb() || !uid) return 0;
+  const get = k => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch { return null; } };
+  const writes = [];
+  const prof = get("sp_profile");
+  if (!onlyMissingSessions && prof && prof.goal) writes.push(fsSet(uid, "profile", "data", prof));
+  const logs = get("sp_session_logs") || {};
+  Object.entries(logs).forEach(([date, log]) => {
+    if (onlyMissingSessions && onlyMissingSessions.has(date)) return;
+    writes.push(fsSet(uid, "sessionLogs", date, log));
+  });
+  if (!onlyMissingSessions) {
+    (get("sp_weight_log") || []).forEach(e => { const id = e.day || e.date; if (id) writes.push(fsSet(uid, "weightLog", String(id), e)); });
+    (get("sp_recovery_log") || []).forEach(e => { if (e.date) writes.push(fsSet(uid, "recoveryLog", e.date, e)); });
+    (get("sp_bodycomp_log") || []).forEach(e => { if (e.date) writes.push(fsSet(uid, "bodyCompLog", e.date, e)); });
+    Object.entries(get("sp_supplement_log") || {}).forEach(([d, e]) => writes.push(fsSet(uid, "supplementLog", d, e)));
+    Object.entries(get("sp_saved_templates") || {}).forEach(([d, e]) => writes.push(fsSet(uid, "savedTemplates", String(d), e)));
+    (get("sp_custom_workouts") || []).forEach(e => { if (e.id) writes.push(fsSet(uid, "customWorkouts", e.id, e)); });
+    (get("sp_custom_movements") || []).forEach(e => { if (e.id) writes.push(fsSet(uid, "customMovements", e.id, e)); });
+  }
+  await Promise.all(writes);
+  return writes.length;
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -9263,8 +9288,17 @@ function AuthScreen({onAuth}) {
     setLoading(true); setError("");
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
-      const cred = await fbAuth().signInWithPopup(provider);
-      onAuth(cred.user);
+      const standalone = window.navigator.standalone || window.matchMedia?.("(display-mode: standalone)").matches;
+      if (standalone) { await fbAuth().signInWithRedirect(provider); return; }
+      try {
+        const cred = await fbAuth().signInWithPopup(provider);
+        onAuth(cred.user);
+      } catch(e) {
+        if (["auth/popup-blocked","auth/operation-not-supported-in-this-environment"].includes(e.code)) {
+          await fbAuth().signInWithRedirect(provider); return;
+        }
+        throw e;
+      }
     } catch(e) {
       setError(e.message.replace("Firebase: ","").trim());
       setLoading(false);
@@ -9325,12 +9359,23 @@ function AuthScreen({onAuth}) {
         )}
 
         <button onClick={handleSubmit} disabled={loading}
-          style={{width:"100%", background:T.accent, color:T.bg, border:"none",
+          style={{width:"100%", background:"linear-gradient(180deg,#D3D7DB 0%,#A9AFB5 55%,#8D949B 100%)", color:"#0E1013", border:"none",
             borderRadius:8, padding:"15px", fontSize:15, fontWeight:800,
             cursor:loading?"wait":"pointer", marginBottom:14}}>
           {loading ? "..." : mode==="signup" ? "Create Account" : "Sign In"}
         </button>
 
+        {mode==="signin" && (
+          <button onClick={async()=>{
+              if (!email) { setError("Enter your email above, then tap Forgot password."); return; }
+              try { await fbAuth().sendPasswordResetEmail(email); setError("Reset link sent — check your email."); }
+              catch(e) { setError(e.message.replace("Firebase: ","").trim()); }
+            }}
+            style={{display:"block", margin:"0 auto 14px", background:"none", border:"none",
+              color:T.muted, cursor:"pointer", fontSize:13, textDecoration:"underline"}}>
+            Forgot password?
+          </button>
+        )}
         <div style={{textAlign:"center", fontSize:13, color:T.muted}}>
           {mode==="signup" ? "Already have an account? " : "New here? "}
           <button onClick={()=>{setMode(m=>m==="signin"?"signup":"signin");setError("");}}
@@ -9416,11 +9461,26 @@ export default function App() {
           fsLoadCol(uid, "customMovements"),
         ]);
 
+      // First sign-in on this account: push this device's data up, then stop
+      if (!profileDoc) {
+        await fsUploadLocal(uid);
+        return;
+      }
+      // Logs made on this device while signed out: upload the ones the cloud lacks
+      const cloudDates = new Set((sessLogs || []).map(d => d.id));
+      await fsUploadLocal(uid, {onlyMissingSessions: cloudDates});
+      if (sessLogs) {
+        const local = storageGet(STORAGE_KEYS.SESSION_LOGS, {}) || {};
+        Object.entries(local).forEach(([date, log]) => {
+          if (!cloudDates.has(date)) sessLogs.push({id: date, ...log});
+        });
+      }
       // Profile
       if (profileDoc && profileDoc.goal) {
         const { id: _id, _updatedAt, ...p } = profileDoc;
         setProfile(p);
         storageSet(STORAGE_KEYS.PROFILE, p);
+        setBooted(true);
       }
       // Session logs — array → object keyed by date
       if (sessLogs?.length) {
@@ -9436,7 +9496,6 @@ export default function App() {
         const sorted = wLog
           .map(({ id, _updatedAt, ...d }) => d)
           .sort((a,b) => a.day?.localeCompare(b.day));
-        setWeightLog(sorted);
         storageSet(STORAGE_KEYS.WEIGHT_LOG, sorted);
       }
       // Recovery log
@@ -9444,7 +9503,6 @@ export default function App() {
         const sorted = rLog
           .map(({ id, _updatedAt, ...d }) => d)
           .sort((a,b) => b.date?.localeCompare(a.date));
-        setRecoveryLog(sorted);
         storageSet(STORAGE_KEYS.RECOVERY_LOG, sorted);
       }
       // Supplement log — array → object keyed by date
@@ -9488,6 +9546,11 @@ export default function App() {
     loadFromFirestore();
   }, [currentUser]); // eslint-disable-line
 
+  // ── PROFILE CLOUD SYNC — any profile change is saved to the account ──
+  const [cloudReady, setCloudReady] = useState(false);
+  useEffect(() => { setCloudReady(false); if (!currentUser) return; const t = setTimeout(()=>setCloudReady(true), 2500); return () => clearTimeout(t); }, [currentUser]);
+  // (profile declared below; effect registered after it)
+
   // ── HYDRATION STATE ──────────────────────────────────────────
   // window.storage (artifact API) is async — we need to load from it
   // before deciding whether to show onboarding or the app.
@@ -9500,6 +9563,10 @@ export default function App() {
   // customLib — single source of truth, passed down to Session and Progress
   const [customLib, setCustomLib]           = usePersistedState(STORAGE_KEYS.CUSTOM_MOVEMENTS, []);
   const [sessionLogs,    setSessionLogs]    = usePersistedState(STORAGE_KEYS.SESSION_LOGS, {});
+  useEffect(() => {
+    if (!currentUser || !cloudReady || !profile || !profile.goal) return;
+    fsSet(currentUser.uid, "profile", "data", profile);
+  }, [profile, currentUser, cloudReady]); // eslint-disable-line
   const [supplementLog,  setSupplementLog]  = usePersistedState(STORAGE_KEYS.SUPPLEMENT_LOG, {});
 
   // ── ASYNC HYDRATION FROM window.storage ──────────────────────

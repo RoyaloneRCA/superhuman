@@ -16,6 +16,6 @@ echo "3/4  Signing in to Firebase (browser opens the first time)..."
 firebase login
 
 echo "4/4  Deploying to super-human-e6074..."
-firebase deploy --only hosting --project super-human-e6074
+firebase deploy --only hosting,firestore:rules --project super-human-e6074
 
 echo "Done. Live at https://super-human-e6074.web.app"
