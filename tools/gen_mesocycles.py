@@ -97,18 +97,61 @@ T4 = {  # 4 days: Upper A / Lower A / Upper B / Lower B
   S("bi","Supinated Curl",.30,("6–8","8–12"),("2 min","90s")),
  ],
 }
+T6 = {  # 6 days: Push A / Pull A / Legs A / Push B / Pull B / Legs B
+ "Push A": [
+  S("chest","Chest Press (Elbows Tucked)",.28,("3–6","6–10"),("3–5 min","2–3 min"),"c"),
+  S("chest","Low to High Fly/Press",.22,("6–10","10–15"),("2 min","90s")),
+  FX("Vertical Press (Elbows Flared)",("3–6","6–10"),("3–5 min","2–3 min")),
+  S("side","Lateral Raise",.50,("8–12","12–20"),("90s","60s")),
+  S("tri","Double Joint Tricep",.50,("5–8","8–12"),("2 min","90s"),"c"),
+ ],
+ "Pull A": [
+  S("back","Pull-Ups",.26,("3–6","6–10"),("3–4 min","2–3 min"),"c"),
+  S("back","Upper Back Row",.24,("4–6","8–12"),("3 min","2 min"),"c"),
+  S("rear","Rear Delt Fly",.50,("8–12","12–20"),("90s","60s")),
+  S("bi","Supinated Curl",.50,("6–8","8–12"),("2 min","90s")),
+ ],
+ "Legs A": [
+  S("quads","Squat",.45,("3–6","5–8"),("3–5 min","3 min"),"c"),
+  S("quads","Quad Extension",.10,("6–10","12–20"),("2 min","90s")),
+  S("hams","Straight Knee Hinge",.50,("4–6","6–10"),("3–4 min","2–3 min"),"c"),
+  S("calves","Calf Raise",.5,("6–10","8–12"),("2 min","90s")),
+  S("abs","Ab Crunch",.5,("8–12","12–20"),("90s","60s")),
+ ],
+ "Push B": [
+  S("chest","Incline Chest Press (Elbows Flared)",.28,("4–6","8–12"),("3–4 min","2–3 min"),"c"),
+  S("chest","Chest Fly",.22,("6–10","12–15"),("2 min","90s")),
+  S("side","Lateral Raise (Top Partials)",.50,("8–12","12–20"),("90s","60s")),
+  S("tri","Single Joint Tricep",.50,("6–10","12–15"),("90s","60s")),
+ ],
+ "Pull B": [
+  S("back","Lat Biased Row",.20,("5–8","10–12"),("2–3 min","2 min"),"c"),
+  S("back","Lat Sweep",.16,("6–10","12–15"),("2 min","90s")),
+  S("back","Pullover",.14,("6–10","12–15"),("2 min","90s")),
+  S("rear","Rear Delt Fly",.50,("8–12","12–20"),("90s","60s")),
+  S("bi","Hammer Curl",.50,("6–10","10–15"),("90s","60s")),
+ ],
+ "Legs B": [
+  S("quads","Hack Squat",.45,("5–8","8–12"),("3 min","2 min"),"c"),
+  S("hams","Hamstring Curl",.30,("6–10","10–15"),("2 min","90s")),
+  S("hams","Bent Knee Hinge",.20,("5–8","8–12"),("3 min","2 min"),"c"),
+  S("calves","Leg Press Calf Raise",.5,("8–12","12–20"),("90s","60s")),
+  S("abs","Ab Crunch",.5,("8–12","12–20"),("90s","60s")),
+ ],
+}
+WEEK6 = ["Push A","Pull A","Legs A","Push B","Pull B","Legs B","rest"]
 WEEK5 = ["Push","Pull","Legs","rest","Upper","Lower","rest"]
 WEEK4 = ["Upper A","Lower A","rest","Upper B","Lower B","rest","rest"]
-TEMPLATES = {5:(T5, WEEK5), 4:(T4, WEEK4)}
+TEMPLATES = {6:(T6, WEEK6), 5:(T5, WEEK5), 4:(T4, WEEK4)}
 
 # third weekly exposure for the muscles being specialised
 def _chest_arms(): return [S("chest","High to Low Fly/Press",.25,"10–15","90s"),S("bi","Reverse Curl",.2,"10–15","60s"),S("tri","Single Joint Tricep",.2,"12–20","60s")]
 def _back_delts(): return [S("back","Upper Back Row",.25,"10–12","2 min","c"),S("side","Lateral Raise",.15,"15–20","60s"),S("rear","Rear Delt Fly",.25,"15–20","60s")]
 def _legs(): return [S("quads","Leg Press (Quad Bias)",.25,"10–15","2 min","c"),S("hams","Hamstring Curl",.2,"12–15","90s"),S("calves","Calf Raise",.25,"12–20","60s")]
 ADDON = {
- "chest_arms": {"label":"Chest & Arms","prio":["chest","bi","tri"],5:{"Lower":_chest_arms()},4:{"Lower A":_chest_arms()}},
- "back_delts": {"label":"Back & Delts","prio":["back","side","rear"],5:{"Lower":_back_delts()},4:{"Lower A":_back_delts()}},
- "legs":       {"label":"Legs","prio":["quads","hams","calves"],5:{"Pull":_legs()},4:{"Upper A":_legs()}},
+ "chest_arms": {"label":"Chest & Arms","prio":["chest","bi","tri"],6:{"Legs A":_chest_arms()},5:{"Lower":_chest_arms()},4:{"Lower A":_chest_arms()}},
+ "back_delts": {"label":"Back & Delts","prio":["back","side","rear"],6:{"Legs B":_back_delts()},5:{"Lower":_back_delts()},4:{"Lower A":_back_delts()}},
+ "legs":       {"label":"Legs","prio":["quads","hams","calves"],6:{"Pull B":_legs()},5:{"Pull":_legs()},4:{"Upper A":_legs()}},
 }
 MUSCLES = ["chest","back","quads","hams","side","rear","bi","tri","calves","abs"]
 LABEL = dict(chest="Chest",back="Back",quads="Quads",hams="Hams",side="SideD",rear="RearD",bi="Bi",tri="Tri",calves="Calves",abs="Abs",press="Press")

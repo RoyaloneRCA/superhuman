@@ -4,6 +4,105 @@
  "description": "Four weeks. Pick the muscles you want to bring up: they get a third weekly session and climb toward their limit while everything else holds at maintenance. Best after a size block.",
  "cycleDays": 28,
  "schedules": {
+  "6d_chest_arms": {
+   "label": "6 days a week · Focus: Chest & Arms",
+   "days": [
+    "f6_1_chest_arms_PushA",
+    "f6_1_chest_arms_PullA",
+    "f6_1_chest_arms_LegsA",
+    "f6_1_chest_arms_PushB",
+    "f6_1_chest_arms_PullB",
+    "f6_1_chest_arms_LegsB",
+    "rest",
+    "f6_2_chest_arms_PushA",
+    "f6_2_chest_arms_PullA",
+    "f6_2_chest_arms_LegsA",
+    "f6_2_chest_arms_PushB",
+    "f6_2_chest_arms_PullB",
+    "f6_2_chest_arms_LegsB",
+    "rest",
+    "f6_3_chest_arms_PushA",
+    "f6_3_chest_arms_PullA",
+    "f6_3_chest_arms_LegsA",
+    "f6_3_chest_arms_PushB",
+    "f6_3_chest_arms_PullB",
+    "f6_3_chest_arms_LegsB",
+    "rest",
+    "f6_4_chest_arms_PushA",
+    "f6_4_chest_arms_PullA",
+    "f6_4_chest_arms_LegsA",
+    "f6_4_chest_arms_PushB",
+    "f6_4_chest_arms_PullB",
+    "f6_4_chest_arms_LegsB",
+    "rest"
+   ]
+  },
+  "6d_back_delts": {
+   "label": "6 days a week · Focus: Back & Delts",
+   "days": [
+    "f6_1_back_delts_PushA",
+    "f6_1_back_delts_PullA",
+    "f6_1_back_delts_LegsA",
+    "f6_1_back_delts_PushB",
+    "f6_1_back_delts_PullB",
+    "f6_1_back_delts_LegsB",
+    "rest",
+    "f6_2_back_delts_PushA",
+    "f6_2_back_delts_PullA",
+    "f6_2_back_delts_LegsA",
+    "f6_2_back_delts_PushB",
+    "f6_2_back_delts_PullB",
+    "f6_2_back_delts_LegsB",
+    "rest",
+    "f6_3_back_delts_PushA",
+    "f6_3_back_delts_PullA",
+    "f6_3_back_delts_LegsA",
+    "f6_3_back_delts_PushB",
+    "f6_3_back_delts_PullB",
+    "f6_3_back_delts_LegsB",
+    "rest",
+    "f6_4_back_delts_PushA",
+    "f6_4_back_delts_PullA",
+    "f6_4_back_delts_LegsA",
+    "f6_4_back_delts_PushB",
+    "f6_4_back_delts_PullB",
+    "f6_4_back_delts_LegsB",
+    "rest"
+   ]
+  },
+  "6d_legs": {
+   "label": "6 days a week · Focus: Legs",
+   "days": [
+    "f6_1_legs_PushA",
+    "f6_1_legs_PullA",
+    "f6_1_legs_LegsA",
+    "f6_1_legs_PushB",
+    "f6_1_legs_PullB",
+    "f6_1_legs_LegsB",
+    "rest",
+    "f6_2_legs_PushA",
+    "f6_2_legs_PullA",
+    "f6_2_legs_LegsA",
+    "f6_2_legs_PushB",
+    "f6_2_legs_PullB",
+    "f6_2_legs_LegsB",
+    "rest",
+    "f6_3_legs_PushA",
+    "f6_3_legs_PullA",
+    "f6_3_legs_LegsA",
+    "f6_3_legs_PushB",
+    "f6_3_legs_PullB",
+    "f6_3_legs_LegsB",
+    "rest",
+    "f6_4_legs_PushA",
+    "f6_4_legs_PullA",
+    "f6_4_legs_LegsA",
+    "f6_4_legs_PushB",
+    "f6_4_legs_PullB",
+    "f6_4_legs_LegsB",
+    "rest"
+   ]
+  },
   "5d_chest_arms": {
    "label": "5 days a week · Focus: Chest & Arms",
    "days": [
@@ -204,6 +303,2853 @@
   }
  },
  "sessions": {
+  "f6_1_chest_arms_PushA": {
+   "label": "Wk 1 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_chest_arms_PullA": {
+   "label": "Wk 1 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_1_chest_arms_LegsA": {
+   "label": "Wk 1 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "High to Low Fly/Press",
+     "sets": 4,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Reverse Curl",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_1_chest_arms_PushB": {
+   "label": "Wk 1 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 5,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_1_chest_arms_PullB": {
+   "label": "Wk 1 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 5,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_chest_arms_LegsB": {
+   "label": "Wk 1 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_chest_arms_PushA": {
+   "label": "Wk 2 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 6,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_chest_arms_PullA": {
+   "label": "Wk 2 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 6,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_2_chest_arms_LegsA": {
+   "label": "Wk 2 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "High to Low Fly/Press",
+     "sets": 5,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Reverse Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_2_chest_arms_PushB": {
+   "label": "Wk 2 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 5,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_2_chest_arms_PullB": {
+   "label": "Wk 2 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 6,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_chest_arms_LegsB": {
+   "label": "Wk 2 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_chest_arms_PushA": {
+   "label": "Wk 3 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 5,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 7,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 4,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_chest_arms_PullA": {
+   "label": "Wk 3 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 7,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_3_chest_arms_LegsA": {
+   "label": "Wk 3 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "High to Low Fly/Press",
+     "sets": 5,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Reverse Curl",
+     "sets": 4,
+     "reps": "10–15",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_3_chest_arms_PushB": {
+   "label": "Wk 3 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 4,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 6,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_3_chest_arms_PullB": {
+   "label": "Wk 3 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 7,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_chest_arms_LegsB": {
+   "label": "Wk 3 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Chest & Arms",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_chest_arms_PushA": {
+   "label": "Wk 4 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_chest_arms_PullA": {
+   "label": "Wk 4 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_4_chest_arms_LegsA": {
+   "label": "Wk 4 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "90s"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_chest_arms_PushB": {
+   "label": "Wk 4 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_4_chest_arms_PullB": {
+   "label": "Wk 4 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 1,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_chest_arms_LegsB": {
+   "label": "Wk 4 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_back_delts_PushA": {
+   "label": "Wk 1 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 6,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_back_delts_PullA": {
+   "label": "Wk 1 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_1_back_delts_LegsA": {
+   "label": "Wk 1 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_back_delts_PushB": {
+   "label": "Wk 1 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 6,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_1_back_delts_PullB": {
+   "label": "Wk 1 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 3,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_back_delts_LegsB": {
+   "label": "Wk 1 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 4,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "15–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "15–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_back_delts_PushA": {
+   "label": "Wk 2 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 8,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_back_delts_PullA": {
+   "label": "Wk 2 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_2_back_delts_LegsA": {
+   "label": "Wk 2 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_back_delts_PushB": {
+   "label": "Wk 2 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 7,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_2_back_delts_PullB": {
+   "label": "Wk 2 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 3,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_back_delts_LegsB": {
+   "label": "Wk 2 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 5,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "15–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "15–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_back_delts_PushA": {
+   "label": "Wk 3 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 10,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_back_delts_PullA": {
+   "label": "Wk 3 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 5,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 5,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_3_back_delts_LegsA": {
+   "label": "Wk 3 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_back_delts_PushB": {
+   "label": "Wk 3 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 9,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_3_back_delts_PullB": {
+   "label": "Wk 3 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 4,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 5,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_back_delts_LegsB": {
+   "label": "Wk 3 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Back & Delts",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 6,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "15–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 4,
+     "reps": "15–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_back_delts_PushA": {
+   "label": "Wk 4 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_back_delts_PullA": {
+   "label": "Wk 4 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_4_back_delts_LegsA": {
+   "label": "Wk 4 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "90s"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_back_delts_PushB": {
+   "label": "Wk 4 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_4_back_delts_PullB": {
+   "label": "Wk 4 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 1,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_back_delts_LegsB": {
+   "label": "Wk 4 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_legs_PushA": {
+   "label": "Wk 1 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_legs_PullA": {
+   "label": "Wk 1 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_1_legs_LegsA": {
+   "label": "Wk 1 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 4,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "90s"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_1_legs_PushB": {
+   "label": "Wk 1 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_1_legs_PullB": {
+   "label": "Wk 1 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Leg Press (Quad Bias)",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "60s"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    }
+   ]
+  },
+  "f6_1_legs_LegsB": {
+   "label": "Wk 1 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_legs_PushA": {
+   "label": "Wk 2 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_legs_PullA": {
+   "label": "Wk 2 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_2_legs_LegsA": {
+   "label": "Wk 2 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 5,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 5,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "90s"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_2_legs_PushB": {
+   "label": "Wk 2 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_2_legs_PullB": {
+   "label": "Wk 2 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Leg Press (Quad Bias)",
+     "sets": 4,
+     "reps": "10–15",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "60s"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    }
+   ]
+  },
+  "f6_2_legs_LegsB": {
+   "label": "Wk 2 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 5,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_legs_PushA": {
+   "label": "Wk 3 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_legs_PullA": {
+   "label": "Wk 3 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_3_legs_LegsA": {
+   "label": "Wk 3 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 6,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 6,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "90s"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 6,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_3_legs_PushB": {
+   "label": "Wk 3 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_3_legs_PullB": {
+   "label": "Wk 3 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Leg Press (Quad Bias)",
+     "sets": 5,
+     "reps": "10–15",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "60s"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    }
+   ]
+  },
+  "f6_3_legs_LegsB": {
+   "label": "Wk 3 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
+   "block": "Focus · Legs",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 6,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 6,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_legs_PushA": {
+   "label": "Wk 4 · Push A",
+   "focus": "Push A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_legs_PullA": {
+   "label": "Wk 4 · Pull A",
+   "focus": "Pull A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    }
+   ]
+  },
+  "f6_4_legs_LegsA": {
+   "label": "Wk 4 · Legs A",
+   "focus": "Legs A",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "90s"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_legs_PushB": {
+   "label": "Wk 4 · Push B",
+   "focus": "Push B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
+    }
+   ]
+  },
+  "f6_4_legs_PullB": {
+   "label": "Wk 4 · Pull B",
+   "focus": "Pull B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 1,
+     "reps": "10–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Pullover",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 2,
+     "reps": "10–15",
+     "rest": "60s"
+    }
+   ]
+  },
+  "f6_4_legs_LegsB": {
+   "label": "Wk 4 · Legs B",
+   "focus": "Legs B",
+   "phase": "hypertrophy",
+   "effort": "5 RIR · deload",
+   "block": "Focus · deload",
+   "exercises": [
+    {
+     "name": "Hack Squat",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 1,
+     "reps": "10–15",
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
   "f5_1_chest_arms_Push": {
    "label": "Wk 1 · Push",
    "focus": "Push",

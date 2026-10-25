@@ -109,16 +109,18 @@ P=[
   {"standard":build("total","full_body.json",one("4-day cycle")),"low":build("total_low","full_body_low.json",one("8-day cycle"))}),
 ("ember","Ember","Quick 5-day burn","Five fast supersetted sessions, two rest days. Short on time, high on output.",False,"#E0392B",
   {"standard":build("ember","quick_burn.json",one("5 days on, 2 off"))}),
-("apex","Apex","Strength and size waves, 9 weeks","Four waves, each a heavy strength week then a high-volume size week, every wave climbing. Isolation work stays in the strength weeks at lower volume. Choose 4 or 5 days.",False,"#B8863B",
+("apex","Apex","Strength and size waves, 9 weeks","Four waves, each a heavy strength week then a high-volume size week, every wave climbing. Isolation work stays in the strength weeks at lower volume. Choose 4, 5 or 6 days.",False,"#B8863B",
   {"standard":build("apex","apex.json",own)}),
-("wave","Wave","Rising-volume size block, 6 weeks","Five weeks of climbing volume for every muscle, then a deload. The base for a Focus block. Choose 4 or 5 days.",False,"#6F8F9E",
+("wave","Wave","Rising-volume size block, 6 weeks","Five weeks of climbing volume for every muscle, then a deload. The base for a Focus block. Choose 4, 5 or 6 days.",False,"#6F8F9E",
   {"standard":build("wave","wave.json",own)}),
-("focus","Focus","Specialization block, 4 weeks","Pick the muscles you want to bring up: they get a third weekly session and climb toward their limit while the rest hold. Best after a Wave. Choose 4 or 5 days and a focus.",True,"#7C8B5A",
+("focus","Focus","Specialization block, 4 weeks","Pick the muscles you want to bring up: they get a third weekly session and climb toward their limit while the rest hold. Best after a Wave. Choose 4, 5 or 6 days and a focus.",True,"#7C8B5A",
   {"standard":build("focus","focus.json",own)}),
 ]
 progs={}
+SPECIAL={"apex","wave","focus"}
 for pid,name,sub,desc,adv,col,vars_ in P:
     progs[pid]={"id":pid,"label":name,"sub":sub,"desc":desc,"advanced":adv,"color":col,"variants":vars_}
+    if pid in SPECIAL: progs[pid]["special"]=True
 js="// ── PROGRAM LIBRARY (generated from user-supplied programs) ──\n"
 js+="const GENERIC_LIBRARY = "+json.dumps(list(lib.values()),ensure_ascii=False)+";\n"
 js+="const PROGRAMS_V2 = "+json.dumps(progs,ensure_ascii=False)+";\n"
