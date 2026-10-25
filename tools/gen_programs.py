@@ -71,11 +71,12 @@ def build(pid,f,schedules):
                 if m not in mus: mus.append(m)
         lbl=re.sub(r'^Day \d+ - ','',v["label"]); lbl=re.sub(r'\s*\((Strength|Hypertrophy|Volume)\)$','',lbl)
         if k.startswith("W"): lbl=f"Week {k[1]} · {v['label'].split('(')[1].rstrip(')')}"
-        sess[k]={"label":lbl,"phase":v.get("phase","").lower().replace("volume","hypertrophy") if v.get("phase") else phase_of(v["label"],pid,k),"muscles":mus[:6],"exercises":ex}
+        sess[k]={**({"effort":v["effort"]} if v.get("effort") else {}),**({"block":v["block"]} if v.get("block") else {}),"label":lbl,"phase":v.get("phase","").lower().replace("volume","hypertrophy") if v.get("phase") else phase_of(v["label"],pid,k),"muscles":mus[:6],"exercises":ex}
         if sess[k]["phase"] not in("strength","hypertrophy"): sess[k]["phase"]=phase_of(v["label"],pid,k)
     sch={}
     for key,(label,days) in schedules(p).items(): sch[key]={"label":label,"days":days}
     return {"sessions":sess,"schedules":sch}
+def own(p): return {k:(v["label"],v["days"]) for k,v in p["schedules"].items()}
 one=lambda lab:(lambda p:{"default":(lab,p["schedule"])})
 def dictsch(names):
     return lambda p:{k:(names.get(k,k),v) for k,v in p["schedules"].items()}
@@ -107,6 +108,10 @@ P=[
   {"standard":build("total","full_body.json",one("4-day cycle")),"low":build("total_low","full_body_low.json",one("8-day cycle"))}),
 ("ember","Ember","Quick 5-day burn","Five fast supersetted sessions, two rest days. Short on time, high on output.",False,"#E0392B",
   {"standard":build("ember","quick_burn.json",one("5 days on, 2 off"))}),
+("apex","Apex","Size block + specialization, 10 weeks","Five weeks of rising volume and a deload, then a four-week specialization block that drives the muscles you pick while the rest hold. Choose 4 or 5 days and a focus.",True,"#B8863B",
+  {"standard":build("apex","apex.json",own)}),
+("wave","Wave","Strength and size waves, 9 weeks","Four waves, each a heavy strength week then a high-volume size week, every wave climbing. Isolation work stays in the strength weeks at lower volume. Choose 4 or 5 days.",False,"#6F8F9E",
+  {"standard":build("wave","wave.json",own)}),
 ]
 progs={}
 for pid,name,sub,desc,adv,col,vars_ in P:
