@@ -2,8 +2,8 @@
  "id": "forge",
  "name": "The Forge",
  "description": "Coach Z's personal go-to program. Train every other day, alternating between high weight/low reps and low weight/high reps to mitigate fatigue, never needing to take a deload.",
- "cycleDays": 16,
- "workouts": 8,
+ "cycleDays": 23,
+ "workouts": 11,
  "schedule": [
   "D1",
   "rest",
@@ -20,6 +20,13 @@
   "D7",
   "rest",
   "D8",
+  "rest",
+  "D9",
+  "rest",
+  "D10",
+  "rest",
+  "D11",
+  "rest",
   "rest"
  ],
  "sessions": {
@@ -551,6 +558,108 @@
      "name": "Double Joint Tricep",
      "sets": 4,
      "reps": "8-15"
+    }
+   ]
+  },
+  "D9": {
+   "label": "Day 9 - Deload · Legs",
+   "focus": "Legs",
+   "phase": "Volume",
+   "effort": "4 RIR · deload",
+   "block": "Deload week",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Leg Press Quad Bias",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 2,
+     "reps": "8-12"
+    }
+   ]
+  },
+  "D10": {
+   "label": "Day 10 - Deload · Chest, Shoulders, Tri",
+   "focus": "Chest/Shoulder/Tri",
+   "phase": "Volume",
+   "effort": "4 RIR · deload",
+   "block": "Deload week",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Vertical Press (Elbows Tucked)",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 2,
+     "reps": "8-12"
+    }
+   ]
+  },
+  "D11": {
+   "label": "Day 11 - Deload · Back, Biceps",
+   "focus": "Back/Bi",
+   "phase": "Volume",
+   "effort": "4 RIR · deload",
+   "block": "Deload week",
+   "exercises": [
+    {
+     "name": "Standard Grip Pull-Up",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "8-12"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8-12"
     }
    ]
   }
