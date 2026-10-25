@@ -263,11 +263,11 @@ def make_focus():
     return p, audit
 
 # ---------------------------------------------------------------- Wave (weeks 1,3,5,7 strength; 2,4,6,8 size; 9 deload)
-_S = {"chest":[8,9,10,11],"back":[10,11,12,13],"quads":[6,7,8,9],"hams":[5,6,7,7],"side":[6,7,8,8],"rear":[4,5,5,6],
+_S = {"chest":[10,11,12,13],"back":[12,13,14,15],"quads":[6,7,8,9],"hams":[5,6,7,7],"side":[6,7,8,8],"rear":[4,5,5,6],
       "bi":[6,6,7,8],"tri":[6,6,7,8],"calves":[5,6,6,7],"abs":[4,4,5,5]}
-_H = {"chest":[11,13,15,16],"back":[13,15,17,18],"quads":[9,11,13,14],"hams":[7,8,10,11],"side":[9,11,13,14],"rear":[5,6,7,8],
+_H = {"chest":[14,16,18,20],"back":[16,18,19,20],"quads":[9,11,13,14],"hams":[7,8,10,11],"side":[9,11,13,14],"rear":[5,6,7,8],
       "bi":[8,10,11,12],"tri":[8,10,11,12],"calves":[7,9,10,10],"abs":[5,5,6,6]}
-_D = {"chest":6,"back":7,"quads":5,"hams":4,"side":5,"rear":3,"bi":4,"tri":4,"calves":4,"abs":3}
+_D = {"chest":8,"back":9,"quads":5,"hams":4,"side":5,"rear":3,"bi":4,"tri":4,"calves":4,"abs":3}
 WAVE = {m:[v for i in range(4) for v in (_S[m][i],_H[m][i])]+[_D[m]] for m in _S}
 WAVE_PRESS = [4,3,4,3,5,4,5,4,2]
 WAVE_EFFORT = ["3 RIR","3 RIR","2 RIR","2 RIR","1–2 RIR","1 RIR","1 RIR","0–1 RIR · isolations to failure","5 RIR · deload"]

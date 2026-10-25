@@ -35,9 +35,10 @@
     },
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": [
       "4-8",
+      "3-6",
       "3-6",
       "3-6"
      ]
@@ -53,27 +54,40 @@
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
+     "sets": 4,
      "reps": [
       "4-8",
+      "3-6",
       "3-6",
       "3-6"
      ]
     },
     {
+     "name": "Leg Press Quad Bias",
+     "sets": 4,
+     "reps": [
+      "6-10",
+      "6-10",
+      "6-10",
+      "6-10"
+     ]
+    },
+    {
      "name": "Quad Extension",
-     "sets": 3,
+     "sets": 4,
      "reps": [
       "4-8",
+      "3-8",
       "3-8",
       "3-8"
      ]
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 4,
      "reps": [
       "4-8",
+      "3-8",
       "3-8",
       "3-8"
      ]
@@ -323,17 +337,27 @@
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
+     "sets": 4,
+     "reps": "8-15"
+    },
+    {
+     "name": "Hack Squat",
+     "sets": 4,
+     "reps": "8-15"
+    },
+    {
+     "name": "Leg Press Quad Bias",
+     "sets": 4,
      "reps": "8-15"
     },
     {
      "name": "Quad Extension",
-     "sets": 3,
+     "sets": 4,
      "reps": "8-15"
     },
     {
      "name": "Hamstring Curl (Pulse Reps)",
-     "sets": 3,
+     "sets": 4,
      "reps": "8-15"
     },
     {
