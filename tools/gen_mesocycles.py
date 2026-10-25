@@ -160,17 +160,28 @@ SPEC_MAINT = {"chest":8,"back":10,"quads":6,"hams":5,"side":8,"rear":5,"bi":6,"t
 SPEC_DELOAD = {"chest":6,"back":7,"quads":5,"hams":4,"side":5,"rear":3,"bi":4,"tri":4,"calves":4,"abs":3}
 SPEC_EFFORT = ["2 RIR on priority muscles · 3 RIR on the rest","1 RIR on priority muscles · 3 RIR on the rest","0–1 RIR on priority muscles · 3 RIR on the rest","5 RIR · deload"]
 
-def make_apex():
-    p = {"id":"apex","name":"Apex","description":"Ten weeks. Five weeks of rising volume and a deload, then a four-week specialization block that drives the muscles you pick while the rest hold. Loads follow your logs.",
-         "cycleDays":70,"schedules":{},"sessions":{}}
+def make_size():
+    """6-week size block (5 build weeks + deload). Program id: wave."""
+    p = {"id":"wave","name":"Wave","description":"Six weeks. Five weeks of rising volume, then a deload. Every muscle climbs together. Loads follow your logs.",
+         "cycleDays":42,"schedules":{},"sessions":{}}
     audit = {}
     for ndays,(tpl,week_order) in TEMPLATES.items():
         for w in range(6):
             out, totals = build_week(tpl, {m: APEX_SIZE[m][w] for m in MUSCLES}, APEX_PRESS[w])
             audit[(ndays,"size",w+1)] = totals
             for sess, lst in out.items():
-                p["sessions"][f"a{ndays}_{w+1}_{sess.replace(' ','')}"] = {"label":f"Wk {w+1} · {sess}","focus":sess,"phase":"hypertrophy",
+                p["sessions"][f"s{ndays}_{w+1}_{sess.replace(' ','')}"] = {"label":f"Wk {w+1} · {sess}","focus":sess,"phase":"hypertrophy",
                     "effort":APEX_EFFORT[w],"block":APEX_BLOCK[w],"exercises":[ex_dict(sl,n,"size") for sl,n in lst]}
+        p["schedules"][f"{ndays}d"] = {"label":f"{ndays} days a week","days":
+            ["rest" if s == "rest" else f"s{ndays}_{w+1}_{s.replace(' ','')}" for w in range(6) for s in week_order]}
+    return p, audit
+
+def make_focus():
+    """4-week specialization block (3 build weeks + deload). Program id: focus."""
+    p = {"id":"focus","name":"Focus","description":"Four weeks. Pick the muscles you want to bring up: they get a third weekly session and climb toward their limit while everything else holds at maintenance. Best after a size block.",
+         "cycleDays":28,"schedules":{},"sessions":{}}
+    audit = {}
+    for ndays,(tpl,week_order) in TEMPLATES.items():
         for track,info in ADDON.items():
             for w in range(4):
                 if w < 3:
@@ -179,18 +190,13 @@ def make_apex():
                 else:
                     tg = dict(SPEC_DELOAD); press = 2
                 out, totals = build_week(tpl, tg, press, addon=info[ndays] if w < 3 else {})
-                audit[(ndays,track,7+w)] = totals
+                audit[(ndays,track,w+1)] = totals
                 for sess, lst in out.items():
-                    p["sessions"][f"a{ndays}_{7+w}_{track}_{sess.replace(' ','')}"] = {"label":f"Wk {7+w} · {sess}","focus":sess,"phase":"hypertrophy",
-                        "effort":SPEC_EFFORT[w],"block":("Specialization · "+info["label"]) if w<3 else "Specialization · deload",
+                    p["sessions"][f"f{ndays}_{w+1}_{track}_{sess.replace(' ','')}"] = {"label":f"Wk {w+1} · {sess}","focus":sess,"phase":"hypertrophy",
+                        "effort":SPEC_EFFORT[w],"block":("Focus · "+info["label"]) if w<3 else "Focus · deload",
                         "exercises":[ex_dict(sl,n,"size") for sl,n in lst]}
-            days = []
-            for w in range(10):
-                for s in week_order:
-                    if s == "rest": days.append("rest"); continue
-                    sk = s.replace(" ","")
-                    days.append(f"a{ndays}_{w+1}_{sk}" if w < 6 else f"a{ndays}_{w+1}_{track}_{sk}")
-            p["schedules"][f"{ndays}d_{track}"] = {"label":f"{ndays} days a week · Focus: {info['label']}","days":days}
+            p["schedules"][f"{ndays}d_{track}"] = {"label":f"{ndays} days a week · Focus: {info['label']}","days":
+                ["rest" if s == "rest" else f"f{ndays}_{w+1}_{track}_{s.replace(' ','')}" for w in range(4) for s in week_order]}
     return p, audit
 
 # ---------------------------------------------------------------- Wave (weeks 1,3,5,7 strength; 2,4,6,8 size; 9 deload)
@@ -201,8 +207,9 @@ WAVE = {
 WAVE_PRESS = [4,3,4,3,5,4,5,4,2]
 WAVE_EFFORT = ["3 RIR","3 RIR","2 RIR","2 RIR","1–2 RIR","1 RIR","1 RIR","0–1 RIR · isolations to failure","5 RIR · deload"]
 
-def make_wave():
-    p = {"id":"wave","name":"Wave","description":"Nine weeks in four waves. Each wave is a heavy strength week followed by a high-volume size week, and every wave climbs. Isolation work stays in the strength weeks at lower volume.",
+def make_strength_waves():
+    """9-week strength/size waves. Program id: apex."""
+    p = {"id":"apex","name":"Apex","description":"Nine weeks in four waves. Each wave is a heavy strength week followed by a high-volume size week, and every wave climbs. Isolation work stays in the strength weeks at lower volume.",
          "cycleDays":63,"schedules":{},"sessions":{}}
     audit = {}
     for ndays,(tpl,week_order) in TEMPLATES.items():
@@ -212,15 +219,15 @@ def make_wave():
             audit[(ndays,"wave",w+1)] = totals
             block = f"Wave {w//2+1} · strength week" if strength else (f"Wave {w//2+1} · size week" if w != 8 else "Deload")
             for sess, lst in out.items():
-                p["sessions"][f"w{ndays}_{w+1}_{sess.replace(' ','')}"] = {"label":f"Wk {w+1} · {sess}","focus":sess,
+                p["sessions"][f"x{ndays}_{w+1}_{sess.replace(' ','')}"] = {"label":f"Wk {w+1} · {sess}","focus":sess,
                     "phase":"strength" if strength else "hypertrophy","effort":WAVE_EFFORT[w],"block":block,
                     "exercises":[ex_dict(sl,n,"strength" if strength else "size") for sl,n in lst]}
         p["schedules"][f"{ndays}d"] = {"label":f"{ndays} days a week","days":
-            ["rest" if s == "rest" else f"w{ndays}_{w+1}_{s.replace(' ','')}" for w in range(9) for s in week_order]}
+            ["rest" if s == "rest" else f"x{ndays}_{w+1}_{s.replace(' ','')}" for w in range(9) for s in week_order]}
     return p, audit
 
 if __name__ == "__main__":
-    for name, fn in (("apex", make_apex), ("wave", make_wave)):
+    for name, fn in (("apex", make_strength_waves), ("wave", make_size), ("focus", make_focus)):
         p, audit = fn()
         json.dump(p, open(f"data/programs/{name}.json","w"), indent=1, ensure_ascii=False)
         print(name, len(p["sessions"]), "sessions;", {k:len(v["days"]) for k,v in p["schedules"].items()})

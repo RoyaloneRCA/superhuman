@@ -1,674 +1,360 @@
 {
  "id": "apex",
  "name": "Apex",
- "description": "Ten weeks. Five weeks of rising volume and a deload, then a four-week specialization block that drives the muscles you pick while the rest hold. Loads follow your logs.",
- "cycleDays": 70,
+ "description": "Nine weeks in four waves. Each wave is a heavy strength week followed by a high-volume size week, and every wave climbs. Isolation work stays in the strength weeks at lower volume.",
+ "cycleDays": 63,
  "schedules": {
-  "5d_chest_arms": {
-   "label": "5 days a week · Focus: Chest & Arms",
+  "5d": {
+   "label": "5 days a week",
    "days": [
-    "a5_1_Push",
-    "a5_1_Pull",
-    "a5_1_Legs",
+    "x5_1_Push",
+    "x5_1_Pull",
+    "x5_1_Legs",
     "rest",
-    "a5_1_Upper",
-    "a5_1_Lower",
+    "x5_1_Upper",
+    "x5_1_Lower",
     "rest",
-    "a5_2_Push",
-    "a5_2_Pull",
-    "a5_2_Legs",
+    "x5_2_Push",
+    "x5_2_Pull",
+    "x5_2_Legs",
     "rest",
-    "a5_2_Upper",
-    "a5_2_Lower",
+    "x5_2_Upper",
+    "x5_2_Lower",
     "rest",
-    "a5_3_Push",
-    "a5_3_Pull",
-    "a5_3_Legs",
+    "x5_3_Push",
+    "x5_3_Pull",
+    "x5_3_Legs",
     "rest",
-    "a5_3_Upper",
-    "a5_3_Lower",
+    "x5_3_Upper",
+    "x5_3_Lower",
     "rest",
-    "a5_4_Push",
-    "a5_4_Pull",
-    "a5_4_Legs",
+    "x5_4_Push",
+    "x5_4_Pull",
+    "x5_4_Legs",
     "rest",
-    "a5_4_Upper",
-    "a5_4_Lower",
+    "x5_4_Upper",
+    "x5_4_Lower",
     "rest",
-    "a5_5_Push",
-    "a5_5_Pull",
-    "a5_5_Legs",
+    "x5_5_Push",
+    "x5_5_Pull",
+    "x5_5_Legs",
     "rest",
-    "a5_5_Upper",
-    "a5_5_Lower",
+    "x5_5_Upper",
+    "x5_5_Lower",
     "rest",
-    "a5_6_Push",
-    "a5_6_Pull",
-    "a5_6_Legs",
+    "x5_6_Push",
+    "x5_6_Pull",
+    "x5_6_Legs",
     "rest",
-    "a5_6_Upper",
-    "a5_6_Lower",
+    "x5_6_Upper",
+    "x5_6_Lower",
     "rest",
-    "a5_7_chest_arms_Push",
-    "a5_7_chest_arms_Pull",
-    "a5_7_chest_arms_Legs",
+    "x5_7_Push",
+    "x5_7_Pull",
+    "x5_7_Legs",
     "rest",
-    "a5_7_chest_arms_Upper",
-    "a5_7_chest_arms_Lower",
+    "x5_7_Upper",
+    "x5_7_Lower",
     "rest",
-    "a5_8_chest_arms_Push",
-    "a5_8_chest_arms_Pull",
-    "a5_8_chest_arms_Legs",
+    "x5_8_Push",
+    "x5_8_Pull",
+    "x5_8_Legs",
     "rest",
-    "a5_8_chest_arms_Upper",
-    "a5_8_chest_arms_Lower",
+    "x5_8_Upper",
+    "x5_8_Lower",
     "rest",
-    "a5_9_chest_arms_Push",
-    "a5_9_chest_arms_Pull",
-    "a5_9_chest_arms_Legs",
+    "x5_9_Push",
+    "x5_9_Pull",
+    "x5_9_Legs",
     "rest",
-    "a5_9_chest_arms_Upper",
-    "a5_9_chest_arms_Lower",
-    "rest",
-    "a5_10_chest_arms_Push",
-    "a5_10_chest_arms_Pull",
-    "a5_10_chest_arms_Legs",
-    "rest",
-    "a5_10_chest_arms_Upper",
-    "a5_10_chest_arms_Lower",
+    "x5_9_Upper",
+    "x5_9_Lower",
     "rest"
    ]
   },
-  "5d_back_delts": {
-   "label": "5 days a week · Focus: Back & Delts",
+  "4d": {
+   "label": "4 days a week",
    "days": [
-    "a5_1_Push",
-    "a5_1_Pull",
-    "a5_1_Legs",
+    "x4_1_UpperA",
+    "x4_1_LowerA",
     "rest",
-    "a5_1_Upper",
-    "a5_1_Lower",
+    "x4_1_UpperB",
+    "x4_1_LowerB",
     "rest",
-    "a5_2_Push",
-    "a5_2_Pull",
-    "a5_2_Legs",
     "rest",
-    "a5_2_Upper",
-    "a5_2_Lower",
+    "x4_2_UpperA",
+    "x4_2_LowerA",
     "rest",
-    "a5_3_Push",
-    "a5_3_Pull",
-    "a5_3_Legs",
+    "x4_2_UpperB",
+    "x4_2_LowerB",
     "rest",
-    "a5_3_Upper",
-    "a5_3_Lower",
     "rest",
-    "a5_4_Push",
-    "a5_4_Pull",
-    "a5_4_Legs",
+    "x4_3_UpperA",
+    "x4_3_LowerA",
     "rest",
-    "a5_4_Upper",
-    "a5_4_Lower",
+    "x4_3_UpperB",
+    "x4_3_LowerB",
     "rest",
-    "a5_5_Push",
-    "a5_5_Pull",
-    "a5_5_Legs",
     "rest",
-    "a5_5_Upper",
-    "a5_5_Lower",
+    "x4_4_UpperA",
+    "x4_4_LowerA",
     "rest",
-    "a5_6_Push",
-    "a5_6_Pull",
-    "a5_6_Legs",
+    "x4_4_UpperB",
+    "x4_4_LowerB",
     "rest",
-    "a5_6_Upper",
-    "a5_6_Lower",
     "rest",
-    "a5_7_back_delts_Push",
-    "a5_7_back_delts_Pull",
-    "a5_7_back_delts_Legs",
+    "x4_5_UpperA",
+    "x4_5_LowerA",
     "rest",
-    "a5_7_back_delts_Upper",
-    "a5_7_back_delts_Lower",
+    "x4_5_UpperB",
+    "x4_5_LowerB",
     "rest",
-    "a5_8_back_delts_Push",
-    "a5_8_back_delts_Pull",
-    "a5_8_back_delts_Legs",
     "rest",
-    "a5_8_back_delts_Upper",
-    "a5_8_back_delts_Lower",
+    "x4_6_UpperA",
+    "x4_6_LowerA",
     "rest",
-    "a5_9_back_delts_Push",
-    "a5_9_back_delts_Pull",
-    "a5_9_back_delts_Legs",
+    "x4_6_UpperB",
+    "x4_6_LowerB",
     "rest",
-    "a5_9_back_delts_Upper",
-    "a5_9_back_delts_Lower",
     "rest",
-    "a5_10_back_delts_Push",
-    "a5_10_back_delts_Pull",
-    "a5_10_back_delts_Legs",
+    "x4_7_UpperA",
+    "x4_7_LowerA",
     "rest",
-    "a5_10_back_delts_Upper",
-    "a5_10_back_delts_Lower",
-    "rest"
-   ]
-  },
-  "5d_legs": {
-   "label": "5 days a week · Focus: Legs",
-   "days": [
-    "a5_1_Push",
-    "a5_1_Pull",
-    "a5_1_Legs",
+    "x4_7_UpperB",
+    "x4_7_LowerB",
     "rest",
-    "a5_1_Upper",
-    "a5_1_Lower",
     "rest",
-    "a5_2_Push",
-    "a5_2_Pull",
-    "a5_2_Legs",
+    "x4_8_UpperA",
+    "x4_8_LowerA",
     "rest",
-    "a5_2_Upper",
-    "a5_2_Lower",
+    "x4_8_UpperB",
+    "x4_8_LowerB",
     "rest",
-    "a5_3_Push",
-    "a5_3_Pull",
-    "a5_3_Legs",
     "rest",
-    "a5_3_Upper",
-    "a5_3_Lower",
+    "x4_9_UpperA",
+    "x4_9_LowerA",
     "rest",
-    "a5_4_Push",
-    "a5_4_Pull",
-    "a5_4_Legs",
-    "rest",
-    "a5_4_Upper",
-    "a5_4_Lower",
-    "rest",
-    "a5_5_Push",
-    "a5_5_Pull",
-    "a5_5_Legs",
-    "rest",
-    "a5_5_Upper",
-    "a5_5_Lower",
-    "rest",
-    "a5_6_Push",
-    "a5_6_Pull",
-    "a5_6_Legs",
-    "rest",
-    "a5_6_Upper",
-    "a5_6_Lower",
-    "rest",
-    "a5_7_legs_Push",
-    "a5_7_legs_Pull",
-    "a5_7_legs_Legs",
-    "rest",
-    "a5_7_legs_Upper",
-    "a5_7_legs_Lower",
-    "rest",
-    "a5_8_legs_Push",
-    "a5_8_legs_Pull",
-    "a5_8_legs_Legs",
-    "rest",
-    "a5_8_legs_Upper",
-    "a5_8_legs_Lower",
-    "rest",
-    "a5_9_legs_Push",
-    "a5_9_legs_Pull",
-    "a5_9_legs_Legs",
-    "rest",
-    "a5_9_legs_Upper",
-    "a5_9_legs_Lower",
-    "rest",
-    "a5_10_legs_Push",
-    "a5_10_legs_Pull",
-    "a5_10_legs_Legs",
-    "rest",
-    "a5_10_legs_Upper",
-    "a5_10_legs_Lower",
-    "rest"
-   ]
-  },
-  "4d_chest_arms": {
-   "label": "4 days a week · Focus: Chest & Arms",
-   "days": [
-    "a4_1_UpperA",
-    "a4_1_LowerA",
-    "rest",
-    "a4_1_UpperB",
-    "a4_1_LowerB",
-    "rest",
-    "rest",
-    "a4_2_UpperA",
-    "a4_2_LowerA",
-    "rest",
-    "a4_2_UpperB",
-    "a4_2_LowerB",
-    "rest",
-    "rest",
-    "a4_3_UpperA",
-    "a4_3_LowerA",
-    "rest",
-    "a4_3_UpperB",
-    "a4_3_LowerB",
-    "rest",
-    "rest",
-    "a4_4_UpperA",
-    "a4_4_LowerA",
-    "rest",
-    "a4_4_UpperB",
-    "a4_4_LowerB",
-    "rest",
-    "rest",
-    "a4_5_UpperA",
-    "a4_5_LowerA",
-    "rest",
-    "a4_5_UpperB",
-    "a4_5_LowerB",
-    "rest",
-    "rest",
-    "a4_6_UpperA",
-    "a4_6_LowerA",
-    "rest",
-    "a4_6_UpperB",
-    "a4_6_LowerB",
-    "rest",
-    "rest",
-    "a4_7_chest_arms_UpperA",
-    "a4_7_chest_arms_LowerA",
-    "rest",
-    "a4_7_chest_arms_UpperB",
-    "a4_7_chest_arms_LowerB",
-    "rest",
-    "rest",
-    "a4_8_chest_arms_UpperA",
-    "a4_8_chest_arms_LowerA",
-    "rest",
-    "a4_8_chest_arms_UpperB",
-    "a4_8_chest_arms_LowerB",
-    "rest",
-    "rest",
-    "a4_9_chest_arms_UpperA",
-    "a4_9_chest_arms_LowerA",
-    "rest",
-    "a4_9_chest_arms_UpperB",
-    "a4_9_chest_arms_LowerB",
-    "rest",
-    "rest",
-    "a4_10_chest_arms_UpperA",
-    "a4_10_chest_arms_LowerA",
-    "rest",
-    "a4_10_chest_arms_UpperB",
-    "a4_10_chest_arms_LowerB",
-    "rest",
-    "rest"
-   ]
-  },
-  "4d_back_delts": {
-   "label": "4 days a week · Focus: Back & Delts",
-   "days": [
-    "a4_1_UpperA",
-    "a4_1_LowerA",
-    "rest",
-    "a4_1_UpperB",
-    "a4_1_LowerB",
-    "rest",
-    "rest",
-    "a4_2_UpperA",
-    "a4_2_LowerA",
-    "rest",
-    "a4_2_UpperB",
-    "a4_2_LowerB",
-    "rest",
-    "rest",
-    "a4_3_UpperA",
-    "a4_3_LowerA",
-    "rest",
-    "a4_3_UpperB",
-    "a4_3_LowerB",
-    "rest",
-    "rest",
-    "a4_4_UpperA",
-    "a4_4_LowerA",
-    "rest",
-    "a4_4_UpperB",
-    "a4_4_LowerB",
-    "rest",
-    "rest",
-    "a4_5_UpperA",
-    "a4_5_LowerA",
-    "rest",
-    "a4_5_UpperB",
-    "a4_5_LowerB",
-    "rest",
-    "rest",
-    "a4_6_UpperA",
-    "a4_6_LowerA",
-    "rest",
-    "a4_6_UpperB",
-    "a4_6_LowerB",
-    "rest",
-    "rest",
-    "a4_7_back_delts_UpperA",
-    "a4_7_back_delts_LowerA",
-    "rest",
-    "a4_7_back_delts_UpperB",
-    "a4_7_back_delts_LowerB",
-    "rest",
-    "rest",
-    "a4_8_back_delts_UpperA",
-    "a4_8_back_delts_LowerA",
-    "rest",
-    "a4_8_back_delts_UpperB",
-    "a4_8_back_delts_LowerB",
-    "rest",
-    "rest",
-    "a4_9_back_delts_UpperA",
-    "a4_9_back_delts_LowerA",
-    "rest",
-    "a4_9_back_delts_UpperB",
-    "a4_9_back_delts_LowerB",
-    "rest",
-    "rest",
-    "a4_10_back_delts_UpperA",
-    "a4_10_back_delts_LowerA",
-    "rest",
-    "a4_10_back_delts_UpperB",
-    "a4_10_back_delts_LowerB",
-    "rest",
-    "rest"
-   ]
-  },
-  "4d_legs": {
-   "label": "4 days a week · Focus: Legs",
-   "days": [
-    "a4_1_UpperA",
-    "a4_1_LowerA",
-    "rest",
-    "a4_1_UpperB",
-    "a4_1_LowerB",
-    "rest",
-    "rest",
-    "a4_2_UpperA",
-    "a4_2_LowerA",
-    "rest",
-    "a4_2_UpperB",
-    "a4_2_LowerB",
-    "rest",
-    "rest",
-    "a4_3_UpperA",
-    "a4_3_LowerA",
-    "rest",
-    "a4_3_UpperB",
-    "a4_3_LowerB",
-    "rest",
-    "rest",
-    "a4_4_UpperA",
-    "a4_4_LowerA",
-    "rest",
-    "a4_4_UpperB",
-    "a4_4_LowerB",
-    "rest",
-    "rest",
-    "a4_5_UpperA",
-    "a4_5_LowerA",
-    "rest",
-    "a4_5_UpperB",
-    "a4_5_LowerB",
-    "rest",
-    "rest",
-    "a4_6_UpperA",
-    "a4_6_LowerA",
-    "rest",
-    "a4_6_UpperB",
-    "a4_6_LowerB",
-    "rest",
-    "rest",
-    "a4_7_legs_UpperA",
-    "a4_7_legs_LowerA",
-    "rest",
-    "a4_7_legs_UpperB",
-    "a4_7_legs_LowerB",
-    "rest",
-    "rest",
-    "a4_8_legs_UpperA",
-    "a4_8_legs_LowerA",
-    "rest",
-    "a4_8_legs_UpperB",
-    "a4_8_legs_LowerB",
-    "rest",
-    "rest",
-    "a4_9_legs_UpperA",
-    "a4_9_legs_LowerA",
-    "rest",
-    "a4_9_legs_UpperB",
-    "a4_9_legs_LowerB",
-    "rest",
-    "rest",
-    "a4_10_legs_UpperA",
-    "a4_10_legs_LowerA",
-    "rest",
-    "a4_10_legs_UpperB",
-    "a4_10_legs_LowerB",
+    "x4_9_UpperB",
+    "x4_9_LowerB",
     "rest",
     "rest"
    ]
   }
  },
  "sessions": {
-  "a5_1_Push": {
+  "x5_1_Push": {
    "label": "Wk 1 · Push",
    "focus": "Push",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 2,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2–3 min"
+     "sets": 2,
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 4,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_1_Pull": {
-   "label": "Wk 1 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
      "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 3,
-     "reps": "8–12",
+     "reps": "5–8",
      "rest": "2 min"
     },
     {
-     "name": "Rear Delt Fly",
+     "name": "Lateral Raise",
      "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 4,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_1_Legs": {
+  "x5_1_Pull": {
+   "label": "Wk 1 · Pull",
+   "focus": "Pull",
+   "phase": "strength",
+   "effort": "3 RIR",
+   "block": "Wave 1 · strength week",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 2,
+     "reps": "3–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "4–6",
+     "rest": "3 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "6–8",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x5_1_Legs": {
    "label": "Wk 1 · Legs",
    "focus": "Legs",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
-     "reps": "5–8",
-     "rest": "3 min"
+     "sets": 2,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Hack Squat",
      "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 2,
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Calf Raise",
      "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     }
    ]
   },
-  "a5_1_Upper": {
+  "x5_1_Upper": {
    "label": "Wk 1 · Upper",
    "focus": "Upper",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Lat Biased Row",
      "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
+     "reps": "5–8",
+     "rest": "2–3 min"
     },
     {
      "name": "Chest Fly",
      "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Low to High Fly/Press",
      "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lat Sweep",
      "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Pullover",
      "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
     }
    ]
   },
-  "a5_1_Lower": {
+  "x5_1_Lower": {
    "label": "Wk 1 · Lower",
    "focus": "Lower",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Bent Knee Hinge",
      "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "90s"
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
      "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
     }
    ]
   },
-  "a5_2_Push": {
+  "x5_2_Push": {
    "label": "Wk 2 · Push",
    "focus": "Push",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
@@ -690,7 +376,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 6,
+     "sets": 4,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -702,12 +388,12 @@
     }
    ]
   },
-  "a5_2_Pull": {
+  "x5_2_Pull": {
    "label": "Wk 2 · Pull",
    "focus": "Pull",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Pull-Ups",
@@ -723,24 +409,24 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 6,
+     "sets": 4,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_2_Legs": {
+  "x5_2_Legs": {
    "label": "Wk 2 · Legs",
    "focus": "Legs",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Squat",
@@ -768,12 +454,12 @@
     }
    ]
   },
-  "a5_2_Upper": {
+  "x5_2_Upper": {
    "label": "Wk 2 · Upper",
    "focus": "Upper",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Lat Biased Row",
@@ -813,7 +499,7 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -831,12 +517,12 @@
     }
    ]
   },
-  "a5_2_Lower": {
+  "x5_2_Lower": {
    "label": "Wk 2 · Lower",
    "focus": "Lower",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Bent Knee Hinge",
@@ -870,258 +556,258 @@
     }
    ]
   },
-  "a5_3_Push": {
+  "x5_3_Push": {
    "label": "Wk 3 · Push",
    "focus": "Push",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
+   "block": "Wave 2 · strength week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
      "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 6,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_3_Pull": {
-   "label": "Wk 3 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
      "sets": 3,
-     "reps": "8–12",
+     "reps": "5–8",
      "rest": "2 min"
     },
     {
-     "name": "Rear Delt Fly",
+     "name": "Lateral Raise",
      "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 7,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_3_Legs": {
+  "x5_3_Pull": {
+   "label": "Wk 3 · Pull",
+   "focus": "Pull",
+   "phase": "strength",
+   "effort": "2 RIR",
+   "block": "Wave 2 · strength week",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 2,
+     "reps": "4–6",
+     "rest": "3 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "6–8",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x5_3_Legs": {
    "label": "Wk 3 · Legs",
    "focus": "Legs",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
+   "block": "Wave 2 · strength week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 5,
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Hack Squat",
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
-     "name": "Hack Squat",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
      "name": "Straight Knee Hinge",
-     "sets": 5,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Calf Raise",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "90s"
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
     }
    ]
   },
-  "a5_3_Upper": {
+  "x5_3_Upper": {
    "label": "Wk 3 · Upper",
    "focus": "Upper",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
+   "block": "Wave 2 · strength week",
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 3,
-     "reps": "10–12",
-     "rest": "2 min"
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "2–3 min"
     },
     {
      "name": "Chest Fly",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 5,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_3_Lower": {
-   "label": "Wk 3 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
      "sets": 2,
-     "reps": "8–12",
+     "reps": "6–10",
      "rest": "2 min"
     },
     {
-     "name": "Quad Extension",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "90s"
+     "name": "Low to High Fly/Press",
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
-     "name": "Hamstring Curl",
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
      "sets": 3,
-     "reps": "10–15",
+     "reps": "8–12",
      "rest": "90s"
     },
     {
-     "name": "Leg Press Calf Raise",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
-     "name": "Ab Crunch",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
     }
    ]
   },
-  "a5_4_Push": {
+  "x5_3_Lower": {
+   "label": "Wk 3 · Lower",
+   "focus": "Lower",
+   "phase": "strength",
+   "effort": "2 RIR",
+   "block": "Wave 2 · strength week",
+   "exercises": [
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
+    }
+   ]
+  },
+  "x5_4_Push": {
    "label": "Wk 4 · Push",
    "focus": "Push",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 5,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
      "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2–3 min"
+    },
+    {
      "name": "Double Joint Tricep",
-     "sets": 7,
+     "sets": 6,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 7,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a5_4_Pull": {
+  "x5_4_Pull": {
    "label": "Wk 4 · Pull",
    "focus": "Pull",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Pull-Ups",
@@ -1131,34 +817,34 @@
     },
     {
      "name": "Upper Back Row",
-     "sets": 4,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 7,
+     "sets": 6,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_4_Legs": {
+  "x5_4_Legs": {
    "label": "Wk 4 · Legs",
    "focus": "Legs",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 6,
+     "sets": 5,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -1170,28 +856,28 @@
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 5,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Calf Raise",
-     "sets": 6,
+     "sets": 5,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_4_Upper": {
+  "x5_4_Upper": {
    "label": "Wk 4 · Upper",
    "focus": "Upper",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 4,
+     "sets": 3,
      "reps": "10–12",
      "rest": "2 min"
     },
@@ -1221,36 +907,36 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 7,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 6,
+     "sets": 4,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a5_4_Lower": {
+  "x5_4_Lower": {
    "label": "Wk 4 · Lower",
    "focus": "Lower",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Bent Knee Hinge",
@@ -1260,955 +946,712 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_5_Push": {
-   "label": "Wk 5 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 6,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 8,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_5_Pull": {
-   "label": "Wk 5 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 8,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_5_Legs": {
-   "label": "Wk 5 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 6,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 6,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 6,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_5_Upper": {
-   "label": "Wk 5 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 4,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
      "sets": 3,
      "reps": "10–15",
      "rest": "90s"
     },
     {
-     "name": "Lat Sweep",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 6,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 6,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_5_Lower": {
-   "label": "Wk 5 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
      "name": "Leg Press Calf Raise",
-     "sets": 6,
+     "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 8,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a5_6_Push": {
+  "x5_5_Push": {
+   "label": "Wk 5 · Push",
+   "focus": "Push",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 5,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 4,
+     "reps": "5–8",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
+    }
+   ]
+  },
+  "x5_5_Pull": {
+   "label": "Wk 5 · Pull",
+   "focus": "Pull",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "6–8",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x5_5_Legs": {
+   "label": "Wk 5 · Legs",
+   "focus": "Legs",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Hack Squat",
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x5_5_Upper": {
+   "label": "Wk 5 · Upper",
+   "focus": "Upper",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
+    }
+   ]
+  },
+  "x5_5_Lower": {
+   "label": "Wk 5 · Lower",
+   "focus": "Lower",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Bent Knee Hinge",
+     "sets": 1,
+     "reps": "5–8",
+     "rest": "3 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Leg Press Calf Raise",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "90s"
+    }
+   ]
+  },
+  "x5_6_Push": {
    "label": "Wk 6 · Push",
    "focus": "Push",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
+     "sets": 5,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
+     "sets": 5,
      "reps": "8–12",
      "rest": "2–3 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 2,
+     "sets": 7,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 8,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a5_6_Pull": {
+  "x5_6_Pull": {
    "label": "Wk 6 · Pull",
    "focus": "Pull",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 2,
+     "sets": 7,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_6_Legs": {
+  "x5_6_Legs": {
    "label": "Wk 6 · Legs",
    "focus": "Legs",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 2,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hack Squat",
-     "sets": 1,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 2,
+     "sets": 5,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Calf Raise",
-     "sets": 2,
+     "sets": 6,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_6_Upper": {
+  "x5_6_Upper": {
    "label": "Wk 6 · Upper",
    "focus": "Upper",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 1,
+     "sets": 4,
      "reps": "10–12",
      "rest": "2 min"
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 3,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 1,
+     "sets": 3,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 1,
+     "sets": 3,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 7,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 1,
+     "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 5,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 2,
+     "sets": 5,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a5_6_Lower": {
+  "x5_6_Lower": {
    "label": "Wk 6 · Lower",
    "focus": "Lower",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 5,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 1,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 2,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 3,
+     "sets": 8,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a5_7_chest_arms_Push": {
+  "x5_7_Push": {
    "label": "Wk 7 · Push",
    "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Incline Chest Press (Elbows Flared)",
      "sets": 3,
-     "reps": "8–12",
-     "rest": "2–3 min"
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 5,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "90s"
+     "sets": 4,
+     "reps": "5–8",
+     "rest": "2 min"
     },
     {
      "name": "Lateral Raise",
      "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_chest_arms_Pull": {
-   "label": "Wk 7 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 5,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_7_chest_arms_Legs": {
+  "x5_7_Pull": {
+   "label": "Wk 7 · Pull",
+   "focus": "Pull",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
+   "exercises": [
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3 min"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "6–8",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x5_7_Legs": {
    "label": "Wk 7 · Legs",
    "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
    "exercises": [
     {
      "name": "Squat",
+     "sets": 4,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Hack Squat",
      "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
      "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "2 min"
     }
    ]
   },
-  "a5_7_chest_arms_Upper": {
+  "x5_7_Upper": {
    "label": "Wk 7 · Upper",
    "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "2–3 min"
     },
     {
      "name": "Chest Fly",
      "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Low to High Fly/Press",
      "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lat Sweep",
      "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Pullover",
      "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lateral Raise (Top Partials)",
      "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Hammer Curl",
      "sets": 4,
-     "reps": "10–15",
-     "rest": "60s"
+     "reps": "6–10",
+     "rest": "90s"
     },
     {
      "name": "Single Joint Tricep",
      "sets": 4,
-     "reps": "12–15",
-     "rest": "60s"
+     "reps": "6–10",
+     "rest": "90s"
     }
    ]
   },
-  "a5_7_chest_arms_Lower": {
+  "x5_7_Lower": {
    "label": "Wk 7 · Lower",
    "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
    "exercises": [
     {
      "name": "Bent Knee Hinge",
      "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "High to Low Fly/Press",
-     "sets": 4,
-     "reps": "10–15",
+     "sets": 3,
+     "reps": "8–12",
      "rest": "90s"
     },
     {
-     "name": "Reverse Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
+     "name": "Ab Crunch",
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "90s"
     }
    ]
   },
-  "a5_8_chest_arms_Push": {
+  "x5_8_Push": {
    "label": "Wk 8 · Push",
    "focus": "Push",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 4,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 4,
+     "sets": 5,
      "reps": "8–12",
      "rest": "2–3 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 6,
+     "sets": 8,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 9,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a5_8_chest_arms_Pull": {
+  "x5_8_Pull": {
    "label": "Wk 8 · Pull",
    "focus": "Pull",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 7,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_8_chest_arms_Legs": {
-   "label": "Wk 8 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_8_chest_arms_Upper": {
-   "label": "Wk 8 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 5,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_8_chest_arms_Lower": {
-   "label": "Wk 8 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "High to Low Fly/Press",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Reverse Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_9_chest_arms_Push": {
-   "label": "Wk 9 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 5,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 7,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_9_chest_arms_Pull": {
-   "label": "Wk 9 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2220,1704 +1663,147 @@
     }
    ]
   },
-  "a5_9_chest_arms_Legs": {
-   "label": "Wk 9 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_9_chest_arms_Upper": {
-   "label": "Wk 9 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 6,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 6,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_9_chest_arms_Lower": {
-   "label": "Wk 9 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "High to Low Fly/Press",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Reverse Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_chest_arms_Push": {
-   "label": "Wk 10 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_chest_arms_Pull": {
-   "label": "Wk 10 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_10_chest_arms_Legs": {
-   "label": "Wk 10 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_10_chest_arms_Upper": {
-   "label": "Wk 10 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 1,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_chest_arms_Lower": {
-   "label": "Wk 10 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_back_delts_Push": {
-   "label": "Wk 7 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_back_delts_Pull": {
-   "label": "Wk 7 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_7_back_delts_Legs": {
-   "label": "Wk 7 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_7_back_delts_Upper": {
-   "label": "Wk 7 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 3,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_back_delts_Lower": {
-   "label": "Wk 7 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 5,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "15–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "15–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_8_back_delts_Push": {
-   "label": "Wk 8 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 7,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_8_back_delts_Pull": {
-   "label": "Wk 8 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_8_back_delts_Legs": {
+  "x5_8_Legs": {
    "label": "Wk 8 · Legs",
    "focus": "Legs",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 2,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 2,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Calf Raise",
-     "sets": 3,
+     "sets": 7,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_8_back_delts_Upper": {
+  "x5_8_Upper": {
    "label": "Wk 8 · Upper",
    "focus": "Upper",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 3,
+     "sets": 4,
      "reps": "10–12",
      "rest": "2 min"
     },
     {
      "name": "Chest Fly",
-     "sets": 2,
+     "sets": 4,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 2,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 3,
+     "sets": 4,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 3,
+     "sets": 4,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 7,
+     "sets": 9,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 6,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 6,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a5_8_back_delts_Lower": {
+  "x5_8_Lower": {
    "label": "Wk 8 · Lower",
    "focus": "Lower",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
-     "name": "Upper Back Row",
-     "sets": 5,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 5,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 2,
+     "sets": 7,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "15–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "15–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_9_back_delts_Push": {
-   "label": "Wk 9 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
      "sets": 8,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a5_9_back_delts_Pull": {
-   "label": "Wk 9 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_9_back_delts_Legs": {
-   "label": "Wk 9 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_9_back_delts_Upper": {
-   "label": "Wk 9 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 4,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_9_back_delts_Lower": {
-   "label": "Wk 9 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 6,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 6,
-     "reps": "15–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "15–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_back_delts_Push": {
-   "label": "Wk 10 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_back_delts_Pull": {
-   "label": "Wk 10 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_10_back_delts_Legs": {
-   "label": "Wk 10 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_10_back_delts_Upper": {
-   "label": "Wk 10 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 1,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_back_delts_Lower": {
-   "label": "Wk 10 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_legs_Push": {
-   "label": "Wk 7 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_legs_Pull": {
-   "label": "Wk 7 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Leg Press (Quad Bias)",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_legs_Legs": {
-   "label": "Wk 7 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 4,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_7_legs_Upper": {
-   "label": "Wk 7 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_7_legs_Lower": {
-   "label": "Wk 7 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_8_legs_Push": {
-   "label": "Wk 8 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_8_legs_Pull": {
-   "label": "Wk 8 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Leg Press (Quad Bias)",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_8_legs_Legs": {
-   "label": "Wk 8 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 4,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_8_legs_Upper": {
-   "label": "Wk 8 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_8_legs_Lower": {
-   "label": "Wk 8 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_9_legs_Push": {
+  "x5_9_Push": {
    "label": "Wk 9 · Push",
    "focus": "Push",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "5 RIR · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
@@ -3933,30 +1819,30 @@
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a5_9_legs_Pull": {
+  "x5_9_Pull": {
    "label": "Wk 9 · Pull",
    "focus": "Pull",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "5 RIR · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Pull-Ups",
@@ -3971,346 +1857,121 @@
      "rest": "2 min"
     },
     {
-     "name": "Leg Press (Quad Bias)",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "2 min"
-    },
-    {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
     }
    ]
   },
-  "a5_9_legs_Legs": {
+  "x5_9_Legs": {
    "label": "Wk 9 · Legs",
    "focus": "Legs",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "5 RIR · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 5,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hack Squat",
-     "sets": 3,
+     "sets": 1,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 5,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Calf Raise",
-     "sets": 6,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a5_9_legs_Upper": {
+  "x5_9_Upper": {
    "label": "Wk 9 · Upper",
    "focus": "Upper",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "5 RIR · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–12",
      "rest": "2 min"
     },
     {
      "name": "Chest Fly",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a5_9_legs_Lower": {
+  "x5_9_Lower": {
    "label": "Wk 9 · Lower",
    "focus": "Lower",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_legs_Push": {
-   "label": "Wk 10 · Push",
-   "focus": "Push",
-   "phase": "hypertrophy",
    "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_legs_Pull": {
-   "label": "Wk 10 · Pull",
-   "focus": "Pull",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_10_legs_Legs": {
-   "label": "Wk 10 · Legs",
-   "focus": "Legs",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Hack Squat",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a5_10_legs_Upper": {
-   "label": "Wk 10 · Upper",
-   "focus": "Upper",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Lat Biased Row",
-     "sets": 1,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a5_10_legs_Lower": {
-   "label": "Wk 10 · Lower",
-   "focus": "Lower",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Bent Knee Hinge",
@@ -4344,210 +2005,210 @@
     }
    ]
   },
-  "a4_1_UpperA": {
+  "x4_1_UpperA": {
    "label": "Wk 1 · Upper A",
    "focus": "Upper A",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
      "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 2,
+     "reps": "3–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
+     "sets": 2,
+     "reps": "4–6",
+     "rest": "3 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 4,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "90s"
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "2 min"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "90s"
+     "sets": 3,
+     "reps": "6–8",
+     "rest": "2 min"
     }
    ]
   },
-  "a4_1_LowerA": {
+  "x4_1_LowerA": {
    "label": "Wk 1 · Lower A",
    "focus": "Lower A",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
-     "reps": "5–8",
-     "rest": "3 min"
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Straight Knee Hinge",
      "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Quad Extension",
      "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Calf Raise",
      "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     }
    ]
   },
-  "a4_1_UpperB": {
+  "x4_1_UpperB": {
    "label": "Wk 1 · Upper B",
    "focus": "Upper B",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
      "sets": 3,
-     "reps": "8–12",
-     "rest": "2–3 min"
+     "reps": "4–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Lat Biased Row",
      "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
+     "reps": "5–8",
+     "rest": "2–3 min"
     },
     {
      "name": "Chest Fly",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lat Sweep",
      "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Pullover",
      "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
     }
    ]
   },
-  "a4_1_LowerB": {
+  "x4_1_LowerB": {
    "label": "Wk 1 · Lower B",
    "focus": "Lower B",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "3 RIR",
-   "block": "Size block · build 1 of 5",
+   "block": "Wave 1 · strength week",
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Bent Knee Hinge",
      "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
     }
    ]
   },
-  "a4_2_UpperA": {
+  "x4_2_UpperA": {
    "label": "Wk 2 · Upper A",
    "focus": "Upper A",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
@@ -4575,7 +2236,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 5,
+     "sets": 4,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -4593,24 +2254,24 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 5,
+     "sets": 4,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a4_2_LowerA": {
+  "x4_2_LowerA": {
    "label": "Wk 2 · Lower A",
    "focus": "Lower A",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Squat",
@@ -4638,12 +2299,12 @@
     }
    ]
   },
-  "a4_2_UpperB": {
+  "x4_2_UpperB": {
    "label": "Wk 2 · Upper B",
    "focus": "Upper B",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
@@ -4683,30 +2344,30 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 5,
+     "sets": 4,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a4_2_LowerB": {
+  "x4_2_LowerB": {
    "label": "Wk 2 · Lower B",
    "focus": "Lower B",
    "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 2 of 5",
+   "effort": "3 RIR",
+   "block": "Wave 1 · size week",
    "exercises": [
     {
      "name": "Hack Squat",
@@ -4740,214 +2401,214 @@
     }
    ]
   },
-  "a4_3_UpperA": {
+  "x4_3_UpperA": {
    "label": "Wk 3 · Upper A",
    "focus": "Upper A",
-   "phase": "hypertrophy",
+   "phase": "strength",
    "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
+   "block": "Wave 2 · strength week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
+     "sets": 2,
+     "reps": "4–6",
+     "rest": "3 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
      "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 6,
-     "reps": "8–12",
-     "rest": "90s"
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "2 min"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lateral Raise",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 6,
+     "sets": 3,
+     "reps": "6–8",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x4_3_LowerA": {
+   "label": "Wk 3 · Lower A",
+   "focus": "Lower A",
+   "phase": "strength",
+   "effort": "2 RIR",
+   "block": "Wave 2 · strength week",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x4_3_UpperB": {
+   "label": "Wk 3 · Upper B",
+   "focus": "Upper B",
+   "phase": "strength",
+   "effort": "2 RIR",
+   "block": "Wave 2 · strength week",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 3,
      "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "6–10",
      "rest": "90s"
     }
    ]
   },
-  "a4_3_LowerA": {
-   "label": "Wk 3 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
+  "x4_3_LowerB": {
+   "label": "Wk 3 · Lower B",
+   "focus": "Lower B",
+   "phase": "strength",
    "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
+   "block": "Wave 2 · strength week",
    "exercises": [
     {
-     "name": "Squat",
-     "sets": 5,
+     "name": "Hack Squat",
+     "sets": 3,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
-     "name": "Straight Knee Hinge",
-     "sets": 5,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_3_UpperB": {
-   "label": "Wk 3 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 3,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 6,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 5,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_3_LowerB": {
-   "label": "Wk 3 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR",
-   "block": "Size block · build 3 of 5",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
      "name": "Bent Knee Hinge",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
+     "sets": 1,
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
     }
    ]
   },
-  "a4_4_UpperA": {
+  "x4_4_UpperA": {
    "label": "Wk 4 · Upper A",
    "focus": "Upper A",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 5,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -4959,19 +2620,19 @@
     },
     {
      "name": "Upper Back Row",
-     "sets": 4,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 4,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 6,
+     "sets": 5,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -4983,40 +2644,40 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 7,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 7,
+     "sets": 5,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a4_4_LowerA": {
+  "x4_4_LowerA": {
    "label": "Wk 4 · Lower A",
    "focus": "Lower A",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 6,
+     "sets": 5,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 6,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -5028,28 +2689,28 @@
     },
     {
      "name": "Calf Raise",
-     "sets": 6,
+     "sets": 5,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a4_4_UpperB": {
+  "x4_4_UpperB": {
    "label": "Wk 4 · Upper B",
    "focus": "Upper B",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 5,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2–3 min"
     },
     {
      "name": "Lat Biased Row",
-     "sets": 4,
+     "sets": 3,
      "reps": "10–12",
      "rest": "2 min"
     },
@@ -5073,40 +2734,40 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 7,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 6,
+     "sets": 5,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 6,
+     "sets": 5,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a4_4_LowerB": {
+  "x4_4_LowerB": {
    "label": "Wk 4 · Lower B",
    "focus": "Lower B",
    "phase": "hypertrophy",
-   "effort": "1 RIR",
-   "block": "Size block · build 4 of 5",
+   "effort": "2 RIR",
+   "block": "Wave 2 · size week",
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 6,
+     "sets": 5,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -5124,2419 +2785,691 @@
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_5_UpperA": {
-   "label": "Wk 5 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 6,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 7,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
-     "name": "Supinated Curl",
-     "sets": 7,
+     "name": "Ab Crunch",
+     "sets": 6,
+     "reps": "12–20",
+     "rest": "60s"
+    }
+   ]
+  },
+  "x4_5_UpperA": {
+   "label": "Wk 5 · Upper A",
+   "focus": "Upper A",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Chest Press (Elbows Tucked)",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Pull-Ups",
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Upper Back Row",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3 min"
+    },
+    {
+     "name": "Vertical Press (Elbows Flared)",
+     "sets": 5,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Double Joint Tricep",
+     "sets": 4,
+     "reps": "5–8",
+     "rest": "2 min"
+    },
+    {
+     "name": "Low to High Fly/Press",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 4,
      "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "6–8",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x4_5_LowerA": {
+   "label": "Wk 5 · Lower A",
+   "focus": "Lower A",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Squat",
+     "sets": 4,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 4,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x4_5_UpperB": {
+   "label": "Wk 5 · Upper B",
+   "focus": "Upper B",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Lat Biased Row",
+     "sets": 2,
+     "reps": "5–8",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 3,
+     "reps": "6–10",
+     "rest": "90s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "6–10",
      "rest": "90s"
     }
    ]
   },
-  "a4_5_LowerA": {
-   "label": "Wk 5 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
+  "x4_5_LowerB": {
+   "label": "Wk 5 · Lower B",
+   "focus": "Lower B",
+   "phase": "strength",
+   "effort": "1–2 RIR",
+   "block": "Wave 3 · strength week",
    "exercises": [
     {
-     "name": "Squat",
-     "sets": 7,
+     "name": "Hack Squat",
+     "sets": 3,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
-     "name": "Straight Knee Hinge",
-     "sets": 6,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 6,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_5_UpperB": {
-   "label": "Wk 5 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 6,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 4,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 4,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 7,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 7,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_5_LowerB": {
-   "label": "Wk 5 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR · isolations to failure",
-   "block": "Size block · build 5 of 5",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 6,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
      "name": "Bent Knee Hinge",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
+     "sets": 1,
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "90s"
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "90s"
     }
    ]
   },
-  "a4_6_UpperA": {
+  "x4_6_UpperA": {
    "label": "Wk 6 · Upper A",
    "focus": "Upper A",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
+     "sets": 5,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 2,
+     "sets": 6,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 8,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 2,
+     "sets": 6,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a4_6_LowerA": {
+  "x4_6_LowerA": {
    "label": "Wk 6 · Lower A",
    "focus": "Lower A",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 2,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 2,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Calf Raise",
-     "sets": 2,
+     "sets": 6,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a4_6_UpperB": {
+  "x4_6_UpperB": {
    "label": "Wk 6 · Upper B",
    "focus": "Upper B",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
+     "sets": 5,
      "reps": "8–12",
      "rest": "2–3 min"
     },
     {
      "name": "Lat Biased Row",
-     "sets": 1,
+     "sets": 4,
      "reps": "10–12",
      "rest": "2 min"
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 3,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 1,
+     "sets": 3,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 1,
+     "sets": 3,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 7,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 1,
+     "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 6,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 2,
+     "sets": 6,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a4_6_LowerB": {
+  "x4_6_LowerB": {
    "label": "Wk 6 · Lower B",
    "focus": "Lower B",
    "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Size block · deload",
+   "effort": "1 RIR",
+   "block": "Wave 3 · size week",
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_chest_arms_UpperA": {
-   "label": "Wk 7 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_7_chest_arms_LowerA": {
-   "label": "Wk 7 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 3,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "High to Low Fly/Press",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Reverse Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_chest_arms_UpperB": {
-   "label": "Wk 7 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 5,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_chest_arms_LowerB": {
-   "label": "Wk 7 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_8_chest_arms_UpperA": {
-   "label": "Wk 8 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
      "sets": 6,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "2 min"
     },
     {
-     "name": "Low to High Fly/Press",
+     "name": "Bent Knee Hinge",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "2 min"
+    },
+    {
+     "name": "Hamstring Curl",
      "sets": 3,
      "reps": "10–15",
      "rest": "90s"
     },
     {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
+     "name": "Leg Press Calf Raise",
      "sets": 6,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_8_chest_arms_LowerA": {
-   "label": "Wk 8 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 3,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "High to Low Fly/Press",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Reverse Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_8_chest_arms_UpperB": {
-   "label": "Wk 8 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 6,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 5,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_8_chest_arms_LowerB": {
-   "label": "Wk 8 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_9_chest_arms_UpperA": {
-   "label": "Wk 9 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 5,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 7,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 7,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_9_chest_arms_LowerA": {
-   "label": "Wk 9 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 3,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "High to Low Fly/Press",
-     "sets": 6,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Reverse Curl",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_9_chest_arms_UpperB": {
-   "label": "Wk 9 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 7,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 6,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_9_chest_arms_LowerB": {
-   "label": "Wk 9 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Chest & Arms",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_10_chest_arms_UpperA": {
-   "label": "Wk 10 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_10_chest_arms_LowerA": {
-   "label": "Wk 10 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_10_chest_arms_UpperB": {
-   "label": "Wk 10 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 1,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_10_chest_arms_LowerB": {
-   "label": "Wk 10 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_back_delts_UpperA": {
-   "label": "Wk 7 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_7_back_delts_LowerA": {
-   "label": "Wk 7 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 3,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 5,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "15–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "15–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_back_delts_UpperB": {
-   "label": "Wk 7 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 3,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_back_delts_LowerB": {
-   "label": "Wk 7 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_8_back_delts_UpperA": {
-   "label": "Wk 8 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 7,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_8_back_delts_LowerA": {
-   "label": "Wk 8 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 3,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 5,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 4,
-     "reps": "15–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "15–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_8_back_delts_UpperB": {
-   "label": "Wk 8 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 3,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 7,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_8_back_delts_LowerB": {
-   "label": "Wk 8 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_9_back_delts_UpperA": {
-   "label": "Wk 9 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
      "sets": 8,
      "reps": "12–20",
      "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
     }
    ]
   },
-  "a4_9_back_delts_LowerA": {
-   "label": "Wk 9 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 3,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 6,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 6,
-     "reps": "15–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 4,
-     "reps": "15–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_9_back_delts_UpperB": {
-   "label": "Wk 9 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 4,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 5,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_9_back_delts_LowerB": {
-   "label": "Wk 9 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Back & Delts",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_10_back_delts_UpperA": {
-   "label": "Wk 10 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_10_back_delts_LowerA": {
-   "label": "Wk 10 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_10_back_delts_UpperB": {
-   "label": "Wk 10 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 1,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_10_back_delts_LowerB": {
-   "label": "Wk 10 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 1,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_legs_UpperA": {
+  "x4_7_UpperA": {
    "label": "Wk 7 · Upper A",
    "focus": "Upper A",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 4,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 3,
+     "reps": "3–6",
+     "rest": "3–4 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "6–10",
-     "rest": "2–3 min"
+     "sets": 5,
+     "reps": "3–6",
+     "rest": "3–5 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press (Quad Bias)",
-     "sets": 3,
-     "reps": "10–15",
+     "sets": 4,
+     "reps": "5–8",
      "rest": "2 min"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Lateral Raise",
      "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
      "sets": 3,
      "reps": "8–12",
      "rest": "90s"
     },
     {
-     "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "6–8",
+     "rest": "2 min"
     }
    ]
   },
-  "a4_7_legs_LowerA": {
+  "x4_7_LowerA": {
    "label": "Wk 7 · Lower A",
    "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
    "exercises": [
     {
      "name": "Squat",
+     "sets": 4,
+     "reps": "3–6",
+     "rest": "3–5 min"
+    },
+    {
+     "name": "Straight Knee Hinge",
+     "sets": 4,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Calf Raise",
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "2 min"
+    }
+   ]
+  },
+  "x4_7_UpperB": {
+   "label": "Wk 7 · Upper B",
+   "focus": "Upper B",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
+   "exercises": [
+    {
+     "name": "Incline Chest Press (Elbows Flared)",
+     "sets": 3,
+     "reps": "4–6",
+     "rest": "3–4 min"
+    },
+    {
+     "name": "Lat Biased Row",
+     "sets": 3,
+     "reps": "5–8",
+     "rest": "2–3 min"
+    },
+    {
+     "name": "Chest Fly",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lat Sweep",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Pullover",
+     "sets": 2,
+     "reps": "6–10",
+     "rest": "2 min"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "90s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 4,
+     "reps": "6–10",
+     "rest": "90s"
+    }
+   ]
+  },
+  "x4_7_LowerB": {
+   "label": "Wk 7 · Lower B",
+   "focus": "Lower B",
+   "phase": "strength",
+   "effort": "1 RIR",
+   "block": "Wave 4 · strength week",
+   "exercises": [
+    {
+     "name": "Hack Squat",
      "sets": 4,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
-     "name": "Straight Knee Hinge",
-     "sets": 4,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_7_legs_UpperB": {
-   "label": "Wk 7 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 2,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_7_legs_LowerB": {
-   "label": "Wk 7 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "2 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 4,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
      "name": "Bent Knee Hinge",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
+     "sets": 1,
+     "reps": "5–8",
+     "rest": "3 min"
     },
     {
      "name": "Hamstring Curl",
      "sets": 2,
-     "reps": "10–15",
-     "rest": "90s"
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
+     "sets": 5,
+     "reps": "8–12",
+     "rest": "90s"
     }
    ]
   },
-  "a4_8_legs_UpperA": {
+  "x4_8_UpperA": {
    "label": "Wk 8 · Upper A",
    "focus": "Upper A",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 7,
      "reps": "8–12",
      "rest": "90s"
     },
     {
-     "name": "Leg Press (Quad Bias)",
-     "sets": 4,
-     "reps": "10–15",
-     "rest": "2 min"
-    },
-    {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 9,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 7,
      "reps": "8–12",
      "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
     }
    ]
   },
-  "a4_8_legs_LowerA": {
+  "x4_8_LowerA": {
    "label": "Wk 8 · Lower A",
    "focus": "Lower A",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 5,
+     "sets": 7,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 5,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -7548,85 +3481,85 @@
     },
     {
      "name": "Calf Raise",
-     "sets": 5,
+     "sets": 7,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a4_8_legs_UpperB": {
+  "x4_8_UpperB": {
    "label": "Wk 8 · Upper B",
    "focus": "Upper B",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 6,
      "reps": "8–12",
      "rest": "2–3 min"
     },
     {
      "name": "Lat Biased Row",
-     "sets": 2,
+     "sets": 4,
      "reps": "10–12",
      "rest": "2 min"
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 3,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 4,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 4,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
+     "sets": 9,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 7,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 7,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a4_8_legs_LowerB": {
+  "x4_8_LowerB": {
    "label": "Wk 8 · Lower B",
    "focus": "Lower B",
    "phase": "hypertrophy",
-   "effort": "1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "0–1 RIR · isolations to failure",
+   "block": "Wave 4 · size week",
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 4,
+     "sets": 6,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -7638,34 +3571,34 @@
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Leg Press Calf Raise",
-     "sets": 5,
+     "sets": 7,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 8,
      "reps": "12–20",
      "rest": "60s"
     }
    ]
   },
-  "a4_9_legs_UpperA": {
+  "x4_9_UpperA": {
    "label": "Wk 9 · Upper A",
    "focus": "Upper A",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "5 RIR · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -7683,21 +3616,15 @@
     },
     {
      "name": "Vertical Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
-    },
-    {
-     "name": "Leg Press (Quad Bias)",
-     "sets": 5,
-     "reps": "10–15",
-     "rest": "2 min"
     },
     {
      "name": "Low to High Fly/Press",
@@ -7707,85 +3634,73 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 3,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
     }
    ]
   },
-  "a4_9_legs_LowerA": {
+  "x4_9_LowerA": {
    "label": "Wk 9 · Lower A",
    "focus": "Lower A",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "5 RIR · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Squat",
-     "sets": 6,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 6,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Calf Raise",
-     "sets": 6,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     }
    ]
   },
-  "a4_9_legs_UpperB": {
+  "x4_9_UpperB": {
    "label": "Wk 9 · Upper B",
    "focus": "Upper B",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
+   "effort": "5 RIR · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2–3 min"
     },
     {
      "name": "Lat Biased Row",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–12",
      "rest": "2 min"
     },
@@ -7797,246 +3712,48 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
      "rest": "60s"
     }
    ]
   },
-  "a4_9_legs_LowerB": {
+  "x4_9_LowerB": {
    "label": "Wk 9 · Lower B",
    "focus": "Lower B",
    "phase": "hypertrophy",
-   "effort": "0–1 RIR on priority muscles · 3 RIR on the rest",
-   "block": "Specialization · Legs",
-   "exercises": [
-    {
-     "name": "Hack Squat",
-     "sets": 5,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Bent Knee Hinge",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Hamstring Curl",
-     "sets": 3,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Leg Press Calf Raise",
-     "sets": 6,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Ab Crunch",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_10_legs_UpperA": {
-   "label": "Wk 10 · Upper A",
-   "focus": "Upper A",
-   "phase": "hypertrophy",
    "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Chest Press (Elbows Tucked)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Pull-Ups",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Upper Back Row",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Vertical Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Double Joint Tricep",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    },
-    {
-     "name": "Low to High Fly/Press",
-     "sets": 1,
-     "reps": "10–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise",
-     "sets": 3,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Supinated Curl",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_10_legs_LowerA": {
-   "label": "Wk 10 · Lower A",
-   "focus": "Lower A",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Squat",
-     "sets": 2,
-     "reps": "5–8",
-     "rest": "3 min"
-    },
-    {
-     "name": "Straight Knee Hinge",
-     "sets": 2,
-     "reps": "6–10",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
-    },
-    {
-     "name": "Calf Raise",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "90s"
-    }
-   ]
-  },
-  "a4_10_legs_UpperB": {
-   "label": "Wk 10 · Upper B",
-   "focus": "Upper B",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
-   "exercises": [
-    {
-     "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 2,
-     "reps": "8–12",
-     "rest": "2–3 min"
-    },
-    {
-     "name": "Lat Biased Row",
-     "sets": 1,
-     "reps": "10–12",
-     "rest": "2 min"
-    },
-    {
-     "name": "Chest Fly",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lat Sweep",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Pullover",
-     "sets": 1,
-     "reps": "12–15",
-     "rest": "90s"
-    },
-    {
-     "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Hammer Curl",
-     "sets": 2,
-     "reps": "10–15",
-     "rest": "60s"
-    },
-    {
-     "name": "Single Joint Tricep",
-     "sets": 2,
-     "reps": "12–15",
-     "rest": "60s"
-    }
-   ]
-  },
-  "a4_10_legs_LowerB": {
-   "label": "Wk 10 · Lower B",
-   "focus": "Lower B",
-   "phase": "hypertrophy",
-   "effort": "5 RIR · deload",
-   "block": "Specialization · deload",
+   "block": "Deload",
    "exercises": [
     {
      "name": "Hack Squat",

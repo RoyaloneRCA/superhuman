@@ -108,10 +108,12 @@ P=[
   {"standard":build("total","full_body.json",one("4-day cycle")),"low":build("total_low","full_body_low.json",one("8-day cycle"))}),
 ("ember","Ember","Quick 5-day burn","Five fast supersetted sessions, two rest days. Short on time, high on output.",False,"#E0392B",
   {"standard":build("ember","quick_burn.json",one("5 days on, 2 off"))}),
-("apex","Apex","Size block + specialization, 10 weeks","Five weeks of rising volume and a deload, then a four-week specialization block that drives the muscles you pick while the rest hold. Choose 4 or 5 days and a focus.",True,"#B8863B",
+("apex","Apex","Strength and size waves, 9 weeks","Four waves, each a heavy strength week then a high-volume size week, every wave climbing. Isolation work stays in the strength weeks at lower volume. Choose 4 or 5 days.",False,"#B8863B",
   {"standard":build("apex","apex.json",own)}),
-("wave","Wave","Strength and size waves, 9 weeks","Four waves, each a heavy strength week then a high-volume size week, every wave climbing. Isolation work stays in the strength weeks at lower volume. Choose 4 or 5 days.",False,"#6F8F9E",
+("wave","Wave","Rising-volume size block, 6 weeks","Five weeks of climbing volume for every muscle, then a deload. The base for a Focus block. Choose 4 or 5 days.",False,"#6F8F9E",
   {"standard":build("wave","wave.json",own)}),
+("focus","Focus","Specialization block, 4 weeks","Pick the muscles you want to bring up: they get a third weekly session and climb toward their limit while the rest hold. Best after a Wave. Choose 4 or 5 days and a focus.",True,"#7C8B5A",
+  {"standard":build("focus","focus.json",own)}),
 ]
 progs={}
 for pid,name,sub,desc,adv,col,vars_ in P:
