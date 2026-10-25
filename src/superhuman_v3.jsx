@@ -1180,6 +1180,56 @@ function resolveProgram(profile) {
     scheduleLabel:v.schedules[scheduleKey].label, volume};
 }
 
+// ── PROGRAM STATS — what a program is built for, from its own data ──
+// Counts each movement's main muscle only. "Heavy" = a set whose top rep is 6 or fewer.
+const STAT_GROUP = {"Chest":"chest","Upper Chest":"chest","Lats":"back","Mid Back":"back","Traps":"back",
+  "Lateral Delt":"delts","Rear Delt":"delts","Front Delt":"delts","Biceps":"arms","Brachialis":"arms","Brachioradialis":"arms","Triceps":"arms",
+  "Quads":"quads","Hamstrings":"hams","Glutes":"hams","Lower Back":"hams","Calves (Gastrocnemius)":"calves","Calves (Soleus)":"calves",
+  "Abs":"abs","Obliques":"abs","Core (stability)":"abs","Core (rotational)":"abs"};
+const STAT_KEYS = [["chest","Chest"],["back","Back"],["delts","Shoulders"],["arms","Arms"],["quads","Quads"],["hams","Hams"],["calves","Calves"],["abs","Abs"]];
+function programStats(r) {
+  if (!r || r.pid === "firstgate") return null;
+  const weeks = r.days.length / 7;
+  const sets = {}, freq = {};
+  let heavy = 0, total = 0;
+  r.days.forEach((d, i) => {
+    if (d === "rest") return;
+    const sess = r.sessions[i+1];
+    if (!sess) return;
+    const seen = new Set();
+    sess.exercises.forEach(item => {
+      const id = typeof item === "string" ? item : item.id;
+      const mv = LIBRARY.find(m => m.id === id);
+      if (!mv) return;
+      const g = STAT_GROUP[(mv.primary && mv.primary[0]) || mv.muscles[0]];
+      const n = item.sets || 3;
+      total += n;
+      const reps = item.repsBySet || Array(n).fill(item.reps || "");
+      reps.slice(0, n).forEach(rp => { const nums = String(rp).match(/\d+/g); if (nums && Math.max(...nums.map(Number)) <= 6) heavy++; });
+      if (!g) return;
+      sets[g] = (sets[g] || 0) + n;
+      seen.add(g);
+    });
+    seen.forEach(g => { freq[g] = (freq[g] || 0) + 1; });
+  });
+  const perWeek = {};
+  STAT_KEYS.forEach(([k]) => { perWeek[k] = Math.round((sets[k] || 0) / weeks); });
+  const main = ["chest","back","delts","arms","quads","hams"].map(k => (sets[k] || 0) / weeks).sort((a,b) => a-b);
+  const median = (main[2] + main[3]) / 2;
+  const heavyPct = total ? Math.round(100 * heavy / total) : 0;
+  const fq = ["chest","back","delts","quads","hams"].map(k => (freq[k] || 0) / weeks);
+  const timesPerWeek = Math.round(10 * fq.reduce((a,b) => a+b, 0) / fq.length) / 10;
+  const builtFor = median < 7 ? "Maintenance" : heavyPct >= 35 ? "Strength"
+    : (heavyPct >= 15 || (heavyPct >= 10 && median < 20)) ? "Both" : "Size";
+  return {builtFor, perWeek, heavyPct, timesPerWeek};
+}
+const BUILT_FOR_NOTE = {
+  Strength: "Most sets are heavy, low-rep work on the big lifts. Size is secondary.",
+  Both: "Heavy strength work and size work are mixed.",
+  Size: "Mostly moderate-to-high reps with enough weekly volume to grow muscle.",
+  Maintenance: "Under about 7 sets a week per muscle. Enough to keep what you have, not to grow.",
+};
+
 let CYCLE = [];
 function applyCycle(profile) {
   const r = resolveProgram(profile);
@@ -5978,6 +6028,7 @@ function Learn({profile, setProfile=()=>{}}) {
                     <div style={{display:"flex", gap:8, alignItems:"baseline", flexWrap:"wrap"}}>
                       <span style={{fontSize:15, fontWeight:700, color:T.bright}}>{p.label}</span>
                       <span style={{fontSize:12, color:T.muted}}>{p.sub}</span>
+                      {(()=>{ const st = programStats(rr); return st ? <Tag text={st.builtFor} color={T.steel} xs/> : null; })()}
                       {p.special && <Tag text="Special" color={p.color} xs/>}
                       {p.advanced && <Tag text="Advanced" color={T.bloodHi} xs/>}
                     </div>
@@ -9209,6 +9260,7 @@ function ProgramPicker({profile, onClose, onSave}) {
   const scheduleKeys = variant ? Object.keys(variant.schedules) : [];
   const meta = preview.meta;
   const warn = meta.advanced && !isAdvancedUser;
+  const stats = programStats(preview);
   const trainDays = preview.days.filter(d=>d!=="rest").length;
   const mono = {fontFamily:FONT_MONO, fontSize:10, letterSpacing:"0.16em", textTransform:"uppercase", color:T.muted};
   const chip = (on) => ({padding:"10px 12px", minHeight:44, cursor:"pointer", borderRadius:8,
@@ -9239,6 +9291,7 @@ function ProgramPicker({profile, onClose, onSave}) {
                   <div style={{fontSize:17, fontWeight:700, color:T.bright}}>{p.label}</div>
                   <div style={{fontSize:12, color:T.muted, marginTop:1}}>{p.sub}</div>
                 </div>
+                {(()=>{ const st = programStats(resolveProgram({program:p.id})); return st ? <span style={{...mono, fontSize:9, color:T.muted}}>{st.builtFor}</span> : null; })()}
                 {p.special && <span style={{...mono, fontSize:9, color:p.color, border:`1px solid ${p.color}`, borderRadius:4, padding:"2px 5px"}}>Special</span>}
                 {p.advanced && <span style={{...mono, fontSize:9, color:"#E0392B"}}>Advanced</span>}
                 {p.id === current && <span style={{...mono, fontSize:9, color:T.white}}>Active</span>}
@@ -9270,6 +9323,24 @@ function ProgramPicker({profile, onClose, onSave}) {
           <div style={{fontSize:12, color:T.muted, marginBottom:8}}>{meta.sub}</div>
           <div style={{fontSize:13, color:T.text, lineHeight:1.55}}>{meta.desc}</div>
           <div style={{...mono, marginTop:10}}>{preview.days.length}-day cycle · {trainDays} workouts · {preview.days.length-trainDays} rest</div>
+          {stats && (
+            <div style={{marginTop:12, paddingTop:12, borderTop:`1px solid ${T.border}`}}>
+              <div style={{display:"flex", alignItems:"baseline", gap:8, marginBottom:4}}>
+                <div style={{...mono}}>Built for</div>
+                <div style={{fontSize:15, fontWeight:700, color:T.bright}}>{stats.builtFor}</div>
+              </div>
+              <div style={{fontSize:12, color:T.muted, lineHeight:1.5, marginBottom:10}}>{BUILT_FOR_NOTE[stats.builtFor]}</div>
+              <div style={{display:"grid", gridTemplateColumns:"repeat(4, 1fr)", gap:6}}>
+                {STAT_KEYS.map(([k,l]) => (
+                  <div key={k} style={{padding:"6px 4px", borderRadius:6, background:T.surface, textAlign:"center"}}>
+                    <div style={{fontSize:15, fontWeight:700, color:T.bright, fontFamily:FONT_MONO}}>{stats.perWeek[k]}</div>
+                    <div style={{fontSize:10, color:T.muted}}>{l}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{...mono, marginTop:8, lineHeight:1.6}}>Sets per week · {stats.heavyPct}% heavy sets · each muscle about {stats.timesPerWeek}× a week · main muscle of each movement only</div>
+            </div>
+          )}
         </div>
 
         {prog?.variants?.low && (
