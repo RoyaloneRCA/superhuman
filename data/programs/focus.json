@@ -237,7 +237,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -252,27 +252,28 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 5,
+     "sets": 4,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -291,7 +292,7 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 1,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -305,7 +306,14 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -336,19 +344,19 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -360,15 +368,16 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 4,
+     "sets": 3,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 4,
+     "sets": 5,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -387,7 +396,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -395,7 +404,8 @@
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -405,9 +415,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "High to Low Fly/Press",
@@ -417,15 +446,16 @@
     },
     {
      "name": "Reverse Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -462,7 +492,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -477,27 +507,28 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 7,
+     "sets": 5,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -516,7 +547,7 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 1,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -530,7 +561,14 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -561,19 +599,19 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -585,7 +623,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 5,
+     "sets": 3,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -593,7 +631,8 @@
      "name": "Single Joint Tricep",
      "sets": 5,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -612,7 +651,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -620,7 +659,8 @@
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -630,9 +670,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "High to Low Fly/Press",
@@ -650,7 +709,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -669,7 +729,7 @@
     },
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 5,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2–3 min"
     },
@@ -687,7 +747,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -702,27 +762,28 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 8,
+     "sets": 6,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -741,7 +802,7 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 1,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -755,7 +816,14 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -786,19 +854,19 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -810,7 +878,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 6,
+     "sets": 4,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -818,7 +886,8 @@
      "name": "Single Joint Tricep",
      "sets": 6,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -837,7 +906,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -845,7 +914,8 @@
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -855,13 +925,32 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    },
+    {
      "name": "High to Low Fly/Press",
-     "sets": 5,
+     "sets": 6,
      "reps": "10–15",
      "rest": "90s"
     },
@@ -875,7 +964,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -912,7 +1002,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -939,7 +1029,7 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -947,7 +1037,8 @@
      "name": "Supinated Curl",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -980,7 +1071,14 @@
      "name": "Calf Raise",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -1023,7 +1121,7 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -1035,7 +1133,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -1043,7 +1141,8 @@
      "name": "Single Joint Tricep",
      "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -1070,7 +1169,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -1080,9 +1180,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -1119,7 +1238,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -1134,19 +1253,19 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 3,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 3,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -1154,7 +1273,8 @@
      "name": "Supinated Curl",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -1173,7 +1293,7 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 1,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -1187,7 +1307,14 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -1200,7 +1327,7 @@
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–12",
      "rest": "2 min"
     },
@@ -1230,19 +1357,19 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -1250,7 +1377,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -1269,13 +1397,13 @@
     },
     {
      "name": "Upper Back Row",
-     "sets": 5,
+     "sets": 4,
      "reps": "10–12",
      "rest": "2 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -1283,7 +1411,8 @@
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -1293,13 +1422,32 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Lateral Raise",
      "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
      "reps": "15–20",
      "rest": "60s"
     },
@@ -1344,7 +1492,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 7,
+     "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -1365,13 +1513,13 @@
     },
     {
      "name": "Upper Back Row",
-     "sets": 3,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -1379,7 +1527,8 @@
      "name": "Supinated Curl",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -1398,7 +1547,7 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 1,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -1412,7 +1561,14 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -1449,25 +1605,25 @@
     },
     {
      "name": "Pullover",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 7,
+     "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -1475,7 +1631,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -1500,7 +1657,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -1508,7 +1665,8 @@
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -1518,13 +1676,32 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 5,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
      "reps": "15–20",
      "rest": "60s"
     },
@@ -1569,7 +1746,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 8,
+     "sets": 7,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -1584,7 +1761,7 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 4,
+     "sets": 5,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -1596,7 +1773,7 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -1604,7 +1781,8 @@
      "name": "Supinated Curl",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -1623,7 +1801,7 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 1,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -1637,7 +1815,14 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -1650,7 +1835,7 @@
    "exercises": [
     {
      "name": "Lat Biased Row",
-     "sets": 4,
+     "sets": 3,
      "reps": "10–12",
      "rest": "2 min"
     },
@@ -1680,19 +1865,19 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 8,
+     "sets": 6,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 5,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -1700,7 +1885,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -1725,7 +1911,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -1733,7 +1919,8 @@
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -1743,13 +1930,32 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Lateral Raise",
      "sets": 6,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
      "reps": "15–20",
      "rest": "60s"
     },
@@ -1794,7 +2000,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -1821,7 +2027,7 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -1829,7 +2035,8 @@
      "name": "Supinated Curl",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -1862,7 +2069,14 @@
      "name": "Calf Raise",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -1905,7 +2119,7 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -1917,7 +2131,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -1925,7 +2139,8 @@
      "name": "Single Joint Tricep",
      "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -1952,7 +2167,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -1962,9 +2178,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -2001,7 +2236,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -2016,13 +2251,13 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -2034,7 +2269,7 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2042,19 +2277,22 @@
      "name": "Supinated Curl",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "12–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Calf Raise",
      "sets": 2,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
     }
    ]
   },
@@ -2067,7 +2305,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 3,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -2079,7 +2317,7 @@
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 4,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -2087,7 +2325,14 @@
      "name": "Calf Raise",
      "sets": 4,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -2118,19 +2363,19 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2142,7 +2387,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -2150,7 +2395,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -2163,13 +2409,13 @@
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 3,
+     "sets": 4,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -2177,7 +2423,8 @@
      "name": "Hamstring Curl",
      "sets": 3,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -2187,9 +2434,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -2226,7 +2492,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -2241,13 +2507,13 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -2259,7 +2525,7 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2267,19 +2533,22 @@
      "name": "Supinated Curl",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Calf Raise",
      "sets": 3,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
     }
    ]
   },
@@ -2298,7 +2567,7 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -2312,7 +2581,14 @@
      "name": "Calf Raise",
      "sets": 5,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -2343,19 +2619,19 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2367,7 +2643,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -2375,7 +2651,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -2388,13 +2665,13 @@
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 4,
+     "sets": 5,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -2402,7 +2679,8 @@
      "name": "Hamstring Curl",
      "sets": 3,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -2412,9 +2690,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -2451,7 +2748,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -2466,25 +2763,25 @@
    "exercises": [
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Leg Press (Quad Bias)",
-     "sets": 5,
+     "sets": 4,
      "reps": "10–15",
      "rest": "2 min"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2492,19 +2789,22 @@
      "name": "Supinated Curl",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "Hamstring Curl",
      "sets": 3,
      "reps": "12–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Calf Raise",
      "sets": 4,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
     }
    ]
   },
@@ -2529,7 +2829,7 @@
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 5,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -2537,7 +2837,14 @@
      "name": "Calf Raise",
      "sets": 6,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -2568,19 +2875,19 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2592,7 +2899,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -2600,7 +2907,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -2613,13 +2921,13 @@
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 5,
+     "sets": 6,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -2627,7 +2935,8 @@
      "name": "Hamstring Curl",
      "sets": 4,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -2637,9 +2946,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -2676,7 +3004,7 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     }
@@ -2703,7 +3031,7 @@
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2711,7 +3039,8 @@
      "name": "Supinated Curl",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -2744,7 +3073,14 @@
      "name": "Calf Raise",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
     }
    ]
   },
@@ -2787,7 +3123,7 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -2799,7 +3135,7 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
@@ -2807,7 +3143,8 @@
      "name": "Single Joint Tricep",
      "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -2834,7 +3171,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -2844,9 +3182,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -2865,13 +3222,13 @@
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -2883,7 +3240,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 5,
+     "sets": 3,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -2895,21 +3252,22 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 5,
+     "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -2942,7 +3300,27 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     },
     {
      "name": "High to Low Fly/Press",
@@ -2952,15 +3330,16 @@
     },
     {
      "name": "Reverse Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -2991,39 +3370,40 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 5,
+     "sets": 3,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 5,
+     "sets": 3,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3050,7 +3430,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -3060,9 +3441,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 3,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3081,13 +3481,13 @@
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -3099,7 +3499,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 6,
+     "sets": 4,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -3111,21 +3511,22 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 6,
+     "sets": 4,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3158,7 +3559,27 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 3,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     },
     {
      "name": "High to Low Fly/Press",
@@ -3176,7 +3597,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3207,39 +3629,40 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 6,
+     "sets": 4,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 5,
+     "sets": 4,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3266,7 +3689,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -3276,9 +3700,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3297,13 +3740,13 @@
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -3315,7 +3758,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 7,
+     "sets": 5,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -3327,21 +3770,22 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 7,
+     "sets": 5,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3374,7 +3818,27 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 4,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     },
     {
      "name": "High to Low Fly/Press",
@@ -3392,7 +3856,8 @@
      "name": "Single Joint Tricep",
      "sets": 3,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3423,39 +3888,40 @@
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 7,
+     "sets": 5,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 6,
+     "sets": 4,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3482,7 +3948,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -3492,9 +3959,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 4,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3543,13 +4029,13 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -3557,7 +4043,8 @@
      "name": "Supinated Curl",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3590,7 +4077,27 @@
      "name": "Calf Raise",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3633,7 +4140,7 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -3645,15 +4152,16 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3680,7 +4188,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -3690,9 +4199,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3705,7 +4233,7 @@
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -3729,33 +4257,34 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 2,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 5,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3794,11 +4323,31 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 2,
      "reps": "15–20",
      "rest": "60s"
     },
@@ -3819,7 +4368,7 @@
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2–3 min"
     },
@@ -3831,7 +4380,7 @@
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
@@ -3849,27 +4398,28 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 5,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -3896,7 +4446,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -3906,9 +4457,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -3921,7 +4491,7 @@
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -3933,7 +4503,7 @@
     },
     {
      "name": "Upper Back Row",
-     "sets": 3,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -3945,33 +4515,34 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 2,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 7,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 4,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4010,11 +4581,31 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 4,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 3,
      "reps": "15–20",
      "rest": "60s"
     },
@@ -4035,7 +4626,7 @@
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2–3 min"
     },
@@ -4047,7 +4638,7 @@
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
@@ -4059,33 +4650,34 @@
     },
     {
      "name": "Pullover",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 7,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4112,7 +4704,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -4122,9 +4715,28 @@
     },
     {
      "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
      "sets": 4,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4137,7 +4749,7 @@
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -4161,33 +4773,34 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 2,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 8,
+     "sets": 4,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 5,
+     "sets": 3,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4226,11 +4839,31 @@
      "name": "Calf Raise",
      "sets": 3,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 5,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     },
     {
      "name": "Lateral Raise",
-     "sets": 6,
+     "sets": 3,
      "reps": "15–20",
      "rest": "60s"
     },
@@ -4251,7 +4884,7 @@
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2–3 min"
     },
@@ -4263,7 +4896,7 @@
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
@@ -4281,27 +4914,28 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 8,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 5,
      "reps": "12–20",
      "rest": "60s"
     },
     {
-     "name": "Hammer Curl",
+     "name": "Rear Delt Fly",
      "sets": 3,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Hammer Curl",
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4328,7 +4962,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -4338,9 +4973,28 @@
     },
     {
      "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 5,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
      "sets": 4,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4389,13 +5043,13 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -4403,7 +5057,8 @@
      "name": "Supinated Curl",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4436,7 +5091,27 @@
      "name": "Calf Raise",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4479,7 +5154,7 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -4491,15 +5166,16 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4526,7 +5202,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -4536,9 +5213,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4551,19 +5247,19 @@
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -4575,7 +5271,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -4587,39 +5283,42 @@
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 2,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "12–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Calf Raise",
      "sets": 2,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
     }
    ]
   },
@@ -4652,7 +5351,27 @@
      "name": "Calf Raise",
      "sets": 4,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4665,7 +5384,7 @@
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2–3 min"
     },
@@ -4677,45 +5396,46 @@
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4742,7 +5462,8 @@
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -4752,9 +5473,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4767,19 +5507,19 @@
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -4791,7 +5531,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -4803,39 +5543,42 @@
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 2,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "Hamstring Curl",
      "sets": 2,
      "reps": "12–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Calf Raise",
      "sets": 3,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
     }
    ]
   },
@@ -4868,7 +5611,27 @@
      "name": "Calf Raise",
      "sets": 5,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4881,7 +5644,7 @@
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2–3 min"
     },
@@ -4893,45 +5656,46 @@
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -4958,7 +5722,8 @@
      "name": "Hamstring Curl",
      "sets": 3,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -4968,9 +5733,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -4983,19 +5767,19 @@
    "exercises": [
     {
      "name": "Chest Press (Elbows Tucked)",
-     "sets": 3,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Pull-Ups",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Upper Back Row",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -5007,7 +5791,7 @@
     },
     {
      "name": "Double Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "90s"
     },
@@ -5019,39 +5803,42 @@
     },
     {
      "name": "Low to High Fly/Press",
-     "sets": 1,
+     "sets": 2,
      "reps": "10–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Supinated Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     },
     {
      "name": "Hamstring Curl",
      "sets": 3,
      "reps": "12–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Calf Raise",
      "sets": 4,
      "reps": "12–20",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
     }
    ]
   },
@@ -5084,7 +5871,27 @@
      "name": "Calf Raise",
      "sets": 6,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 2,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -5097,7 +5904,7 @@
    "exercises": [
     {
      "name": "Incline Chest Press (Elbows Flared)",
-     "sets": 3,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2–3 min"
     },
@@ -5109,45 +5916,46 @@
     },
     {
      "name": "Chest Fly",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lat Sweep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Pullover",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
      "rest": "90s"
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 4,
-     "reps": "12–20",
-     "rest": "60s"
-    },
-    {
-     "name": "Rear Delt Fly",
      "sets": 2,
      "reps": "12–20",
      "rest": "60s"
     },
     {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
      "name": "Hammer Curl",
-     "sets": 3,
+     "sets": 2,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 3,
+     "sets": 2,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -5174,7 +5982,8 @@
      "name": "Hamstring Curl",
      "sets": 3,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -5184,9 +5993,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 4,
+     "sets": 2,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 2,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -5235,13 +6063,13 @@
     },
     {
      "name": "Lateral Raise",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
     {
      "name": "Rear Delt Fly",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -5249,7 +6077,8 @@
      "name": "Supinated Curl",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   },
@@ -5282,7 +6111,27 @@
      "name": "Calf Raise",
      "sets": 2,
      "reps": "8–12",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Knee straight, full stretch at the bottom, one-second pause."
+    },
+    {
+     "name": "Ab Crunch",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise (Top Partials)",
+     "sets": 2,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Single Joint Tricep",
+     "sets": 1,
+     "reps": "12–15",
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -5325,7 +6174,7 @@
     },
     {
      "name": "Lateral Raise (Top Partials)",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
     },
@@ -5337,15 +6186,16 @@
     },
     {
      "name": "Hammer Curl",
-     "sets": 2,
+     "sets": 1,
      "reps": "10–15",
      "rest": "60s"
     },
     {
      "name": "Single Joint Tricep",
-     "sets": 2,
+     "sets": 1,
      "reps": "12–15",
-     "rest": "60s"
+     "rest": "60s",
+     "note": "Pick an overhead version: training the triceps stretched tends to grow them more."
     }
    ]
   },
@@ -5372,7 +6222,8 @@
      "name": "Hamstring Curl",
      "sets": 1,
      "reps": "10–15",
-     "rest": "90s"
+     "rest": "90s",
+     "note": "Pick the seated version: it works the hamstring in a lengthened position."
     },
     {
      "name": "Leg Press Calf Raise",
@@ -5382,9 +6233,28 @@
     },
     {
      "name": "Ab Crunch",
-     "sets": 3,
+     "sets": 1,
      "reps": "12–20",
      "rest": "60s"
+    },
+    {
+     "name": "Lateral Raise",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Rear Delt Fly",
+     "sets": 1,
+     "reps": "12–20",
+     "rest": "60s"
+    },
+    {
+     "name": "Supinated Curl",
+     "sets": 1,
+     "reps": "8–12",
+     "rest": "90s",
+     "note": "Incline or preacher versions load the stretched position."
     }
    ]
   }

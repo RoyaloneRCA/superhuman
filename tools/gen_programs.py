@@ -56,6 +56,7 @@ def conv1(x):
     if isinstance(x["reps"],list): o["repsBySet"]=x["reps"]
     if x.get("perSide"): o["reps"]+=" each side"
     if x.get("rest"): o["rest"]=x["rest"]
+    if x.get("note"): o["note"]=x["note"]
     return o
 def phase_of(lbl,pid,s):
     l=lbl.lower()

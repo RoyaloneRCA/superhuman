@@ -14,77 +14,87 @@ def FX(name, reps, rest): return dict(m="press", name=name, share=1.0, reps=reps
 T5 = {  # 5 days: Push / Pull / Legs / Upper / Lower
  "Push": [
   S("chest","Chest Press (Elbows Tucked)",.30,("3–6","6–10"),("3–5 min","2–3 min"),"c"),
-  S("chest","Incline Chest Press (Elbows Flared)",.30,("4–6","8–12"),("3–4 min","2–3 min"),"c"),
+  S("chest","Incline Chest Press (Elbows Flared)",.25,("4–6","8–12"),("3–4 min","2–3 min"),"c"),
   FX("Vertical Press (Elbows Flared)",("3–6","6–10"),("3–5 min","2–3 min")),
-  S("side","Lateral Raise",.5,("8–12","12–20"),("90s","60s")),
-  S("tri","Double Joint Tricep",.55,("5–8","8–12"),("2 min","90s"),"c"),
+  S("side","Lateral Raise",.35,("8–12","12–20"),("90s","60s")),
+  S("tri","Double Joint Tricep",.50,("5–8","8–12"),("2 min","90s"),"c"),
  ],
  "Pull": [
-  S("back","Pull-Ups",.22,("3–6","6–10"),("3–4 min","2–3 min"),"c"),
-  S("back","Upper Back Row",.22,("4–6","8–12"),("3 min","2 min"),"c"),
-  S("rear","Rear Delt Fly",.5,("8–12","12–20"),("90s","60s")),
-  S("bi","Supinated Curl",.55,("6–8","8–12"),("2 min","90s")),
+  S("back","Pull-Ups",.26,("3–6","6–10"),("3–4 min","2–3 min"),"c"),
+  S("back","Upper Back Row",.26,("4–6","8–12"),("3 min","2 min"),"c"),
+  S("rear","Rear Delt Fly",.40,("8–12","12–20"),("90s","60s")),
+  S("bi","Supinated Curl",.45,("6–8","8–12"),("2 min","90s")),
  ],
  "Legs": [
-  S("quads","Squat",.40,("3–6","5–8"),("3–5 min","3 min"),"c"),
-  S("quads","Hack Squat",.25,("5–8","8–12"),("3 min","2 min"),"c"),
-  S("hams","Straight Knee Hinge",.45,("4–6","6–10"),("3–4 min","2–3 min"),"c"),
+  S("quads","Squat",.35,("3–6","5–8"),("3–5 min","3 min"),"c"),
+  S("quads","Hack Squat",.20,("5–8","8–12"),("3 min","2 min"),"c"),
+  S("hams","Straight Knee Hinge",.40,("4–6","6–10"),("3–4 min","2–3 min"),"c"),
   S("calves","Calf Raise",.5,("6–10","8–12"),("2 min","90s")),
+  S("abs","Ab Crunch",.5,("8–12","12–20"),("90s","60s")),
  ],
  "Upper": [
-  S("chest","Chest Fly",.22,("6–10","12–15"),("2 min","90s")),
-  S("chest","Low to High Fly/Press",.18,("6–10","10–15"),("2 min","90s")),
-  S("back","Lat Biased Row",.20,("5–8","10–12"),("2–3 min","2 min"),"c"),
-  S("back","Lat Sweep",.18,("6–10","12–15"),("2 min","90s")),
-  S("back","Pullover",.18,("6–10","12–15"),("2 min","90s")),
-  S("side","Lateral Raise (Top Partials)",.5,("8–12","12–20"),("90s","60s")),
-  S("rear","Rear Delt Fly",.5,("8–12","12–20"),("90s","60s")),
-  S("bi","Hammer Curl",.45,("6–10","10–15"),("90s","60s")),
-  S("tri","Single Joint Tricep",.45,("6–10","12–15"),("90s","60s")),
+  S("chest","Chest Fly",.25,("6–10","12–15"),("2 min","90s")),
+  S("chest","Low to High Fly/Press",.20,("6–10","10–15"),("2 min","90s")),
+  S("back","Lat Biased Row",.17,("5–8","10–12"),("2–3 min","2 min"),"c"),
+  S("back","Lat Sweep",.16,("6–10","12–15"),("2 min","90s")),
+  S("back","Pullover",.15,("6–10","12–15"),("2 min","90s")),
+  S("side","Lateral Raise (Top Partials)",.30,("8–12","12–20"),("90s","60s")),
+  S("rear","Rear Delt Fly",.30,("8–12","12–20"),("90s","60s")),
+  S("bi","Hammer Curl",.25,("6–10","10–15"),("90s","60s")),
+  S("tri","Single Joint Tricep",.50,("6–10","12–15"),("90s","60s")),
  ],
  "Lower": [
-  S("quads","Quad Extension",.35,("6–10","12–20"),("2 min","90s")),
+  S("quads","Quad Extension",.45,("6–10","12–20"),("2 min","90s")),
   S("hams","Hamstring Curl",.35,("6–10","10–15"),("2 min","90s")),
-  S("hams","Bent Knee Hinge",.20,("5–8","8–12"),("3 min","2 min"),"c"),
+  S("hams","Bent Knee Hinge",.25,("5–8","8–12"),("3 min","2 min"),"c"),
   S("calves","Leg Press Calf Raise",.5,("8–12","12–20"),("90s","60s")),
-  S("abs","Ab Crunch",1.0,("8–12","12–20"),("90s","60s")),
+  S("abs","Ab Crunch",.5,("8–12","12–20"),("90s","60s")),
+  S("side","Lateral Raise",.35,("8–12","12–20"),("90s","60s")),
+  S("rear","Rear Delt Fly",.30,("8–12","12–20"),("90s","60s")),
+  S("bi","Supinated Curl",.30,("6–8","8–12"),("2 min","90s")),
  ],
 }
 T4 = {  # 4 days: Upper A / Lower A / Upper B / Lower B
  "Upper A": [
-  S("chest","Chest Press (Elbows Tucked)",.32,("3–6","6–10"),("3–5 min","2–3 min"),"c"),
-  S("chest","Low to High Fly/Press",.18,("6–10","10–15"),("2 min","90s")),
-  S("back","Pull-Ups",.22,("3–6","6–10"),("3–4 min","2–3 min"),"c"),
-  S("back","Upper Back Row",.22,("4–6","8–12"),("3 min","2 min"),"c"),
+  S("chest","Chest Press (Elbows Tucked)",.30,("3–6","6–10"),("3–5 min","2–3 min"),"c"),
+  S("chest","Low to High Fly/Press",.20,("6–10","10–15"),("2 min","90s")),
+  S("back","Pull-Ups",.25,("3–6","6–10"),("3–4 min","2–3 min"),"c"),
+  S("back","Upper Back Row",.25,("4–6","8–12"),("3 min","2 min"),"c"),
   FX("Vertical Press (Elbows Flared)",("3–6","6–10"),("3–5 min","2–3 min")),
-  S("side","Lateral Raise",.5,("8–12","12–20"),("90s","60s")),
-  S("rear","Rear Delt Fly",.5,("8–12","12–20"),("90s","60s")),
-  S("bi","Supinated Curl",.5,("6–8","8–12"),("2 min","90s")),
-  S("tri","Double Joint Tricep",.5,("5–8","8–12"),("2 min","90s"),"c"),
+  S("side","Lateral Raise",.20,("8–12","12–20"),("90s","60s")),
+  S("rear","Rear Delt Fly",.30,("8–12","12–20"),("90s","60s")),
+  S("bi","Supinated Curl",.35,("6–8","8–12"),("2 min","90s")),
+  S("tri","Double Joint Tricep",.35,("5–8","8–12"),("2 min","90s"),"c"),
  ],
  "Lower A": [
   S("quads","Squat",.45,("3–6","5–8"),("3–5 min","3 min"),"c"),
   S("quads","Quad Extension",.15,("6–10","12–20"),("2 min","90s")),
   S("hams","Straight Knee Hinge",.50,("4–6","6–10"),("3–4 min","2–3 min"),"c"),
   S("calves","Calf Raise",.5,("6–10","8–12"),("2 min","90s")),
+  S("abs","Ab Crunch",.5,("8–12","12–20"),("90s","60s")),
+  S("side","Lateral Raise (Top Partials)",.30,("8–12","12–20"),("90s","60s")),
+  S("tri","Single Joint Tricep",.30,("6–10","12–15"),("90s","60s")),
  ],
  "Upper B": [
-  S("chest","Incline Chest Press (Elbows Flared)",.32,("4–6","8–12"),("3–4 min","2–3 min"),"c"),
-  S("chest","Chest Fly",.18,("6–10","12–15"),("2 min","90s")),
+  S("chest","Incline Chest Press (Elbows Flared)",.30,("4–6","8–12"),("3–4 min","2–3 min"),"c"),
+  S("chest","Chest Fly",.20,("6–10","12–15"),("2 min","90s")),
   S("back","Lat Biased Row",.20,("5–8","10–12"),("2–3 min","2 min"),"c"),
-  S("back","Lat Sweep",.18,("6–10","12–15"),("2 min","90s")),
-  S("back","Pullover",.18,("6–10","12–15"),("2 min","90s")),
-  S("side","Lateral Raise (Top Partials)",.5,("8–12","12–20"),("90s","60s")),
-  S("rear","Rear Delt Fly",.5,("8–12","12–20"),("90s","60s")),
-  S("bi","Hammer Curl",.5,("6–10","10–15"),("90s","60s")),
-  S("tri","Single Joint Tricep",.5,("6–10","12–15"),("90s","60s")),
+  S("back","Lat Sweep",.15,("6–10","12–15"),("2 min","90s")),
+  S("back","Pullover",.15,("6–10","12–15"),("2 min","90s")),
+  S("side","Lateral Raise (Top Partials)",.25,("8–12","12–20"),("90s","60s")),
+  S("rear","Rear Delt Fly",.30,("8–12","12–20"),("90s","60s")),
+  S("bi","Hammer Curl",.35,("6–10","10–15"),("90s","60s")),
+  S("tri","Single Joint Tricep",.35,("6–10","12–15"),("90s","60s")),
  ],
  "Lower B": [
   S("quads","Hack Squat",.40,("5–8","8–12"),("3 min","2 min"),"c"),
   S("hams","Hamstring Curl",.30,("6–10","10–15"),("2 min","90s")),
   S("hams","Bent Knee Hinge",.20,("5–8","8–12"),("3 min","2 min"),"c"),
   S("calves","Leg Press Calf Raise",.5,("8–12","12–20"),("90s","60s")),
-  S("abs","Ab Crunch",1.0,("8–12","12–20"),("90s","60s")),
+  S("abs","Ab Crunch",.5,("8–12","12–20"),("90s","60s")),
+  S("side","Lateral Raise",.25,("8–12","12–20"),("90s","60s")),
+  S("rear","Rear Delt Fly",.40,("8–12","12–20"),("90s","60s")),
+  S("bi","Supinated Curl",.30,("6–8","8–12"),("2 min","90s")),
  ],
 }
 WEEK5 = ["Push","Pull","Legs","rest","Upper","Lower","rest"]
@@ -93,7 +103,7 @@ TEMPLATES = {5:(T5, WEEK5), 4:(T4, WEEK4)}
 
 # third weekly exposure for the muscles being specialised
 def _chest_arms(): return [S("chest","High to Low Fly/Press",.25,"10–15","90s"),S("bi","Reverse Curl",.2,"10–15","60s"),S("tri","Single Joint Tricep",.2,"12–20","60s")]
-def _back_delts(): return [S("back","Upper Back Row",.25,"10–12","2 min","c"),S("side","Lateral Raise",.25,"15–20","60s"),S("rear","Rear Delt Fly",.25,"15–20","60s")]
+def _back_delts(): return [S("back","Upper Back Row",.25,"10–12","2 min","c"),S("side","Lateral Raise",.15,"15–20","60s"),S("rear","Rear Delt Fly",.25,"15–20","60s")]
 def _legs(): return [S("quads","Leg Press (Quad Bias)",.25,"10–15","2 min","c"),S("hams","Hamstring Curl",.2,"12–15","90s"),S("calves","Calf Raise",.25,"12–20","60s")]
 ADDON = {
  "chest_arms": {"label":"Chest & Arms","prio":["chest","bi","tri"],5:{"Lower":_chest_arms()},4:{"Lower A":_chest_arms()}},
@@ -102,6 +112,14 @@ ADDON = {
 }
 MUSCLES = ["chest","back","quads","hams","side","rear","bi","tri","calves","abs"]
 LABEL = dict(chest="Chest",back="Back",quads="Quads",hams="Hams",side="SideD",rear="RearD",bi="Bi",tri="Tri",calves="Calves",abs="Abs",press="Press")
+
+# Version guidance where the research favors a position. Shown ahead of the movement's own note.
+TIPS = {
+ "Single Joint Tricep": "Pick an overhead version: training the triceps stretched tends to grow them more.",
+ "Hamstring Curl": "Pick the seated version: it works the hamstring in a lengthened position.",
+ "Supinated Curl": "Incline or preacher versions load the stretched position.",
+ "Calf Raise": "Knee straight, full stretch at the bottom, one-second pause.",
+}
 
 def alloc(total, shares):
     """Largest-remainder split of `total` sets over slots; keeps the exact total."""
@@ -144,13 +162,15 @@ def ex_dict(sl, n, mode):
     reps, rest = sl["reps"], sl["rest"]
     if isinstance(reps, tuple): reps = reps[0] if mode == "strength" else reps[1]
     if isinstance(rest, tuple): rest = rest[0] if mode == "strength" else rest[1]
-    return {"name": sl["name"], "sets": n, "reps": reps, "rest": rest}
+    d = {"name": sl["name"], "sets": n, "reps": reps, "rest": rest}
+    if sl["name"] in TIPS: d["note"] = TIPS[sl["name"]]
+    return d
 
 # ---------------------------------------------------------------- Apex
 APEX_SIZE = {  # weeks 1-6 (6 = deload)
- "chest":[10,12,14,16,18,6],"back":[12,14,16,18,20,7],"quads":[8,10,12,14,15,5],"hams":[6,8,10,11,12,4],
- "side":[8,10,12,14,16,5],"rear":[6,8,8,10,10,3],"bi":[8,10,12,13,14,4],"tri":[8,10,11,12,14,4],
- "calves":[6,8,10,12,12,4],"abs":[6,6,8,8,8,3]}
+ "chest":[10,11,13,14,16,6],"back":[11,13,15,17,18,7],"quads":[8,9,11,13,14,5],"hams":[6,7,9,10,11,4],
+ "side":[8,9,11,13,14,5],"rear":[5,6,7,8,8,3],"bi":[7,8,10,11,12,4],"tri":[7,8,9,11,12,4],
+ "calves":[6,7,8,10,10,4],"abs":[4,4,5,6,6,3]}
 APEX_PRESS = [3,3,4,4,4,2]
 APEX_EFFORT = ["3 RIR","2 RIR","2 RIR","1 RIR","0–1 RIR · isolations to failure","5 RIR · deload"]
 APEX_BLOCK = ["Size block · build 1 of 5","Size block · build 2 of 5","Size block · build 3 of 5","Size block · build 4 of 5","Size block · build 5 of 5","Size block · deload"]
@@ -200,10 +220,12 @@ def make_focus():
     return p, audit
 
 # ---------------------------------------------------------------- Wave (weeks 1,3,5,7 strength; 2,4,6,8 size; 9 deload)
-WAVE = {
- "chest":[8,12,9,14,10,16,11,18,6],"back":[10,14,11,16,12,18,13,20,7],"quads":[6,10,7,12,8,14,9,15,5],
- "hams":[5,8,6,9,7,11,7,12,4],"side":[6,10,7,12,8,15,8,18,5],"rear":[4,6,5,8,5,10,6,12,3],
- "bi":[6,8,6,10,7,12,8,14,4],"tri":[6,8,6,10,7,12,8,14,4],"calves":[5,8,6,10,6,12,7,14,4],"abs":[4,6,4,6,5,8,5,8,3]}
+_S = {"chest":[8,9,10,11],"back":[10,11,12,13],"quads":[6,7,8,9],"hams":[5,6,7,7],"side":[6,7,8,8],"rear":[4,5,5,6],
+      "bi":[6,6,7,8],"tri":[6,6,7,8],"calves":[5,6,6,7],"abs":[4,4,5,5]}
+_H = {"chest":[11,13,15,16],"back":[13,15,17,18],"quads":[9,11,13,14],"hams":[7,8,10,11],"side":[9,11,13,14],"rear":[5,6,7,8],
+      "bi":[8,10,11,12],"tri":[8,10,11,12],"calves":[7,9,10,10],"abs":[5,5,6,6]}
+_D = {"chest":6,"back":7,"quads":5,"hams":4,"side":5,"rear":3,"bi":4,"tri":4,"calves":4,"abs":3}
+WAVE = {m:[v for i in range(4) for v in (_S[m][i],_H[m][i])]+[_D[m]] for m in _S}
 WAVE_PRESS = [4,3,4,3,5,4,5,4,2]
 WAVE_EFFORT = ["3 RIR","3 RIR","2 RIR","2 RIR","1–2 RIR","1 RIR","1 RIR","0–1 RIR · isolations to failure","5 RIR · deload"]
 
