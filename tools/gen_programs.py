@@ -63,8 +63,10 @@ def phase_of(lbl,pid,s):
     if "strength" in l or pid.startswith("power") or "low" in pid: return "strength"
     if "hypertrophy" in l or "volume" in l: return "hypertrophy"
     return "hypertrophy"
-def build(pid,f,schedules):
-    p=L(f); sess={}
+def build(pid,f,schedules,tf=None):
+    p=L(f)
+    if tf: p=tf(p)
+    sess={}
     for k,v in p["sessions"].items():
         ex=conv_ex(v["exercises"]); mus=[]
         for e in ex:
@@ -77,6 +79,32 @@ def build(pid,f,schedules):
     sch={}
     for key,(label,days) in schedules(p).items(): sch[key]={"label":label,"days":days}
     return {"sessions":sess,"schedules":sch}
+
+# ── Forge: three 16-day cycles that build volume, then a deload week ──
+# forge.json holds the full-volume cycle (D1-D8) and the deload week (D9-D11).
+# Cycle 3 = forge.json as written. Cycles 1 and 2 trim sets so the block ramps (RP: start low, add sets, then deload).
+def _c1(s,i): return 2 if s==3 else (max(2,s-2) if s>=4 else s)
+def _c2(s,i): return (3 if i%2==0 else 2) if s==3 else (s-1 if s>=4 else s)
+def _c3(s,i): return s
+FORGE_CYCLES=[(1,_c1,"3–4 RIR","Cycle 1 of 3 · build"),(2,_c2,"2–3 RIR","Cycle 2 of 3 · build"),(3,_c3,"0–1 RIR on the last sets","Cycle 3 of 3 · peak")]
+def ramp_forge(p):
+    base=p["sessions"]; out={}
+    cyc=p["schedule"][:16]
+    for n,fn,eff,blk in FORGE_CYCLES:
+        for k in [f"D{i}" for i in range(1,9)]:
+            v=json.loads(json.dumps(base[k])); exs=[]
+            for i,e in enumerate(v["exercises"]):
+                ns=fn(e["sets"],i); e["sets"]=ns
+                if isinstance(e["reps"],list): e["reps"]=e["reps"][:ns]
+                exs.append(e)
+            v["exercises"]=exs; v["effort"]=eff; v["block"]=blk
+            out[f"c{n}_{k}"]=v
+    for k in ("D9","D10","D11"): out[k]=base[k]
+    sched=[]
+    for n,_,_,_ in FORGE_CYCLES: sched+=[x if x=="rest" else f"c{n}_{x}" for x in cyc]
+    sched+=p["schedule"][16:]
+    q=dict(p); q["sessions"]=out; q["schedule"]=sched; q["cycleDays"]=len(sched); q["workouts"]=sum(1 for x in sched if x!="rest")
+    return q
 def own(p): return {k:(v["label"],v["days"]) for k,v in p["schedules"].items()}
 one=lambda lab:(lambda p:{"default":(lab,p["schedule"])})
 def dictsch(names):
@@ -87,8 +115,8 @@ def bro(p):
         for k,days in vv["schedules"].items(): o[f"{v}_{k}"]=(f"{v[0]} days a week · {k.replace('option','Option ')}",days)
     return o
 P=[
-("forge","The Forge","Every-other-day split, strength + size","Train every other day. Strength days and size days alternate, then a light deload week of three easy sessions before the cycle repeats.",False,"#A0694B",
-  {"standard":build("forge","forge.json",one("Every other day · 23-day cycle with deload week"))}),
+("forge","The Forge","Every-other-day split, strength + size","Train every other day. Strength days and size days alternate. Three 16-day cycles, each a little harder than the last, then a light deload week.",False,"#A0694B",
+  {"standard":build("forge","forge.json",one("Every other day · 55-day block, 3 cycles + deload"),ramp_forge)}),
 ("gauntlet","Gauntlet","The Forge, high-volume hard mode","Ridiculous volume. Supersets, giant sets and 10-set pyramids. Sleep, food and recovery all need to be on point.",True,"#B3261A",
   {"standard":build("gauntlet","gauntlet.json",one("Every other day · 16-day cycle"))}),
 ("split","Split","Bro split, one muscle a day","Full attention on one muscle group per session. Less frequency, more effort.",False,"#7A7268",

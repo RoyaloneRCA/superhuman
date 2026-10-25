@@ -292,7 +292,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -301,6 +301,12 @@
      "sets": 3,
      "reps": "4–6",
      "rest": "3–4 min"
+    },
+    {
+     "name": "Quad Extension",
+     "sets": 1,
+     "reps": "6–10",
+     "rest": "2 min"
     },
     {
      "name": "Calf Raise",
@@ -411,7 +417,7 @@
     },
     {
      "name": "Hamstring Curl",
-     "sets": 1,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2 min",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -512,7 +518,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -625,19 +631,19 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -738,13 +744,13 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "3–6",
      "rest": "3–5 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
+     "sets": 4,
      "reps": "4–6",
      "rest": "3–4 min"
     },
@@ -851,7 +857,7 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -964,19 +970,19 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 5,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 4,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -1077,7 +1083,7 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 5,
+     "sets": 6,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -1089,7 +1095,7 @@
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -1190,7 +1196,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -1303,13 +1309,13 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -1416,19 +1422,19 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 6,
+     "sets": 7,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 5,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -1529,19 +1535,19 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 6,
+     "sets": 7,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -1642,7 +1648,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -1755,19 +1761,19 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2 min",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -1868,13 +1874,13 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 6,
+     "sets": 8,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 6,
+     "sets": 7,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -1981,19 +1987,19 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 6,
+     "sets": 8,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -2094,21 +2100,15 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 2,
+     "sets": 3,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
-    },
-    {
-     "name": "Quad Extension",
-     "sets": 1,
-     "reps": "12–20",
-     "rest": "90s"
     },
     {
      "name": "Calf Raise",
@@ -2207,7 +2207,7 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -2320,13 +2320,13 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 2,
+     "sets": 3,
      "reps": "3–6",
      "rest": "3–5 min"
     },
     {
      "name": "Hack Squat",
-     "sets": 1,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -2424,7 +2424,7 @@
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -2556,19 +2556,19 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -2666,13 +2666,13 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 4,
+     "sets": 5,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -2798,13 +2798,13 @@
     },
     {
      "name": "Hack Squat",
-     "sets": 1,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "4–6",
      "rest": "3–4 min"
     },
@@ -2902,7 +2902,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 3,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2 min"
     },
@@ -3028,19 +3028,19 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -3132,19 +3132,19 @@
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 5,
+     "sets": 6,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -3264,7 +3264,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -3374,13 +3374,13 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 3,
+     "sets": 4,
      "reps": "6–10",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2 min",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -3500,7 +3500,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -3512,7 +3512,7 @@
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 4,
+     "sets": 5,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -3604,19 +3604,19 @@
    "exercises": [
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 6,
+     "sets": 7,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 4,
+     "sets": 5,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -3736,7 +3736,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -3748,7 +3748,7 @@
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
+     "sets": 4,
      "reps": "4–6",
      "rest": "3–4 min"
     },
@@ -3846,13 +3846,13 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 4,
+     "sets": 5,
      "reps": "6–10",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2 min",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -3972,19 +3972,19 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 5,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hack Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 4,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -4082,13 +4082,13 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 6,
+     "sets": 8,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 4,
+     "sets": 5,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -4318,13 +4318,13 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 1,
+     "sets": 2,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -4435,7 +4435,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -4552,7 +4552,7 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 2,
+     "sets": 3,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -4564,7 +4564,7 @@
     },
     {
      "name": "Hamstring Curl",
-     "sets": 1,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2 min",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -4675,7 +4675,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -4687,7 +4687,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 1,
+     "sets": 2,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -4792,19 +4792,19 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -4915,13 +4915,13 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "3–6",
      "rest": "3–5 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 3,
+     "sets": 4,
      "reps": "4–6",
      "rest": "3–4 min"
     },
@@ -5032,7 +5032,7 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -5155,13 +5155,13 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 5,
+     "sets": 6,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 4,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -5272,7 +5272,7 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 4,
+     "sets": 6,
      "reps": "8–12",
      "rest": "2 min"
     },
@@ -5284,7 +5284,7 @@
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -5395,7 +5395,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -5512,13 +5512,13 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 3,
+     "sets": 4,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
@@ -5635,13 +5635,13 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 6,
+     "sets": 7,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 5,
+     "sets": 6,
      "reps": "6–10",
      "rest": "2–3 min"
     },
@@ -5752,19 +5752,19 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 5,
+     "sets": 7,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -5875,7 +5875,7 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 4,
+     "sets": 5,
      "reps": "3–6",
      "rest": "3–5 min"
     },
@@ -5887,7 +5887,7 @@
     },
     {
      "name": "Quad Extension",
-     "sets": 1,
+     "sets": 2,
      "reps": "6–10",
      "rest": "2 min"
     },
@@ -5998,13 +5998,13 @@
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 1,
+     "sets": 2,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2 min",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -6115,19 +6115,19 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 6,
+     "sets": 8,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 6,
+     "sets": 7,
      "reps": "6–10",
      "rest": "2–3 min"
     },
     {
      "name": "Quad Extension",
-     "sets": 2,
+     "sets": 3,
      "reps": "12–20",
      "rest": "90s"
     },
@@ -6232,19 +6232,19 @@
    "exercises": [
     {
      "name": "Hack Squat",
-     "sets": 6,
+     "sets": 7,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Bent Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "8–12",
      "rest": "2 min"
     },
     {
      "name": "Hamstring Curl",
-     "sets": 3,
+     "sets": 4,
      "reps": "10–15",
      "rest": "90s",
      "note": "Pick the seated version: it works the hamstring in a lengthened position."
@@ -6355,13 +6355,13 @@
    "exercises": [
     {
      "name": "Squat",
-     "sets": 2,
+     "sets": 3,
      "reps": "5–8",
      "rest": "3 min"
     },
     {
      "name": "Straight Knee Hinge",
-     "sets": 2,
+     "sets": 3,
      "reps": "6–10",
      "rest": "2–3 min"
     },
