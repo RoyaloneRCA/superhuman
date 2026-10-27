@@ -2140,6 +2140,100 @@ function getExercisePR(sessionLogs, exerciseId) {
   return pr || null;
 }
 
+// ── LOAD CALCULATOR ──────────────────────────────────
+// Estimated one-rep max for a set = weight × (1 + (reps + reps in reserve) / 30). Run backwards, it gives the weight for any rep and effort target.
+// Starting loads for lifts with no history are kept on this device only.
+const LOAD_SEED_KEY = "sp_load_seeds";
+function getLoadSeeds() { try { return JSON.parse(localStorage.getItem(LOAD_SEED_KEY) || "{}"); } catch { return {}; } }
+function setLoadSeed(id, seed) { try { const o = getLoadSeeds(); o[id] = seed; localStorage.setItem(LOAD_SEED_KEY, JSON.stringify(o)); } catch {} }
+function setE1RM(w, r, rir) {
+  w = Number(w); r = Number(r); rir = Number(rir) || 0;
+  if (!(w > 0) || !(r > 0)) return null;
+  return w * (1 + (r + rir) / 30);
+}
+function loadForTarget(e1rm, reps, rir) { return e1rm / (1 + (reps + rir) / 30); }
+// Top of a rep range: "3–6" → 6, "8-12" → 12, "10 each side" → 10
+function parseRepTarget(txt) {
+  const m = String(txt || "").split(/each/i)[0].match(/\d+/g);
+  return m ? Math.max(...m.map(Number)) : null;
+}
+// Reps in reserve from a session's effort label. A range uses the higher number, so the load errs light: "2–3 RIR" → 3
+function parseRirTarget(effort) {
+  const m = String(effort || "").match(/(\d+)\s*(?:[–-]\s*(\d+))?\s*RIR/i);
+  return m ? Math.max(Number(m[1]), Number(m[2] || 0)) : null;
+}
+// Best estimated max from the last three sessions that logged this lift. A set with no logged RIR counts as RIR 0, which errs light.
+function bestRecentE1RM(sessionLogs, exId) {
+  const entries = Object.entries(sessionLogs).sort(([a],[b]) => b.localeCompare(a));
+  const bests = [];
+  for (const [, log] of entries) {
+    const sets = log.sets?.[exId];
+    if (!sets || !sets.length) continue;
+    let best = null;
+    for (const st of sets) {
+      const e = setE1RM(st.w, st.r, st.rir);
+      if (e && Number(st.r) + (Number(st.rir) || 0) <= 15 && (best === null || e > best)) best = e;
+    }
+    if (best) bests.push(best);
+    if (bests.length >= 3) break;
+  }
+  return bests.length ? {e1rm: Math.max(...bests), n: bests.length} : null;
+}
+function LoadSuggest({exId, sessionLogs, repsText, effort, fast, onUse}) {
+  const [, bump] = useState(0);
+  const [sw, setSw] = useState(""); const [sr, setSr] = useState(""); const [srir, setSrir] = useState("");
+  const reps = parseRepTarget(repsText);
+  if (!reps) return null;
+  const effRir = parseRirTarget(effort);
+  const rir = effRir === null ? 2 : effRir;
+  const mono = {fontFamily:FONT_MONO, fontSize:8, letterSpacing:"0.18em", textTransform:"uppercase"};
+  const box = {background:T.surface, border:`1px solid ${T.border}`, padding:"8px 10px", marginBottom:12, borderRadius:8};
+  if (reps + rir > 15) {
+    return <div style={{...box, ...mono, color:T.muted}}>Suggested load · too many reps for a reliable estimate</div>;
+  }
+  const inc = fast ? 5 : 2.5;
+  const hist = bestRecentE1RM(sessionLogs, exId);
+  const seed = getLoadSeeds()[exId];
+  let e1rm = null, source = "";
+  if (hist) { e1rm = hist.e1rm; source = `best of your last ${hist.n} session${hist.n > 1 ? "s" : ""}`; }
+  else if (seed) { e1rm = setE1RM(seed.w, seed.r, seed.rir); source = `your starting set, ${seed.w} × ${seed.r}`; }
+  if (e1rm) {
+    const load = Math.max(inc, Math.round(loadForTarget(e1rm, reps, rir) / inc) * inc);
+    return (
+      <div style={{...box, display:"flex", alignItems:"center", gap:10}}>
+        <div style={{flex:1, minWidth:0}}>
+          <div style={{...mono, color:T.muted}}>Suggested load · {reps} reps at {rir} RIR{effRir === null ? " (assumed)" : ""}</div>
+          <div style={{fontFamily:FONT_COND, fontWeight:700, fontSize:24, lineHeight:1.1, color:T.bright}}>
+            {load}<span style={{fontFamily:FONT_MONO, fontSize:10, fontWeight:400, color:T.muted}}> LB</span>
+          </div>
+          <div style={{fontSize:11, color:T.muted, lineHeight:1.4}}>From {source}. {reps + rir > 10 ? "Rough estimate at this many reps. " : ""}Adjust if it feels off.</div>
+        </div>
+        <button onClick={()=>onUse(load)}
+          style={{...mono, fontSize:10, color:T.bright, background:"transparent", border:`1px solid ${T.border}`, borderRadius:6, padding:"10px 14px", cursor:"pointer"}}>
+          Use
+        </button>
+      </div>
+    );
+  }
+  const ok = Number(sw) > 0 && Number(sr) > 0 && Number(sr) + (Number(srir) || 0) <= 15;
+  const inp = {width:"100%", background:T.card, border:`1px solid ${T.border}`, borderRadius:6, padding:"8px 6px", color:T.bright, fontFamily:FONT_COND, fontWeight:700, fontSize:18, textAlign:"center", outline:"none"};
+  return (
+    <div style={box}>
+      <div style={{...mono, color:T.muted, marginBottom:6}}>Suggested load · enter one recent set to start</div>
+      <div style={{display:"flex", gap:6, alignItems:"flex-end"}}>
+        <label style={{flex:1, minWidth:0}}><div style={{...mono, color:T.dim, marginBottom:3}}>LB</div><input type="number" inputMode="decimal" value={sw} onChange={e=>setSw(e.target.value)} style={inp}/></label>
+        <label style={{flex:1, minWidth:0}}><div style={{...mono, color:T.dim, marginBottom:3}}>Reps</div><input type="number" inputMode="numeric" value={sr} onChange={e=>setSr(e.target.value)} style={inp}/></label>
+        <label style={{flex:1, minWidth:0}}><div style={{...mono, color:T.dim, marginBottom:3}}>RIR</div><input type="number" inputMode="numeric" placeholder="0" value={srir} onChange={e=>setSrir(e.target.value)} style={inp}/></label>
+        <button disabled={!ok} onClick={()=>{ setLoadSeed(exId, {w:Number(sw), r:Number(sr), rir:Number(srir) || 0}); bump(n=>n+1); }}
+          style={{...mono, fontSize:10, color: ok ? T.bright : T.dim, background:"transparent", border:`1px solid ${T.border}`, borderRadius:6, padding:"12px 12px", cursor: ok ? "pointer" : "default"}}>
+          Save
+        </button>
+      </div>
+      <div style={{fontSize:11, color:T.muted, lineHeight:1.4, marginTop:6}}>Use a recent hard set on this lift. RIR is how many reps you had left. Leave it blank if you went to failure.</div>
+    </div>
+  );
+}
+
 // Count total PRs set this cycle (weight higher than any previous cycle)
 function countPRs(sessionLogs) {
   const exIds = new Set();
@@ -4894,6 +4988,11 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
                                       </div>
                                     );
                                   })()}
+                                  <LoadSuggest exId={ex.id} sessionLogs={sessionLogs}
+                                    repsText={(ex.repsBySet && ex.repsBySet[s]) || ex.reps}
+                                    effort={sessionMeta?.effort}
+                                    fast={((FULL_LIBRARY.find(m=>m.id===ex.id) || ex).fiber) === "fast"}
+                                    onUse={v=>setLogs(p=>({...p,[`${i}-${s}-w`]:String(v)}))}/>
                                   {/* Inputs — two rows to prevent overflow */}
                                   <div style={{marginBottom:12}}>
                                     {/* LBS + REPS side by side */}
@@ -6006,6 +6105,7 @@ function Learn({profile, setProfile=()=>{}}) {
                 ["Hard vs Flow days","Hard days are heavier with fewer reps for strength. Flow days are lighter with more reps for size."],
                 ["Set-by-set targets","Some exercises list reps per set, like 10 / 8 / 6 / 5. Each set has its own target, usually getting heavier as reps drop."],
                 ["“+” and MAX sets","A rep target with a + or MAX means go to a hard all-out effort with good form."],
+                ["Suggested load","Each set shows a weight for its rep target and effort, worked out from your best recent sets on that lift. On a lift you have never logged, enter one recent hard set to start. It is an estimate, so adjust if the bar speed or your form says otherwise. Logging RIR makes it sharper."],
                 ["Supersets","Exercises tagged Superset A, B… are done back to back with no rest, then rest after the last one."],
                 ["Low volume","On low-volume programs each movement is one all-out set. Warm up, then make that single set count."],
                 ["Pick your version","General movements like Squat or Chest Fly let you choose barbell, machine, cable and so on. The app remembers your pick and tracks each version separately."],
