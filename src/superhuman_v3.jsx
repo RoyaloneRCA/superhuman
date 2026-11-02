@@ -170,6 +170,15 @@ function storageClear(key) {
 // ── usePersistedState: drop-in replacement for useState ─────────
 // Usage: const [value, setValue] = usePersistedState(STORAGE_KEYS.X, default)
 // Firebase swap: replace storageGet/storageSet with Firestore calls
+// ── IN-PROGRESS WORKOUT — saved on this device so a workout left midway can be resumed ──
+const ACTIVE_WORKOUT_KEY = "sp_active_workout";
+function readActiveWorkout() {
+  try {
+    const o = JSON.parse(localStorage.getItem(ACTIVE_WORKOUT_KEY) || "null");
+    return o && Array.isArray(o.exercises) && o.exercises.length && o.sessionStartCycleDay ? o : null;
+  } catch { return null; }
+}
+
 function usePersistedState(storageKey, defaultValue) {
   const [state, setStateRaw] = useState(() =>
     storageGet(storageKey, defaultValue)
@@ -2234,6 +2243,44 @@ function LoadSuggest({exId, sessionLogs, repsText, effort, fast, onUse}) {
   );
 }
 
+// ── UNFINISHED WORKOUT CARD — shown on the Train picker after leaving a workout midway ──
+function UnfinishedWorkoutCard({w, onResume, onRedo, onEnd}) {
+  const [confirm, setConfirm] = useState(null); // "redo" | "end" | null
+  const mono = {fontFamily:FONT_MONO, fontSize:9, letterSpacing:"0.16em", textTransform:"uppercase"};
+  const started = w.startedAt ? new Date(w.startedAt) : null;
+  const when = started ? started.toLocaleDateString(undefined, {weekday:"short", month:"short", day:"numeric"}) : "";
+  const btn = (primary) => ({flex:1, minWidth:0, padding:"11px 8px", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:700,
+    background: primary ? T.bright : "transparent", color: primary ? T.bg : T.text, border:`1px solid ${primary ? T.bright : T.border}`});
+  return (
+    <div style={{background:T.card, border:`1px solid ${T.amber}66`, borderLeft:`4px solid ${T.amber}`, borderRadius:8, padding:"14px 16px", marginBottom:16}}>
+      <div style={{...mono, color:T.amber}}>Unfinished workout{when ? " · started " + when : ""}</div>
+      <div style={{fontSize:17, fontWeight:700, color:T.bright, margin:"4px 0 2px"}}>{w.label || "Workout"}</div>
+      <div style={{fontSize:12, color:T.muted, marginBottom:12}}>{w.done} of {w.total} sets logged. Your cycle stays on this workout until you finish it.</div>
+      {confirm ? (
+        <div>
+          <div style={{fontSize:13, color:T.text, lineHeight:1.5, marginBottom:10}}>
+            {confirm === "redo"
+              ? `Start over? This removes the ${w.done} set${w.done === 1 ? "" : "s"} logged in this workout.`
+              : "End here? The sets you logged stay saved and the cycle moves to the next workout."}
+          </div>
+          <div style={{display:"flex", gap:8}}>
+            <button style={btn(true)} onClick={()=>{ setConfirm(null); confirm === "redo" ? onRedo() : onEnd(); }}>
+              {confirm === "redo" ? "Yes, start over" : "Yes, end it"}
+            </button>
+            <button style={btn(false)} onClick={()=>setConfirm(null)}>Cancel</button>
+          </div>
+        </div>
+      ) : (
+        <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
+          <button style={btn(true)} onClick={onResume}>Resume</button>
+          <button style={btn(false)} onClick={()=>setConfirm("redo")}>Start over</button>
+          <button style={btn(false)} onClick={()=>setConfirm("end")}>End here</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Count total PRs set this cycle (weight higher than any previous cycle)
 function countPRs(sessionLogs) {
   const exIds = new Set();
@@ -3445,6 +3492,7 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
   resetWorkout=()=>{},
   // sessionStartCycleDay lifted to App so it survives tab switches and resetWorkout can clear it
   sessionStartCycleDay=null, setSessionStartCycleDay=()=>{},
+  unfinishedWorkout=null, redoWorkout=()=>{},
   activeSessions=SESSIONS_DATA}) {
   const sessionKey = cycleDay;
   const sessionMeta = activeSessions[sessionKey];
@@ -3941,6 +3989,12 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
 
     return (
       <div style={{padding:"20px 20px 120px"}}>
+        {unfinishedWorkout && !editingWorkout && (
+          <UnfinishedWorkoutCard w={unfinishedWorkout}
+            onResume={()=>setSessionState("building")}
+            onRedo={redoWorkout}
+            onEnd={()=>resetWorkout()}/>
+        )}
         {/* Your program — explicit change control */}
         {!editingWorkout && (() => {
           const pm = getActiveProgramMeta(profile);
@@ -9858,22 +9912,45 @@ export default function App() {
   const [triggerRestDayModal, setTriggerRestDayModal] = useState(false);
   // Session review modal — lifted to App so both Home and Calendar can open it
   const [reviewSession, setReviewSession] = useState(null);
-  const [cycleDay,  setCycleDay]  = useState(() => getCurrentCycleDay(storageGet(STORAGE_KEYS.SESSION_LOGS, {})));
+  const [cycleDay,  setCycleDay]  = useState(() => {
+    const aw = readActiveWorkout();
+    return aw ? Number(aw.sessionStartCycleDay) : getCurrentCycleDay(storageGet(STORAGE_KEYS.SESSION_LOGS, {}));
+  });
 
   // ── WORKOUT STATE — lifted to App so it survives tab switches ──
   // Previously inside Session, which unmounted on every tab change.
   // Now these survive navigation and restore the workout exactly where
   // the user left off. Only resets on explicit "Finish" or new workout start.
-  const [sessionState,         setSessionState]         = useState("picker");
-  const [exercises,            setExercises]            = useState([]);
-  const [chosenWorkout,        setChosenWorkout]        = useState(null);
-  const [originalExIds,        setOriginalExIds]        = useState([]);
-  const [logs,                 setLogs]                 = useState({});
-  const [lockedSets,           setLockedSets]           = useState({});
-  const [activeSet,            setActiveSet]            = useState({});
-  const [setCount,             setSetCount]             = useState({});
+  // A workout left midway (Back, closed app) is restored from this device.
+  const [sessionState,         setSessionState]         = useState(() => readActiveWorkout()?.sessionState || "picker");
+  const [exercises,            setExercises]            = useState(() => readActiveWorkout()?.exercises || []);
+  const [chosenWorkout,        setChosenWorkout]        = useState(() => readActiveWorkout()?.chosenWorkout || null);
+  const [originalExIds,        setOriginalExIds]        = useState(() => readActiveWorkout()?.originalExIds || []);
+  const [logs,                 setLogs]                 = useState(() => readActiveWorkout()?.logs || {});
+  const [lockedSets,           setLockedSets]           = useState(() => readActiveWorkout()?.lockedSets || {});
+  const [activeSet,            setActiveSet]            = useState(() => readActiveWorkout()?.activeSet || {});
+  const [setCount,             setSetCount]             = useState(() => readActiveWorkout()?.setCount || {});
   // sessionStartCycleDay lifted to App so resetWorkout() can clear it
-  const [sessionStartCycleDay, setSessionStartCycleDay] = useState(null);
+  const [sessionStartCycleDay, setSessionStartCycleDay] = useState(() => readActiveWorkout()?.sessionStartCycleDay || null);
+  const [workoutStartedAt,     setWorkoutStartedAt]     = useState(() => readActiveWorkout()?.startedAt || null);
+  const hasUnfinished = exercises.length > 0 && sessionStartCycleDay != null;
+
+  // Stamp the start time once a workout begins (used to find this workout's sets for "Start over")
+  useEffect(() => {
+    if (sessionStartCycleDay != null && exercises.length > 0 && !workoutStartedAt) setWorkoutStartedAt(Date.now());
+  }, [sessionStartCycleDay, exercises.length, workoutStartedAt]);
+
+  // Save the in-progress workout so it survives closing the app
+  useEffect(() => {
+    try {
+      if (hasUnfinished) {
+        localStorage.setItem(ACTIVE_WORKOUT_KEY, JSON.stringify({sessionState, exercises, chosenWorkout, originalExIds,
+          logs, lockedSets, activeSet, setCount, sessionStartCycleDay, startedAt: workoutStartedAt}));
+      } else {
+        localStorage.removeItem(ACTIVE_WORKOUT_KEY);
+      }
+    } catch {}
+  }, [hasUnfinished, sessionState, exercises, chosenWorkout, originalExIds, logs, lockedSets, activeSet, setCount, sessionStartCycleDay, workoutStartedAt]);
 
   // Reset all workout state (called on Finish or when starting fresh)
   function resetWorkout() {
@@ -9886,6 +9963,36 @@ export default function App() {
     setActiveSet({});
     setSetCount({});
     setSessionStartCycleDay(null);
+    setWorkoutStartedAt(null);
+    try { localStorage.removeItem(ACTIVE_WORKOUT_KEY); } catch {}
+  }
+
+  // Start over: remove the sets this workout logged (device + cloud), then reopen the same day
+  function redoWorkout() {
+    const since = workoutStartedAt;
+    const uid = currentUser?.uid;
+    if (since) {
+      const next = {};
+      Object.entries(sessionLogs).forEach(([date, log]) => {
+        if (!log || !log.sets) { next[date] = log; return; }
+        let touched = false;
+        const sets = {};
+        Object.entries(log.sets).forEach(([id, arr]) => {
+          const keep = (arr || []).filter(st => !(Number(st.timestamp) >= since));
+          if (keep.length !== (arr || []).length) touched = true;
+          if (keep.length) sets[id] = keep;
+        });
+        if (!touched) { next[date] = log; return; }
+        if (Object.keys(sets).length) {
+          next[date] = {...log, sets};
+          if (uid) fsSet(uid, "sessionLogs", date, next[date]);
+        } else if (uid) {
+          fsDel(uid, "sessionLogs", date);
+        }
+      });
+      setSessionLogs(next);
+    }
+    resetWorkout();
   }
 
   // Once hydrated, sync booted and cycleDay with what we loaded
@@ -9894,7 +10001,8 @@ export default function App() {
     const p = _memStore[STORAGE_KEYS.PROFILE] || null;
     if (p && p.goal && p.weight) {
       setBooted(true);
-      setCycleDay(getCurrentCycleDay(_memStore[STORAGE_KEYS.SESSION_LOGS] || {}));
+      const aw = readActiveWorkout();
+      setCycleDay(aw ? Number(aw.sessionStartCycleDay) : getCurrentCycleDay(_memStore[STORAGE_KEYS.SESSION_LOGS] || {}));
     }
   }, [hydrated]);
 
@@ -9906,9 +10014,16 @@ export default function App() {
   // in that same Chest session would write cycleDay=5 (Back) instead of 3.
   useEffect(() => {
     if (sessionState === "building") return; // frozen during active workout
+    // A workout left unfinished holds the cycle on its day until it is resumed, restarted or ended.
+    // Its logged sets would otherwise count it as done and move the cycle on.
+    if (hasUnfinished) { setCycleDay(Number(sessionStartCycleDay)); return; }
     const computed = getCurrentCycleDay(sessionLogs);
     setCycleDay(computed);
-  }, [sessionLogs, sessionState]);
+  }, [sessionLogs, sessionState, hasUnfinished, sessionStartCycleDay]);
+  // Other screens can set the cycle day (e.g. Home's start button). While a workout is unfinished, keep it on that workout's day.
+  useEffect(() => {
+    if (hasUnfinished && Number(cycleDay) !== Number(sessionStartCycleDay)) setCycleDay(Number(sessionStartCycleDay));
+  }, [cycleDay, hasUnfinished, sessionStartCycleDay]);
 
   // ── LOADING SCREEN ────────────────────────────────────────
   // Show briefly while async hydration runs (usually <100ms)
@@ -10199,7 +10314,11 @@ export default function App() {
           triggerRestDayModal={triggerRestDayModal}
           setTriggerRestDayModal={setTriggerRestDayModal}
           sessionStartCycleDay={sessionStartCycleDay}
-          setSessionStartCycleDay={setSessionStartCycleDay}/>
+          setSessionStartCycleDay={setSessionStartCycleDay}
+          unfinishedWorkout={hasUnfinished ? {startedAt: workoutStartedAt, label: chosenWorkout?.label || "",
+            done: Object.keys(lockedSets).length,
+            total: exercises.reduce((a, e, i) => a + (setCount[i] || e.sets || 3), 0)} : null}
+          redoWorkout={redoWorkout}/>
       </div>
       {tab==="learn"    && <Learn profile={profile} setProfile={setProfile}/>}
       {tab==="progress" && <Progress profile={profile}
