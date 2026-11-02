@@ -2260,12 +2260,13 @@ function UnfinishedWorkoutCard({w, onResume, onRedo, onEnd}) {
         <div>
           <div style={{fontSize:13, color:T.text, lineHeight:1.5, marginBottom:10}}>
             {confirm === "redo"
-              ? `Start over? This removes the ${w.done} set${w.done === 1 ? "" : "s"} logged in this workout.`
+              ? (w.reopened ? "Undo the reopen? Sets you added since reopening are removed. The sets you logged before stay."
+                            : `Start over? This removes the ${w.done} set${w.done === 1 ? "" : "s"} logged in this workout.`)
               : "End here? The sets you logged stay saved and the cycle moves to the next workout."}
           </div>
           <div style={{display:"flex", gap:8}}>
             <button style={btn(true)} onClick={()=>{ setConfirm(null); confirm === "redo" ? onRedo() : onEnd(); }}>
-              {confirm === "redo" ? "Yes, start over" : "Yes, end it"}
+              {confirm === "redo" ? (w.reopened ? "Yes, undo" : "Yes, start over") : "Yes, end it"}
             </button>
             <button style={btn(false)} onClick={()=>setConfirm(null)}>Cancel</button>
           </div>
@@ -2273,7 +2274,7 @@ function UnfinishedWorkoutCard({w, onResume, onRedo, onEnd}) {
       ) : (
         <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
           <button style={btn(true)} onClick={onResume}>Resume</button>
-          <button style={btn(false)} onClick={()=>setConfirm("redo")}>Start over</button>
+          <button style={btn(false)} onClick={()=>setConfirm("redo")}>{w.reopened ? "Undo reopen" : "Start over"}</button>
           <button style={btn(false)} onClick={()=>setConfirm("end")}>End here</button>
         </div>
       )}
@@ -3005,6 +3006,7 @@ function Dashboard({profile, setTab, setCycleDay, cycleDay,
 // A single editable set row inside the session review modal
 function SessionSetEditor({set, setIdx, exId, dateKey, sessionLogs, setSessionLogs, uid, color, onUpdate}) {
   const [editing, setEditing] = useState(false);
+  const [confirmDel, setConfirmDel] = useState(false);
   const [w, setW] = useState(String(set.w || ""));
   const [r, setR] = useState(String(set.r || ""));
   const [rir, setRir] = useState(String(set.rir || ""));
@@ -3021,6 +3023,20 @@ function SessionSetEditor({set, setIdx, exId, dateKey, sessionLogs, setSessionLo
     setSessionLogs(updated);
     if (uid) fsSet(uid, "sessionLogs", dateKey, newLog);
     onUpdate(newLog);
+    setEditing(false);
+  }
+
+  function removeSet() {
+    const cur = sessionLogs[dateKey] || {};
+    const arr = [...(cur.sets?.[exId] || [])];
+    arr.splice(setIdx, 1);
+    const sets = {...(cur.sets || {})};
+    if (arr.length) sets[exId] = arr; else delete sets[exId];
+    const newLog = {...cur, sets};
+    setSessionLogs({...sessionLogs, [dateKey]: newLog});
+    if (uid) fsSet(uid, "sessionLogs", dateKey, newLog);
+    onUpdate(newLog);
+    setConfirmDel(false);
     setEditing(false);
   }
 
@@ -3077,6 +3093,12 @@ function SessionSetEditor({set, setIdx, exId, dateKey, sessionLogs, setSessionLo
             ✓ Save
           </Btn>
         </div>
+        <button onClick={()=> confirmDel ? removeSet() : setConfirmDel(true)}
+          style={{width:"100%", marginTop:8, padding:"9px 8px", borderRadius:8, cursor:"pointer",
+            fontSize:11, fontWeight:700, background:"transparent",
+            border:`1px solid ${confirmDel ? T.crimson : T.border}`, color: confirmDel ? T.crimson : T.dim}}>
+          {confirmDel ? "Tap again to delete this set" : "Delete set"}
+        </button>
       </div>
     );
   }
@@ -3493,6 +3515,7 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
   // sessionStartCycleDay lifted to App so it survives tab switches and resetWorkout can clear it
   sessionStartCycleDay=null, setSessionStartCycleDay=()=>{},
   unfinishedWorkout=null, redoWorkout=()=>{},
+  reopenRequest=null, clearReopen=()=>{}, setWorkoutStartedAt=()=>{},
   activeSessions=SESSIONS_DATA}) {
   const sessionKey = cycleDay;
   const sessionMeta = activeSessions[sessionKey];
@@ -3594,6 +3617,51 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
     setPendingCustomStart(null);
   }
 
+
+  // ── REOPEN A FINISHED WORKOUT — rebuild its exercises with the logged sets filled in and locked ──
+  useEffect(() => {
+    if (!reopenRequest) return;
+    const log = reopenRequest.log || {};
+    clearReopen();
+    const day = log.cycleDay ? Number(log.cycleDay) : null;
+    const cw = log.customWorkoutId && customWorkouts.find(w => w.id === log.customWorkoutId);
+    let exs = [], chosen = null;
+    if (cw) {
+      exs = buildExercisesFrom(cw);
+      chosen = {type:"custom", label:cw.name, id:cw.id, programDay: day};
+    } else if (day && activeSessions[day]) {
+      const m = activeSessions[day];
+      exs = buildExercisesFrom({exercises: m.exercises, phase: m.phase});
+      chosen = {type:"default", label: log.label || m.label};
+    }
+    // Lifts logged that are not in the plan (swaps, additions) are added at the end
+    Object.keys(log.sets || {}).filter(id => (log.sets[id] || []).length).forEach(id => {
+      if (exs.some(e => e.id === id)) return;
+      const mv = FULL_LIBRARY.find(m => m.id === id);
+      if (mv) exs.push({...mv, ...getRepsForFiber(mv.fiber, phase), swapped:false, completed:false});
+    });
+    if (!exs.length) return;
+    if (!chosen) chosen = {type:"custom", label: log.label || "Workout", id:null, programDay:null};
+    const nl = {}, nlock = {}, ncount = {};
+    exs.forEach((ex, i) => {
+      const arr = log.sets?.[ex.id] || [];
+      arr.forEach((st, k) => {
+        nl[`${i}-${k}-w`] = String(st.w);
+        nl[`${i}-${k}-r`] = String(st.r);
+        if (st.rir !== undefined && st.rir !== "") nl[`${i}-${k}-rir`] = String(st.rir);
+        nlock[`${i}-${k}`] = true;
+      });
+      if (arr.length > (ex.sets || 3)) ncount[i] = arr.length;
+    });
+    setExercises(exs);
+    setOriginalExIds(exs.map(e => e.id));
+    setLogs(nl); setLockedSets(nlock); setSetCount(ncount); setActiveSet({});
+    setChosenWorkout({...chosen, reopened:true});
+    if (day) setCycleDay(day);
+    setSessionStartCycleDay(day || cycleDay);
+    setWorkoutStartedAt(Date.now()); // "Start over" then removes only sets added after reopening
+    setSessionState("building");
+  }, [reopenRequest]);
 
   const [expanded, setExpanded] = useState(null);
   const [dragIdx, setDragIdx] = useState(null);
@@ -9933,6 +10001,9 @@ export default function App() {
   // sessionStartCycleDay lifted to App so resetWorkout() can clear it
   const [sessionStartCycleDay, setSessionStartCycleDay] = useState(() => readActiveWorkout()?.sessionStartCycleDay || null);
   const [workoutStartedAt,     setWorkoutStartedAt]     = useState(() => readActiveWorkout()?.startedAt || null);
+  // Reopen a finished workout from the review screen — handled inside Session, which can rebuild the exercise list
+  const [reopenRequest,        setReopenRequest]        = useState(null);
+  const [reviewConfirm,        setReviewConfirm]        = useState(null); // "delete" | null
   const hasUnfinished = exercises.length > 0 && sessionStartCycleDay != null;
 
   // Stamp the start time once a workout begins (used to find this workout's sets for "Start over")
@@ -10315,7 +10386,9 @@ export default function App() {
           setTriggerRestDayModal={setTriggerRestDayModal}
           sessionStartCycleDay={sessionStartCycleDay}
           setSessionStartCycleDay={setSessionStartCycleDay}
-          unfinishedWorkout={hasUnfinished ? {startedAt: workoutStartedAt, label: chosenWorkout?.label || "",
+          reopenRequest={reopenRequest} clearReopen={()=>setReopenRequest(null)}
+          setWorkoutStartedAt={setWorkoutStartedAt}
+          unfinishedWorkout={hasUnfinished ? {startedAt: workoutStartedAt, label: chosenWorkout?.label || "", reopened: !!chosenWorkout?.reopened,
             done: Object.keys(lockedSets).length,
             total: exercises.reduce((a, e, i) => a + (setCount[i] || e.sets || 3), 0)} : null}
           redoWorkout={redoWorkout}/>
@@ -10335,7 +10408,7 @@ export default function App() {
       {reviewSession && (
         <div style={{position:"fixed", inset:0, zIndex:80, background:"rgba(0,0,0,0.85)",
           display:"flex", alignItems:"flex-end", justifyContent:"center"}}
-          onClick={()=>setReviewSession(null)}>
+          onClick={()=>{ setReviewConfirm(null); setReviewSession(null); }}>
           <div style={{width:"100%", maxWidth:480, maxHeight:"88vh",
             background:T.surface, borderRadius:8,
             border:`1px solid ${T.border}`, borderBottom:"none",
@@ -10448,7 +10521,7 @@ export default function App() {
                       </div>
                     </div>
                     {setArr.map((set, si)=>(
-                      <SessionSetEditor key={si}
+                      <SessionSetEditor key={`${set.timestamp || ""}-${si}`}
                         set={set} setIdx={si} exId={exId}
                         dateKey={reviewSession.date}
                         sessionLogs={sessionLogs}
@@ -10465,11 +10538,49 @@ export default function App() {
             </div>
 
             {/* Footer */}
-            <div style={{padding:"12px 20px 24px", borderTop:`1px solid ${T.border}`}}>
-              <Btn variant="ghost" style={{width:"100%"}}
-                onClick={()=>setReviewSession(null)}>
-                Done
-              </Btn>
+            <div style={{padding:"12px 20px 24px", borderTop:`1px solid ${T.border}`, display:"flex", flexDirection:"column", gap:8}}>
+              {reviewConfirm === "delete" ? (
+                <>
+                  <div style={{fontSize:13, color:T.text, lineHeight:1.5}}>
+                    Delete this whole session? All its sets are removed. If it counted toward your program, the cycle goes back to this workout.
+                  </div>
+                  <div style={{display:"flex", gap:8}}>
+                    <Btn style={{flex:1, background:T.crimson, color:"#000"}} onClick={()=>{
+                      const d = reviewSession.date;
+                      setSessionLogs(prev => { const n = {...prev}; delete n[d]; return n; });
+                      if (currentUser) fsDel(currentUser.uid, "sessionLogs", d);
+                      setReviewConfirm(null);
+                      setReviewSession(null);
+                    }}>Yes, delete</Btn>
+                    <Btn variant="ghost" style={{flex:1}} onClick={()=>setReviewConfirm(null)}>Cancel</Btn>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {Object.keys(reviewSession.log?.sets || {}).length > 0 && (hasUnfinished ? (
+                    <div style={{fontSize:12, color:T.muted, lineHeight:1.5, textAlign:"center"}}>
+                      Finish or end your current workout before reopening this one.
+                    </div>
+                  ) : (
+                    <Btn style={{width:"100%", background:T.bright, color:T.bg}} onClick={()=>{
+                      setReopenRequest({date: reviewSession.date, log: reviewSession.log});
+                      setReviewConfirm(null);
+                      setReviewSession(null);
+                      setTab("session");
+                    }}>
+                      Reopen to finish this workout
+                    </Btn>
+                  ))}
+                  <div style={{display:"flex", gap:8}}>
+                    <Btn variant="ghost" style={{flex:1}} onClick={()=>{ setReviewConfirm(null); setReviewSession(null); }}>
+                      Done
+                    </Btn>
+                    <Btn variant="ghost" style={{flex:1, color:T.crimson}} onClick={()=>setReviewConfirm("delete")}>
+                      Delete session
+                    </Btn>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
