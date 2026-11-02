@@ -1240,10 +1240,27 @@ const BUILT_FOR_NOTE = {
 };
 
 let CYCLE = [];
+// Sessions of the active program, keyed by cycle day (kept in sync with CYCLE)
+let ACTIVE_SESSIONS = null;
 function applyCycle(profile) {
   const r = resolveProgram(profile);
   CYCLE = r.days.map((d,i) => ({day:i+1, rest:d==="rest"}));
+  ACTIVE_SESSIONS = r.sessions;
   return r;
+}
+// Training days of the active program near a given day — used by the "which program day" pickers.
+// Short programs list every training day; long ones show a window around the day.
+function nearbyTrainingDays(center, count=8) {
+  const days = CYCLE.filter(c => !c.rest).map(c => c.day);
+  if (days.length <= count) return days;
+  let i = days.findIndex(d => d >= Number(center || 1));
+  if (i < 0) i = days.length - 1;
+  const start = Math.max(0, Math.min(days.length - count, i - 3));
+  return days.slice(start, start + count);
+}
+// Local calendar date as YYYY-MM-DD (session logs are keyed by local date, not UTC)
+function localDateKey(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 }
 
 // Active sessions map keyed by cycle day; also syncs CYCLE to the program's length.
@@ -1405,7 +1422,7 @@ function Card({children, style={}, onClick, glow, color}) {
         position: "relative",
         background: h && onClick ? T.cardHover : T.card,
         border: `1px solid ${glow ? glowColor+"66" : h&&onClick ? T.borderHi : T.border}`,
-        borderLeft: glow ? `2px solid ${glowColor}` : undefined,
+        ...(glow ? {borderLeft: `2px solid ${glowColor}`} : {}), // only set when used: a present-but-undefined key conflicts with border updates
         padding: 16, cursor: onClick ? "pointer" : "default",
         transition: "background 0.15s, border-color 0.15s",
         boxShadow: glow ? `inset 2px 0 12px -6px ${glowColor}, 0 0 24px ${glowColor}10` : "none",
@@ -1710,8 +1727,8 @@ function Onboarding({onComplete}) {
               <div style={{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:0}}>
                 {[
                   {l:"Protein floor", v:`${Math.round(Number(sel.weight)*(MACRO_GOALS.find(g=>g.id===sel.goal)?.proteinMult || 1.3))}g`, c:T.emerald},
-                  {l:"Cycle length",  v:"16 days",   c:T.accent},
-                  {l:"Sessions",      v:"8 / cycle",  c:T.steel},
+                  {l:"Cycle length",  v:`${resolveProgram(sel).days.length} days`,   c:T.accent},
+                  {l:"Sessions",      v:`${resolveProgram(sel).days.filter(d=>d!=="rest").length} / cycle`,  c:T.steel},
                 ].map((s,i)=>(
                   <div key={s.l} style={{textAlign:"center",
                     borderRight:i<2?`1px solid ${T.border}`:"none", padding:"0 8px"}}>
@@ -2051,7 +2068,7 @@ function getDerivedHistory(sessionLogs) {
     .map(([date, log]) => ({
       date,
       cycleDay: log.cycleDay ? Number(log.cycleDay) : null, // coerce string to number
-      label: log.label || SESSIONS_DATA[Number(log.cycleDay)]?.label || "Session",
+      label: log.label || (ACTIVE_SESSIONS || SESSIONS_DATA)[Number(log.cycleDay)]?.label || "Session",
       exercises: Object.keys(log.sets || {}).length,
     }))
     .filter(h => h.cycleDay); // null/0/undefined filtered out
@@ -2122,10 +2139,11 @@ function getLiftHistory(sessionLogs, exerciseId, phase) {
   for (const [date, log] of entries) {
     const sets = log.sets?.[exerciseId];
     if (!sets || !sets.length) continue;
-    if (lastCycleDay && log.cycleDay < lastCycleDay) cycle++;
-    lastCycleDay = log.cycleDay;
+    const cd = Number(log.cycleDay) || null;
+    if (cd && lastCycleDay && cd < lastCycleDay) cycle++;
+    if (cd) lastCycleDay = cd;
     const best = sets.reduce((mx, s) => s.w > mx.w ? s : mx, sets[0]);
-    const sessionPhase = SESSIONS_DATA[log.cycleDay]?.phase || "strength";
+    const sessionPhase = (ACTIVE_SESSIONS || SESSIONS_DATA)[cd]?.phase || "strength";
     const phaseLabel = sessionPhase === "strength" ? "str" : "hyp";
     results.push({
       cycle,
@@ -2766,14 +2784,14 @@ function Dashboard({profile, setTab, setCycleDay, cycleDay,
                 <div style={{fontSize:10, color:T.dim}}>{suppTime}</div>
               </div>
               {!isDone ? (
-                <Btn variant="ghost" size="sm" onClick={()=>{
+                <Btn key="supp-done" variant="ghost" size="sm" onClick={()=>{
                   const key = isAM ? "am" : "pm";
                   const entry = {...(supplementLog[todayKey]||{}), [key]:true};
                   setSupplementLog(prev=>({...prev, [todayKey]:entry}));
                   if(uid) fsSet(uid,"supplementLog",todayKey,entry);
                 }}>✓ Done</Btn>
               ) : (
-                <button onClick={()=>{
+                <button key="supp-undo" onClick={()=>{
                   const key = isAM ? "am" : "pm";
                   const entry = {...(supplementLog[todayKey]||{}), [key]:false};
                   setSupplementLog(prev=>({...prev, [todayKey]:entry}));
@@ -2847,8 +2865,8 @@ function Dashboard({profile, setTab, setCycleDay, cycleDay,
                 <div style={{fontSize:10, fontWeight:700, fontFamily:FONT_MONO, color:T.emerald,
                   letterSpacing:"0.08em", marginBottom:4}}>PREVIOUS SESSION</div>
                 <div style={{fontSize:13, color:T.text}}>
-                  {sessionHistory.find(h=>h.cycleDay===dayPrompt.day)
-                    ? `${sessionHistory.find(h=>h.cycleDay===dayPrompt.day).exercises} exercises logged · ${formatDate(sessionHistory.find(h=>h.cycleDay===dayPrompt.day).date)}`
+                  {sessionHistory.find(h=>h.cycleDay===Number(dayPrompt.day))
+                    ? `${sessionHistory.find(h=>h.cycleDay===Number(dayPrompt.day)).exercises} exercises logged · ${formatDate(sessionHistory.find(h=>h.cycleDay===Number(dayPrompt.day)).date)}`
                     : "Session was completed this cycle."}
                 </div>
               </div>
@@ -2872,7 +2890,8 @@ function Dashboard({profile, setTab, setCycleDay, cycleDay,
                     <Btn variant="outline" style={{width:"100%"}} onClick={()=>{
                       // Find the logged session for this day
                       const logEntry = Object.entries(sessionLogs)
-                        .find(([_, log]) => log.cycleDay === dayPrompt.day);
+                        .sort(([a],[b]) => b.localeCompare(a)) // most recent first
+                        .find(([_, log]) => Number(log.cycleDay) === Number(dayPrompt.day));
                       if (logEntry) {
                         setReviewSession({date: logEntry[0], log: logEntry[1]});
                       }
@@ -3664,6 +3683,7 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
   }, [reopenRequest]);
 
   const [expanded, setExpanded] = useState(null);
+  const [confirmFinishEarly, setConfirmFinishEarly] = useState(false);
   const [dragIdx, setDragIdx] = useState(null);
   const [dragOverIdx, setDragOverIdx] = useState(null);
   const dragTouchY = React.useRef(null);
@@ -3923,9 +3943,9 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
             Completing this advances your cycle. The rest of the schedule shifts forward by one day.
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:16}}>
-            {[1,3,5,7,9,11,13,15].map(day=>{
+            {nearbyTrainingDays(cycleDay).map(day=>{
               const s = activeSessions[day];
-              const isNextDay = day === cycleDay;
+              const isNextDay = day === Number(cycleDay);
               return (
                 <button key={day} onClick={()=>{
                   setCycleDay(day);
@@ -3986,9 +4006,9 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
 
           <div style={{display:"grid", gridTemplateColumns:"1fr 1fr",
             gap:8, marginBottom:16}}>
-            {[1,3,5,7,9,11,13,15].map(day=>{
+            {nearbyTrainingDays(cycleDay).map(day=>{
               const s = activeSessions[day];
-              const isCurrentDay = day === cycleDay;
+              const isCurrentDay = day === Number(cycleDay);
               return (
                 <button key={day} onClick={()=>{
                   // Save programDay on the workout permanently
@@ -4391,7 +4411,7 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
                           Which program day does this satisfy?
                         </div>
                         <div style={{display:"flex", flexWrap:"wrap", gap:6}}>
-                          {[1,3,5,7,9,11,13,15].map(day=>{
+                          {nearbyTrainingDays(cycleDay).map(day=>{
                             const s = activeSessions[day];
                             return (
                               <button key={day} onClick={()=>{
@@ -4714,15 +4734,21 @@ function Session({openProgramPicker=()=>{}, profile, cycleDay, setTab=()=>{}, ui
             ← Back
           </button>
           {/* Finish early — always visible so user knows how to exit */}
-          {done > 0 && pct < 100 && (
+          {(done > 0 || Object.keys(lockedSets).length > 0) && pct < 100 && (
             <button onClick={()=>{
-              if (window.confirm && !window.confirm(`Finish workout? You've completed ${done}/${exercises.length} exercises.`)) return;
+              // Two taps: the first asks, the second finishes (browser dialogs are blocked in some views)
+              if (!confirmFinishEarly) {
+                setConfirmFinishEarly(true);
+                setTimeout(()=>setConfirmFinishEarly(false), 4000);
+                return;
+              }
+              setConfirmFinishEarly(false);
               resetWorkout();
               setTab("home");
-            }} style={{background:"none", border:`1px solid ${T.border}`,
-              color:T.muted, fontSize:11, fontWeight:600, cursor:"pointer",
+            }} style={{background:"none", border:`1px solid ${confirmFinishEarly ? T.amber : T.border}`,
+              color: confirmFinishEarly ? T.amber : T.muted, fontSize:11, fontWeight:600, cursor:"pointer",
               padding:"5px 10px", borderRadius:8}}>
-              Finish Early ✓
+              {confirmFinishEarly ? `Tap again to finish · ${Object.keys(lockedSets).length} sets logged` : "Finish Early ✓"}
             </button>
           )}
         </div>
@@ -6272,17 +6298,16 @@ function Learn({profile, setProfile=()=>{}}) {
           <Card style={{background:T.goldBg, border:`1px solid ${T.goldDim}`, marginBottom:16}}>
             <div style={{fontSize:11, fontWeight:700, color:T.accent, marginBottom:5}}>THE CORE LOGIC</div>
             <div style={{fontSize:13, color:T.text, lineHeight:1.7}}>
-              The Forge and Gauntlet run an 8-session, 16-day cycle. Every design decision — the rest days, the strength-before-hypertrophy order, the muscle pairings — has a specific physiological reason. This section explains all of them.
+              Your program runs a {CYCLE.length}-day cycle: {CYCLE.filter(c=>!c.rest).length} workouts and {CYCLE.filter(c=>c.rest).length} rest days. Every design decision — the rest days, the strength-before-hypertrophy order, the muscle pairings — has a specific physiological reason. This section explains all of them.
             </div>
           </Card>
 
           {/* 16-day visual */}
           <Card style={{marginBottom:16}}>
-            <Label>The 16-Day Cycle Visualized</Label>
+            <Label>{CYCLE.length > 28 ? `Your Cycle Visualized · first 28 of ${CYCLE.length} days` : `The ${CYCLE.length}-Day Cycle Visualized`}</Label>
             <div style={{display:"flex", flexWrap:"wrap", gap:4}}>
-              {Array.from({length:16},(_,i)=>{
-                const day = i+1;
-                const isRest = day%2===0;
+              {CYCLE.slice(0, 28).map(({day, rest})=>{
+                const isRest = rest;
                 const sesh = activeSessions[day];
                 const phaseColor = sesh?.phase==="strength" ? T.crimson : T.steel;
                 return (
@@ -6302,12 +6327,17 @@ function Learn({profile, setProfile=()=>{}}) {
               })}
             </div>
             <div style={{display:"flex", gap:12, marginTop:10, fontSize:10}}>
-              <span><span style={{color:T.crimson}}>■</span> Strength (Days 1,3,5,7)</span>
-              <span><span style={{color:T.steel}}>■</span> Hypertrophy (Days 9,11,13,15)</span>
+              <span><span style={{color:T.crimson}}>■</span> Strength</span>
+              <span><span style={{color:T.steel}}>■</span> Hypertrophy</span>
               <span><span style={{color:T.dim}}>■</span> Rest</span>
             </div>
           </Card>
 
+          {!["firstgate","forge","gauntlet"].includes(profile?.program || "firstgate") && (
+            <div style={{fontSize:12, color:T.muted, lineHeight:1.5, margin:"4px 2px 10px"}}>
+              The answers below explain the every-other-day split used by First Gate, The Forge and Gauntlet. Your program uses a different schedule, but the recovery and ordering principles still apply.
+            </div>
+          )}
           {SPLIT_SCIENCE.map((s,i)=>{
             const isOpen = expandedSection===`split-${i}`;
             return (
@@ -7836,7 +7866,7 @@ function Progress({profile, sessionLogs={}, supplementLog={}, setSupplementLog=(
 
   // Volume computed from last 7 days of sessionLogs
   const VOLUME = useMemo(()=>{
-    const cutoff = new Date(Date.now() - 7*24*60*60*1000).toISOString().slice(0,10);
+    const cutoff = localDateKey(new Date(Date.now() - 7*24*60*60*1000));
     const weekLogs = Object.entries(sessionLogs)
       .filter(([date]) => date >= cutoff)
       .map(([,log]) => log);
@@ -8453,7 +8483,7 @@ function Progress({profile, sessionLogs={}, supplementLog={}, setSupplementLog=(
               : "Exceeded MRV";
             const isSel = selectedMuscle === v.muscle;
             // Real per-session contributions from this week's sessionLogs
-            const cutoff = new Date(Date.now() - 7*24*60*60*1000).toISOString().slice(0,10);
+            const cutoff = localDateKey(new Date(Date.now() - 7*24*60*60*1000));
             const contributions = Object.entries(sessionLogs)
               .filter(([date]) => date >= cutoff)
               .map(([date, log]) => {
@@ -10296,6 +10326,8 @@ export default function App() {
       {showProgramSelector && (
         <ProgramPicker profile={profile} onClose={()=>setShowProgramSelector(false)}
           onSave={updated=>{
+            // A different program, schedule or volume ends any unfinished workout (its logged sets stay saved)
+            if (hasUnfinished && ["program","schedule","volume"].some(k => (updated?.[k] || "") !== (profile?.[k] || ""))) resetWorkout();
             setProfile(updated);
             storageSet(STORAGE_KEYS.PROFILE, updated);
             if (currentUser) fsSet(currentUser.uid, "profile", "data", updated);
@@ -10328,13 +10360,16 @@ export default function App() {
               <Btn variant="danger" style={{flex:1}}
                 onClick={()=>{
                   Object.values(STORAGE_KEYS).forEach(k=>storageClear(k));
+                  // Device-only keys: in-progress workout, starting loads for the load calculator
+                  try{[ACTIVE_WORKOUT_KEY, LOAD_SEED_KEY].forEach(k=>localStorage.removeItem(k));}catch{}
+                  resetWorkout();
                   try{localStorage.removeItem("sp_version");}catch{}
                   try{sessionStorage.removeItem("sp_version");}catch{}
                   // Clear Firestore if user is signed in
                   if(currentUser){
                     const uid=currentUser.uid;
                     const cols=["profile","sessionLogs","weightLog","recoveryLog",
-                      "supplementLog","savedTemplates","customWorkouts","bodyCompLog"];
+                      "supplementLog","savedTemplates","customWorkouts","bodyCompLog","customMovements"];
                     cols.forEach(col=>{
                       window._fbDb?.collection("users").doc(uid)
                         .collection(col).get().then(s=>
@@ -10345,6 +10380,7 @@ export default function App() {
                   setBooted(false);
                   setSavedTemplates({});
                   setCustomWorkouts(DEFAULT_CUSTOM_WORKOUTS);
+                  setCustomLib([]);
                   setSessionLogs({});
                   setSupplementLog({});
                   setShowResetConfirm(false);
@@ -10447,9 +10483,9 @@ export default function App() {
                       COUNTS AS PROGRAM DAY
                     </div>
                     <div style={{display:"flex", flexWrap:"wrap", gap:4}}>
-                      {[1,3,5,7,9,11,13,15].map(day=>{
+                      {nearbyTrainingDays(reviewSession.log?.cycleDay || cycleDay).map(day=>{
                         const s = activeSessions[day];
-                        const isSelected = reviewSession.log?.cycleDay === day;
+                        const isSelected = Number(reviewSession.log?.cycleDay) === day;
                         return (
                           <button key={day} onClick={()=>{
                           const updated = {...reviewSession.log, cycleDay:Number(day),
@@ -10470,7 +10506,8 @@ export default function App() {
                       })}
                       {/* Supplementary — destructive, requires confirmation */}
                       <button onClick={()=>{
-                        if (!window.confirm("Mark as supplementary? This removes the session from your program progress — the sets are still saved but the program won't advance. You can re-assign a day anytime.")) return;
+                        if (reviewConfirm !== "supp") { setReviewConfirm("supp"); return; }
+                        setReviewConfirm(null);
                         const updated = {...reviewSession.log, cycleDay:null, isCustom:true};
                         setSessionLogs(prev=>({...prev, [reviewSession.date]:updated}));
                         if (currentUser) fsSet(currentUser.uid,"sessionLogs",reviewSession.date,updated);
@@ -10482,7 +10519,7 @@ export default function App() {
                         border:`1px solid ${!reviewSession.log?.cycleDay ? T.amber : T.border}`,
                         color: !reviewSession.log?.cycleDay ? T.amber : T.dim
                       }}>
-                        ⚠ Supplementary (doesn't count toward program)
+                        {reviewConfirm === "supp" ? "Tap again: stop counting this toward your program" : "⚠ Supplementary (doesn't count toward program)"}
                       </button>
                     </div>
                   </div>
